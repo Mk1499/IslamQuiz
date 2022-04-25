@@ -3,11 +3,9 @@ import {height, mainColor, width} from '../../../Config/global';
 
 export default StyleSheet.create({
   container: {
-    // backgroundColor: mainColor,
     padding: 5,
     borderRadius: 10,
     maxWidth: 0.1 * width,
-    // height: 0.07 * height,
     backgroundColor: mainColor,
     shadowOffset: {
       width: 0,

@@ -4,7 +4,7 @@ import ar from './locales/ar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 I18n.fallbacks = true;
-I18n.locale = 'ar'
+I18n.locale = 'ar';
 
 I18n.translations = {
   ar,
@@ -12,17 +12,6 @@ I18n.translations = {
 };
 
 let activeLang = 'ar';
-
-// let defineLang = async () => {
-//   await AsyncStorage.getItem('locale').then(locale => {
-//     I18n.locale = locale || 'en-US';
-//     if (locale === 'ar-EG') {
-//       activeLang = 'ar';
-//     } else {
-//       activeLang = 'en';
-//     }
-//   });
-// };
 
 export const setActiveLang = (lang: string) => {
   activeLang = lang;
@@ -37,10 +26,7 @@ export const toggleActiveLang = () => {
 };
 
 export const getActiveLang = () => {
-  // console.log('active lang : ', activeLang);
   return activeLang;
 };
-
-// getLanguages().then(langs => {});
 
 export default I18n;

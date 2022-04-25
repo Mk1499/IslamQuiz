@@ -1,29 +1,53 @@
 import {Platform, StyleSheet} from 'react-native';
-import {fontMed, height, mainColor, width} from '../../../Config/global';
+import {
+  fontBold,
+  fontMed,
+  fontReg,
+  height,
+  mainColor,
+  width,
+} from '../../../Config/global';
 
 export default StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    // height
+    paddingHorizontal: 0.05 * width,
+    paddingVertical: 0.02 * height,
   },
   topCont: {
-    backgroundColor: mainColor,
-    paddingBottom: 0.25 * height,
+    backgroundColor: '#fff',
+    paddingBottom: 0.1 * height,
     paddingHorizontal: 0.05 * width,
-    borderBottomLeftRadius: 0.1 * width,
+    borderBottomRightRadius: 0.2 * width,
   },
-  welCont: {},
   welText: {
-    // textAlign: 'right',
     fontFamily: fontMed,
     color: '#fff',
+    fontSize: 20,
   },
   name: {
-    // textAlign: 'right',
-    fontFamily: fontMed,
+    fontFamily: fontBold,
     color: '#fff',
+    fontSize: 20,
   },
-  quizList: {},
+
+  optionsList: {
+    alignItems: 'flex-start',
+    marginTop: -0.07 * height,
+  },
+  section: {
+    marginVertical: 0.02 * height,
+  },
+  secHeadCont: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  secTitle: {
+    fontFamily:fontBold,
+    fontSize:18
+  },
+  viewAll: {
+    fontFamily:fontReg,
+    fontSize:12
+  },
 });

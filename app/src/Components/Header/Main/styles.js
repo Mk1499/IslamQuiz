@@ -5,7 +5,7 @@ export default StyleSheet.create({
   container: {
     paddingTop: Platform.OS === 'ios' ? 0.04 * height : 0,
     marginVertical: 0.02 * height,
-    flexDirection: 'row-reverse',
+    // flexDirection: 'row-reverse',
     justifyContent: 'space-between',
   },
   iconCont: {},
