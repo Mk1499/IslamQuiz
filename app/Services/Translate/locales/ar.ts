@@ -6,5 +6,9 @@ export default {
     joinQuiz: 'أنضم لاختبار',
     randomQuiz: 'أختبار عشوائي',
     challengeFriend: 'تحدي صديق',
+    sections: 'الأقسام',
+  },
+  Shared: {
+    viewAll: 'أظهر الكل',
   },
 };

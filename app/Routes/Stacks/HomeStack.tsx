@@ -14,7 +14,7 @@ export default class HomeStack extends Component {
           component={Home}
           options={{
             headerShown: false,
-            cardStyle: {backgroundColor: '#fff'},
+            // cardStyle: {backgroundColor: '#fff'},
           }}
         />
       </Stack.Navigator>

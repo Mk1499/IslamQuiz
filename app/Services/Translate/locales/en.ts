@@ -2,9 +2,13 @@ export default {
   Tabs: {},
   Home: {
     welcomeBack: 'Welcome Back',
-    createQuiz: '',
-    joinQuiz: '',
-    randomQuiz: '',
-    challengeFriend: '',
+    createQuiz: 'Create Quiz',
+    joinQuiz: 'Join Quiz',
+    randomQuiz: 'Rondom Quiz',
+    challengeFriend: 'Challenge Friend',
+    sections: 'Sections',
+  },
+  Shared: {
+    viewAll: 'View all',
   },
 };

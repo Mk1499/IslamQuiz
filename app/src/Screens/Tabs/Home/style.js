@@ -14,7 +14,7 @@ export default StyleSheet.create({
     paddingVertical: 0.02 * height,
   },
   topCont: {
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     paddingBottom: 0.1 * height,
     paddingHorizontal: 0.05 * width,
     borderBottomRightRadius: 0.2 * width,
@@ -48,6 +48,12 @@ export default StyleSheet.create({
   },
   viewAll: {
     fontFamily:fontReg,
-    fontSize:12
+    fontSize:12, 
+    color:'#ff8d71'
   },
+  categriesList:{
+    // marginTop:0.01 * height,
+    paddingTop:0.02 * height,
+    alignItems:'center'
+  }
 });
