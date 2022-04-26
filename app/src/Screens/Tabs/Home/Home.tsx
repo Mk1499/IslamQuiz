@@ -11,6 +11,7 @@ import {mainColor} from '../../../Config/global';
 import Category from '../../../Models/Category';
 import CategoryCard from '../../../Components/Shared/CategoryCard/CategoryCard';
 import localImgs from '../../../Config/localImgs';
+import DB from '../../../Config/DB';
 
 type MyState = {
   options: HomeOption[];
@@ -45,36 +46,15 @@ export class Home extends Component<MyProps, MyState> {
           color2: '#e7cc7a',
         },
       ],
-      sections: [
-        {
-          name: 'القرأن كريم',
-          color: '#ff8d71',
-          img: localImgs.quran,
-          action: () => {},
-        },
-        {
-          name: 'السيرة النبوية',
-          color: '#72df9c',
-          img: localImgs.mohamed,
-          action: () => {},
-        },
-        {
-          name: 'قصص الانبياء',
-          color: '#e7cc7a',
-          img: localImgs.allah,
-          action: () => {},
-        },
-        {
-          name: 'رجال حول الرسول',
-          color: '#ff8d71',
-          img: localImgs.sahaba,
-          action: () => {},
-        },
-      ],
+      sections: DB.sections,
     };
   }
 
   componentDidMount() {}
+
+  showAllCats = () => {
+    this.props.navigation.navigate('Catogries');
+  };
 
   render() {
     const {options, sections} = this.state;
@@ -101,7 +81,9 @@ export class Home extends Component<MyProps, MyState> {
           <View style={styles.section}>
             <View style={styles.secHeadCont}>
               <Text style={styles.secTitle}>{I18n.t('Home.sections')}</Text>
-              <Text style={styles.viewAll}>{I18n.t('Shared.viewAll')}</Text>
+              <Text style={styles.viewAll} onPress={this.showAllCats}>
+                {I18n.t('Shared.viewAll')}
+              </Text>
             </View>
             <FlatList
               data={sections}

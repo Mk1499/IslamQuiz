@@ -11,4 +11,7 @@ export default {
   Shared: {
     viewAll: 'View all',
   },
+  Screens: {
+    chooseSection: 'Choose Section',
+  },
 };

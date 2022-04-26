@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import {StatusBar} from 'react-native';
+import {StatusBar , LogBox} from 'react-native';
 
 import {Provider} from 'react-redux';
 import store from './app/Redux/store';
@@ -15,6 +15,7 @@ import AppNavigation from './app/Routes/Navigator';
 import { mainColor } from './app/src/Config/global';
 
 const App: () => React$Node = () => {
+  LogBox.ignoreAllLogs()
   return (
     <>
       <Provider store={store}>

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from '../../src/Screens/Tabs/Home/Home';
+import Categories from '../../src/Screens/Tabs/Home/Categories/Categories';
 
 const Stack = createStackNavigator();
 
@@ -14,9 +15,10 @@ export default class HomeStack extends Component {
           component={Home}
           options={{
             headerShown: false,
-            // cardStyle: {backgroundColor: '#fff'},
+            cardStyle: {backgroundColor: '#fff'},
           }}
         />
+       
       </Stack.Navigator>
     );
   }

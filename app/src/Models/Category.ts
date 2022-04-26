@@ -2,5 +2,4 @@ export default interface Category {
   name: string;
   color: string;
   img: string;
-  action: Function;
 }

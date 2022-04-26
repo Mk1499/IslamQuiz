@@ -4,7 +4,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import AuthStack from './Stacks/AuthStack';
 import MainTabs from './MainTabs';
 import {navigationRef} from './RootNavigation';
-import { I18nManager } from 'react-native';
+import {I18nManager} from 'react-native';
+import Categories from '../src/Screens/Tabs/Home/Categories/Categories';
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,16 @@ export default class AppNavigation extends Component {
           <Stack.Screen
             name="Auth"
             component={AuthStack}
+            options={{
+              headerShown: false,
+              cardStyle: {backgroundColor: '#fff'},
+            }}
+          />
+
+          {/* Home */}
+          <Stack.Screen
+            name="Catogries"
+            component={Categories}
             options={{
               headerShown: false,
               cardStyle: {backgroundColor: '#fff'},

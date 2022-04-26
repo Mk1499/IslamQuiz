@@ -11,4 +11,7 @@ export default {
   Shared: {
     viewAll: 'أظهر الكل',
   },
+  Screens: {
+    chooseSection: 'أختيار الأقسام',
+  },
 };

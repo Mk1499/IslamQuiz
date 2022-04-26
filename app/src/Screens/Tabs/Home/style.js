@@ -14,7 +14,7 @@ export default StyleSheet.create({
     paddingVertical: 0.02 * height,
   },
   topCont: {
-    // backgroundColor: '#fff',
+    backgroundColor: '#fff',
     paddingBottom: 0.1 * height,
     paddingHorizontal: 0.05 * width,
     borderBottomRightRadius: 0.2 * width,

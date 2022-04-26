@@ -5,7 +5,7 @@ export default StyleSheet.create({
   container: {
     minWidth: 0.3 * width,
     backgroundColor: '#fff',
-    marginHorizontal: 0.1 * width,
+    marginHorizontal: 0.07 * width,
     marginVertical: 0.03 * height,
     alignItems: 'center',
     borderRadius: 10,
