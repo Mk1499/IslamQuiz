@@ -1,12 +1,11 @@
-import {StyleSheet} from 'react-native';
-import config from '../../../Config/Constants';
+/* eslint-disable prettier/prettier */
+import { StyleSheet } from 'react-native';
+// import Constants from '../../../Config/Constants';
 
-export default StyleSheet.create({
+const makeStyle = (colors: any) => StyleSheet.create({
   container: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: config.height,
-    backgroundColor: 'red',
+    // backgroundColor:colors.primary,
   },
 });
+
+export default makeStyle;

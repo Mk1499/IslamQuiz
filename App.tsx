@@ -6,6 +6,7 @@ import {Provider} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import store from './src/Redux/store';
 import MainStack from './src/Routes/Stacks/Main';
+import {ThemeProvider} from './src/Theme/ThemeProvider';
 
 const App = () => {
   return (
@@ -15,7 +16,9 @@ const App = () => {
         ref={(navigatorRef: any) => {
           NavigationService.setTopLevelNavigator(navigatorRef);
         }}>
-        <MainStack />
+        <ThemeProvider>
+          <MainStack />
+        </ThemeProvider>
       </NavigationContainer>
     </Provider>
   );
