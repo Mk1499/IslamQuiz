@@ -1,10 +1,20 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, ImageBackground} from 'react-native';
 import styles from './styles';
 import {useTheme} from '../../Theme/ThemeProvider';
+import I18n, {getActiveLang, setActiveLang} from '../../translate';
+import Constants from '../../Config/Constants';
+// import bgImg from '../../../assets/images/BGpattern.png';
 
-const AuthHead = () => {
-  const {dark, setScheme} = useTheme();
+type MyProps = {
+  screenName: string;
+  message: string;
+  link: string;
+  linkAction: Function;
+};
+
+const AuthHead = (props: MyProps) => {
+  const {dark, setScheme, setLangUpdated, setRTL} = useTheme();
 
   const toggleScheme = () => {
     if (dark) {
@@ -14,20 +24,49 @@ const AuthHead = () => {
     }
   };
 
+  const toggleLang = () => {
+    const currentLang = getActiveLang();
+    if (currentLang === 'en') {
+      setActiveLang('ar');
+      setRTL(true);
+    } else {
+      setActiveLang('en');
+      setRTL(false);
+    }
+    setLangUpdated(true);
+  };
+
   return (
     <>
-      <View style={styles.container}>
-        <Text style={styles.brand}>IQuiz</Text>
+      <ImageBackground
+        source={require('../../../assets/images/BGpattern.png')}
+        style={[styles.bgCont, styles.container]}>
+        <View style={styles.brandCont}>
+          <Text style={styles.brand}>{I18n.Global.appName}</Text>
+          <Text style={styles.otherLang} onPress={toggleLang}>
+            {I18n.Global.otherLang}
+          </Text>
+        </View>
         <View style={styles.dataCont}>
-          <Text style={styles.title} onPress={toggleScheme}>Sign In</Text>
+          <Text style={styles.title} onPress={toggleScheme}>
+            {props.screenName}
+          </Text>
           <View style={styles.row}>
-            <Text style={styles.text}>Don't have an account?</Text>
-            <Text style={[styles.text, styles.link]}>Sign Up</Text>
+            <Text style={styles.text}>{props.message}</Text>
+            <Text style={[styles.text, styles.link]} onPress={props.linkAction}>
+              {props.link}
+            </Text>
           </View>
         </View>
-      </View>
-      <View style={styles.firstExtend} />
-      <View style={styles.secExtent} />
+      </ImageBackground>
+      <ImageBackground
+        source={require('../../../assets/images/BGpattern.png')}
+        style={[styles.bgCont, styles.firstExtend]}
+      />
+      <ImageBackground
+        source={require('../../../assets/images/BGpattern.png')}
+        style={[styles.bgCont, styles.secExtent]}
+      />
     </>
   );
 };

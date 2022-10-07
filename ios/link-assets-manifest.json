@@ -1,0 +1,53 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Cairo-Black.ttf",
+      "sha1": "ed2a089c2da119dd983b735e5a59a655b584bd5f"
+    },
+    {
+      "path": "assets/fonts/Cairo-Bold.ttf",
+      "sha1": "2e6c9297671c23310e9319b2746eefe14fa11021"
+    },
+    {
+      "path": "assets/fonts/Cairo-ExtraLight.ttf",
+      "sha1": "b4588c78692afd50c873441e72cb69f8681fa6b6"
+    },
+    {
+      "path": "assets/fonts/Cairo-Light.ttf",
+      "sha1": "ac330f2c94c957aa00f33039db72e907db0b064e"
+    },
+    {
+      "path": "assets/fonts/Cairo-SemiBold.ttf",
+      "sha1": "b3fd57cc3d13aba2fceac27d58e01bb0aeda9aa1"
+    },
+    {
+      "path": "assets/fonts/Cairo.ttf",
+      "sha1": "2c9067476ae5fb4a3590970fa66c6451f36d13f5"
+    },
+    {
+      "path": "assets/fonts/Grandstander-ExtraLight.ttf",
+      "sha1": "942787cba1cfd5597dfc1c9dfccf9f663f3772d7"
+    },
+    {
+      "path": "assets/fonts/Grandstander-Regular.ttf",
+      "sha1": "c474ef89237a2a16e1cef8aa1ce1162440620256"
+    },
+    {
+      "path": "assets/fonts/Ubuntu-Italic.ttf",
+      "sha1": "750d057ad6b1b77d9b92134b4c5a1869fe0f128d"
+    },
+    {
+      "path": "assets/fonts/Ubuntu-Light.ttf",
+      "sha1": "5f88f07d61cb63e065f565c3ace8fd12394e071b"
+    },
+    {
+      "path": "assets/fonts/Ubuntu-Medium.ttf",
+      "sha1": "8f9552f4661c80d13082dbf72a38ab4585d0b8a9"
+    },
+    {
+      "path": "assets/fonts/Ubuntu-Regular.ttf",
+      "sha1": "31b6449384c3fe8d10a483814fe68302dc05485f"
+    }
+  ]
+}

@@ -7,11 +7,13 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Login from '../../Screens/Auth/Login/Login';
 // import navigation from '../NavigationService';
 import {useTheme} from '../../Theme/ThemeProvider';
+import Register from '../../Screens/Auth/Register/Register';
+import ForgotPassword from '../../Screens/Auth/Forgot Password/ForgotPassword';
 
 const Stack = createStackNavigator();
 
 const MainStack = () => {
-  const {colors} = useTheme();
+  const {colors, rtl} = useTheme();
 
   useEffect(() => {}, []);
   return (
@@ -23,6 +25,29 @@ const MainStack = () => {
           headerShown: false,
           cardStyle: {
             backgroundColor: colors.bg,
+            direction: !rtl ? 'ltr' : 'rtl',
+          },
+        }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={Register}
+        options={{
+          headerShown: false,
+          cardStyle: {
+            backgroundColor: colors.bg,
+            direction: !rtl ? 'ltr' : 'rtl',
+          },
+        }}
+      />
+      <Stack.Screen
+        name="ForgotPassword"
+        component={ForgotPassword}
+        options={{
+          headerShown: false,
+          cardStyle: {
+            backgroundColor: colors.bg,
+            direction: !rtl ? 'ltr' : 'rtl',
           },
         }}
       />

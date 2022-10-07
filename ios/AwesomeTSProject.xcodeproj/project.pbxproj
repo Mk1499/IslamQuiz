@@ -8,12 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* AwesomeTSProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AwesomeTSProjectTests.m */; };
+		017F71707BAB40D3AEEF2D9E /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BFC1F4BFA8C74FCBB28B7560 /* Ubuntu-Regular.ttf */; };
+		0B7AE75C8A67435DA10B3CD8 /* Cairo-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C1CC07855644A388C1D9711 /* Cairo-Black.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		34C190D208F5467B876E8BDE /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A162D622B8AC4C7CA891D3A2 /* Ubuntu-Medium.ttf */; };
+		3AECCD944DA44E0496825B6A /* Cairo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F40F00A8759E438C9C682127 /* Cairo.ttf */; };
+		5E1D99EF1AC94A298173D561 /* Cairo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B42ACB8DEBB4427AC142819 /* Cairo-Light.ttf */; };
 		6FB8286F0D5CB05D3E474608 /* libPods-AwesomeTSProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-AwesomeTSProject.a */; };
 		7699B88040F8A987B510C191 /* libPods-AwesomeTSProject-AwesomeTSProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-AwesomeTSProject-AwesomeTSProjectTests.a */; };
+		7DC8C24632254E16BB7EA10C /* Cairo-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8FF56D3530AE4909A764624B /* Cairo-SemiBold.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8C65B415256B422791CC95FA /* Ubuntu-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3A708A30F84421FAC0E9E6A /* Ubuntu-Italic.ttf */; };
+		8CB16DAF36F34CD1B2BD8F04 /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 12CCAC7A752B4D2CA603A39D /* Ubuntu-Light.ttf */; };
+		AC5E4E92F3AB4B28AE39CCCC /* Grandstander-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21A2099E10EA4D0DBAE72DD9 /* Grandstander-ExtraLight.ttf */; };
+		B8627631C2F2409F9BC303DE /* Cairo-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8BA7D905BA4487FB952A36A /* Cairo-ExtraLight.ttf */; };
+		F232B80F098C4478B6BDFC6B /* Cairo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66B1154CD0BD400C9EEA1D60 /* Cairo-Bold.ttf */; };
+		F5F41688C3854308A1750202 /* Grandstander-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DAB0BC9042E4D8E81AAC9E3 /* Grandstander-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +42,8 @@
 		00E356EE1AD99517003FC87E /* AwesomeTSProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AwesomeTSProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* AwesomeTSProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AwesomeTSProjectTests.m; sourceTree = "<group>"; };
+		0C1CC07855644A388C1D9711 /* Cairo-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cairo-Black.ttf"; path = "../assets/fonts/Cairo-Black.ttf"; sourceTree = "<group>"; };
+		12CCAC7A752B4D2CA603A39D /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Light.ttf"; path = "../assets/fonts/Ubuntu-Light.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* AwesomeTSProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AwesomeTSProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = AwesomeTSProject/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = AwesomeTSProject/AppDelegate.mm; sourceTree = "<group>"; };
@@ -37,14 +51,24 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AwesomeTSProject/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = AwesomeTSProject/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-AwesomeTSProject-AwesomeTSProjectTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AwesomeTSProject-AwesomeTSProjectTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		21A2099E10EA4D0DBAE72DD9 /* Grandstander-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Grandstander-ExtraLight.ttf"; path = "../assets/fonts/Grandstander-ExtraLight.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-AwesomeTSProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeTSProject.debug.xcconfig"; path = "Target Support Files/Pods-AwesomeTSProject/Pods-AwesomeTSProject.debug.xcconfig"; sourceTree = "<group>"; };
+		3DAB0BC9042E4D8E81AAC9E3 /* Grandstander-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Grandstander-Regular.ttf"; path = "../assets/fonts/Grandstander-Regular.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-AwesomeTSProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeTSProject.release.xcconfig"; path = "Target Support Files/Pods-AwesomeTSProject/Pods-AwesomeTSProject.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-AwesomeTSProject-AwesomeTSProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeTSProject-AwesomeTSProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-AwesomeTSProject-AwesomeTSProjectTests/Pods-AwesomeTSProject-AwesomeTSProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-AwesomeTSProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AwesomeTSProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		66B1154CD0BD400C9EEA1D60 /* Cairo-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cairo-Bold.ttf"; path = "../assets/fonts/Cairo-Bold.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = AwesomeTSProject/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-AwesomeTSProject-AwesomeTSProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeTSProject-AwesomeTSProjectTests.release.xcconfig"; path = "Target Support Files/Pods-AwesomeTSProject-AwesomeTSProjectTests/Pods-AwesomeTSProject-AwesomeTSProjectTests.release.xcconfig"; sourceTree = "<group>"; };
+		8FF56D3530AE4909A764624B /* Cairo-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cairo-SemiBold.ttf"; path = "../assets/fonts/Cairo-SemiBold.ttf"; sourceTree = "<group>"; };
 		90256D4928CCD9060027789C /* AwesomeTSProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = AwesomeTSProject.entitlements; path = AwesomeTSProject/AwesomeTSProject.entitlements; sourceTree = "<group>"; };
+		9B42ACB8DEBB4427AC142819 /* Cairo-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cairo-Light.ttf"; path = "../assets/fonts/Cairo-Light.ttf"; sourceTree = "<group>"; };
+		A162D622B8AC4C7CA891D3A2 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Medium.ttf"; path = "../assets/fonts/Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
+		BFC1F4BFA8C74FCBB28B7560 /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Regular.ttf"; path = "../assets/fonts/Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
+		C3A708A30F84421FAC0E9E6A /* Ubuntu-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Italic.ttf"; path = "../assets/fonts/Ubuntu-Italic.ttf"; sourceTree = "<group>"; };
+		C8BA7D905BA4487FB952A36A /* Cairo-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cairo-ExtraLight.ttf"; path = "../assets/fonts/Cairo-ExtraLight.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F40F00A8759E438C9C682127 /* Cairo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Cairo.ttf; path = ../assets/fonts/Cairo.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +148,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				A69E58B7D2AF480181BF347C /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -137,6 +162,25 @@
 				00E356EE1AD99517003FC87E /* AwesomeTSProjectTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A69E58B7D2AF480181BF347C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0C1CC07855644A388C1D9711 /* Cairo-Black.ttf */,
+				66B1154CD0BD400C9EEA1D60 /* Cairo-Bold.ttf */,
+				C8BA7D905BA4487FB952A36A /* Cairo-ExtraLight.ttf */,
+				9B42ACB8DEBB4427AC142819 /* Cairo-Light.ttf */,
+				8FF56D3530AE4909A764624B /* Cairo-SemiBold.ttf */,
+				F40F00A8759E438C9C682127 /* Cairo.ttf */,
+				21A2099E10EA4D0DBAE72DD9 /* Grandstander-ExtraLight.ttf */,
+				3DAB0BC9042E4D8E81AAC9E3 /* Grandstander-Regular.ttf */,
+				C3A708A30F84421FAC0E9E6A /* Ubuntu-Italic.ttf */,
+				12CCAC7A752B4D2CA603A39D /* Ubuntu-Light.ttf */,
+				A162D622B8AC4C7CA891D3A2 /* Ubuntu-Medium.ttf */,
+				BFC1F4BFA8C74FCBB28B7560 /* Ubuntu-Regular.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
@@ -220,6 +264,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
@@ -246,6 +291,18 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				0B7AE75C8A67435DA10B3CD8 /* Cairo-Black.ttf in Resources */,
+				F232B80F098C4478B6BDFC6B /* Cairo-Bold.ttf in Resources */,
+				B8627631C2F2409F9BC303DE /* Cairo-ExtraLight.ttf in Resources */,
+				5E1D99EF1AC94A298173D561 /* Cairo-Light.ttf in Resources */,
+				7DC8C24632254E16BB7EA10C /* Cairo-SemiBold.ttf in Resources */,
+				3AECCD944DA44E0496825B6A /* Cairo.ttf in Resources */,
+				AC5E4E92F3AB4B28AE39CCCC /* Grandstander-ExtraLight.ttf in Resources */,
+				F5F41688C3854308A1750202 /* Grandstander-Regular.ttf in Resources */,
+				8C65B415256B422791CC95FA /* Ubuntu-Italic.ttf in Resources */,
+				8CB16DAF36F34CD1B2BD8F04 /* Ubuntu-Light.ttf in Resources */,
+				34C190D208F5467B876E8BDE /* Ubuntu-Medium.ttf in Resources */,
+				017F71707BAB40D3AEEF2D9E /* Ubuntu-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,7 +559,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = AwesomeTSProject;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -530,7 +587,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = AwesomeTSProject;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

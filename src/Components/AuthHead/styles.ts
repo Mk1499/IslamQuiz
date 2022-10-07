@@ -2,6 +2,8 @@
 import { Platform, StyleSheet } from 'react-native';
 import Constants from '../../Config/Constants';
 
+const { height } = Constants;
+
 export default StyleSheet.create({
     container: {
         paddingTop: Platform.OS === 'ios' ? 0.05 * Constants.height : 0,
@@ -12,31 +14,50 @@ export default StyleSheet.create({
         borderBottomLeftRadius: 30,
         borderBottomRightRadius: 30,
     },
+    brandCont: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        // backgroundColor:'red'
+    },
+    otherLang: {
+        fontSize: 18,
+        color: Constants.colors.white,
+        fontFamily: Constants.fonts.med
+    },
     brand: {
-        marginVertical: 0.01 * Constants.height,
         fontSize: 40,
         color: Constants.colors.white,
-        fontWeight: 'bold',
+        fontFamily: Constants.fonts.bold
     },
     dataCont: {
         marginVertical: 0.01 * Constants.height,
+        position: 'relative'
     },
     title: {
         color: Constants.colors.white,
         fontSize: 25,
         fontWeight: 'bold',
         marginBottom: 0.01 * Constants.height,
+        fontFamily: Constants.fonts.reg,
+        textAlign: 'left'
     },
     row: {
         flexDirection: 'row',
+        alignItems: 'center'
     },
     text: {
         fontSize: 15,
         marginEnd: 5,
         color: Constants.colors.white,
+        fontFamily: Constants.fonts.reg,
     },
     link: {
-        color: Constants.colors.sky,
+        color: Constants.colors.white,
+        fontFamily: Constants.fonts.bold,
+        textDecorationLine: 'underline',
+        fontSize: 17,
     },
     firstExtend: {
         height: 30,
@@ -60,4 +81,7 @@ export default StyleSheet.create({
         zIndex: -3,
         opacity: 0.8,
     },
+    bgCont: {
+        backgroundColor: Constants.colors.bg,
+    }
 });

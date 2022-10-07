@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ScrollView, View, Text, ImageBackground} from 'react-native';
+import {ScrollView, View, ImageBackground} from 'react-native';
 import AuthHead from '../../../Components/AuthHead/AuthHead';
 import makeStyle from './styles';
 import {useTheme} from '../../../Theme/ThemeProvider';
@@ -10,18 +10,22 @@ import I18n from '../../../translate';
 type MyProps = {
   navigation: {
     navigate: Function;
+    goBack();
   };
 };
 
-const Login = (props: MyProps) => {
+const Register = (props: MyProps) => {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [password2, setPassword2] = useState('');
+  const [email, setEmail] = useState('');
+  // const [phone, setPhone] = useState('');
   const [loading, setLoading] = useState(false);
 
   function submit() {
-    console.log('caleed : ' + password + username);
+    console.log('caleed : ', password, username, email, password2);
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -29,10 +33,7 @@ const Login = (props: MyProps) => {
   }
 
   function goToSignUp() {
-    props.navigation.navigate('Register');
-  }
-  function goToForgotPW() {
-    props.navigation.navigate('ForgotPassword');
+    props.navigation.goBack();
   }
 
   return (
@@ -41,29 +42,38 @@ const Login = (props: MyProps) => {
         source={require('../../../../assets/images/BGpattern.png')}
         style={styles.container}>
         <AuthHead
-          link={I18n.SignIn.reg}
-          message={I18n.SignIn.noAccount}
-          screenName={I18n.SignIn.ScreenName}
+          link={I18n.SignUp.login}
+          message={I18n.SignUp.haveAccount}
+          screenName={I18n.SignUp.ScreenName}
           linkAction={goToSignUp}
         />
         <View style={styles.formCont}>
           <MyInput
-            label={I18n.SignIn.username}
-            placeholder={I18n.SignIn.enterUsername}
+            label={I18n.SignUp.username}
+            placeholder={I18n.SignUp.enterUsername}
             type="text"
             onChange={setUsername}
           />
           <MyInput
-            label={I18n.SignIn.password}
-            placeholder={I18n.SignIn.enterPassword}
+            label={I18n.SignUp.email}
+            placeholder={I18n.SignUp.enterEmail}
+            type="email"
+            onChange={setEmail}
+          />
+          <MyInput
+            label={I18n.SignUp.password}
+            placeholder={I18n.SignUp.enterPassword}
             secured={true}
             onChange={setPassword}
           />
-          <Text style={styles.text} onPress={goToForgotPW}>
-            {I18n.SignIn.forgotPassword}
-          </Text>
+          <MyInput
+            label={I18n.SignUp.confirmPassword}
+            placeholder={I18n.SignUp.enterConfirmPassword}
+            secured={true}
+            onChange={setPassword2}
+          />
           <MyButton
-            label={I18n.SignIn.login}
+            label={I18n.SignUp.reg}
             action={submit}
             processing={loading}
           />
@@ -73,4 +83,4 @@ const Login = (props: MyProps) => {
   );
 };
 
-export default Login;
+export default Register;
