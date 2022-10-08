@@ -9,6 +9,7 @@ import Login from '../../Screens/Auth/Login/Login';
 import {useTheme} from '../../Theme/ThemeProvider';
 import Register from '../../Screens/Auth/Register/Register';
 import ForgotPassword from '../../Screens/Auth/Forgot Password/ForgotPassword';
+import Home from '../../Screens/Tabs/Home/Home';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,17 @@ const MainStack = () => {
   useEffect(() => {}, []);
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{
+          headerShown: false,
+          cardStyle: {
+            backgroundColor: colors.bg,
+            direction: !rtl ? 'ltr' : 'rtl',
+          },
+        }}
+      />
       <Stack.Screen
         name="Login"
         component={Login}

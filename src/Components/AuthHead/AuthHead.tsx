@@ -1,9 +1,8 @@
 import React from 'react';
 import {Text, View, ImageBackground} from 'react-native';
-import styles from './styles';
+import makeStyle from './styles';
 import {useTheme} from '../../Theme/ThemeProvider';
 import I18n, {getActiveLang, setActiveLang} from '../../translate';
-import Constants from '../../Config/Constants';
 // import bgImg from '../../../assets/images/BGpattern.png';
 
 type MyProps = {
@@ -15,7 +14,7 @@ type MyProps = {
 
 const AuthHead = (props: MyProps) => {
   const {dark, setScheme, setLangUpdated, setRTL} = useTheme();
-
+  const styles = makeStyle();
   const toggleScheme = () => {
     if (dark) {
       setScheme('light');

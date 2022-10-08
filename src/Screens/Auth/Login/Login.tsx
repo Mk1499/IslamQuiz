@@ -24,6 +24,7 @@ const Login = (props: MyProps) => {
     console.log('caleed : ' + password + username);
     setLoading(true);
     setTimeout(() => {
+      props.navigation.navigate('Home');
       setLoading(false);
     }, 1000);
   }

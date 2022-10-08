@@ -9,6 +9,7 @@ import MainStack from './src/Routes/Stacks/Main';
 import {ThemeProvider} from './src/Theme/ThemeProvider';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Keys from './src/Config/StorageKeys';
+import Constants from './src/Config/Constants';
 
 const App = () => {
   const [intialzed, setIntialzed] = useState(false);
@@ -28,7 +29,7 @@ const App = () => {
   if (intialzed) {
     return (
       <Provider store={store}>
-        <StatusBar backgroundColor={'red'} />
+        <StatusBar backgroundColor={Constants.colors.main} />
         <NavigationContainer
           ref={(navigatorRef: any) => {
             NavigationService.setTopLevelNavigator(navigatorRef);

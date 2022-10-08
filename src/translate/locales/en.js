@@ -37,4 +37,12 @@ export default {
     email: 'Email',
     msg: 'There is a code will send to your email account',
   },
+  Home: {
+    welBack: 'Welcome Back !',
+    create: 'Create',
+    quiz: 'Quiz',
+    join: 'Join in',
+    challenge: 'Challenge',
+    friend: 'Friend',
+  },
 };

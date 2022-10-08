@@ -1,10 +1,9 @@
 /* eslint-disable prettier/prettier */
 import { Platform, StyleSheet } from 'react-native';
 import Constants from '../../Config/Constants';
+import { getActiveLang } from '../../translate';
 
-const { height } = Constants;
-
-export default StyleSheet.create({
+const makeStyle = () => StyleSheet.create({
     container: {
         paddingTop: Platform.OS === 'ios' ? 0.05 * Constants.height : 0,
         backgroundColor: Constants.colors.bg,
@@ -16,7 +15,7 @@ export default StyleSheet.create({
     },
     brandCont: {
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         // backgroundColor:'red'
@@ -38,14 +37,15 @@ export default StyleSheet.create({
     title: {
         color: Constants.colors.white,
         fontSize: 25,
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         marginBottom: 0.01 * Constants.height,
-        fontFamily: Constants.fonts.reg,
-        textAlign: 'left'
+        fontFamily: Constants.fonts.bold,
+        // textAlign: 'left'
     },
     row: {
-        flexDirection: 'row',
-        alignItems: 'center'
+        display: 'flex',
+        flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
+        alignItems: 'center',
     },
     text: {
         fontSize: 15,
@@ -85,3 +85,6 @@ export default StyleSheet.create({
         backgroundColor: Constants.colors.bg,
     }
 });
+
+
+export default makeStyle;

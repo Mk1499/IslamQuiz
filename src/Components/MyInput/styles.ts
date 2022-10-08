@@ -10,12 +10,11 @@ const makeStyle = (themeColors: any) => StyleSheet.create({
         marginVertical: 0.005 * Constants.height,
     },
     label: {
-        // color: themeColors.text,
         color: colors.main,
         fontFamily: fonts.med,
         fontSize: 17,
         marginBottom: 0.008 * height,
-        textAlign: 'left',
+        textAlign: getActiveLang() === 'ar' ? 'right' : 'left',
     },
     input: {
         fontFamily: fonts.reg,
