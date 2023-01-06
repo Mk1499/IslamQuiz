@@ -40,6 +40,7 @@ const makeStyle = () => StyleSheet.create({
         height: 22,
         paddingTop: 5,
         borderRadius: 5,
+        alignSelf:'flex-end'
     }
 });
 

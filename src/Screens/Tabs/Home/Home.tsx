@@ -5,11 +5,13 @@ import {Icon, NativeBaseProvider} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import HomeOption from '../../../Models/HomeOption.model';
 import OptionCard from '../../../Components/OptionCard/OptionCard';
-import I18n from '../../../translate';
+import I18n, {getActiveLang, setActiveLang} from '../../../translate';
 import {useTheme} from '../../../Theme/ThemeProvider';
+import DB from '../../../Config/DB';
+import QuizCard from '../../../Components/QuizCard/QuizCard';
 
 export default function Home() {
-  const {colors} = useTheme();
+  const {colors, setLangUpdated, setRTL} = useTheme();
   const styles = makeStyle(colors);
   const options: HomeOption[] = [
     {
@@ -31,8 +33,23 @@ export default function Home() {
       action: createQuiz,
     },
   ];
+  const latestQuizes = DB.latestQuizes;
 
   const createQuiz = () => {};
+
+  const toggleLang = () => {
+    const lang = getActiveLang();
+    if (lang === 'en') {
+      setActiveLang('ar');
+      setLang('ar');
+      setRTL(true);
+    } else {
+      setActiveLang('en');
+      setLang('en');
+      setRTL(false);
+    }
+    setLangUpdated(true);
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -41,15 +58,28 @@ export default function Home() {
         style={styles.content}>
         <ImageBackground
           style={styles.upperSec}
-          source={require('../../../../assets/images/pattern.png')}>
+          // source={require('../../../../assets/images/pattern.png')}
+        >
           <View style={[styles.row, styles.header]}>
-            <NativeBaseProvider>
-              <Icon name="bells" as={AntDesign} size="5" style={styles.icon} />
-            </NativeBaseProvider>
+            <View style={styles.iconCont}>
+              <NativeBaseProvider>
+                <Icon
+                  name="bells"
+                  as={AntDesign}
+                  size="5"
+                  style={styles.icon}
+                  onPress={toggleLang}
+                />
+              </NativeBaseProvider>
+            </View>
           </View>
           <View style={styles.welcomeCont}>
-            <Text style={styles.welcomeText}>{I18n.Home.welBack}</Text>
-            <Text style={styles.userName}>Mohamed Khaled</Text>
+            <View style={styles.textCont}>
+              <Text style={styles.welcomeText}>{I18n.Home.welBack}</Text>
+            </View>
+            <View style={styles.textCont}>
+              <Text style={styles.userName}>Mohamed Khaled</Text>
+            </View>
           </View>
         </ImageBackground>
         <View style={styles.optionsListCont}>
@@ -58,10 +88,20 @@ export default function Home() {
             data={options}
             horizontal
             renderItem={({item}) => <OptionCard item={item} />}
+            showsHorizontalScrollIndicator={false}
           />
         </View>
         <View style={styles.section}>
-          <Text style={styles.secTitle}>Lateast Quizes</Text>
+          <View style={styles.textCont}>
+            <Text style={styles.secTitle}>Lateast Quizes</Text>
+          </View>
+          <FlatList
+            // contentContainerStyle={styles.optionsList}
+            data={latestQuizes}
+            horizontal
+            renderItem={({item}) => <QuizCard item={item} />}
+            showsHorizontalScrollIndicator={false}
+          />
         </View>
       </ImageBackground>
     </ScrollView>

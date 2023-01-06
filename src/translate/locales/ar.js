@@ -27,6 +27,7 @@ export default {
     haveAccount: 'تمتلك حساب بالفعل ؟',
     login: 'سجل الدخول',
     reg: 'انشئ حسابي',
+    enterConfrimPassword: 'تأكيد كلمة السر',
   },
   ForgotPassword: {
     ScreenName: 'تحديث كلمة المرور',
