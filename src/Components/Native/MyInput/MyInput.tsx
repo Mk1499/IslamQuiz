@@ -1,6 +1,6 @@
 import React from 'react';
 import {KeyboardAvoidingView, Text, TextInput} from 'react-native';
-import {useTheme} from '../../Theme/ThemeProvider';
+import {useTheme} from '../../../Theme/ThemeProvider';
 import makeStyle from './styles';
 
 type MyProps = {

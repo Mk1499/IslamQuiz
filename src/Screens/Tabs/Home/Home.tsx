@@ -8,17 +8,24 @@ import {
   Image,
 } from 'react-native';
 import makeStyle from './styles';
-import {Icon} from 'native-base';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+
 import HomeOption from '../../../Models/HomeOption.model';
 import OptionCard from '../../../Components/OptionCard/OptionCard';
-import I18n, {getActiveLang, setActiveLang} from '../../../translate';
+import I18n from '../../../translate';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import DB from '../../../Config/DB';
 import CatCard from '../../../Components/CatCard/CatCard';
+import CategoryType from '../../../Models/Category.model';
+import LangSwitch from '../../../Components/LangSwitch/LangSwitch';
 
-export default function Home() {
-  const {colors, setLangUpdated, setRTL} = useTheme();
+type MyProps = {
+  navigation: {
+    navigate: Function;
+  };
+};
+
+export default function Home(props: MyProps) {
+  const {colors} = useTheme();
   const styles = makeStyle(colors);
   const options: HomeOption[] = [
     {
@@ -45,18 +52,10 @@ export default function Home() {
 
   const createQuiz = () => {};
 
-  const toggleLang = () => {
-    const lang = getActiveLang();
-    if (lang === 'en') {
-      setActiveLang('ar');
-      // setLang('ar');
-      setRTL(true);
-    } else {
-      setActiveLang('en');
-      // setLang('en');
-      setRTL(false);
-    }
-    setLangUpdated(true);
+  const gotoCategoryDetails = (category: CategoryType) => {
+    props.navigation.navigate('CategoryDetails', {
+      category,
+    });
   };
 
   return (
@@ -68,15 +67,14 @@ export default function Home() {
           style={styles.upperSec}
           source={require('../../../../assets/images/BGpattern.png')}>
           <View style={[styles.row, styles.header]}>
-            <View style={styles.iconCont}>
-              <Icon
+            {/* <Icon
                 name="bells"
                 as={AntDesign}
                 size="5"
                 style={styles.icon}
                 onPress={toggleLang}
-              />
-            </View>
+              /> */}
+            <LangSwitch />
             <Image
               source={require('../../../../assets/images/logoWhite.png')}
               style={styles.logo}
@@ -107,7 +105,9 @@ export default function Home() {
           <FlatList
             contentContainerStyle={styles.catList}
             data={categories}
-            renderItem={({item}) => <CatCard item={item} />}
+            renderItem={({item}) => (
+              <CatCard item={item} action={() => gotoCategoryDetails(item)} />
+            )}
             keyExtractor={item => item.id}
             numColumns={2}
           />

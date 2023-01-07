@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {Text, Image, TouchableOpacity} from 'react-native';
 import makeStyle from './styles';
 
-type MyProps = {
+type MyItem = {
   id: Number;
   title: String;
   desc: String;
@@ -11,12 +11,20 @@ type MyProps = {
   date: Date;
 };
 
-export default function CatCard({item}: MyProps) {
+type MyProps = {
+  item: MyItem;
+  action: Function;
+};
+
+export default function CatCard({item, action}: MyProps) {
   const styles = makeStyle();
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      activeOpacity={0.5}
+      onPress={() => action()}>
       <Image source={{uri: item.cover}} style={styles.cover} />
       <Text style={styles.name}>{item.title}</Text>
-    </View>
+    </TouchableOpacity>
   );
 }

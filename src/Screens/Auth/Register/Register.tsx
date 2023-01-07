@@ -3,8 +3,8 @@ import {ScrollView, View, ImageBackground} from 'react-native';
 import AuthHead from '../../../Components/AuthHead/AuthHead';
 import makeStyle from './styles';
 import {useTheme} from '../../../Theme/ThemeProvider';
-import MyInput from '../../../Components/MyInput/MyInput';
-import MyButton from '../../../Components/MyButton/MyButton';
+import MyInput from '../../../Components/Native/MyInput/MyInput';
+import MyButton from '../../../Components/Native/MyButton/MyButton';
 import I18n from '../../../translate';
 
 type MyProps = {

@@ -1,42 +1,54 @@
 /* eslint-disable prettier/prettier */
-import { StyleSheet } from 'react-native';
-import Constants from "../../Config/Constants";
+import {StyleSheet} from 'react-native';
+import Constants from '../../Config/Constants';
 
-const { width, height, colors, fonts } = Constants;
+const {width, height, colors, fonts} = Constants;
 
-const makeStyle = () => StyleSheet.create({
+const makeStyle = () =>
+  StyleSheet.create({
     container: {
-        width: 0.8 * width,
-        marginEnd: 0.05 * width,
-        backgroundColor: '#fff',
-        // paddingHorizontal: 10,
-        // paddingVertical: 10,
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
+      width: 0.9 * width,
+      backgroundColor: '#fff',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
 
-        elevation: 5,
-        borderBottomLeftRadius: 20,
-        borderTopRightRadius: 20,
+      elevation: 5,
+      borderBottomLeftRadius: 20,
+      borderTopRightRadius: 20,
 
-        marginVertical: 10
-
+      marginVertical: 10,
+      overflow: 'hidden',
     },
     cover: {
-        width: '100%',
-        height: 0.2 * height,
-        borderTopRightRadius: 20,
+      width: '100%',
+      minHeight: 0.28 * height,
+      borderTopRightRadius: 20,
     },
     name: {
-        color: colors.main,
-        fontFamily: fonts.bold,
-        fontSize: 15,
-        paddingStart: 10
-    }
-});
+      color: colors.white,
+      fontFamily: fonts.bold,
+      fontSize: 15,
+      paddingStart: 10,
+    },
+    desc: {
+      color: colors.white,
+      fontFamily: fonts.reg,
+      fontSize: 13,
+      paddingStart: 10,
+    },
+
+    linearGradient: {
+      flex: 1,
+      paddingLeft: 15,
+      paddingRight: 15,
+      flexDirection: 'column-reverse',
+      paddingBottom: 0.02 * height,
+    },
+  });
 
 export default makeStyle;
