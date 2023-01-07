@@ -1,18 +1,19 @@
 /* eslint-disable prettier/prettier */
 import { StyleSheet } from 'react-native';
 import Constants from '../../Config/Constants';
+import { getActiveLang } from '../../translate';
 
 const { width, height, fonts } = Constants;
 
 const makeStyle = () => StyleSheet.create({
     container: {
         width: 0.3 * width,
-        marginEnd: 0.03 * width,
+        marginHorizontal: 0.03 * width,
         paddingHorizontal: 0.03 * width,
         paddingVertical: 0.01 * height,
         borderRadius: 10,
 
-        shadowColor: "#000",
+        shadowColor: '#000',
         shadowOffset: {
             width: 0,
             height: 2,
@@ -40,7 +41,7 @@ const makeStyle = () => StyleSheet.create({
         height: 22,
         paddingTop: 5,
         borderRadius: 5,
-        alignSelf:'flex-end'
+        alignSelf: getActiveLang() === 'ar' ? 'flex-start' : 'flex-end'
     }
 });
 

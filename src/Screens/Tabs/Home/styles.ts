@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Platform, StyleSheet } from 'react-native';
 import Constants from '../../../Config/Constants';
+import { getActiveLang } from '../../../translate';
 
 const { colors, width, height, fonts } = Constants;
 
@@ -16,15 +17,24 @@ const makeStyle = (themeColors: any) => {
             backgroundColor: colors.bg,
             paddingBottom: 0.1 * height,
             paddingHorizontal: 0.05 * width,
-            borderBottomLeftRadius: 0.1 * width,
-            paddingTop: Platform.OS === 'ios' ? 0.04 * height : 0
+            borderBottomLeftRadius: getActiveLang() === 'ar' ? 0.1 * width : 0,
+            borderBottomRightRadius: getActiveLang() === 'en' ? 0.1 * width : 0,
+            paddingTop: Platform.OS === 'ios' ? 0.04 * height : 0,
+        },
+        logo: {
+            height: 0.2 * width,
+            width: 0.2 * width,
+        },
+        appNameText: {
+            fontFamily: fonts.med,
+            fontSize: 18,
+            color: '#fff',
         },
         header: {
             marginTop: 0.02 * height,
-            // marginBottom: 0.01 * height
         },
         row: {
-            flexDirection: 'row-reverse',
+            flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
         },
@@ -32,7 +42,7 @@ const makeStyle = (themeColors: any) => {
 
         },
         textCont: {
-            flexDirection: 'row',
+            flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
         },
         welcomeText: {
             fontFamily: fonts.med,
@@ -76,17 +86,27 @@ const makeStyle = (themeColors: any) => {
             marginTop: -0.07 * height,
         },
         optionsList: {
-            paddingStart: 0.05 * width,
+            flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
+            width,
+        },
+        catList: {
+            paddingHorizontal: 0.05 * width,
         },
         section: {
-            marginVertical: 0.02 * height
+            marginVertical: 0.02 * height,
         },
         secTitle: {
-            color: themeColors.text,
-            fontFamily: fonts.med,
-            fontSize: 18,
-            marginStart: 0.03 * width,
-            marginBottom: 0.01 * height,
+            color: themeColors.primary,
+            fontFamily: fonts.bold,
+            fontSize: 24,
+            textAlign: 'center',
+            borderColor: themeColors.primary,
+            borderWidth: 1,
+            alignSelf: 'center',
+            paddingHorizontal: 0.1 * width,
+            marginVertical: 0.02 * height,
+            borderTopRightRadius: 20,
+            borderBottomLeftRadius: 20,
         },
         listCont: {},
         list: {}

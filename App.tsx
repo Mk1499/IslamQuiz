@@ -10,6 +10,7 @@ import {ThemeProvider} from './src/Theme/ThemeProvider';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Keys from './src/Config/StorageKeys';
 import Constants from './src/Config/Constants';
+import {NativeBaseProvider} from 'native-base';
 
 const App = () => {
   const [intialzed, setIntialzed] = useState(false);
@@ -35,7 +36,9 @@ const App = () => {
             NavigationService.setTopLevelNavigator(navigatorRef);
           }}>
           <ThemeProvider>
-            <MainStack />
+            <NativeBaseProvider>
+              <MainStack />
+            </NativeBaseProvider>
           </ThemeProvider>
         </NavigationContainer>
       </Provider>

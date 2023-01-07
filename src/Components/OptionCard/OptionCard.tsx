@@ -1,9 +1,10 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import makeStyle from './styles';
-import {NativeBaseProvider, Icon} from 'native-base';
+import {Icon} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import HomeOption from '../../Models/HomeOption.model';
+import {getActiveLang} from '../../translate';
 
 export default function OptionCard(props: {item: HomeOption}) {
   const styles = makeStyle();
@@ -18,14 +19,12 @@ export default function OptionCard(props: {item: HomeOption}) {
       ]}>
       <Text style={styles.smallText}>{props.item.smallText}</Text>
       <Text style={styles.bigText}>{props.item.bigText}</Text>
-      <NativeBaseProvider>
-        <Icon
-          style={styles.icon}
-          name="arrowright"
-          as={AntDesign}
-          color={props.item.bgColor}
-        />
-      </NativeBaseProvider>
+      <Icon
+        style={styles.icon}
+        name={getActiveLang() === 'ar' ? 'arrowleft' : 'arrowright'}
+        as={AntDesign}
+        color={props.item.bgColor}
+      />
     </View>
   );
 }

@@ -1,5 +1,5 @@
 export const LightColors = {
-  primary: '#3248da',
+  primary: '#00C4BC',
   text: '#333',
   bg: '#fff',
   placeholder: 'grey',

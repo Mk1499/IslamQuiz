@@ -1,14 +1,21 @@
 import React from 'react';
-import {View, Text, ImageBackground, ScrollView, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  ImageBackground,
+  ScrollView,
+  FlatList,
+  Image,
+} from 'react-native';
 import makeStyle from './styles';
-import {Icon, NativeBaseProvider} from 'native-base';
+import {Icon} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import HomeOption from '../../../Models/HomeOption.model';
 import OptionCard from '../../../Components/OptionCard/OptionCard';
 import I18n, {getActiveLang, setActiveLang} from '../../../translate';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import DB from '../../../Config/DB';
-import QuizCard from '../../../Components/QuizCard/QuizCard';
+import CatCard from '../../../Components/CatCard/CatCard';
 
 export default function Home() {
   const {colors, setLangUpdated, setRTL} = useTheme();
@@ -26,14 +33,15 @@ export default function Home() {
       bgColor: '#47cc49',
       action: createQuiz,
     },
-    {
-      bigText: I18n.Home.friend,
-      smallText: I18n.Home.challenge,
-      bgColor: '#3248da',
-      action: createQuiz,
-    },
+    // {
+    //   bigText: I18n.Home.friend,
+    //   smallText: I18n.Home.challenge,
+    //   bgColor: '#3248da',
+    //   action: createQuiz,
+    // },
   ];
-  const latestQuizes = DB.latestQuizes;
+
+  const categories = DB.cats;
 
   const createQuiz = () => {};
 
@@ -41,11 +49,11 @@ export default function Home() {
     const lang = getActiveLang();
     if (lang === 'en') {
       setActiveLang('ar');
-      setLang('ar');
+      // setLang('ar');
       setRTL(true);
     } else {
       setActiveLang('en');
-      setLang('en');
+      // setLang('en');
       setRTL(false);
     }
     setLangUpdated(true);
@@ -58,29 +66,31 @@ export default function Home() {
         style={styles.content}>
         <ImageBackground
           style={styles.upperSec}
-          // source={require('../../../../assets/images/pattern.png')}
-        >
+          source={require('../../../../assets/images/BGpattern.png')}>
           <View style={[styles.row, styles.header]}>
             <View style={styles.iconCont}>
-              <NativeBaseProvider>
-                <Icon
-                  name="bells"
-                  as={AntDesign}
-                  size="5"
-                  style={styles.icon}
-                  onPress={toggleLang}
-                />
-              </NativeBaseProvider>
+              <Icon
+                name="bells"
+                as={AntDesign}
+                size="5"
+                style={styles.icon}
+                onPress={toggleLang}
+              />
             </View>
+            <Image
+              source={require('../../../../assets/images/logoWhite.png')}
+              style={styles.logo}
+              resizeMode="contain"
+            />
           </View>
-          <View style={styles.welcomeCont}>
+          {/* <View style={styles.welcomeCont}>
             <View style={styles.textCont}>
               <Text style={styles.welcomeText}>{I18n.Home.welBack}</Text>
             </View>
             <View style={styles.textCont}>
               <Text style={styles.userName}>Mohamed Khaled</Text>
             </View>
-          </View>
+          </View> */}
         </ImageBackground>
         <View style={styles.optionsListCont}>
           <FlatList
@@ -89,18 +99,17 @@ export default function Home() {
             horizontal
             renderItem={({item}) => <OptionCard item={item} />}
             showsHorizontalScrollIndicator={false}
+            keyExtractor={item => item.id}
           />
         </View>
         <View style={styles.section}>
-          <View style={styles.textCont}>
-            <Text style={styles.secTitle}>Lateast Quizes</Text>
-          </View>
+          <Text style={styles.secTitle}>{I18n.Home.categories}</Text>
           <FlatList
-            // contentContainerStyle={styles.optionsList}
-            data={latestQuizes}
-            horizontal
-            renderItem={({item}) => <QuizCard item={item} />}
-            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.catList}
+            data={categories}
+            renderItem={({item}) => <CatCard item={item} />}
+            keyExtractor={item => item.id}
+            numColumns={2}
           />
         </View>
       </ImageBackground>

@@ -11,12 +11,12 @@ type MyProps = {
   date: Date;
 };
 
-export default function QuizCard({item}: MyProps) {
+export default function CatCard({item}: MyProps) {
   const styles = makeStyle();
   return (
     <View style={styles.container}>
       <Image source={{uri: item.cover}} style={styles.cover} />
-      <Text style={styles.name}>{item.title + item.id}</Text>
+      <Text style={styles.name}>{item.title}</Text>
     </View>
   );
 }

@@ -44,5 +44,6 @@ export default {
     join: 'Join in',
     challenge: 'Challenge',
     friend: 'Friend',
+    categories: 'Categories',
   },
 };

@@ -45,5 +45,6 @@ export default {
     join: 'التحق',
     challenge: 'تحدي',
     friend: 'صديق',
+    categories: 'الاقسام',
   },
 };

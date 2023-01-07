@@ -21,22 +21,13 @@ let strings = new LocalizedStrings({
 });
 
 export const setActiveLang = (lang: string) => {
-  // let locale = lang === 'ar' ? 'ar-EG' : 'en-US';
   activeLang = lang;
-  // I18n.locale = locale;
   strings.setLanguage(lang);
-  // if (locale === 'ar-EG') {
-  //   I18nManager.forceRTL(true);
-  // }
   AsyncStorage.setItem(StorageKeys.userLang, lang);
 };
 
 export const getActiveLang = () => {
   return activeLang;
 };
-
-// getLanguages().then(() => {
-//   // console.log('Langs : ', langs);
-// });
 
 export default strings;
