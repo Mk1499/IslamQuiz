@@ -11,6 +11,7 @@ import Register from '../../Screens/Auth/Register/Register';
 import ForgotPassword from '../../Screens/Auth/Forgot Password/ForgotPassword';
 import Home from '../../Screens/Tabs/Home/Home';
 import CategoryDetails from '../../Screens/Shared/CategoryDetails/CategoryDetails';
+import QuizDetails from '../../Screens/Shared/QuizDetails/QuizDetails';
 
 const Stack = createStackNavigator();
 
@@ -34,6 +35,17 @@ const MainStack = () => {
       <Stack.Screen
         name="CategoryDetails"
         component={CategoryDetails}
+        options={{
+          headerShown: false,
+          cardStyle: {
+            backgroundColor: colors.bg,
+            direction: !rtl ? 'ltr' : 'rtl',
+          },
+        }}
+      />
+      <Stack.Screen
+        name="QuizDetails"
+        component={QuizDetails}
         options={{
           headerShown: false,
           cardStyle: {

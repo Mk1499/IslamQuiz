@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {TouchableOpacity, Text} from 'react-native';
 import makeStyle from './styles';
 import {MyImageBG} from '../Native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useTheme} from '../../Theme/ThemeProvider';
 
-type MyProps = {
+type MyItem = {
   id: Number;
   title: String;
   desc: String;
@@ -14,16 +14,17 @@ type MyProps = {
   date: Date;
 };
 
-export default function QuizCard({item}: MyProps) {
+type MyProps = {
+  item: MyItem;
+  action: Function;
+};
+
+export default function QuizCard({item, action}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
 
   return (
-    // <View style={styles.container}>
-    //   <MyImageCover style={styles.cover} uri={item.cover} />
-    //   <Text style={styles.name}>{item.title + item.id}</Text>
-    // </View>
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={action}>
       <MyImageBG style={styles.cover} uri={item.cover}>
         <LinearGradient
           colors={['transparent', '#000']}
@@ -36,6 +37,6 @@ export default function QuizCard({item}: MyProps) {
           <Text style={styles.name}>{item.title}</Text>
         </LinearGradient>
       </MyImageBG>
-    </View>
+    </TouchableOpacity>
   );
 }

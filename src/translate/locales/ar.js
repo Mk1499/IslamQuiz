@@ -47,4 +47,19 @@ export default {
     friend: 'صديق',
     categories: 'الاقسام',
   },
+  Category: {
+    quizzes: 'الإختبارات',
+  },
+  Quiz: {
+    noOfQuestions: 'عدد الأسئلة',
+    noOfSubmissions: 'عدد الطلبات المقدمة',
+    difficulty: 'الصعوبة',
+    duration: 'المدة الزمنية',
+    startDate: 'تاريخ البدء',
+    minutes: 'دقائق',
+    easy: 'سهل',
+    medium: 'متوسط',
+    hard: 'صعب',
+    start: 'أبدأ الأختبار',
+  },
 };

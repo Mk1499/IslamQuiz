@@ -46,4 +46,19 @@ export default {
     friend: 'Friend',
     categories: 'Categories',
   },
+  Category: {
+    quizzes: 'Quizzes',
+  },
+  Quiz: {
+    noOfQuestions: 'Number of Questions',
+    noOfSubmissions: 'Number of Submissions',
+    difficulty: 'Difficulty',
+    duration: 'Duration',
+    startDate: 'Start Date',
+    minutes: 'Minutes',
+    easy: 'Easy',
+    medium: 'Medium',
+    hard: 'Hard',
+    start: 'Start Quiz',
+  },
 };

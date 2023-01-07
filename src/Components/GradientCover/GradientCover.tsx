@@ -28,7 +28,7 @@ export default function GradientCover({
   return (
     <MyImageBG uri={coverURL} style={styles.coverBGImg}>
       <LinearGradient
-        colors={[colors.primary, 'transparent', colors.primary]}
+        colors={[colors.primary, 'transparent']}
         style={styles.linearGradient}
         start={{x: 0, y: 1}}
         end={{x: 0, y: 0}}>
@@ -42,10 +42,7 @@ export default function GradientCover({
         />
         <View style={styles.detailsCont}>
           <Text style={styles.title}>{title}</Text>
-          <Text style={styles.description} numberOfLines={2}>
-            {description}
-          </Text>
-          <Text style={styles.description} numberOfLines={2}>
+          <Text style={styles.description} numberOfLines={4}>
             {description}
           </Text>
         </View>

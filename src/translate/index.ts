@@ -5,6 +5,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import LocalizedStrings from 'react-native-localization';
 import StorageKeys from '../Config/StorageKeys';
+import * as moment from 'moment';
+// import 'moment/locale/ar';
 
 // I18n.fallbacks = true;
 
@@ -24,6 +26,7 @@ export const setActiveLang = (lang: string) => {
   activeLang = lang;
   strings.setLanguage(lang);
   AsyncStorage.setItem(StorageKeys.userLang, lang);
+  moment.locale(lang);
 };
 
 export const getActiveLang = () => {

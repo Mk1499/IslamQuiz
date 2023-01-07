@@ -1,9 +1,9 @@
 import {StyleSheet} from 'react-native';
 import Constants from '../../../Config/Constants';
 
-const {width, height} = Constants;
+const {width, height, fonts} = Constants;
 
-const makeStyle = () =>
+const makeStyle = (themeColors: any) =>
   StyleSheet.create({
     container: {},
     coverBGImg: {
@@ -22,6 +22,19 @@ const makeStyle = () =>
     },
     quizzesCont: {
       alignItems: 'center',
+    },
+    secTitle: {
+      color: themeColors.primary,
+      fontFamily: fonts.bold,
+      fontSize: 24,
+      textAlign: 'center',
+      borderColor: themeColors.primary,
+      borderWidth: 1,
+      alignSelf: 'center',
+      paddingHorizontal: 0.1 * width,
+      marginVertical: 0.02 * height,
+      borderTopRightRadius: 20,
+      borderBottomLeftRadius: 20,
     },
   });
 

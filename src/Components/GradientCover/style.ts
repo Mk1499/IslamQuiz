@@ -33,7 +33,7 @@ const makeStyle = () =>
       fontSize: 14,
     },
     title: {
-      fontFamily: fonts.med,
+      fontFamily: fonts.bold,
       color: '#fff',
       fontSize: 20,
     },
