@@ -1,77 +1,61 @@
-import React from 'react';
-import {View, Text, ScrollView, ImageBackground} from 'react-native';
-import makeStyle from './QuizDetails.style';
+import React, {useState} from 'react';
+import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
+import Timer from '../../../Components/Quiz/Timer/Timer';
 import {useTheme} from '../../../Theme/ThemeProvider';
-import GradientCover from '../../../Components/GradientCover/GradientCover';
-import I18n from '../../../translate';
-import QuizType from '../../../Models/Quiz.model';
+import makeStyle from './QuizDetails.style';
+import ProgressIndicator from '../../../Components/Quiz/ProgressIndicator/ProgressIndicator';
 import DB from '../../../Config/DB';
-import moment from 'moment';
-import MyButton from '../../../Components/Native/MyButton/MyButton';
+import Question from '../../../Components/Quiz/Question/Question';
+import I18n from '../../../translate';
 
 type MyProps = {
   navigation: {
     navigate: Function;
     goBack: Function;
   };
-  route: {
-    params: {
-      quiz: QuizType;
-    };
-  };
 };
 
-export default function QuizDetails(props: MyProps) {
+export default function QuizDetails({navigation}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
-  //   const {quiz} = props.route.params;
-  const quiz = DB.quiz;
+  const [quiz] = useState(DB.quiz);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
 
-  const goBack = () => {
-    props.navigation.goBack();
-  };
+  function timeOut() {}
+
+  function handleNextClicked() {
+    if (quiz.questions.length - 1 > currentQuestion) {
+      setCurrentQuestion(currentQuestion + 1);
+    }
+  }
+
+  function exit() {
+    navigation.goBack();
+  }
+
   return (
     <ScrollView style={styles.container}>
-      <GradientCover
-        onBack={goBack}
-        coverURL={quiz.cover}
-        title={quiz.title}
-        description={quiz.description}
-      />
-      <ImageBackground
-        source={require('../../../../assets/images/BGpattern.png')}
-        style={styles.content}>
-        <View style={styles.metaDateCont}>
-          <View style={styles.row}>
-            <Text style={styles.label}>{I18n.Quiz.noOfQuestions} : </Text>
-            <Text style={styles.value}>{quiz.noOfQuestions}</Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.label}>{I18n.Quiz.noOfSubmissions} : </Text>
-            <Text style={styles.value}>{quiz.noOfSubmissions}</Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.label}>{I18n.Quiz.duration} : </Text>
-            <Text style={styles.value}>
-              {quiz.time} {I18n.Quiz.minutes}
-            </Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.label}>{I18n.Quiz.difficulty} : </Text>
-            <Text style={styles.value}>{I18n.Quiz[quiz.difficulty]}</Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.label}>{I18n.Quiz.startDate} : </Text>
-            <Text style={styles.value}>
-              {moment().format('Do MMM YYYY - hh:mm a')}
-            </Text>
-          </View>
+      <View style={styles.upperCont}>
+        <View style={styles.row}>
+          <Text style={styles.questionNumber}>
+            {I18n.Quiz.question} {currentQuestion + 1}
+          </Text>
+          <Timer time={2} handleFinish={timeOut} />
         </View>
-
-        <View>
-          <MyButton label={I18n.Quiz.start} />
-        </View>
-      </ImageBackground>
+        <ProgressIndicator
+          noOfQuestions={quiz.noOfQuestions}
+          activeIndex={currentQuestion}
+        />
+      </View>
+      <View style={styles.lowerCont}>
+        <Question
+          question={quiz.questions[currentQuestion]}
+          handleNext={handleNextClicked}
+        />
+        <TouchableOpacity style={styles.exitBtn} onPress={exit}>
+          <Text style={styles.exitText}>{I18n.Quiz.exit}</Text>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 }

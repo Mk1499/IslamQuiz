@@ -2,6 +2,7 @@ export default {
   Global: {
     otherLang: 'English',
     appName: 'متنافسون',
+    next: 'التالي',
   },
   SignIn: {
     ScreenName: 'تسجيل الدخول',
@@ -61,5 +62,7 @@ export default {
     medium: 'متوسط',
     hard: 'صعب',
     start: 'أبدأ الأختبار',
+    exit: 'خروج',
+    question: 'السؤال',
   },
 };

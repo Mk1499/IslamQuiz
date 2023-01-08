@@ -1,15 +1,15 @@
 /* eslint-disable prettier/prettier */
-import { Dimensions } from 'react-native';
+import {Dimensions} from 'react-native';
 
 export default {
   width: Dimensions.get('window').width,
   height: Dimensions.get('window').height,
 
   colors: {
-    bg: '#1a9fad',
+    bg: '#00C4BC',
     // bg:'#ffcf26',
     sky: '#00caf2',
-    main: '#1a9fad',
+    main: '#00C4BC',
     subText: '#fff',
     darkText: '#1c1d1c',
     white: '#fff',
@@ -21,5 +21,4 @@ export default {
     bold: 'Cairo-Bold',
     med: 'Cairo-SemiBold',
   },
-
 };

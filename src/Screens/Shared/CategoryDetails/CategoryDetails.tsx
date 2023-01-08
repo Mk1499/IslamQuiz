@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {ScrollView, ImageBackground, View, Text} from 'react-native';
 import makeStyle from './styles';
 import {useTheme} from '../../../Theme/ThemeProvider';
@@ -26,16 +26,12 @@ export default function CategoryDetails(props: MyProps) {
   const styles = makeStyle(colors);
   const {category} = props.route.params;
 
-  useEffect(() => {
-    console.log('Props : ', props);
-  }, [props]);
-
   const goBack = () => {
     props.navigation.goBack();
   };
 
-  const gotoQuizDetails = (quiz: QuizType) => {
-    props.navigation.navigate('QuizDetails', {
+  const gotoQuizIntro = (quiz: QuizType) => {
+    props.navigation.navigate('QuizIntro', {
       quiz,
     });
   };
@@ -55,7 +51,7 @@ export default function CategoryDetails(props: MyProps) {
 
         <View style={styles.quizzesCont}>
           {DB.latestQuizes.map(item => (
-            <QuizCard item={item} action={() => gotoQuizDetails(item)} />
+            <QuizCard item={item} action={() => gotoQuizIntro(item)} />
           ))}
         </View>
       </ImageBackground>

@@ -7,6 +7,7 @@ type MyProps = {
   label: String;
   action: Function;
   processing: Boolean;
+  disabled?: Boolean;
 };
 
 export default function MyButton(props: MyProps) {
@@ -14,7 +15,15 @@ export default function MyButton(props: MyProps) {
   const styles = makeStyle(colors);
 
   return (
-    <TouchableOpacity style={styles.container} onPress={() => props.action()}>
+    <TouchableOpacity
+      style={[
+        styles.container,
+        {
+          opacity: props.disabled ? 0.5 : 1,
+        },
+      ]}
+      onPress={() => props.action()}
+      disabled={props.disabled}>
       {props.processing ? (
         <ActivityIndicator color="#fff" size="small" />
       ) : (

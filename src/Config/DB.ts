@@ -116,7 +116,7 @@ export default {
     description:
       'يعد عثمان بن عفان أحد الرجال المقدمين في الإسلام ومن السابقين الأوليين إلى الإيمان بالنبي ﷺ ونصرته بجانب كونه الرجل الثالث بعد أبي بكر وعمر .. اكتشف درجة معرفتك به في هذا الاختبار',
     cover: 'https://media.quizland.net/quiz/cover/798.jpg',
-    noOfQuestions: 20,
+    noOfQuestions: 3,
     time: 20,
     date: new Date(),
     noOfSubmissions: 0,

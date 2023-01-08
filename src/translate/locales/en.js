@@ -2,6 +2,7 @@ export default {
   Global: {
     otherLang: 'العربية',
     appName: 'Mutanfeson',
+    next: 'Next',
   },
   SignIn: {
     ScreenName: 'Sign In',
@@ -60,5 +61,7 @@ export default {
     medium: 'Medium',
     hard: 'Hard',
     start: 'Start Quiz',
+    exit: 'Exit',
+    question: 'Question',
   },
 };
