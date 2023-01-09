@@ -11,6 +11,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Keys from './src/Config/StorageKeys';
 import Constants from './src/Config/Constants';
 import {NativeBaseProvider} from 'native-base';
+import SplashScreen from 'react-native-splash-screen';
 
 const App = () => {
   const [intialzed, setIntialzed] = useState(false);
@@ -20,11 +21,15 @@ const App = () => {
   }, []);
 
   function intializeApp() {
-    AsyncStorage.getItem(Keys.userLang).then((lang: string) => {
-      console.log('active lang : ', lang);
-      setActiveLang(lang || 'en');
-      setIntialzed(true);
-    });
+    AsyncStorage.getItem(Keys.userLang)
+      .then((lang: string) => {
+        console.log('active lang : ', lang);
+        setActiveLang(lang || 'ar');
+        SplashScreen.hide();
+      })
+      .then(() => {
+        setIntialzed(true);
+      });
     // alert('called');
   }
   if (intialzed) {
