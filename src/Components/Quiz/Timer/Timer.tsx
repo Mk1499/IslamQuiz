@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
 import makeStyle from './Timer.style';
 import {useTheme} from '../../../Theme/ThemeProvider';
@@ -8,9 +8,10 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 type MyProps = {
   time: Number;
   handleFinish: Function;
+  stop: boolean;
 };
 
-export default function Timer({time, handleFinish}: MyProps) {
+export default function Timer({time, handleFinish, stop}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [minutes, setMinutes] = useState(time);
@@ -18,6 +19,12 @@ export default function Timer({time, handleFinish}: MyProps) {
   const interval = setTimeout(() => {
     countDown();
   }, 1000);
+
+  useEffect(() => {
+    if (stop) {
+      stopCounting();
+    }
+  }, [stop, stopCounting]);
 
   function countDown() {
     if (seconds === 0 && minutes > 0) {
@@ -31,6 +38,7 @@ export default function Timer({time, handleFinish}: MyProps) {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function stopCounting() {
     if (interval) {
       clearInterval(interval);

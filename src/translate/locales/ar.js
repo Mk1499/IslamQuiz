@@ -3,6 +3,8 @@ export default {
     otherLang: 'English',
     appName: 'متنافسون',
     next: 'التالي',
+    finish: 'انهاء',
+    back: 'رجوع',
   },
   SignIn: {
     ScreenName: 'تسجيل الدخول',
@@ -64,5 +66,16 @@ export default {
     start: 'أبدأ الأختبار',
     exit: 'خروج',
     question: 'السؤال',
+  },
+  Modals: {
+    timeOut: 'انتهي الوقت',
+    quizTimeOut: 'تم الانتهاء من الوقت المحدد لاداء الاختبار',
+    exit: 'خروج',
+    successTitle: 'تهانينا',
+    successMsg: 'لقد أجتزت هذا الاختبار بجدارة و ربحت ',
+    points: ' نقاط',
+    exitTitle: 'هل انت متاكد انك تريد الخروج من الاختبار ؟',
+    exitMsg: 'أذا ضغطت خروج ستخسر نقاطك و لن يمكنك دخول الاختبار مرة اخري',
+    continue: 'أستكمال',
   },
 };

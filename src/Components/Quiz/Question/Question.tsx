@@ -10,9 +10,14 @@ import I18n from '../../../translate';
 type MyProps = {
   question: QuestionType;
   handleNext: Function;
+  lastQuestion: boolean;
 };
 
-export default function Question({question, handleNext}: MyProps) {
+export default function Question({
+  question,
+  handleNext,
+  lastQuestion,
+}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [choosedID, setChoosedID] = useState(null);
@@ -47,7 +52,7 @@ export default function Question({question, handleNext}: MyProps) {
         </TouchableOpacity>
       ))}
       <MyButton
-        label={I18n.Global.next}
+        label={lastQuestion ? I18n.Global.finish : I18n.Global.next}
         action={onNext}
         disabled={!choosedID}
       />

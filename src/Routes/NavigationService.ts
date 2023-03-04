@@ -31,9 +31,14 @@ function replace(name: string) {
 }
 // add other navigation functions that you need and export them
 
+function backMultiLevels(num: number) {
+  _navigator.dispatch(StackActions.pop(num));
+}
+
 export default {
   navigate,
   replace,
   setTopLevelNavigator,
   push,
+  backMultiLevels,
 };

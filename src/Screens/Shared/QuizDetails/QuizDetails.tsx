@@ -7,6 +7,9 @@ import ProgressIndicator from '../../../Components/Quiz/ProgressIndicator/Progre
 import DB from '../../../Config/DB';
 import Question from '../../../Components/Quiz/Question/Question';
 import I18n from '../../../translate';
+import SingleModal from '../../../Components/Modals/SingleModal/SingleModal';
+import MultiModal from '../../../Components/Modals/MultiModal/MultiModal';
+import navService from '../../../Routes/NavigationService';
 
 type MyProps = {
   navigation: {
@@ -20,17 +23,44 @@ export default function QuizDetails({navigation}: MyProps) {
   const styles = makeStyle(colors);
   const [quiz] = useState(DB.quiz);
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [showErrModal, setShowErrModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showExitModal, setShowExitModal] = useState(false);
 
-  function timeOut() {}
+  function timeOut() {
+    setShowErrModal(true);
+  }
 
   function handleNextClicked() {
     if (quiz.questions.length - 1 > currentQuestion) {
       setCurrentQuestion(currentQuestion + 1);
+    } else {
+      submit();
     }
   }
 
   function exit() {
+    hideAllModals();
     navigation.goBack();
+  }
+  function submit() {
+    // exit();
+    setShowSuccessModal(true);
+  }
+
+  function exitPrompt() {
+    setShowExitModal(true);
+  }
+
+  function hideAllModals() {
+    setShowErrModal(false);
+    setShowSuccessModal(false);
+    setShowExitModal(false);
+  }
+
+  function backToQuizzes() {
+    hideAllModals();
+    navService.backMultiLevels(2);
   }
 
   return (
@@ -40,7 +70,7 @@ export default function QuizDetails({navigation}: MyProps) {
           <Text style={styles.questionNumber}>
             {I18n.Quiz.question} {currentQuestion + 1}
           </Text>
-          <Timer time={2} handleFinish={timeOut} />
+          <Timer time={1} handleFinish={timeOut} stop={showSuccessModal} />
         </View>
         <ProgressIndicator
           noOfQuestions={quiz.noOfQuestions}
@@ -51,11 +81,38 @@ export default function QuizDetails({navigation}: MyProps) {
         <Question
           question={quiz.questions[currentQuestion]}
           handleNext={handleNextClicked}
+          lastQuestion={currentQuestion === quiz.questions?.length - 1}
         />
-        <TouchableOpacity style={styles.exitBtn} onPress={exit}>
+        <TouchableOpacity style={styles.exitBtn} onPress={exitPrompt}>
           <Text style={styles.exitText}>{I18n.Quiz.exit}</Text>
         </TouchableOpacity>
       </View>
+      <SingleModal
+        img="time"
+        title={I18n.Modals.timeOut}
+        msg={I18n.Modals.quizTimeOut}
+        btnText={I18n.Modals.exit}
+        visible={showErrModal}
+        btnAction={exit}
+      />
+      <SingleModal
+        img="happy"
+        title={I18n.Modals.successTitle}
+        msg={I18n.Modals.successMsg + 50 + I18n.Modals.points}
+        btnText={I18n.Global.back}
+        visible={showSuccessModal}
+        btnAction={backToQuizzes}
+      />
+      <MultiModal
+        img="sad"
+        title={I18n.Modals.exitTitle}
+        msg={I18n.Modals.exitMsg}
+        btn1Text={I18n.Modals.exit}
+        btn1Action={exit}
+        btn2Text={I18n.Modals.continue}
+        btn2Action={() => setShowExitModal(false)}
+        visible={showExitModal}
+      />
     </ScrollView>
   );
 }

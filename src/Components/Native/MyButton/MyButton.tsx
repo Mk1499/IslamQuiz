@@ -13,7 +13,6 @@ type MyProps = {
 export default function MyButton(props: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
-
   return (
     <TouchableOpacity
       style={[

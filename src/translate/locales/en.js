@@ -3,6 +3,8 @@ export default {
     otherLang: 'العربية',
     appName: 'Mutanfeson',
     next: 'Next',
+    finish: 'Finish',
+    back: 'Back',
   },
   SignIn: {
     ScreenName: 'Sign In',
@@ -63,5 +65,17 @@ export default {
     start: 'Start Quiz',
     exit: 'Exit',
     question: 'Question',
+  },
+  Modals: {
+    timeOut: 'Time Out',
+    quizTimeOut: 'Sorry But you exceed the quiz time',
+    exit: 'Exit',
+    successTitle: 'Congratulations',
+    successMsg: 'You passed this exam successfully and earn ',
+    points: ' points',
+    exitTitle: 'Are you sure you want to exit quiz ? ',
+    exitMsg:
+      "if you click on exit you will lose points and can't take this quiz again",
+    continue: 'Continue',
   },
 };

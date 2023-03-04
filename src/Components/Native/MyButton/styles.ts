@@ -2,7 +2,7 @@
 import {StyleSheet} from 'react-native';
 import Constants from '../../../Config/Constants';
 
-const {height, width, fonts, colors} = Constants;
+const {height, fonts, colors} = Constants;
 
 const makeStyle = () =>
   StyleSheet.create({
@@ -14,7 +14,7 @@ const makeStyle = () =>
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: Constants.colors.bg,
-      width: 0.75 * width,
+      width: '80%',
       borderRadius: 15,
       shadowColor: '#000',
       shadowOffset: {
