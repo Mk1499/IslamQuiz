@@ -13,6 +13,7 @@ import Home from '../../Screens/Tabs/Home/Home';
 import CategoryDetails from '../../Screens/Shared/CategoryDetails/CategoryDetails';
 import QuizIntro from '../../Screens/Shared/QuizIntro/QuizIntro';
 import QuizDetails from '../../Screens/Shared/QuizDetails/QuizDetails';
+// import Test from '../../Screens/Test/Text';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,17 @@ const MainStack = () => {
   useEffect(() => {}, []);
   return (
     <Stack.Navigator>
+      {/* <Stack.Screen
+        name="Test"
+        component={Test}
+        options={{
+          headerShown: false,
+          cardStyle: {
+            backgroundColor: colors.bg,
+            direction: !rtl ? 'ltr' : 'rtl',
+          },
+        }}
+      /> */}
       <Stack.Screen
         name="Home"
         component={Home}

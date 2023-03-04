@@ -33,12 +33,14 @@ export default function Home(props: MyProps) {
       smallText: I18n.Home.create,
       bgColor: '#FF7040',
       action: createQuiz,
+      id: 'createQuiz',
     },
     {
       bigText: I18n.Home.quiz,
       smallText: I18n.Home.join,
       bgColor: '#47cc49',
       action: createQuiz,
+      id: 'joinQuiz',
     },
     // {
     //   bigText: I18n.Home.friend,

@@ -51,7 +51,11 @@ export default function CategoryDetails(props: MyProps) {
 
         <View style={styles.quizzesCont}>
           {DB.latestQuizes.map(item => (
-            <QuizCard item={item} action={() => gotoQuizIntro(item)} />
+            <QuizCard
+              item={item}
+              action={() => gotoQuizIntro(item)}
+              key={'quiz-' + item.id}
+            />
           ))}
         </View>
       </ImageBackground>
