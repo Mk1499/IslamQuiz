@@ -78,4 +78,13 @@ export default {
     exitMsg: 'أذا ضغطت خروج ستخسر نقاطك و لن يمكنك دخول الاختبار مرة اخري',
     continue: 'أستكمال',
   },
+  CreateQuiz: {
+    createNew: 'أنشئ أختبار جديد',
+    quizName: 'أسم الأختبار',
+    duration: 'المدة',
+    category: 'القسم',
+    noOfQuestions: 'عدد الاسئلة',
+    description: 'الوصف',
+    allFieldsReq: 'جميع الحقول مطلوبة',
+  },
 };

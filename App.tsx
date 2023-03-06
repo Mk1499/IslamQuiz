@@ -12,6 +12,7 @@ import Keys from './src/Config/StorageKeys';
 import Constants from './src/Config/Constants';
 import {NativeBaseProvider} from 'native-base';
 import SplashScreen from 'react-native-splash-screen';
+import Toast from 'react-native-toast-message';
 
 const App = () => {
   const [intialzed, setIntialzed] = useState(false);
@@ -43,6 +44,7 @@ const App = () => {
           <ThemeProvider>
             <NativeBaseProvider>
               <MainStack />
+              <Toast />
             </NativeBaseProvider>
           </ThemeProvider>
         </NavigationContainer>

@@ -78,4 +78,13 @@ export default {
       "if you click on exit you will lose points and can't take this quiz again",
     continue: 'Continue',
   },
+  CreateQuiz: {
+    createNew: 'Create New Quiz',
+    quizName: 'Name',
+    duration: 'Duration',
+    category: 'Category',
+    noOfQuestions: 'Number of Questions',
+    description: 'Description',
+    allFieldsReq: 'All Fields Required',
+  },
 };

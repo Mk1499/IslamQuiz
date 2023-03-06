@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -13,10 +13,12 @@ import HomeOption from '../../../Models/HomeOption.model';
 import OptionCard from '../../../Components/OptionCard/OptionCard';
 import I18n from '../../../translate';
 import {useTheme} from '../../../Theme/ThemeProvider';
-import DB from '../../../Config/DB';
 import CatCard from '../../../Components/CatCard/CatCard';
 import CategoryType from '../../../Models/Category.model';
 import LangSwitch from '../../../Components/LangSwitch/LangSwitch';
+import Loading from '../../../Components/Loading/Loading';
+import {get} from '../../../Services/api-service';
+import {RefreshControl} from 'react-native';
 
 type MyProps = {
   navigation: {
@@ -50,9 +52,13 @@ export default function Home(props: MyProps) {
     // },
   ];
 
-  const categories = DB.cats;
+  const [categories, setCategories] = useState([]);
+  const [loadingCats, setLoadingCats] = useState(true);
+  const [refreshing, setrefreshing] = useState(false);
 
-  const createQuiz = () => {};
+  function createQuiz() {
+    props.navigation.navigate('CreateQuiz');
+  }
 
   const gotoCategoryDetails = (category: CategoryType) => {
     props.navigation.navigate('CategoryDetails', {
@@ -60,8 +66,39 @@ export default function Home(props: MyProps) {
     });
   };
 
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  function getCategories(refresh = false) {
+    const url = '/category';
+    if (refresh) {
+      setrefreshing(refresh);
+    } else {
+      setLoadingCats(true);
+    }
+    get(url)
+      .then(({data}) => {
+        console.log('Cats : ', data);
+        setCategories(data);
+        setLoadingCats(false);
+        setrefreshing(false);
+      })
+      .catch(() => {
+        setLoadingCats(false);
+        setrefreshing(false);
+      });
+  }
+
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView
+      contentContainerStyle={styles.container}
+      refreshControl={
+        <RefreshControl
+          onRefresh={() => getCategories(true)}
+          refreshing={refreshing}
+        />
+      }>
       <ImageBackground
         source={require('../../../../assets/images/BGpattern.png')}
         style={styles.content}>
@@ -69,13 +106,6 @@ export default function Home(props: MyProps) {
           style={styles.upperSec}
           source={require('../../../../assets/images/BGpattern.png')}>
           <View style={[styles.row, styles.header]}>
-            {/* <Icon
-                name="bells"
-                as={AntDesign}
-                size="5"
-                style={styles.icon}
-                onPress={toggleLang}
-              /> */}
             <LangSwitch />
             <Image
               source={require('../../../../assets/images/logoWhite.png')}
@@ -83,14 +113,14 @@ export default function Home(props: MyProps) {
               resizeMode="contain"
             />
           </View>
-          {/* <View style={styles.welcomeCont}>
+          <View style={styles.welcomeCont}>
             <View style={styles.textCont}>
               <Text style={styles.welcomeText}>{I18n.Home.welBack}</Text>
             </View>
             <View style={styles.textCont}>
               <Text style={styles.userName}>Mohamed Khaled</Text>
             </View>
-          </View> */}
+          </View>
         </ImageBackground>
         <View style={styles.optionsListCont}>
           <FlatList
@@ -110,9 +140,10 @@ export default function Home(props: MyProps) {
             renderItem={({item}) => (
               <CatCard item={item} action={() => gotoCategoryDetails(item)} />
             )}
-            keyExtractor={item => item.id}
+            keyExtractor={item => item._id}
             numColumns={2}
           />
+          <Loading isVisible={loadingCats} />
         </View>
       </ImageBackground>
     </ScrollView>

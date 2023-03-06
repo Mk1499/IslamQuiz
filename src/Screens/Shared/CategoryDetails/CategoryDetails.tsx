@@ -7,7 +7,7 @@ import GradientCover from '../../../Components/GradientCover/GradientCover';
 import DB from '../../../Config/DB';
 import QuizCard from '../../../Components/QuizCard/QuizCard';
 import QuizType from '../../../Models/Quiz.model';
-import I18n from '../../../translate';
+import I18n, {getActiveLang} from '../../../translate';
 
 type MyProps = {
   navigation: {
@@ -41,8 +41,12 @@ export default function CategoryDetails(props: MyProps) {
       <GradientCover
         onBack={goBack}
         coverURL={category.cover}
-        title={category.title}
-        description={category.description}
+        title={getActiveLang() === 'en' ? category.enName : category.arName}
+        description={
+          getActiveLang() === 'en'
+            ? category.descriptionEn
+            : category.description
+        }
       />
       <ImageBackground
         source={require('../../../../assets/images/BGpattern.png')}

@@ -1,10 +1,13 @@
 import React from 'react';
-import {Text, Image, TouchableOpacity} from 'react-native';
+import {Text, TouchableOpacity} from 'react-native';
 import makeStyle from './styles';
+import {getActiveLang} from '../../translate';
+import MyImage from '../Native/MyImage/MyImage';
 
 type MyItem = {
   id: Number;
-  title: String;
+  arName: String;
+  enName: String;
   desc: String;
   cover: String;
   time: Number;
@@ -18,13 +21,14 @@ type MyProps = {
 
 export default function CatCard({item, action}: MyProps) {
   const styles = makeStyle();
+  const title = getActiveLang() === 'en' ? item.enName : item.arName;
   return (
     <TouchableOpacity
       style={styles.container}
       activeOpacity={0.5}
       onPress={() => action()}>
-      <Image source={{uri: item.cover}} style={styles.cover} />
-      <Text style={styles.name}>{item.title}</Text>
+      <MyImage uri={item.cover} style={styles.cover} />
+      <Text style={styles.name}>{title}</Text>
     </TouchableOpacity>
   );
 }

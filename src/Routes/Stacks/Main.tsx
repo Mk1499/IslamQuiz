@@ -13,6 +13,7 @@ import Home from '../../Screens/Tabs/Home/Home';
 import CategoryDetails from '../../Screens/Shared/CategoryDetails/CategoryDetails';
 import QuizIntro from '../../Screens/Shared/QuizIntro/QuizIntro';
 import QuizDetails from '../../Screens/Shared/QuizDetails/QuizDetails';
+import CreateQuiz from '../../Screens/CreateQuiz/CreateQuiz';
 // import Test from '../../Screens/Test/Text';
 
 const Stack = createStackNavigator();
@@ -45,6 +46,18 @@ const MainStack = () => {
           },
         }}
       />
+      <Stack.Screen
+        name="CreateQuiz"
+        component={CreateQuiz}
+        options={{
+          headerShown: false,
+          cardStyle: {
+            backgroundColor: colors.bg,
+            direction: !rtl ? 'ltr' : 'rtl',
+          },
+        }}
+      />
+
       <Stack.Screen
         name="CategoryDetails"
         component={CategoryDetails}

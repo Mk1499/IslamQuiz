@@ -22,7 +22,7 @@ export default function MyButton(props: MyProps) {
         },
       ]}
       onPress={() => props.action()}
-      disabled={props.disabled}>
+      disabled={props.disabled || props.processing}>
       {props.processing ? (
         <ActivityIndicator color="#fff" size="small" />
       ) : (

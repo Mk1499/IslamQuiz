@@ -89,7 +89,8 @@ export default {
       id: 2,
       title: 'الصحابة',
       cover: 'https://media.quizland.net/quiz/cover/84.jpg',
-      description: '',
+      description:
+        'صحابة النبي ﷺ لهم مكانة كبيرة في الإسلام حيث أنهم من ساعدوا النبي ﷺ وساهموا بانتشار وتبليغ الدين.. اكتشف لأي مدى تعرفهم في هذا الاختبار',
     },
     {
       id: 3,
