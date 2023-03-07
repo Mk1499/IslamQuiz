@@ -11,9 +11,10 @@ import Register from '../../Screens/Auth/Register/Register';
 import ForgotPassword from '../../Screens/Auth/Forgot Password/ForgotPassword';
 import Home from '../../Screens/Tabs/Home/Home';
 import CategoryDetails from '../../Screens/Shared/CategoryDetails/CategoryDetails';
-import QuizIntro from '../../Screens/Shared/QuizIntro/QuizIntro';
-import QuizDetails from '../../Screens/Shared/QuizDetails/QuizDetails';
-import CreateQuiz from '../../Screens/CreateQuiz/CreateQuiz';
+import QuizIntro from '../../Screens/Quiz/QuizIntro/QuizIntro';
+import QuizDetails from '../../Screens/Quiz/QuizDetails/QuizDetails';
+import CreateQuiz from '../../Screens/Quiz/CreateQuiz/CreateQuiz';
+import AddQuestions from '../../Screens/Quiz/AddQuestions/AddQuestions';
 // import Test from '../../Screens/Test/Text';
 
 const Stack = createStackNavigator();
@@ -116,6 +117,18 @@ const MainStack = () => {
       <Stack.Screen
         name="ForgotPassword"
         component={ForgotPassword}
+        options={{
+          headerShown: false,
+          cardStyle: {
+            backgroundColor: colors.bg,
+            direction: !rtl ? 'ltr' : 'rtl',
+          },
+        }}
+      />
+
+      <Stack.Screen
+        name="AddQuestions"
+        component={AddQuestions}
         options={{
           headerShown: false,
           cardStyle: {

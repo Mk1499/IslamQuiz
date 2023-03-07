@@ -14,7 +14,6 @@ export default function ProgressIndicator({
 }: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
-
   return (
     <View style={styles.container}>
       {Array(noOfQuestions)

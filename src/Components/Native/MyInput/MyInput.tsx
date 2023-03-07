@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import {
   KeyboardAvoidingView,
   KeyboardTypeOptions,
@@ -18,7 +18,7 @@ type MyProps = {
   style: StyleProps;
 };
 
-export default function MyInput(props: MyProps) {
+export default forwardRef(function MyInput(props: MyProps, ref) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
 
@@ -32,7 +32,8 @@ export default function MyInput(props: MyProps) {
         onChangeText={t => props.onChange(t)}
         placeholderTextColor={colors.placeholder}
         keyboardType={props.keyboardType}
+        ref={ref}
       />
     </KeyboardAvoidingView>
   );
-}
+});

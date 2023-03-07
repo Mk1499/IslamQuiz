@@ -19,8 +19,11 @@ const makeStyle = (themeColors: any) =>
       minHeight: 400,
       alignSelf: 'center',
       borderRadius: 20,
+      // position: 'absolute',
       top: -0.25 * height,
       paddingHorizontal: 0.05 * width,
+      zIndex: 20,
+      flex: 1,
     },
     title: {
       color: themeColors.text,
