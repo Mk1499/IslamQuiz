@@ -40,6 +40,7 @@ const makeStyle = (themeColors: any) =>
       paddingVertical: 0.02 * height,
       paddingHorizontal: 0.02 * width,
       borderRadius: 10,
+      width: '85%',
     },
     answerLabel: {
       color: themeColors.text,
@@ -60,6 +61,7 @@ const makeStyle = (themeColors: any) =>
       paddingVertical: 0.02 * height,
       paddingHorizontal: 0.02 * width,
       borderRadius: 10,
+      width: '85%',
     },
     choosedAnswerLabel: {
       color: colors.white,
@@ -84,6 +86,9 @@ const makeStyle = (themeColors: any) =>
     },
     ansInput: {
       width: '85%',
+    },
+    pointsInput: {
+      marginBottom: 10,
     },
   });
 

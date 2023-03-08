@@ -1,8 +1,13 @@
-import React, {useState, useRef} from 'react';
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import makeStyle from './QuestionForm.style';
 import {useTheme} from '../../../Theme/ThemeProvider';
-import QuestionType from '../../../Models/Question.model';
 import MyButton from '../../Native/MyButton/MyButton';
 import AnswerType from '../../../Models/Answer.model';
 import I18n from '../../../translate';
@@ -10,61 +15,107 @@ import {MyInput, MyTextArea} from '../../Native';
 import {Icon} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {v4 as uuidv4} from 'uuid';
+import {showError} from '../../../Services/toast-service';
 
 type MyProps = {
-  question: QuestionType;
   handleNext: Function;
   lastQuestion: boolean;
+  processing: boolean;
 };
 
-export default function QuestionForm({handleNext, lastQuestion}: MyProps) {
+export default forwardRef(function QuestionForm(
+  {handleNext, lastQuestion, processing}: MyProps,
+  ref,
+) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
-  const [choosedID, setChoosedID] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [right, setRight] = useState();
   const [activeAns, setActiveAns] = useState('');
-  const [question, setQuestion] = useState('');
+  const [label, setLabel] = useState('');
   const answerRef = useRef();
+  const questionRef = useRef();
+  const pointsRef = useRef();
+  const [points, setPoints] = useState(null);
+
+  useImperativeHandle(ref, () => ({
+    resetForm() {
+      questionRef?.current?.clear();
+      answerRef?.current?.clear();
+      pointsRef?.current?.clear();
+      setAnswers([]);
+      setRight(null);
+      setLabel('');
+      setPoints(null);
+    },
+  }));
+
+  useEffect(() => {
+    console.log('Props : ', processing);
+  }, [processing]);
 
   function chooseAnswer(ans: AnswerType) {
     setRight(ans);
   }
 
   function onNext() {
-    handleNext();
-    setChoosedID(null);
+    if (!right) {
+      showError(I18n.ErrorMessage.defineCorrect);
+    } else {
+      let data = {
+        label,
+        points,
+        answers,
+        rightAnswer: right.label,
+      };
+      handleNext(data);
+    }
   }
 
   function newAnswer() {
-    const newAns = {
-      id: uuidv4(),
-      label: activeAns,
-    };
-    setAnswers([...answers, newAns]);
-    setTimeout(() => {
-      setActiveAns('');
-    }, 500);
+    if (activeAns) {
+      const newAns = {
+        id: uuidv4(),
+        label: activeAns,
+      };
+      setAnswers([...answers, newAns]);
+      setTimeout(() => {
+        setActiveAns('');
+      }, 500);
 
-    answerRef?.current?.clear();
+      answerRef?.current?.clear();
+    }
   }
 
   function nextValid() {
-    return question && answers.length >= 2;
+    return points && label && answers.length >= 2;
   }
 
   function deleteAnswer(id) {
     const filteredArr = answers.filter(item => item.id !== id);
-    console.log('id : ', id, filteredArr);
     setAnswers(filteredArr);
+    if (right?.id === id) {
+      setRight(null);
+    }
   }
 
   return (
     <View style={styles.container}>
       {/* <Text style={styles.label}>{question.label}</Text> */}
-      <MyTextArea placeholder="Enter Question" onChange={t => setQuestion(t)} />
+      <MyTextArea
+        placeholder={I18n.CreateQuiz.enterQuestion}
+        onChange={t => setLabel(t)}
+        ref={questionRef}
+      />
+      <MyInput
+        placeholder={I18n.CreateQuiz.points}
+        keyboardType="number-pad"
+        onChange={p => setPoints(p)}
+        style={styles.pointsInput}
+        ref={pointsRef}
+      />
       {answers.map(item => (
-        <View style={styles.row}>
+        <View style={styles.row} key={item.id}>
           <TouchableOpacity
             onPress={() => deleteAnswer(item.id)}
             style={[styles.icon, styles.delIcon]}>
@@ -95,7 +146,7 @@ export default function QuestionForm({handleNext, lastQuestion}: MyProps) {
         </TouchableOpacity>
         <MyInput
           style={styles.ansInput}
-          placeholder="Enter Answer"
+          placeholder={I18n.CreateQuiz.addAnswer}
           onChange={t => setActiveAns(t)}
           ref={answerRef}
         />
@@ -104,7 +155,8 @@ export default function QuestionForm({handleNext, lastQuestion}: MyProps) {
         label={lastQuestion ? I18n.Global.finish : I18n.Global.next}
         action={onNext}
         disabled={!nextValid()}
+        processing={processing}
       />
     </View>
   );
-}
+});

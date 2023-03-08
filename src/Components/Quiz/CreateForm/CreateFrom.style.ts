@@ -42,6 +42,9 @@ const makeStyle = (themeColors: any) =>
     input: {
       marginVertical: 0.03 * height,
     },
+    dropDown: {
+      marginBottom: 0.02 * height,
+    },
   });
 
 export default makeStyle;

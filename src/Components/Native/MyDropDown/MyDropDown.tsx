@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, forwardRef, useImperativeHandle} from 'react';
 import {View} from 'react-native';
 import {Select} from 'native-base';
 import Constants from '../../../Config/Constants';
+import {StyleProps} from 'react-native-reanimated';
 
 const {colors, fonts} = Constants;
 
@@ -15,12 +16,20 @@ type MyProps = {
     },
   ];
   onChange: Function;
+  style: StyleProps;
 };
 
-export default function MyDropDown(props: MyProps) {
+export default forwardRef(function MyDropDown(props: MyProps, ref) {
   const [service, setService] = useState('');
+
+  useImperativeHandle(ref, () => ({
+    clear() {
+      setService('');
+    },
+  }));
+
   return (
-    <View>
+    <View style={props.style}>
       <Select
         selectedValue={service}
         minWidth="200"
@@ -51,4 +60,4 @@ export default function MyDropDown(props: MyProps) {
       </Select>
     </View>
   );
-}
+});

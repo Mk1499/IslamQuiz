@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import {KeyboardAvoidingView, KeyboardTypeOptions} from 'react-native';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import makeStyle from './styles';
@@ -12,7 +12,7 @@ type MyProps = {
   keyboardType: KeyboardTypeOptions;
 };
 
-export default function MyTextArea(props: MyProps) {
+export default forwardRef(function MyTextArea(props: MyProps, ref) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
 
@@ -35,7 +35,8 @@ export default function MyTextArea(props: MyProps) {
         numberOfLines={4}
         borderWidth={0}
         marginY={2}
+        ref={ref}
       />
     </KeyboardAvoidingView>
   );
-}
+});

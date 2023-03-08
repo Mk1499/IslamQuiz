@@ -31,7 +31,7 @@ const makeStyle = (themeColors: any) =>
       backgroundColor: '#333',
       paddingHorizontal: 0.05 * width,
       paddingVertical: 0.01 * height,
-      marginTop: 0.03 * height,
+      marginVertical: 0.03 * height,
       borderRadius: 10,
     },
     exitText: {

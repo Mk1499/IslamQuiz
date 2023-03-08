@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {View, Text} from 'react-native';
 import {MyInput, MyDropDown, MyButton, MyTextArea} from '../../Native';
 import I18n, {getActiveLang} from '../../../translate';
@@ -6,6 +6,7 @@ import {preData} from '../../../Services/quiz-service';
 import makeStyle from './CreateFrom.style';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import {showError} from '../../../Services/toast-service';
+import DB from '../../../Config/DB';
 
 type MyProps = {
   handleNext: Function;
@@ -20,6 +21,14 @@ export default function CreateForm({handleNext, processing}: MyProps) {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [questionNum, setQuestionNum] = useState('');
+  const [lang, setLang] = useState('ar');
+
+  const nameRef = useRef();
+  const catRef = useRef();
+  const quesNumRef = useRef();
+  const durationRef = useRef();
+  const descriptionRef = useRef();
+  const langRef = useRef();
 
   const {colors} = useTheme();
   const styles = makeStyle(colors);
@@ -54,8 +63,25 @@ export default function CreateForm({handleNext, processing}: MyProps) {
         duration: durationID,
         category: categoryID,
         questionNum,
+        lang,
       });
+      resetForm();
     }
+  }
+
+  function resetForm() {
+    nameRef?.current.clear();
+    descriptionRef?.current.clear();
+    quesNumRef?.current.clear();
+    catRef?.current.clear();
+    durationRef?.current.clear();
+    langRef?.current.clear();
+    setName(null);
+    setCategoryID(null);
+    setQuestionNum(null);
+    setDurationID(null);
+    setDescription(null);
+    setLang(null);
   }
 
   return (
@@ -66,7 +92,19 @@ export default function CreateForm({handleNext, processing}: MyProps) {
         placeholder={I18n.CreateQuiz.quizName}
         onChange={t => setName(t)}
         style={styles.input}
+        ref={nameRef}
       />
+      <MyDropDown
+        label={I18n.CreateQuiz.lang}
+        placeholder={I18n.CreateQuiz.lang}
+        options={optionsConverter(DB.langs)}
+        onChange={langID => {
+          setLang(langID);
+        }}
+        ref={langRef}
+        style={styles.dropDown}
+      />
+
       <MyDropDown
         label={I18n.CreateQuiz.category}
         placeholder={I18n.CreateQuiz.category}
@@ -74,12 +112,15 @@ export default function CreateForm({handleNext, processing}: MyProps) {
         onChange={catID => {
           setCategoryID(catID);
         }}
+        ref={catRef}
       />
+
       <MyInput
         placeholder={I18n.CreateQuiz.noOfQuestions}
         keyboardType="numeric"
         onChange={t => setQuestionNum(t)}
         style={styles.input}
+        ref={quesNumRef}
       />
       <MyDropDown
         label={I18n.CreateQuiz.duration}
@@ -88,10 +129,12 @@ export default function CreateForm({handleNext, processing}: MyProps) {
         onChange={catID => {
           setDurationID(catID);
         }}
+        ref={durationRef}
       />
       <MyTextArea
         placeholder={I18n.CreateQuiz.description}
         onChange={t => setDescription(t)}
+        ref={descriptionRef}
       />
       <MyButton
         label={I18n.Global.next}

@@ -5,6 +5,7 @@ export default {
     next: 'التالي',
     finish: 'انهاء',
     back: 'رجوع',
+    cancel: 'الغاء',
   },
   SignIn: {
     ScreenName: 'تسجيل الدخول',
@@ -77,6 +78,8 @@ export default {
     exitTitle: 'هل انت متاكد انك تريد الخروج من الاختبار ؟',
     exitMsg: 'أذا ضغطت خروج ستخسر نقاطك و لن يمكنك دخول الاختبار مرة اخري',
     continue: 'أستكمال',
+    cancelCreateTitle: 'هل أنت متأكد أنك تريد إلغاء إنشاء الاختبار؟',
+    cancelCreateMsg: 'إذا نقرت على إلغاء ، فسيتم حذف الاختبار الخاص بك',
   },
   CreateQuiz: {
     createNew: 'أنشئ أختبار جديد',
@@ -86,5 +89,12 @@ export default {
     noOfQuestions: 'عدد الاسئلة',
     description: 'الوصف',
     allFieldsReq: 'جميع الحقول مطلوبة',
+    points: 'نقاط السؤال',
+    enterQuestion: 'أدخل السؤال',
+    addAnswer: 'أضف أجابة',
+    lang: 'اللغة',
+  },
+  ErrorMessage: {
+    defineCorrect: 'الرجاء الضغط على الإجابة الصحيحة',
   },
 };

@@ -209,4 +209,17 @@ export default {
       },
     ],
   },
+
+  langs: [
+    {
+      arName: 'العربية',
+      enName: 'Arabic',
+      _id: 'ar',
+    },
+    {
+      arName: 'الانجليزية',
+      enName: 'English',
+      _id: 'en',
+    },
+  ],
 };

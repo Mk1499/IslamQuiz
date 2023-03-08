@@ -5,6 +5,7 @@ export default {
     next: 'Next',
     finish: 'Finish',
     back: 'Back',
+    cancel: 'Cancel',
   },
   SignIn: {
     ScreenName: 'Sign In',
@@ -77,6 +78,8 @@ export default {
     exitMsg:
       "if you click on exit you will lose points and can't take this quiz again",
     continue: 'Continue',
+    cancelCreateTitle: 'Are you sure you want to cancel create quiz ?',
+    cancelCreateMsg: 'if you click on cancel your quiz will be deleted',
   },
   CreateQuiz: {
     createNew: 'Create New Quiz',
@@ -86,5 +89,12 @@ export default {
     noOfQuestions: 'Number of Questions',
     description: 'Description',
     allFieldsReq: 'All Fields Required',
+    points: 'Question Points',
+    enterQuestion: 'Enter Question',
+    addAnswer: 'Add Answer',
+    lang: 'Language',
+  },
+  ErrorMessage: {
+    defineCorrect: 'Please click on the correct answer',
   },
 };
