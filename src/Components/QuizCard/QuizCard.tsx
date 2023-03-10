@@ -7,7 +7,7 @@ import {useTheme} from '../../Theme/ThemeProvider';
 
 type MyItem = {
   id: Number;
-  title: String;
+  name: String;
   desc: String;
   cover: String;
   time: Number;
@@ -27,14 +27,14 @@ export default function QuizCard({item, action}: MyProps) {
     <TouchableOpacity style={styles.container} onPress={action}>
       <MyImageBG style={styles.cover} uri={item.cover}>
         <LinearGradient
-          colors={['transparent', '#000']}
+          colors={['transparent', colors?.primary]}
           style={styles.linearGradient}
           start={{x: 0, y: 0}}
           end={{x: 0, y: 1}}>
           <Text style={styles.desc} numberOfLines={2}>
             {item.description}
           </Text>
-          <Text style={styles.name}>{item.title}</Text>
+          <Text style={styles.name}>{item.name}</Text>
         </LinearGradient>
       </MyImageBG>
     </TouchableOpacity>

@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
 import Constants from '../../Config/Constants';
 
 const {width, height, colors, fonts} = Constants;
@@ -32,13 +33,13 @@ const makeStyle = () =>
     name: {
       color: colors.white,
       fontFamily: fonts.bold,
-      fontSize: 15,
+      fontSize: moderateScale(18),
       paddingStart: 10,
     },
     desc: {
       color: colors.white,
       fontFamily: fonts.reg,
-      fontSize: 13,
+      fontSize: moderateScale(14),
       paddingStart: 10,
     },
 

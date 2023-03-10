@@ -1682,6 +1682,11 @@
   dependencies:
     merge-options "^3.0.4"
 
+"@react-native-clipboard/clipboard@^1.11.2":
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/@react-native-clipboard/clipboard/-/clipboard-1.11.2.tgz#e826d0336b34e67294aaffa6878308900bc7d197"
+  integrity sha512-bHyZVW62TuleiZsXNHS1Pv16fWc0fh8O9WvBzl4h2fykqZRW9a+Pv/RGTH56E3X2PqzHP38K5go8zmCZUoIsoQ==
+
 "@react-native-community/blur@^4.3.0":
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/@react-native-community/blur/-/blur-4.3.0.tgz#e5018b3b0bd6de9632ac6cf34e9f8e0f1a9a28ec"
@@ -7444,6 +7449,16 @@ react-native-screens@^3.18.2:
   dependencies:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
+
+react-native-share@^8.2.1:
+  version "8.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-8.2.1.tgz#f9933852de3ddd0f474ab63448e06c22cfecc9d4"
+  integrity sha512-dUIgrcdg4nOHrbKN1w+hs17RZ+51NeXd62CEezPAd4tEyj2Ki1qeAxWnJe8ZPRwvB5/6ml7YUR/2PJApxGHCAQ==
+
+react-native-size-matters@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-size-matters/-/react-native-size-matters-0.4.0.tgz#01bfd0d59454318f4e0b13fe9c1eb0523d70f2e0"
+  integrity sha512-8/C0htHrFWeUm9N8JegmadovUfgTWkGBkDPZ1N3YkXtDWb+98Ya2gThiKcu445r8c7YhcrBfnHz/mYsXIusaOQ==
 
 react-native-splash-screen@^3.3.0:
   version "3.3.0"

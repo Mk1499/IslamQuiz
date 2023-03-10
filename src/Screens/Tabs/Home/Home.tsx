@@ -134,15 +134,17 @@ export default function Home(props: MyProps) {
         </View>
         <View style={styles.section}>
           <Text style={styles.secTitle}>{I18n.Home.categories}</Text>
-          <FlatList
-            contentContainerStyle={styles.catList}
-            data={categories}
-            renderItem={({item}) => (
-              <CatCard item={item} action={() => gotoCategoryDetails(item)} />
-            )}
-            keyExtractor={item => item._id}
-            numColumns={2}
-          />
+          <View>
+            <FlatList
+              contentContainerStyle={styles.catList}
+              data={categories}
+              renderItem={({item}) => (
+                <CatCard item={item} action={() => gotoCategoryDetails(item)} />
+              )}
+              keyExtractor={item => item._id}
+              numColumns={2}
+            />
+          </View>
           <Loading isVisible={loadingCats} />
         </View>
       </ImageBackground>

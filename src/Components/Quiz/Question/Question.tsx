@@ -23,7 +23,7 @@ export default function Question({
   const [choosedID, setChoosedID] = useState(null);
 
   function chooseAnswer(ans: AnswerType) {
-    setChoosedID(ans.id);
+    setChoosedID(ans._id);
   }
 
   function onNext() {
@@ -37,13 +37,15 @@ export default function Question({
       {question.answers.map(item => (
         <TouchableOpacity
           style={
-            choosedID === item.id ? styles.choosedAnswerCont : styles.answerCont
+            choosedID === item._id
+              ? styles.choosedAnswerCont
+              : styles.answerCont
           }
           onPress={() => chooseAnswer(item)}
           activeOpacity={0.5}>
           <Text
             style={
-              choosedID === item.id
+              choosedID === item._id
                 ? styles.choosedAnswerLabel
                 : styles.answerLabel
             }>

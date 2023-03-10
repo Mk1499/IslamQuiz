@@ -1,5 +1,5 @@
 export default interface CategoryType {
-  id: string;
+  _id: string;
   arName: string;
   enName: string;
   cover: string;

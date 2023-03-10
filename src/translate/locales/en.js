@@ -59,6 +59,7 @@ export default {
     difficulty: 'Difficulty',
     duration: 'Duration',
     startDate: 'Start Date',
+    endDate: 'End Date',
     minutes: 'Minutes',
     easy: 'Easy',
     medium: 'Medium',
@@ -66,6 +67,7 @@ export default {
     start: 'Start Quiz',
     exit: 'Exit',
     question: 'Question',
+    points: 'Points',
   },
   Modals: {
     timeOut: 'Time Out',
@@ -80,6 +82,8 @@ export default {
     continue: 'Continue',
     cancelCreateTitle: 'Are you sure you want to cancel create quiz ?',
     cancelCreateMsg: 'if you click on cancel your quiz will be deleted',
+    quizCreateSuccess: 'Your Quiz Created Successfully',
+    codeCopied: 'Copy Copied Successfully',
   },
   CreateQuiz: {
     createNew: 'Create New Quiz',
@@ -96,5 +100,8 @@ export default {
   },
   ErrorMessage: {
     defineCorrect: 'Please click on the correct answer',
+  },
+  EmptyMsg: {
+    nqQuizzesInCat: 'Sorry there is no quizzes in this category',
   },
 };

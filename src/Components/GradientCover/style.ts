@@ -37,6 +37,11 @@ const makeStyle = () =>
       color: '#fff',
       fontSize: 20,
     },
+    row: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
   });
 
 export default makeStyle;

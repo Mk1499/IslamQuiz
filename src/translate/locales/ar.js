@@ -67,6 +67,8 @@ export default {
     start: 'أبدأ الأختبار',
     exit: 'خروج',
     question: 'السؤال',
+    points: 'النقاط',
+    endDate: 'تاريخ الانتهاء',
   },
   Modals: {
     timeOut: 'انتهي الوقت',
@@ -80,6 +82,8 @@ export default {
     continue: 'أستكمال',
     cancelCreateTitle: 'هل أنت متأكد أنك تريد إلغاء إنشاء الاختبار؟',
     cancelCreateMsg: 'إذا نقرت على إلغاء ، فسيتم حذف الاختبار الخاص بك',
+    quizCreateSuccess: 'تم إنشاء اختبارك بنجاح',
+    codeCopied: 'تم نسخ الكود بنجاح',
   },
   CreateQuiz: {
     createNew: 'أنشئ أختبار جديد',
@@ -96,5 +100,8 @@ export default {
   },
   ErrorMessage: {
     defineCorrect: 'الرجاء الضغط على الإجابة الصحيحة',
+  },
+  EmptyMsg: {
+    nqQuizzesInCat: 'عذرا ، لا توجد اختبارات في هذه الفئة ',
   },
 };

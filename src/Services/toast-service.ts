@@ -8,3 +8,12 @@ export function showError(msg: string) {
     position: 'bottom',
   });
 }
+
+export function showSuccess(msg: string) {
+  Toast.show({
+    type: 'success',
+    text1: msg,
+    // text2: msg,
+    position: 'bottom',
+  });
+}

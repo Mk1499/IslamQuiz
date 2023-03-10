@@ -1,7 +1,8 @@
+import DurationType from './Duration.model';
 import QuestionType from './Question.model';
 
 export default interface QuizType {
-  id: String;
+  _id: String;
   title: String;
   description: String;
   noOfQuestions: Number;
@@ -11,4 +12,10 @@ export default interface QuizType {
   time: Number;
   date: Date;
   questions: QuestionType[];
+  submissions: Number;
+  points: Number;
+  duration: DurationType;
+  startDate: Date;
+  endData: Date;
+  code: String;
 }

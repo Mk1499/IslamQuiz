@@ -1,15 +1,21 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  BackHandler,
+} from 'react-native';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import makeStyle from './AddQuestion.style';
 import ProgressIndicator from '../../../Components/Quiz/ProgressIndicator/ProgressIndicator';
-import DB from '../../../Config/DB';
 import I18n from '../../../translate';
 import MultiModal from '../../../Components/Modals/MultiModal/MultiModal';
-import navService from '../../../Routes/NavigationService';
 import QuestionForm from '../../../Components/Quiz/QuestionForm/QuestionForm';
 import {deleteQuiz} from '../../../Services/quiz-service';
 import {post} from '../../../Services/api-service';
+import QuizSuccessModal from '../../../Components/Modals/QuizSuccess/QuizSuccess';
+import NavigationService from '../../../Routes/NavigationService';
 
 type MyProps = {
   navigation: {
@@ -30,11 +36,10 @@ type QuestionSubmit = {
   rigthAnswer: String;
 };
 
-export default function AddQuestions({navigation, route}: MyProps) {
+export default function AddQuestions({route}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [showErrModal, setShowErrModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showExitModal, setShowExitModal] = useState(false);
   const [code, setCode] = useState('');
@@ -48,6 +53,12 @@ export default function AddQuestions({navigation, route}: MyProps) {
     setQuizID(route?.params.quizID);
     setNoOfQuestions(parseInt(route?.params.questionNum, 10));
   }, [route.params?.code, route.params.questionNum, route.params.quizID]);
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () => {
+      setShowExitModal(true);
+    });
+  }, []);
 
   function handleNextClicked(data: QuestionSubmit) {
     console.log('Data : ', data);
@@ -63,7 +74,9 @@ export default function AddQuestions({navigation, route}: MyProps) {
     };
     post(url, body)
       .then(() => {
-        if (currentQuestion < noOfQuestions) {
+        console.log('Curent : ', currentQuestion);
+        console.log('no Of Q  : ', noOfQuestions);
+        if (currentQuestion + 1 < noOfQuestions) {
           formRef?.current?.resetForm();
           setCurrentQuestion(currentQuestion + 1);
         } else {
@@ -81,7 +94,7 @@ export default function AddQuestions({navigation, route}: MyProps) {
   function exit() {
     hideAllModals();
     deleteQuiz(quizID);
-    navigation.goBack();
+    NavigationService.backMultiLevels(2);
   }
 
   function exitPrompt() {
@@ -89,7 +102,6 @@ export default function AddQuestions({navigation, route}: MyProps) {
   }
 
   function hideAllModals() {
-    setShowErrModal(false);
     setShowSuccessModal(false);
     setShowExitModal(false);
   }
@@ -119,23 +131,6 @@ export default function AddQuestions({navigation, route}: MyProps) {
           <Text style={styles.exitText}>{I18n.Quiz.exit}</Text>
         </TouchableOpacity>
       </View>
-      {/* <SingleModal
-        img="time"
-        title={I18n.Modals.timeOut}
-        msg={I18n.Modals.quizTimeOut}
-        btnText={I18n.Modals.exit}
-        visible={showErrModal}
-        btnAction={exit}
-      />
-      <SingleModal
-        img="happy"
-        title={I18n.Modals.successTitle}
-        msg={I18n.Modals.successMsg + 50 + I18n.Modals.points}
-        btnText={I18n.Global.back}
-        visible={showSuccessModal}
-        btnAction={backToQuizzes}
-      />
-      */}
       <MultiModal
         img="sad"
         title={I18n.Modals.cancelCreateTitle}
@@ -145,6 +140,18 @@ export default function AddQuestions({navigation, route}: MyProps) {
         btn2Text={I18n.Modals.continue}
         btn2Action={() => setShowExitModal(false)}
         visible={showExitModal}
+      />
+
+      <QuizSuccessModal
+        img="happy"
+        title={I18n.Modals.successTitle}
+        msg={I18n.Modals.quizCreateSuccess}
+        btnText={I18n.Modals.exit}
+        btnAction={exit}
+        // btn2Text={I18n.Modals.continue}
+        // btn2Action={() => setShowExitModal(false)}
+        visible={showSuccessModal}
+        code={code}
       />
     </ScrollView>
   );
