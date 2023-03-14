@@ -1,4 +1,4 @@
-package com.awesometsproject;
+package com.scorpion.mutanafeson;
 
 import android.app.Application;
 import android.content.Context;
@@ -9,11 +9,14 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
-import com.awesometsproject.newarchitecture.MainApplicationReactNativeHost;
+import com.scorpion.mutanafeson.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import com.babisoft.ReactNativeLocalization.ReactNativeLocalizationPackage; // <--- import
 import com.facebook.react.modules.i18nmanager.I18nUtil;
+import io.invertase.firebase.analytics.ReactNativeFirebaseAnalyticsPackage;
+import io.invertase.firebase.messaging.ReactNativeFirebaseMessagingPackage;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;  // <--- Import Package
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -77,7 +80,7 @@ public class MainApplication extends Application implements ReactApplication {
          * We use reflection here to pick up the class that initializes Flipper,
          * since Flipper library is not available in release mode
          */
-        Class<?> aClass = Class.forName("com.awesometsproject.ReactNativeFlipper");
+        Class<?> aClass = Class.forName("com.scorpion.mutanafeson.ReactNativeFlipper");
         aClass
             .getMethod("initializeFlipper", Context.class, ReactInstanceManager.class)
             .invoke(null, context, reactInstanceManager);

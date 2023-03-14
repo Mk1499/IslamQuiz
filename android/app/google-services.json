@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "838270858099",
+    "project_id": "mutanafeson",
+    "storage_bucket": "mutanafeson.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838270858099:android:71181728917954c19ecb06",
+        "android_client_info": {
+          "package_name": "com.scorpion.mutanafeson"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "838270858099-l6lbg19joo84917vga4ev0q43pqt3jk5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbjBB59oy9OFnQ-EwDUj0M-cD7SuzR188"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "838270858099-1bc4dt7gmh30vkv58oivpm29u6qbeiat.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,9 @@
 export default {
+  Screens: {
+    home: 'الرئيسية',
+    profile: 'الملف الشخصي',
+    setting: 'الاعدادات',
+  },
   Global: {
     otherLang: 'English',
     appName: 'متنافسون',

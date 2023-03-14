@@ -13,6 +13,15 @@ import Constants from './src/Config/Constants';
 import {NativeBaseProvider} from 'native-base';
 import SplashScreen from 'react-native-splash-screen';
 import Toast from 'react-native-toast-message';
+// import messaging from '@react-native-firebase/messaging';
+import {
+  configureAndroidPushNote,
+  requestUserPermission,
+} from './src/Services/firebase-service';
+
+import {googleConfigure} from './src/Services/social-service';
+
+googleConfigure();
 
 const App = () => {
   const [intialzed, setIntialzed] = useState(false);
@@ -22,6 +31,9 @@ const App = () => {
   }, []);
 
   function intializeApp() {
+    requestUserPermission();
+    configureAndroidPushNote();
+
     AsyncStorage.getItem(Keys.userLang)
       .then((lang: string) => {
         console.log('active lang : ', lang);

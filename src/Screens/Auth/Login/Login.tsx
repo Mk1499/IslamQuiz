@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {ScrollView, View, Text, ImageBackground} from 'react-native';
 import AuthHead from '../../../Components/AuthHead/AuthHead';
 import makeStyle from './styles';
@@ -6,10 +6,16 @@ import {useTheme} from '../../../Theme/ThemeProvider';
 import MyInput from '../../../Components/Native/MyInput/MyInput';
 import MyButton from '../../../Components/Native/MyButton/MyButton';
 import I18n from '../../../translate';
+import {
+  googleConfigure,
+  googleLogin,
+  GoogleSigninBtn,
+} from '../../../Services/social-service';
 
 type MyProps = {
   navigation: {
     navigate: Function;
+    replace: Function;
   };
 };
 
@@ -20,11 +26,16 @@ const Login = (props: MyProps) => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    googleConfigure();
+  }, []);
+
   function submit() {
     console.log('caleed : ' + password + username);
     setLoading(true);
     setTimeout(() => {
-      props.navigation.navigate('Home');
+      props.navigation.replace('Tabs');
+      // console.log('Props : ', props);
       setLoading(false);
     }, 1000);
   }
@@ -34,6 +45,16 @@ const Login = (props: MyProps) => {
   }
   function goToForgotPW() {
     props.navigation.navigate('ForgotPassword');
+  }
+
+  function signin() {
+    googleLogin()
+      .then(user => {
+        console.log('U : ', user);
+      })
+      .catch(err => {
+        console.log('G ERR : ', err);
+      });
   }
 
   return (
@@ -69,6 +90,7 @@ const Login = (props: MyProps) => {
             processing={loading}
           />
         </View>
+        <GoogleSigninBtn action={signin} />
       </ImageBackground>
     </ScrollView>
   );

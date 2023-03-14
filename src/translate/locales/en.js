@@ -1,4 +1,9 @@
 export default {
+  Screens: {
+    home: 'Home',
+    profile: 'Profile',
+    setting: 'Setting',
+  },
   Global: {
     otherLang: 'العربية',
     appName: 'Mutanfeson',
