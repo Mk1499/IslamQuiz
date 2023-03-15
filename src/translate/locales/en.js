@@ -22,6 +22,9 @@ export default {
     reg: 'Sign Up',
     login: 'Login',
     forgotPassword: 'Forgot your password ?',
+    google: 'Sign in with Google Account',
+    email: 'Email',
+    enterEmail: 'Enter Email Address',
   },
   SignUp: {
     ScreenName: 'Registeration',
@@ -105,6 +108,8 @@ export default {
   },
   ErrorMessage: {
     defineCorrect: 'Please click on the correct answer',
+    noUser: 'Wrong email or password',
+    somethingWrong: 'something went wronge',
   },
   EmptyMsg: {
     nqQuizzesInCat: 'Sorry there is no quizzes in this category',

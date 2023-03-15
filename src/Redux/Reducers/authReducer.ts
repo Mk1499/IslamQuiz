@@ -1,17 +1,33 @@
 /* eslint-disable prettier/prettier */
-import ReduxAction from "../../Models/ReduxAction.model";
+import ReduxAction from '../../Models/ReduxAction.model';
+import {Logout, SetUserData, SetUserToken} from '../types';
 
 const INITIAL_STATE = {
-    authors: [],
-    favAuthorsIDs: [],
+  userToken: '',
+  userData: null,
 };
 
 const auth = (state = INITIAL_STATE, action: ReduxAction) => {
-    switch (action.type) {
+  switch (action.type) {
+    case SetUserToken:
+      return {
+        ...state,
+        userToken: action.payload,
+      };
 
-        default:
-            return state;
-    }
+    case SetUserData:
+      return {
+        ...state,
+        userData: action.payload,
+      };
+    case Logout:
+      return {
+        userToken: '',
+        userData: null,
+      };
+    default:
+      return state;
+  }
 };
 
 export default auth;

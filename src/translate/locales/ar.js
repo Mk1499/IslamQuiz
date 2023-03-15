@@ -22,6 +22,9 @@ export default {
     reg: 'انشئ حسابك الان',
     login: 'تسجيل الدخول',
     forgotPassword: 'نسيت كلمة السر ؟',
+    google: 'تسجيل الدخول باستخدام حساب جوجل',
+    email: 'البريد الالكتروني',
+    enterEmail: 'أدخل البريد الالكتروني',
   },
   SignUp: {
     ScreenName: 'تسجيل حساب',
@@ -105,6 +108,8 @@ export default {
   },
   ErrorMessage: {
     defineCorrect: 'الرجاء الضغط على الإجابة الصحيحة',
+    noUser: 'بريد إلكتروني أو كلمة مرور خاطئة',
+    somethingWrong: 'هناك خطأ ما',
   },
   EmptyMsg: {
     nqQuizzesInCat: 'عذرا ، لا توجد اختبارات في هذه الفئة ',

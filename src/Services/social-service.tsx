@@ -1,8 +1,10 @@
 import React from 'react';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {TouchableOpacity, StyleSheet} from 'react-native';
-import {Icon} from 'native-base';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import {TouchableOpacity, StyleSheet, Image, Text} from 'react-native';
+import GoogleLogo from '../../assets/images/icons/googleLogo.png';
+import {moderateScale} from 'react-native-size-matters';
+import Constants from '../Config/Constants';
+import I18n from '../translate';
 
 type MyProps = {
   label: String;
@@ -44,18 +46,33 @@ export async function googleLogin() {
 export const GoogleSigninBtn = (props: MyProps) => {
   return (
     <TouchableOpacity style={styles.btnCont} onPress={props.action}>
-      <Icon style={styles.btnIcon} name="google" as={AntDesign} size="2xl" />
+      {/* <Icon style={styles.btnIcon} name="google" as={AntDesign} size="2xl" /> */}
+      <Image source={GoogleLogo} style={styles.btnImg} resizeMode="contain" />
+      <Text style={styles.btnText}>{I18n.SignIn.google}</Text>
     </TouchableOpacity>
   );
 };
 
+const {colors, fonts} = Constants;
 const styles = StyleSheet.create({
   btnCont: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'space-between',
+    // width: '70%',
+    // backgroundColor: 'red',
+    alignSelf: 'center',
+    paddingHorizontal: moderateScale(10),
+    borderWidth: 1,
+    borderRadius: 10,
   },
-  btnIcon: {
-    color: '#4285F4',
+  btnImg: {
+    height: moderateScale(40),
+    maxWidth: '20%',
+  },
+  btnText: {
+    color: colors.main,
+    fontSize: moderateScale(15),
+    fontFamily: fonts.med,
   },
 });

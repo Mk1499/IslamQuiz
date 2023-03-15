@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {ScrollView, View, Text, ImageBackground} from 'react-native';
 import AuthHead from '../../../Components/AuthHead/AuthHead';
 import makeStyle from './styles';
@@ -6,38 +6,56 @@ import {useTheme} from '../../../Theme/ThemeProvider';
 import MyInput from '../../../Components/Native/MyInput/MyInput';
 import MyButton from '../../../Components/Native/MyButton/MyButton';
 import I18n from '../../../translate';
-import {
-  googleConfigure,
-  googleLogin,
-  GoogleSigninBtn,
-} from '../../../Services/social-service';
+import {googleLogin, GoogleSigninBtn} from '../../../Services/social-service';
+import {post} from '../../../Services/api-service';
+import {User as GoogleUser} from '@react-native-google-signin/google-signin';
+import {AxiosError} from 'axios';
+import {errorHandler} from '../../../Services/toast-service';
+import {loginAction} from '../../../Redux/Actions/auth.action';
+import {connect} from 'react-redux';
+import Storage from '../../../Services/storage-service';
+import StorageKeys from '../../../Config/StorageKeys';
 
 type MyProps = {
   navigation: {
     navigate: Function;
     replace: Function;
   };
+  loginAction: Function;
 };
 
 const Login = (props: MyProps) => {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    googleConfigure();
-  }, []);
+  // useEffect(() => {
+  //   googleConfigure();
+  // }, []);
 
-  function submit() {
-    console.log('caleed : ' + password + username);
+  function signin() {
+    let url = '/user/login';
+    const body = {
+      email,
+      password,
+    };
     setLoading(true);
-    setTimeout(() => {
-      props.navigation.replace('Tabs');
-      // console.log('Props : ', props);
-      setLoading(false);
-    }, 1000);
+    post(url, body)
+      .then(({data}) => {
+        Storage.setItem(StorageKeys.userToken, data);
+        props.loginAction(data);
+        props.navigation.replace('Tabs');
+      })
+      .catch((err: AxiosError) => {
+        const msg = err.response?.data?.message;
+        errorHandler(msg);
+        console.log('Err : ', err, err.response);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }
 
   function goToSignUp() {
@@ -47,10 +65,31 @@ const Login = (props: MyProps) => {
     props.navigation.navigate('ForgotPassword');
   }
 
-  function signin() {
+  function socialSignin() {
     googleLogin()
-      .then(user => {
-        console.log('U : ', user);
+      .then(({user}: GoogleUser) => {
+        const url = '/user/login';
+        const body = {
+          email: user?.email,
+          socialID: user?.id,
+          photo: user?.photo,
+          name: user?.name,
+        };
+        setLoading(true);
+        post(url, body)
+          .then(({data}) => {
+            Storage.setItem(StorageKeys.userToken, data);
+            props.loginAction(data);
+            props.navigation.replace('Tabs');
+          })
+          .catch((err: AxiosError) => {
+            const msg = err.response?.data?.message;
+            errorHandler(msg);
+            console.log('Err : ', err, err.response);
+          })
+          .finally(() => {
+            setLoading(false);
+          });
       })
       .catch(err => {
         console.log('G ERR : ', err);
@@ -70,10 +109,11 @@ const Login = (props: MyProps) => {
         />
         <View style={styles.formCont}>
           <MyInput
-            label={I18n.SignIn.username}
-            placeholder={I18n.SignIn.enterUsername}
+            label={I18n.SignIn.email}
+            placeholder={I18n.SignIn.enterEmail}
             type="text"
-            onChange={setUsername}
+            onChange={setEmail}
+            keyboardType="email-address"
           />
           <MyInput
             label={I18n.SignIn.password}
@@ -86,14 +126,15 @@ const Login = (props: MyProps) => {
           </Text>
           <MyButton
             label={I18n.SignIn.login}
-            action={submit}
+            action={signin}
             processing={loading}
           />
         </View>
-        <GoogleSigninBtn action={signin} />
+        <GoogleSigninBtn action={socialSignin} />
       </ImageBackground>
     </ScrollView>
   );
 };
+const mapStateToProps = () => ({});
 
-export default Login;
+export default connect(mapStateToProps, {loginAction})(Login);

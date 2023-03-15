@@ -19,14 +19,17 @@ import LangSwitch from '../../../Components/LangSwitch/LangSwitch';
 import Loading from '../../../Components/Loading/Loading';
 import {get} from '../../../Services/api-service';
 import {RefreshControl} from 'react-native';
+import {connect} from 'react-redux';
+import User from '../../../Models/User.model';
 
 type MyProps = {
   navigation: {
     navigate: Function;
   };
+  userData: User;
 };
 
-export default function Home(props: MyProps) {
+function Home(props: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const options: HomeOption[] = [
@@ -118,7 +121,7 @@ export default function Home(props: MyProps) {
               <Text style={styles.welcomeText}>{I18n.Home.welBack}</Text>
             </View>
             <View style={styles.textCont}>
-              <Text style={styles.userName}>Mohamed Khaled</Text>
+              <Text style={styles.userName}>{props.userData.name}</Text>
             </View>
           </View>
         </ImageBackground>
@@ -151,3 +154,9 @@ export default function Home(props: MyProps) {
     </ScrollView>
   );
 }
+
+const mapStateToProps = state => ({
+  userData: state?.auth.userData,
+});
+
+export default connect(mapStateToProps, {})(Home);
