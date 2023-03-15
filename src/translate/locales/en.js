@@ -3,6 +3,7 @@ export default {
     home: 'Home',
     profile: 'Profile',
     setting: 'Setting',
+    verify: 'Verification',
   },
   Global: {
     otherLang: 'العربية',
@@ -106,10 +107,19 @@ export default {
     addAnswer: 'Add Answer',
     lang: 'Language',
   },
+  OTP: {
+    pleaseCheck: 'Please enter the verification code sent to your email',
+    resend: 'Resend',
+    resndeAfter: 'You can resend code after',
+    enterCode: 'Enter Code',
+    verify: 'Verify',
+  },
   ErrorMessage: {
     defineCorrect: 'Please click on the correct answer',
     noUser: 'Wrong email or password',
     somethingWrong: 'something went wronge',
+    twoPassSame: 'Both Passwords must be the same',
+    invalidEmail: 'Invalid Email Address',
   },
   EmptyMsg: {
     nqQuizzesInCat: 'Sorry there is no quizzes in this category',

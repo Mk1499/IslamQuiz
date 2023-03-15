@@ -3,6 +3,7 @@ export default {
     home: 'الرئيسية',
     profile: 'الملف الشخصي',
     setting: 'الاعدادات',
+    verify: 'التحقق',
   },
   Global: {
     otherLang: 'English',
@@ -106,10 +107,19 @@ export default {
     addAnswer: 'أضف أجابة',
     lang: 'اللغة',
   },
+  OTP: {
+    pleaseCheck: 'الرجاء إدخال رمز التحقق المرسل إلى بريدك الإلكتروني',
+    resend: 'إعادة إرسال',
+    resndeAfter: 'يمكنك إعادة إرسال الرمز بعد',
+    enterCode: 'ادخل الرمز',
+    verify: 'تحقق',
+  },
   ErrorMessage: {
     defineCorrect: 'الرجاء الضغط على الإجابة الصحيحة',
     noUser: 'بريد إلكتروني أو كلمة مرور خاطئة',
     somethingWrong: 'هناك خطأ ما',
+    twoPassSame: 'يجب أن تكون كلتا كلمتي المرور متطابقتين',
+    invalidEmail: 'عنوان البريد الإلكتروني غير صالح',
   },
   EmptyMsg: {
     nqQuizzesInCat: 'عذرا ، لا توجد اختبارات في هذه الفئة ',

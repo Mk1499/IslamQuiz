@@ -16,6 +16,7 @@ import QuizDetails from '../../Screens/Quiz/QuizDetails/QuizDetails';
 import CreateQuiz from '../../Screens/Quiz/CreateQuiz/CreateQuiz';
 import AddQuestions from '../../Screens/Quiz/AddQuestions/AddQuestions';
 import MainTabs from '../Tabs/MainTabs';
+import OTPVerify from '../../Screens/Auth/OTPVerify/OTPVerify';
 // import Test from '../../Screens/Test/Text';
 
 const Stack = createStackNavigator();
@@ -25,7 +26,7 @@ const MainStack = () => {
 
   useEffect(() => {}, []);
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="OTP">
       {/* <Stack.Screen
         name="Test"
         component={Test}
@@ -37,6 +38,18 @@ const MainStack = () => {
           },
         }}
       /> */}
+
+      <Stack.Screen
+        name="OTP"
+        component={OTPVerify}
+        options={{
+          headerShown: false,
+          cardStyle: {
+            backgroundColor: colors.bg,
+            direction: !rtl ? 'ltr' : 'rtl',
+          },
+        }}
+      />
 
       <Stack.Screen
         name="Login"

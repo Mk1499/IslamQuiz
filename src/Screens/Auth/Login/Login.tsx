@@ -10,11 +10,12 @@ import {googleLogin, GoogleSigninBtn} from '../../../Services/social-service';
 import {post} from '../../../Services/api-service';
 import {User as GoogleUser} from '@react-native-google-signin/google-signin';
 import {AxiosError} from 'axios';
-import {errorHandler} from '../../../Services/toast-service';
+import {errorHandler, showError} from '../../../Services/toast-service';
 import {loginAction} from '../../../Redux/Actions/auth.action';
 import {connect} from 'react-redux';
 import Storage from '../../../Services/storage-service';
 import StorageKeys from '../../../Config/StorageKeys';
+import {emailValidator} from '../../../utils/validator';
 
 type MyProps = {
   navigation: {
@@ -36,26 +37,30 @@ const Login = (props: MyProps) => {
   // }, []);
 
   function signin() {
-    let url = '/user/login';
-    const body = {
-      email,
-      password,
-    };
-    setLoading(true);
-    post(url, body)
-      .then(({data}) => {
-        Storage.setItem(StorageKeys.userToken, data);
-        props.loginAction(data);
-        props.navigation.replace('Tabs');
-      })
-      .catch((err: AxiosError) => {
-        const msg = err.response?.data?.message;
-        errorHandler(msg);
-        console.log('Err : ', err, err.response);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    if (!emailValidator(email)) {
+      showError(I18n.ErrorMessage.invalidEmail);
+    } else {
+      const url = '/user/login';
+      const body = {
+        email,
+        password,
+      };
+      setLoading(true);
+      post(url, body)
+        .then(({data}) => {
+          Storage.setItem(StorageKeys.userToken, data);
+          props.loginAction(data);
+          props.navigation.replace('Tabs');
+        })
+        .catch((err: AxiosError) => {
+          const msg = err.response?.data?.message;
+          errorHandler(msg);
+          console.log('Err : ', err, err.response);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
   }
 
   function goToSignUp() {

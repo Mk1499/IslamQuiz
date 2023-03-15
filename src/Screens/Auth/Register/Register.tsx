@@ -6,12 +6,19 @@ import {useTheme} from '../../../Theme/ThemeProvider';
 import MyInput from '../../../Components/Native/MyInput/MyInput';
 import MyButton from '../../../Components/Native/MyButton/MyButton';
 import I18n from '../../../translate';
+import {errorHandler, showError} from '../../../Services/toast-service';
+import {post} from '../../../Services/api-service';
+import {connect} from 'react-redux';
+import {loginAction} from '../../../Redux/Actions/auth.action';
+import {emailValidator} from '../../../utils/validator';
 
 type MyProps = {
   navigation: {
     navigate: Function;
     goBack();
+    replace: Function;
   };
+  loginAction: Function;
 };
 
 const Register = (props: MyProps) => {
@@ -24,12 +31,38 @@ const Register = (props: MyProps) => {
   // const [phone, setPhone] = useState('');
   const [loading, setLoading] = useState(false);
 
+  function checkFormValid() {
+    return username && password && password2 && email;
+  }
+
   function submit() {
-    console.log('caleed : ', password, username, email, password2);
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    const url = '/user/register';
+    const body = {
+      name: username,
+      password,
+      email,
+    };
+    if (password !== password2) {
+      showError(I18n.ErrorMessage.twoPassSame);
+    } else if (!emailValidator(email)) {
+      showError(I18n.ErrorMessage.invalidEmail);
+    } else {
+      setLoading(true);
+      post(url, body)
+        .then(({data}) => {
+          console.log('RegREs : ', data);
+          props.loginAction(data);
+          props.navigation.replace('Tabs');
+        })
+        .catch((err: AxiosError) => {
+          const msg = err.response?.data?.message;
+          errorHandler(msg);
+          console.log('Err : ', err, err.response);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
   }
 
   function goToSignUp() {
@@ -59,6 +92,7 @@ const Register = (props: MyProps) => {
             placeholder={I18n.SignUp.enterEmail}
             type="email"
             onChange={setEmail}
+            keyboardType="email-address"
           />
           <MyInput
             label={I18n.SignUp.password}
@@ -76,6 +110,7 @@ const Register = (props: MyProps) => {
             label={I18n.SignUp.reg}
             action={submit}
             processing={loading}
+            disabled={!checkFormValid()}
           />
         </View>
       </ImageBackground>
@@ -83,4 +118,5 @@ const Register = (props: MyProps) => {
   );
 };
 
-export default Register;
+const mapStateToProps = () => ({});
+export default connect(mapStateToProps, {loginAction})(Register);

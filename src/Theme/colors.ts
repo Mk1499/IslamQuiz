@@ -1,8 +1,9 @@
 export const LightColors = {
   primary: '#00C4BC',
   text: '#333',
-  bg: '#fff',
+  bg: '#eee',
   placeholder: 'grey',
+  inputBG: '#fff',
 };
 
 export const DartColors = {
@@ -10,4 +11,5 @@ export const DartColors = {
   text: '#fff',
   bg: '#333',
   placeholder: '#ddd',
+  inputBG: '#333',
 };

@@ -24,7 +24,7 @@ export default function MyButton(props: MyProps) {
       onPress={() => props.action()}
       disabled={props.disabled || props.processing}>
       {props.processing ? (
-        <ActivityIndicator color="#fff" size="small" />
+        <ActivityIndicator color="#fff" size="large" />
       ) : (
         <Text style={styles.label}>{props.label}</Text>
       )}

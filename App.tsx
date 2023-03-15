@@ -18,8 +18,9 @@ import {
   configureAndroidPushNote,
   requestUserPermission,
 } from './src/Services/firebase-service';
-
+import NetworkLoggerScreen from './src/Screens/Test/NetworkLogger';
 import {googleConfigure} from './src/Services/social-service';
+import config from './src/Config/config';
 
 googleConfigure();
 
@@ -57,6 +58,7 @@ const App = () => {
             <NativeBaseProvider>
               <MainStack />
               <Toast />
+              {config.enableDebug && <NetworkLoggerScreen />}
             </NativeBaseProvider>
           </ThemeProvider>
         </NavigationContainer>

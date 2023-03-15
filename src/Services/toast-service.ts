@@ -24,6 +24,9 @@ export function errorHandler(msg: string) {
     case 'NoUser':
       showError(I18n.ErrorMessage.noUser);
       break;
+    case 'inValidEmail':
+      showError(I18n.ErrorMessage.invalidEmail);
+      break;
     default:
       showError(I18n.ErrorMessage.somethingWrong);
       break;

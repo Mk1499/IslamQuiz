@@ -2,6 +2,7 @@
 import {StyleSheet} from 'react-native';
 import Constants from '../../../Config/Constants';
 import {getActiveLang} from '../../../translate';
+import {moderateScale} from 'react-native-size-matters';
 
 const {colors, fonts, width, height} = Constants;
 
@@ -13,7 +14,7 @@ const makeStyle = (themeColors: any) =>
     label: {
       color: colors.main,
       fontFamily: fonts.med,
-      fontSize: 17,
+      fontSize: moderateScale(15),
       marginBottom: 0.008 * height,
       textAlign: getActiveLang() === 'ar' ? 'right' : 'left',
     },
@@ -23,10 +24,18 @@ const makeStyle = (themeColors: any) =>
       borderRadius: 10,
       borderColor: colors.main,
       paddingHorizontal: 0.03 * width,
-      fontSize: 15,
+      fontSize: moderateScale(13),
       height: 0.06 * height,
       color: themeColors.text,
       textAlign: getActiveLang() === 'ar' ? 'right' : 'left',
+      backgroundColor: themeColors.inputBG,
+    },
+    icon: {
+      position: 'absolute',
+      left: 10,
+    },
+    inputCont: {
+      justifyContent: 'center',
     },
   });
 
