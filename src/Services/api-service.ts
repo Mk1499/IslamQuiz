@@ -1,21 +1,41 @@
 import axios from 'axios';
+import StorageKeys from '../Config/StorageKeys';
 import {getActiveLang} from '../translate';
+import Storage from './storage-service';
 
 // const baseURL = 'https://iquiz-server.onrender.com';
-const baseURL = 'http://192.168.1.2:9000';
-export const get = (url: string) => {
-  return axios.get(baseURL + url, {
-    headers: {
+const baseURL = 'http://192.168.1.4:9000';
+export const get = async (url: string, authReq = true) => {
+  let headers;
+  if (authReq) {
+    headers = {
       lang: getActiveLang(),
-    },
+      Authorization: await Storage.getItem(StorageKeys.userToken),
+    };
+  } else {
+    headers = {
+      lang: getActiveLang(),
+    };
+  }
+  return axios.get(baseURL + url, {
+    headers,
   });
 };
 
-export const post = (url: string, body: any) => {
-  return axios.post(baseURL + url, body, {
-    headers: {
+export const post = async (url: string, body: any, authReq = true) => {
+  let headers;
+  if (authReq) {
+    headers = {
       lang: getActiveLang(),
-    },
+      Authorization: await Storage.getItem(StorageKeys.userToken),
+    };
+  } else {
+    headers = {
+      lang: getActiveLang(),
+    };
+  }
+  return axios.post(baseURL + url, body, {
+    headers,
   });
 };
 

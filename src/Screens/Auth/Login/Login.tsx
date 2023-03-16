@@ -16,6 +16,9 @@ import {connect} from 'react-redux';
 import Storage from '../../../Services/storage-service';
 import StorageKeys from '../../../Config/StorageKeys';
 import {emailValidator} from '../../../utils/validator';
+import jwtDecode from 'jwt-decode';
+import User from '../../../Models/User.model';
+import {sendOTP} from '../../../Services/globalAPI-service';
 
 type MyProps = {
   navigation: {
@@ -41,21 +44,22 @@ const Login = (props: MyProps) => {
       showError(I18n.ErrorMessage.invalidEmail);
     } else {
       const url = '/user/login';
+
       const body = {
         email,
         password,
       };
       setLoading(true);
-      post(url, body)
+      post(url, body, false)
         .then(({data}) => {
           Storage.setItem(StorageKeys.userToken, data);
           props.loginAction(data);
-          props.navigation.replace('Tabs');
+          handleLoginSuccess(data);
         })
         .catch((err: AxiosError) => {
           const msg = err.response?.data?.message;
           errorHandler(msg);
-          console.log('Err : ', err, err.response);
+          console.log('Err Log: ', err, err.response);
         })
         .finally(() => {
           setLoading(false);
@@ -99,6 +103,19 @@ const Login = (props: MyProps) => {
       .catch(err => {
         console.log('G ERR : ', err);
       });
+  }
+
+  function handleLoginSuccess(token: string) {
+    let userData: User = jwtDecode(token);
+    console.log('userData : ', userData);
+    if (userData.verified) {
+      props.navigation.replace('Tabs');
+    } else {
+      sendOTP();
+      props.navigation.navigate('OTP', {
+        email: userData.email,
+      });
+    }
   }
 
   return (

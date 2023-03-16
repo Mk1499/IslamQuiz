@@ -52,7 +52,7 @@ export default {
     msg: 'سيتم ارسال كود التحقق الي بريدك الالكتروني',
   },
   Home: {
-    welBack: 'أهلا بعودتك',
+    welBack: 'مرحبا بك',
     create: 'أنشئ',
     quiz: 'أختبار',
     join: 'التحق',
@@ -120,6 +120,7 @@ export default {
     somethingWrong: 'هناك خطأ ما',
     twoPassSame: 'يجب أن تكون كلتا كلمتي المرور متطابقتين',
     invalidEmail: 'عنوان البريد الإلكتروني غير صالح',
+    wrongCode: 'أدخلت رمزًا خاطئًا',
   },
   EmptyMsg: {
     nqQuizzesInCat: 'عذرا ، لا توجد اختبارات في هذه الفئة ',

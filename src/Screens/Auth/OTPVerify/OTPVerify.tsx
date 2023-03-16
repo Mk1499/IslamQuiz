@@ -7,11 +7,19 @@ import MyInput from '../../../Components/Native/MyInput/MyInput';
 import CountDown from 'react-native-countdown-component';
 import I18n from '../../../translate';
 import {MyButton} from '../../../Components/Native';
+import {post} from '../../../Services/api-service';
+import {showError} from '../../../Services/toast-service';
+import {sendOTP} from '../../../Services/globalAPI-service';
 
 type MyProps = {
   navigation: {
-    navigate: Function;
+    replace: Function;
     goBack: Function;
+  };
+  route: {
+    params: {
+      email: String;
+    };
   };
 };
 
@@ -19,16 +27,36 @@ export default function OTPVerify(props: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [showResend, setShowResend] = useState(false);
-  const [counter, setCounter] = useState(10);
+  const [counter, setCounter] = useState(30);
   const [code, setCode] = useState();
+  const [loading, setLoading] = useState(false);
+
+  const email = props.route?.params?.email;
 
   function resendCode() {
-    setCounter(10);
+    setCounter(30);
     setShowResend(false);
+    sendOTP();
   }
 
   function submit() {
-    console.log('Code : ', code);
+    const url = '/user/verifyEmail';
+    const body = {
+      code,
+    };
+    setLoading(true);
+    post(url, body)
+      .then(({data}) => {
+        console.log('Data : ', data);
+        props.navigation.replace('Tabs');
+      })
+      .catch(err => {
+        console.log('Code Err : ', err);
+        showError(I18n.ErrorMessage.wrongCode);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }
 
   return (
@@ -36,7 +64,7 @@ export default function OTPVerify(props: MyProps) {
       <Header label={I18n.Screens.verify} goBack={props.navigation.goBack} />
       <View style={styles.content}>
         <Text style={styles.msg}>{I18n.OTP.pleaseCheck}</Text>
-        <Text style={styles.bold}>m@mail</Text>
+        <Text style={styles.bold}>{email}</Text>
       </View>
       <MyInput
         style={styles.input}
@@ -73,6 +101,7 @@ export default function OTPVerify(props: MyProps) {
           label={I18n.OTP.verify}
           action={submit}
           disabled={!code || code.length < 6}
+          processing={loading}
         />
       </View>
     </ScrollView>

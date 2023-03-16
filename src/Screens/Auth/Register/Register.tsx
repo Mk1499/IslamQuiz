@@ -11,6 +11,8 @@ import {post} from '../../../Services/api-service';
 import {connect} from 'react-redux';
 import {loginAction} from '../../../Redux/Actions/auth.action';
 import {emailValidator} from '../../../utils/validator';
+import Storage from '../../../Services/storage-service';
+import StorageKeys from '../../../Config/StorageKeys';
 
 type MyProps = {
   navigation: {
@@ -37,6 +39,7 @@ const Register = (props: MyProps) => {
 
   function submit() {
     const url = '/user/register';
+
     const body = {
       name: username,
       password,
@@ -48,11 +51,13 @@ const Register = (props: MyProps) => {
       showError(I18n.ErrorMessage.invalidEmail);
     } else {
       setLoading(true);
-      post(url, body)
+      post(url, body, false)
         .then(({data}) => {
-          console.log('RegREs : ', data);
+          Storage.setItem(StorageKeys.userToken, data);
           props.loginAction(data);
-          props.navigation.replace('Tabs');
+          props.navigation.navigate('OTP', {
+            email,
+          });
         })
         .catch((err: AxiosError) => {
           const msg = err.response?.data?.message;

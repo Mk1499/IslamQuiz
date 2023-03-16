@@ -26,7 +26,7 @@ const MainStack = () => {
 
   useEffect(() => {}, []);
   return (
-    <Stack.Navigator initialRouteName="OTP">
+    <Stack.Navigator initialRouteName="Login">
       {/* <Stack.Screen
         name="Test"
         component={Test}

@@ -51,7 +51,7 @@ export default {
     msg: 'There is a code will send to your email account',
   },
   Home: {
-    welBack: 'Welcome Back !',
+    welBack: 'Welcome !',
     create: 'Create',
     quiz: 'Quiz',
     join: 'Join in',
@@ -120,6 +120,7 @@ export default {
     somethingWrong: 'something went wronge',
     twoPassSame: 'Both Passwords must be the same',
     invalidEmail: 'Invalid Email Address',
+    wrongCode: 'You Entered a wrong code',
   },
   EmptyMsg: {
     nqQuizzesInCat: 'Sorry there is no quizzes in this category',

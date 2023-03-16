@@ -6,10 +6,14 @@ import {useTheme} from '../../../Theme/ThemeProvider';
 import MyInput from '../../../Components/Native/MyInput/MyInput';
 import MyButton from '../../../Components/Native/MyButton/MyButton';
 import I18n from '../../../translate';
+import {post} from '../../../Services/api-service';
+import {errorHandler} from '../../../Services/toast-service';
+import {AxiosError} from 'axios';
 
 type MyProps = {
   navigation: {
     goBack: Function;
+    navigate: Function;
   };
 };
 
@@ -20,15 +24,38 @@ const ForgotPassword = (props: MyProps) => {
   const [loading, setLoading] = useState(false);
 
   function submit() {
-    console.log('caleed : ' + email);
+    const url = '/user/forgotPassword';
+    const body = {
+      email,
+    };
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    post(url, body, false)
+      .then(({data}) => {
+        console.log('Data : ', data);
+        gotoOTP();
+      })
+      .catch((err: AxiosError) => {
+        console.log('Err : ', err);
+        if (err.code === 500) {
+          errorHandler();
+        } else {
+          gotoOTP();
+        }
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }
 
   function backToLogin() {
     props.navigation.goBack();
+  }
+
+  function gotoOTP() {
+    props.navigation.navigate('OTP', {
+      email,
+      navTo: 'ResetPassword',
+    });
   }
 
   return (
@@ -48,11 +75,13 @@ const ForgotPassword = (props: MyProps) => {
             placeholder={I18n.ForgotPassword.enterEmail}
             type="email"
             onChange={setEmail}
+            keyboardType="email-address"
           />
           <MyButton
             label={I18n.ForgotPassword.sendCode}
             action={submit}
             processing={loading}
+            disabled={!email}
           />
         </View>
       </ImageBackground>
