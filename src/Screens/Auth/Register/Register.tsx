@@ -9,7 +9,7 @@ import I18n from '../../../translate';
 import {errorHandler, showError} from '../../../Services/toast-service';
 import {post} from '../../../Services/api-service';
 import {connect} from 'react-redux';
-import {loginAction} from '../../../Redux/Actions/auth.action';
+import {setTokenAction} from '../../../Redux/Actions/auth.action';
 import {emailValidator} from '../../../utils/validator';
 import Storage from '../../../Services/storage-service';
 import StorageKeys from '../../../Config/StorageKeys';
@@ -20,7 +20,7 @@ type MyProps = {
     goBack();
     replace: Function;
   };
-  loginAction: Function;
+  setTokenAction: Function;
 };
 
 const Register = (props: MyProps) => {
@@ -54,7 +54,7 @@ const Register = (props: MyProps) => {
       post(url, body, false)
         .then(({data}) => {
           Storage.setItem(StorageKeys.userToken, data);
-          props.loginAction(data);
+          props.setTokenAction(data);
           props.navigation.navigate('OTP', {
             email,
           });
@@ -124,4 +124,4 @@ const Register = (props: MyProps) => {
 };
 
 const mapStateToProps = () => ({});
-export default connect(mapStateToProps, {loginAction})(Register);
+export default connect(mapStateToProps, {setTokenAction})(Register);

@@ -17,6 +17,8 @@ import CreateQuiz from '../../Screens/Quiz/CreateQuiz/CreateQuiz';
 import AddQuestions from '../../Screens/Quiz/AddQuestions/AddQuestions';
 import MainTabs from '../Tabs/MainTabs';
 import OTPVerify from '../../Screens/Auth/OTPVerify/OTPVerify';
+import ResetPassword from '../../Screens/Auth/Reset Password/ResetPassword';
+import ConfirmCode from '../../Screens/Auth/Confirm Code/ConfirmCode';
 // import Test from '../../Screens/Test/Text';
 
 const Stack = createStackNavigator();
@@ -133,6 +135,29 @@ const MainStack = () => {
       <Stack.Screen
         name="ForgotPassword"
         component={ForgotPassword}
+        options={{
+          headerShown: false,
+          cardStyle: {
+            backgroundColor: colors.bg,
+            direction: !rtl ? 'ltr' : 'rtl',
+          },
+        }}
+      />
+      <Stack.Screen
+        name="ResetPassword"
+        component={ResetPassword}
+        options={{
+          headerShown: false,
+          cardStyle: {
+            backgroundColor: colors.bg,
+            direction: !rtl ? 'ltr' : 'rtl',
+          },
+        }}
+      />
+
+      <Stack.Screen
+        name="ConfirmCode"
+        component={ConfirmCode}
         options={{
           headerShown: false,
           cardStyle: {

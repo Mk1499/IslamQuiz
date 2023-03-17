@@ -50,6 +50,12 @@ export default {
     email: 'Email',
     msg: 'There is a code will send to your email account',
   },
+  ResetPassword: {
+    change: 'Change',
+    newPassword: 'New Password',
+    confirmPassword: 'Confirm Password',
+    enterPassword: 'Enter Password',
+  },
   Home: {
     welBack: 'Welcome !',
     create: 'Create',
@@ -114,6 +120,10 @@ export default {
     enterCode: 'Enter Code',
     verify: 'Verify',
   },
+  ConfirmCode: {
+    enterCode: 'Enter Code',
+    verify: 'Verify',
+  },
   ErrorMessage: {
     defineCorrect: 'Please click on the correct answer',
     noUser: 'Wrong email or password',
@@ -124,5 +134,8 @@ export default {
   },
   EmptyMsg: {
     nqQuizzesInCat: 'Sorry there is no quizzes in this category',
+  },
+  SuccessMsg: {
+    passwordChanged: 'Password Changed Successfully',
   },
 };

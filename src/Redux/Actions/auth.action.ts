@@ -1,7 +1,7 @@
 import jwtDecode from 'jwt-decode';
 import {SetUserData, SetUserToken} from '../types';
 
-export const loginAction = (token: string) => (dispatch: Function) => {
+export const setTokenAction = (token: string) => (dispatch: Function) => {
   const userData = jwtDecode(token);
   dispatch({
     type: SetUserToken,

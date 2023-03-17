@@ -3,8 +3,8 @@ import StorageKeys from '../Config/StorageKeys';
 import {getActiveLang} from '../translate';
 import Storage from './storage-service';
 
-// const baseURL = 'https://iquiz-server.onrender.com';
-const baseURL = 'http://192.168.1.4:9000';
+const baseURL = 'https://iquiz-server.onrender.com';
+// const baseURL = 'http://192.168.1.10:9000';
 export const get = async (url: string, authReq = true) => {
   let headers;
   if (authReq) {
@@ -22,12 +22,17 @@ export const get = async (url: string, authReq = true) => {
   });
 };
 
-export const post = async (url: string, body: any, authReq = true) => {
+export const post = async (
+  url: string,
+  body: any,
+  authReq = true,
+  token?: string,
+) => {
   let headers;
   if (authReq) {
     headers = {
       lang: getActiveLang(),
-      Authorization: await Storage.getItem(StorageKeys.userToken),
+      Authorization: token || (await Storage.getItem(StorageKeys.userToken)),
     };
   } else {
     headers = {

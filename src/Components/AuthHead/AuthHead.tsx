@@ -3,6 +3,9 @@ import {Text, View, ImageBackground} from 'react-native';
 import makeStyle from './styles';
 import {useTheme} from '../../Theme/ThemeProvider';
 import I18n, {getActiveLang, setActiveLang} from '../../translate';
+import {Icon} from 'native-base';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
 // import bgImg from '../../../assets/images/BGpattern.png';
 
 type MyProps = {
@@ -10,6 +13,7 @@ type MyProps = {
   message: string;
   link: string;
   linkAction: Function;
+  goBack?: Function;
 };
 
 const AuthHead = (props: MyProps) => {
@@ -42,9 +46,19 @@ const AuthHead = (props: MyProps) => {
         style={[styles.bgCont, styles.container]}>
         <View style={styles.brandCont}>
           <Text style={styles.brand}>{I18n.Global.appName}</Text>
-          <Text style={styles.otherLang} onPress={toggleLang}>
-            {I18n.Global.otherLang}
-          </Text>
+          {props.goBack ? (
+            <Icon
+              as={AntDesign}
+              size="xl"
+              style={styles.icon}
+              name={getActiveLang() === 'ar' ? 'left' : 'right'}
+              onPress={() => props.goBack()}
+            />
+          ) : (
+            <Text style={styles.otherLang} onPress={toggleLang}>
+              {I18n.Global.otherLang}
+            </Text>
+          )}
         </View>
         <View style={styles.dataCont}>
           <Text style={styles.title} onPress={toggleScheme}>

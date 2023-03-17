@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, TouchableOpacity, ActivityIndicator} from 'react-native';
+import {StyleProps} from 'react-native-reanimated';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import makeStyle from './styles';
 
@@ -8,6 +9,7 @@ type MyProps = {
   action: Function;
   processing: Boolean;
   disabled?: Boolean;
+  style?: StyleProps;
 };
 
 export default function MyButton(props: MyProps) {
@@ -20,6 +22,7 @@ export default function MyButton(props: MyProps) {
         {
           opacity: props.disabled ? 0.5 : 1,
         },
+        props.style,
       ]}
       onPress={() => props.action()}
       disabled={props.disabled || props.processing}>

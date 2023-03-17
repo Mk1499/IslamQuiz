@@ -11,7 +11,7 @@ import {post} from '../../../Services/api-service';
 import {User as GoogleUser} from '@react-native-google-signin/google-signin';
 import {AxiosError} from 'axios';
 import {errorHandler, showError} from '../../../Services/toast-service';
-import {loginAction} from '../../../Redux/Actions/auth.action';
+import {setTokenAction} from '../../../Redux/Actions/auth.action';
 import {connect} from 'react-redux';
 import Storage from '../../../Services/storage-service';
 import StorageKeys from '../../../Config/StorageKeys';
@@ -25,7 +25,7 @@ type MyProps = {
     navigate: Function;
     replace: Function;
   };
-  loginAction: Function;
+  setTokenAction: Function;
 };
 
 const Login = (props: MyProps) => {
@@ -53,7 +53,7 @@ const Login = (props: MyProps) => {
       post(url, body, false)
         .then(({data}) => {
           Storage.setItem(StorageKeys.userToken, data);
-          props.loginAction(data);
+          props.setTokenAction(data);
           handleLoginSuccess(data);
         })
         .catch((err: AxiosError) => {
@@ -88,7 +88,7 @@ const Login = (props: MyProps) => {
         post(url, body)
           .then(({data}) => {
             Storage.setItem(StorageKeys.userToken, data);
-            props.loginAction(data);
+            props.setTokenAction(data);
             props.navigation.replace('Tabs');
           })
           .catch((err: AxiosError) => {
@@ -159,4 +159,4 @@ const Login = (props: MyProps) => {
 };
 const mapStateToProps = () => ({});
 
-export default connect(mapStateToProps, {loginAction})(Login);
+export default connect(mapStateToProps, {setTokenAction})(Login);

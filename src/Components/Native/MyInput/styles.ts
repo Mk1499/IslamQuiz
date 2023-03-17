@@ -32,7 +32,8 @@ const makeStyle = (themeColors: any) =>
     },
     icon: {
       position: 'absolute',
-      left: 10,
+      left: getActiveLang() === 'ar' ? 10 : undefined,
+      right: getActiveLang() === 'en' ? 10 : undefined,
     },
     inputCont: {
       justifyContent: 'center',

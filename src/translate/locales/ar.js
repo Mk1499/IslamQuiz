@@ -51,6 +51,12 @@ export default {
     email: 'البريد الالكتروني',
     msg: 'سيتم ارسال كود التحقق الي بريدك الالكتروني',
   },
+  ResetPassword: {
+    change: 'تغير',
+    newPassword: 'كلمة المرور الجديدة',
+    confirmPassword: 'تأكيد كلمة المرور',
+    enterPassword: 'أدخل كلمة المرور',
+  },
   Home: {
     welBack: 'مرحبا بك',
     create: 'أنشئ',
@@ -114,6 +120,10 @@ export default {
     enterCode: 'ادخل الرمز',
     verify: 'تحقق',
   },
+  ConfirmCode: {
+    enterCode: 'ادخل الرمز',
+    verify: 'تحقق',
+  },
   ErrorMessage: {
     defineCorrect: 'الرجاء الضغط على الإجابة الصحيحة',
     noUser: 'بريد إلكتروني أو كلمة مرور خاطئة',
@@ -124,5 +134,8 @@ export default {
   },
   EmptyMsg: {
     nqQuizzesInCat: 'عذرا ، لا توجد اختبارات في هذه الفئة ',
+  },
+  SuccessMsg: {
+    passwordChanged: 'تم تغيير كلمة السر بنجاح',
   },
 };
