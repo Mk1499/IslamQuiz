@@ -77,7 +77,7 @@ const Login = (props: MyProps) => {
   function socialSignin() {
     googleLogin()
       .then(({user}: GoogleUser) => {
-        const url = '/user/login';
+        const url = '/user/googleLogin';
         const body = {
           email: user?.email,
           socialID: user?.id,
