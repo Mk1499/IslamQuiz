@@ -20,6 +20,13 @@ export function googleConfigure() {
   });
 }
 
+export function googleLogout() {
+  const isSocial = GoogleSignin.isSignedIn();
+  if (isSocial) {
+    GoogleSignin.signOut();
+  }
+}
+
 export async function googleLogin() {
   return new Promise(async (resolve, reject) => {
     const isSignedIn = await GoogleSignin.isSignedIn();

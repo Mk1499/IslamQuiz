@@ -9,11 +9,12 @@ const makeStyle = (themeColors: any) =>
   StyleSheet.create({
     container: {
       width,
-      flexDirection: getActiveLang() === 'ar' ? 'row' : 'row-reverse',
+      flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
       backgroundColor: themeColors.primary,
-      paddingVertical: moderateScale(10),
+      paddingTop: moderateScale(20),
+      paddingBottom: moderateScale(70),
       paddingHorizontal: moderateScale(10),
     },
     icon: {
@@ -23,6 +24,21 @@ const makeStyle = (themeColors: any) =>
       color: colors.white,
       fontFamily: fonts.bold,
       fontSize: moderateScale(18),
+    },
+    img: {
+      height: moderateScale(30),
+      width: moderateScale(30),
+    },
+    imgCont: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+
+      elevation: 15,
     },
   });
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../../Screens/Tabs/Home/Home';
-import CreateQuiz from '../../Screens/Quiz/CreateQuiz/CreateQuiz';
 // import {Icon} from 'native-base';
 // import Ionicons from 'react-native-vector-icons/Ionicons';
 import I18n from '../../translate';
@@ -77,7 +76,8 @@ export default function MainTabs() {
           borderTopLeftRadius: 20,
           borderTopRightRadius: 20,
         },
-      })}>
+      })}
+      initialRouteName="Profile">
       <Tab.Screen
         name="Home"
         component={HomeScreen}

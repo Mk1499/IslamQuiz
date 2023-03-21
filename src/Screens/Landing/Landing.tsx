@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import {View, Text, LogBox} from 'react-native';
+import {useEffect} from 'react';
+import {LogBox} from 'react-native';
 import StorageKeys from '../../Config/StorageKeys';
 import {
   configureAndroidPushNote,
@@ -22,6 +22,7 @@ type MyProps = {
 function Landing(props: MyProps) {
   useEffect(() => {
     intializeApp();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function intializeApp() {

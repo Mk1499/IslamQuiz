@@ -124,6 +124,10 @@ export default {
     enterCode: 'ادخل الرمز',
     verify: 'تحقق',
   },
+  Profile: {
+    noOfSubmissions: 'الاختبارات',
+    points: 'النقاط',
+  },
   ErrorMessage: {
     defineCorrect: 'الرجاء الضغط على الإجابة الصحيحة',
     noUser: 'بريد إلكتروني أو كلمة مرور خاطئة',

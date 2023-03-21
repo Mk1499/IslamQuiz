@@ -1,7 +1,6 @@
 // import I18n, {getLanguages} from 'react-native-i18n';
 import en from './locales/en';
 import ar from './locales/ar';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import Storage from '../Services/storage-service';
 
 import LocalizedStrings from 'react-native-localization';

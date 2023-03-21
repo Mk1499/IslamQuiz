@@ -124,6 +124,10 @@ export default {
     enterCode: 'Enter Code',
     verify: 'Verify',
   },
+  Profile: {
+    noOfSubmissions: 'Submissions',
+    points: 'Points',
+  },
   ErrorMessage: {
     defineCorrect: 'Please click on the correct answer',
     noUser: 'Wrong email or password',
