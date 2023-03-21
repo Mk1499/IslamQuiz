@@ -18,6 +18,7 @@ const makeStyle = (themeColors: any) =>
       textAlign: getActiveLang() === 'ar' ? 'right' : 'left',
     },
     input: {
+      backgroundColor: themeColors.bg,
       fontFamily: fonts.reg,
       borderWidth: 1,
       borderRadius: 10,

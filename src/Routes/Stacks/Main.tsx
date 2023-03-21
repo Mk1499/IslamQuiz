@@ -19,6 +19,7 @@ import MainTabs from '../Tabs/MainTabs';
 import OTPVerify from '../../Screens/Auth/OTPVerify/OTPVerify';
 import ResetPassword from '../../Screens/Auth/Reset Password/ResetPassword';
 import ConfirmCode from '../../Screens/Auth/Confirm Code/ConfirmCode';
+import Landing from '../../Screens/Landing/Landing';
 // import Test from '../../Screens/Test/Text';
 
 const Stack = createStackNavigator();
@@ -28,7 +29,7 @@ const MainStack = () => {
 
   useEffect(() => {}, []);
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="Landing">
       {/* <Stack.Screen
         name="Test"
         component={Test}
@@ -40,6 +41,17 @@ const MainStack = () => {
           },
         }}
       /> */}
+      <Stack.Screen
+        name="Landing"
+        component={Landing}
+        options={{
+          headerShown: false,
+          cardStyle: {
+            backgroundColor: colors.bg,
+            direction: !rtl ? 'ltr' : 'rtl',
+          },
+        }}
+      />
 
       <Stack.Screen
         name="OTP"

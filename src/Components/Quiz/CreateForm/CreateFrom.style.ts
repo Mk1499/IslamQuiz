@@ -13,7 +13,7 @@ const makeStyle = (themeColors: any) =>
       },
       shadowOpacity: 0.25,
       shadowRadius: 3.84,
-      backgroundColor: '#fff',
+      backgroundColor: themeColors.bg,
       elevation: 5,
       width: 0.85 * width,
       minHeight: 400,
@@ -44,6 +44,7 @@ const makeStyle = (themeColors: any) =>
     },
     dropDown: {
       marginBottom: 0.02 * height,
+      backgroundColor: themeColors.bg,
     },
   });
 

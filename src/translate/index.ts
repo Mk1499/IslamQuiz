@@ -2,6 +2,7 @@
 import en from './locales/en';
 import ar from './locales/ar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Storage from '../Services/storage-service';
 
 import LocalizedStrings from 'react-native-localization';
 import StorageKeys from '../Config/StorageKeys';
@@ -25,7 +26,8 @@ let strings = new LocalizedStrings({
 export const setActiveLang = (lang: string) => {
   activeLang = lang;
   strings.setLanguage(lang);
-  AsyncStorage.setItem(StorageKeys.userLang, lang);
+  // AsyncStorage.setItem(StorageKeys.userLang, lang);
+  Storage.setItem(StorageKeys.userLang, lang);
   moment.locale(lang);
 };
 

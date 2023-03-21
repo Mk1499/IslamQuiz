@@ -38,7 +38,7 @@ const makeStyle = () =>
       fontSize: 20,
     },
     row: {
-      flexDirection: 'row',
+      flexDirection: getActiveLang() === 'ar' ? 'row' : 'row-reverse',
       alignItems: 'center',
       justifyContent: 'space-between',
     },

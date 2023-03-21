@@ -50,6 +50,7 @@ export default function CreateForm({handleNext, processing}: MyProps) {
       label: getActiveLang() === 'en' ? item.enName : item.arName,
       value: item._id,
     }));
+    console.log('op : ', options);
     return options;
   }
 
@@ -97,22 +98,24 @@ export default function CreateForm({handleNext, processing}: MyProps) {
       <MyDropDown
         label={I18n.CreateQuiz.lang}
         placeholder={I18n.CreateQuiz.lang}
-        options={optionsConverter(DB.langs)}
+        options={optionsConverter(DB.langs) || []}
         onChange={langID => {
           setLang(langID);
         }}
         ref={langRef}
         style={styles.dropDown}
+        zIndex={400}
       />
 
       <MyDropDown
         label={I18n.CreateQuiz.category}
         placeholder={I18n.CreateQuiz.category}
-        options={optionsConverter(categories)}
+        options={optionsConverter(categories) || []}
         onChange={catID => {
           setCategoryID(catID);
         }}
         ref={catRef}
+        zIndex={200}
       />
 
       <MyInput
@@ -125,11 +128,13 @@ export default function CreateForm({handleNext, processing}: MyProps) {
       <MyDropDown
         label={I18n.CreateQuiz.duration}
         placeholder={I18n.CreateQuiz.duration}
-        options={optionsConverter(durations)}
+        // options={optionsConverter(durations)}
+        options={optionsConverter(durations) || []}
         onChange={catID => {
           setDurationID(catID);
         }}
         ref={durationRef}
+        zIndex={10}
       />
       <MyTextArea
         placeholder={I18n.CreateQuiz.description}

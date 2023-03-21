@@ -10,7 +10,15 @@ function setItem(key: string, value: any) {
 }
 
 function getItem(key: string) {
-  return RNKeyStorage.get(key);
+  return new Promise<void>(async (resolve, reject) => {
+    try {
+      const data = await RNKeyStorage.get(key);
+      resolve(data);
+    } catch (err) {
+      console.log('S e : ', err.code);
+      resolve();
+    }
+  });
 }
 
 function removeItem(key: string) {

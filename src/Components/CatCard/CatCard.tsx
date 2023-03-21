@@ -3,6 +3,7 @@ import {Text, TouchableOpacity} from 'react-native';
 import makeStyle from './styles';
 import {getActiveLang} from '../../translate';
 import MyImage from '../Native/MyImage/MyImage';
+import {useTheme} from '../../Theme/ThemeProvider';
 
 type MyItem = {
   id: Number;
@@ -20,7 +21,8 @@ type MyProps = {
 };
 
 export default function CatCard({item, action}: MyProps) {
-  const styles = makeStyle();
+  const {colors} = useTheme();
+  const styles = makeStyle(colors);
   const title = getActiveLang() === 'en' ? item.enName : item.arName;
   return (
     <TouchableOpacity
