@@ -8,7 +8,6 @@ import {useTheme} from '../../Theme/ThemeProvider';
 import {Image, Text} from 'react-native';
 import makeStyle from './Tabs.style';
 import Profile from '../../Screens/Tabs/Profile/Profile';
-import {moderateScale} from 'react-native-size-matters';
 
 const Tab = createBottomTabNavigator();
 
@@ -69,13 +68,7 @@ export default function MainTabs() {
             </Text>
           );
         },
-        tabBarStyle: {
-          overflow: 'hidden',
-          paddingVertical: moderateScale(5),
-          backgroundColor: colors.bg,
-          borderTopLeftRadius: 20,
-          borderTopRightRadius: 20,
-        },
+        tabBarStyle: styles.tab,
       })}
       initialRouteName="Profile">
       <Tab.Screen

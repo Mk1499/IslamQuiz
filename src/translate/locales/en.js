@@ -127,6 +127,7 @@ export default {
   Profile: {
     noOfSubmissions: 'Submissions',
     points: 'Points',
+    rank: 'Rank',
   },
   ErrorMessage: {
     defineCorrect: 'Please click on the correct answer',

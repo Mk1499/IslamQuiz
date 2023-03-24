@@ -23,7 +23,9 @@ const makeStyle = (themeColors: any) =>
     text: {
       color: colors.white,
       fontFamily: fonts.bold,
-      fontSize: moderateScale(18),
+      fontSize: moderateScale(20),
+      textAlign: 'center',
+      flex: 1,
     },
     img: {
       height: moderateScale(30),
@@ -37,7 +39,6 @@ const makeStyle = (themeColors: any) =>
       },
       shadowOpacity: 0.25,
       shadowRadius: 3.84,
-
       elevation: 15,
     },
   });

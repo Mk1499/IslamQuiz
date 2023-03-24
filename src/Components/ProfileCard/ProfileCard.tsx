@@ -7,19 +7,29 @@ import I18n from '../../translate';
 
 type MyProps = {
   name: String;
-  img: String;
+  photo: String;
+  email: String;
   submissions: Number;
   points: Number;
+  rank: Number;
 };
 
-export default function ProfileCard({name, img, submissions, points}: MyProps) {
+export default function ProfileCard({
+  name,
+  photo,
+  submissions,
+  points,
+  rank,
+  email,
+}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
 
   return (
     <View style={styles.container}>
-      <MyImage style={styles.img} uri={img} />
+      <MyImage style={styles.img} uri={photo} />
       <Text style={styles.name}>{name}</Text>
+      <Text style={styles.email}>{email}</Text>
       <View style={styles.dataCont}>
         <View style={styles.dataItem}>
           <Text style={styles.dataItemText}>
@@ -30,6 +40,10 @@ export default function ProfileCard({name, img, submissions, points}: MyProps) {
         <View style={styles.dataItem}>
           <Text style={styles.dataItemText}> {I18n.Profile.points}</Text>
           <Text style={styles.dataItemText}>{points || 0}</Text>
+        </View>
+        <View style={styles.dataItem}>
+          <Text style={styles.dataItemText}> {I18n.Profile.rank}</Text>
+          <Text style={styles.dataItemText}>{rank || 0}</Text>
         </View>
       </View>
     </View>

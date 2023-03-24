@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, ImageBackground} from 'react-native';
+import {ScrollView, ImageBackground, FlatList} from 'react-native';
 import ProfileCard from '../../../Components/ProfileCard/ProfileCard';
 import TabHeader from '../../../Components/TabHeader/TabHeader';
 import {useTheme} from '../../../Theme/ThemeProvider';
@@ -10,12 +10,15 @@ import User from '../../../Models/User.model';
 import Storage from '../../../Services/storage-service';
 import StorageKeys from '../../../Config/StorageKeys';
 import {googleLogout} from '../../../Services/social-service';
+import OptionRowItem from '../../../Components/OptionRowItem/OptionRowItem';
+import ProfileRowOption from '../../../Models/ProfileRowOption.model';
 
 type MyProps = {
   user: User;
   logoutAction: Function;
   navigation: {
     replace: Function;
+    navigate: Function;
   };
 };
 
@@ -23,6 +26,37 @@ function Profile(props: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const {user, navigation} = props;
+  const options: ProfileRowOption[] = [
+    {
+      label: 'Edit Profile',
+      imgIcon: require('../../../../assets/images/icons/edituser.png'),
+      action: navToScreen('EditProfile'),
+    },
+    {
+      label: 'Change Lang',
+      imgIcon: require('../../../../assets/images/icons/languages.png'),
+      action: navToScreen('EditProfile'),
+    },
+    {
+      label: 'Change Theme',
+      imgIcon: require('../../../../assets/images/icons/changeTheme.png'),
+      action: navToScreen('EditProfile'),
+    },
+    {
+      label: 'Contact Us',
+      imgIcon: require('../../../../assets/images/icons/contactForm.png'),
+      action: navToScreen('EditProfile'),
+    },
+    {
+      label: 'Logout',
+      imgIcon: require('../../../../assets/images/icons/logout.png'),
+      action: logout,
+    },
+  ];
+
+  function navToScreen(screenName: String) {
+    props.navigation.navigate(screenName);
+  }
 
   function logout() {
     Storage.removeItem(StorageKeys.userToken);
@@ -35,12 +69,18 @@ function Profile(props: MyProps) {
       <ImageBackground
         source={require('../../../../assets/images/BGpattern.png')}
         style={styles.content}>
-        <TabHeader
-          iconName="logout"
-          label={I18n.Screens.profile}
-          iconAction={logout}
+        <TabHeader label={I18n.Screens.profile} />
+        <ProfileCard
+          name={user?.name}
+          points={user?.points}
+          email={user?.email}
+          photo={user?.photo}
         />
-        <ProfileCard name={user?.name} points={user?.points} />
+        <FlatList
+          contentContainerStyle={styles.optionsCont}
+          data={options}
+          renderItem={({item}) => <OptionRowItem item={item} />}
+        />
       </ImageBackground>
     </ScrollView>
   );

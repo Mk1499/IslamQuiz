@@ -127,6 +127,7 @@ export default {
   Profile: {
     noOfSubmissions: 'الاختبارات',
     points: 'النقاط',
+    rank: 'الترتيب',
   },
   ErrorMessage: {
     defineCorrect: 'الرجاء الضغط على الإجابة الصحيحة',

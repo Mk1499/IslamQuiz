@@ -2,10 +2,11 @@
 import {StyleSheet} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import Constants from '../../Config/Constants';
+import ThemeColors from '../../Models/ThemeColors.model';
 
 const {fonts, colors} = Constants;
 
-const makeStyle = (themeColors: any) =>
+const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
     container: {
       backgroundColor: themeColors.bg,
@@ -25,11 +26,11 @@ const makeStyle = (themeColors: any) =>
       paddingVertical: moderateScale(20),
     },
     img: {
-      width: moderateScale(120),
-      height: moderateScale(120),
-      borderRadius: moderateScale(60),
+      width: moderateScale(100),
+      height: moderateScale(100),
+      borderRadius: moderateScale(50),
       borderWidth: moderateScale(10),
-      borderColor: themeColors.bg,
+      borderColor: themeColors.lightText,
       shadowColor: '#000',
       shadowOffset: {
         width: 0,
@@ -43,6 +44,12 @@ const makeStyle = (themeColors: any) =>
       color: themeColors.text,
       fontFamily: fonts.med,
       fontSize: 20,
+    },
+    email: {
+      color: themeColors.lightText,
+      fontFamily: fonts.reg,
+      fontSize: 17,
+      marginBottom: moderateScale(3),
     },
     dataCont: {
       flexDirection: 'row',
@@ -59,11 +66,11 @@ const makeStyle = (themeColors: any) =>
 
       borderRadius: 10,
       borderColor: colors.main,
-      borderWidth: 1,
+      borderWidth: 0.4,
     },
     dataItemText: {
       fontFamily: fonts.med,
-      fontSize: moderateScale(15),
+      fontSize: moderateScale(13),
       color: themeColors.text,
       textAlign: 'center',
     },

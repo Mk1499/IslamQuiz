@@ -25,10 +25,12 @@ export default function TabHeader(props: MyProps) {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.imgCont} onPress={props.iconAction}>
-        <Image source={defineImg()} style={styles.img} resizeMode="contain" />
-      </TouchableOpacity>
       <Text style={styles.text}>{props.label}</Text>
+      {props.iconName && (
+        <TouchableOpacity style={styles.imgCont} onPress={props.iconAction}>
+          <Image source={defineImg()} style={styles.img} resizeMode="contain" />
+        </TouchableOpacity>
+      )}
     </View>
   );
 }

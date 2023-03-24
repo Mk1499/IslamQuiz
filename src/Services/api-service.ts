@@ -4,7 +4,7 @@ import {getActiveLang} from '../translate';
 import Storage from './storage-service';
 
 // const baseURL = 'https://iquiz-server.onrender.com';
-const baseURL = 'http://192.168.1.15:9000';
+const baseURL = 'http://192.168.1.2:9000';
 export const get = async (url: string, authReq = true) => {
   let headers;
   if (authReq) {

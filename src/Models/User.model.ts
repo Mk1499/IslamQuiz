@@ -5,4 +5,6 @@ export default interface User {
   points: number;
   verified: boolean;
   role: string;
+  rank: Number;
+  photo: string;
 }
