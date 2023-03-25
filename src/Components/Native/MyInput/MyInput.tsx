@@ -19,6 +19,7 @@ type MyProps = {
   onChange: Function;
   keyboardType: KeyboardTypeOptions;
   style: StyleProps;
+  value?: String;
 };
 
 export default forwardRef(function MyInput(props: MyProps, ref) {
@@ -38,6 +39,7 @@ export default forwardRef(function MyInput(props: MyProps, ref) {
           placeholderTextColor={colors.placeholder}
           keyboardType={props.keyboardType}
           ref={ref}
+          value={props?.value}
         />
         {props.secured && (
           <Icon

@@ -3,6 +3,9 @@ import PushNotification from 'react-native-push-notification';
 import NavigationService from '../Routes/NavigationService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import StorageKeys from '../Config/StorageKeys';
+import {DocumentPickerResponse} from 'react-native-document-picker';
+import firebaseStorage from '@react-native-firebase/storage';
+import RNFS from 'react-native-fs';
 
 export async function requestUserPermission() {
   const authStatus = await messaging().requestPermission();
@@ -91,3 +94,24 @@ export const configureAndroidPushNote = () => {
     requestPermissions: true,
   });
 };
+
+export function uploadImage(img: DocumentPickerResponse) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const imgName = `${Math.random() * 10000}${img.name}`;
+      const reference = firebaseStorage().ref(`profilePics/${imgName}`);
+      const data = await RNFS.readFile(img.uri, 'base64');
+      await reference
+        .putString(data, 'base64')
+        .then(async () => {
+          let imgURL = await reference.getDownloadURL();
+          resolve(imgURL);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    } catch (err) {
+      reject(err);
+    }
+  });
+}

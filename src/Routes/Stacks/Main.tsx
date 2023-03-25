@@ -23,6 +23,7 @@ import Landing from '../../Screens/Landing/Landing';
 import ChangeLanguage from '../../Screens/ProfileOptions/ChangeLang/ChangeLanguage';
 import ChangeTheme from '../../Screens/ProfileOptions/ChangeTheme/ChangeTheme';
 import ContactUs from '../../Screens/ProfileOptions/Contact Us/ContactUs';
+import EditProfile from '../../Screens/ProfileOptions/EditProfile/EditProfile';
 // import Test from '../../Screens/Test/Text';
 
 const Stack = createStackNavigator();
@@ -221,6 +222,17 @@ const MainStack = () => {
       <Stack.Screen
         name="ContactUs"
         component={ContactUs}
+        options={{
+          headerShown: false,
+          cardStyle: {
+            backgroundColor: colors.bg,
+            direction: !rtl ? 'ltr' : 'rtl',
+          },
+        }}
+      />
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfile}
         options={{
           headerShown: false,
           cardStyle: {

@@ -44,6 +44,17 @@ export const post = async (
   });
 };
 
+export const put = async (url: string, body: any, token?: string) => {
+  let headers = {
+    lang: getActiveLang(),
+    Authorization: token || (await Storage.getItem(StorageKeys.userToken)),
+  };
+
+  return axios.put(baseURL + url, body, {
+    headers,
+  });
+};
+
 export const del = (url: string) => {
   return axios.delete(baseURL + url, {
     headers: {

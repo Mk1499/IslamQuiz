@@ -7,6 +7,7 @@ export default {
     changeLang: 'Change Language',
     changeTheme: 'Change Theme',
     contactUs: 'Contact Us',
+    editProfile: 'Edit Profile',
   },
   Global: {
     otherLang: 'العربية',
@@ -150,6 +151,9 @@ export default {
     send: 'Send',
     leaveMsg: 'Enter Your Message',
   },
+  EditProfile: {
+    enterUsername: 'Enter Username',
+  },
   ErrorMessage: {
     defineCorrect: 'Please click on the correct answer',
     noUser: 'Wrong email or password',
@@ -164,5 +168,6 @@ export default {
   SuccessMsg: {
     passwordChanged: 'Password Changed Successfully',
     feedbackSend: 'Your Feedback Sent Successfully',
+    profileUpdated: 'Profile Update Successfully',
   },
 };

@@ -4,17 +4,22 @@ import {Image} from 'react-native';
 type MyProps = {
   uri: String;
   style: any;
+  isStatic: Boolean;
 };
 
-export default function MyImage({uri, style, children}: MyProps) {
+export default function MyImage({uri, style, children, isStatic}: MyProps) {
   const [validURI, setvalidURI] = useState(false);
   useEffect(() => {
-    fetch(uri).then(res => {
-      if (res.status === 200) {
-        setvalidURI(true);
-      }
-    });
-  }, [uri]);
+    if (!isStatic) {
+      fetch(uri).then(res => {
+        if (res.status === 200) {
+          setvalidURI(true);
+        }
+      });
+    } else {
+      setvalidURI(true);
+    }
+  }, [uri, isStatic]);
   return (
     <Image
       source={
