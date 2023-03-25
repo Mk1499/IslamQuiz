@@ -6,7 +6,9 @@ import {getActiveLang} from '../../../translate';
 const {fonts, width, height} = Constants;
 const makeStyle = (themeColors: any) =>
   StyleSheet.create({
-    container: {},
+    container: {
+      minHeight: height,
+    },
     content: {flex: 1},
     metaDateCont: {
       paddingHorizontal: 0.03 * width,

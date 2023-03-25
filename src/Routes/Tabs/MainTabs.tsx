@@ -70,7 +70,7 @@ export default function MainTabs() {
         },
         tabBarStyle: styles.tab,
       })}
-      initialRouteName="Profile">
+      initialRouteName="Home">
       <Tab.Screen
         name="Home"
         component={HomeScreen}

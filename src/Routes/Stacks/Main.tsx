@@ -24,6 +24,7 @@ import ChangeLanguage from '../../Screens/ProfileOptions/ChangeLang/ChangeLangua
 import ChangeTheme from '../../Screens/ProfileOptions/ChangeTheme/ChangeTheme';
 import ContactUs from '../../Screens/ProfileOptions/Contact Us/ContactUs';
 import EditProfile from '../../Screens/ProfileOptions/EditProfile/EditProfile';
+import JoinQuiz from '../../Screens/Quiz/JoinQuiz/JoinQuiz';
 // import Test from '../../Screens/Test/Text';
 
 const Stack = createStackNavigator();
@@ -94,6 +95,17 @@ const MainStack = () => {
       <Stack.Screen
         name="CreateQuiz"
         component={CreateQuiz}
+        options={{
+          headerShown: false,
+          cardStyle: {
+            backgroundColor: colors.bg,
+            direction: !rtl ? 'ltr' : 'rtl',
+          },
+        }}
+      />
+      <Stack.Screen
+        name="JoinQuiz"
+        component={JoinQuiz}
         options={{
           headerShown: false,
           cardStyle: {

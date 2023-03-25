@@ -8,6 +8,7 @@ export default {
     changeTheme: 'تغيير المظهر',
     contactUs: 'تواصل معنا',
     editProfile: 'تعديل الملف الشخصي',
+    joinQuiz: 'الانضمام إلى أختبار',
   },
   Global: {
     otherLang: 'English',
@@ -154,6 +155,11 @@ export default {
   },
   EditProfile: {
     enterUsername: 'أدخل أسم المستخدم',
+  },
+  JoinQuiz: {
+    msg: 'هنا يمكنك الانضمام إلى أي اختبار خاص باستخدام رمز الاختبار',
+    enterCode: 'ادخل الرمز',
+    join: 'انضم',
   },
   ErrorMessage: {
     defineCorrect: 'الرجاء الضغط على الإجابة الصحيحة',

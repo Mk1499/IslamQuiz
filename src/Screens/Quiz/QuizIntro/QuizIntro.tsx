@@ -50,17 +50,17 @@ export default function QuizIntro(props: MyProps) {
   }
 
   return (
-    <ScrollView style={styles.container}>
-      <GradientCover
-        onBack={goBack}
-        coverURL={quiz.cover}
-        title={quiz.name}
-        description={quiz.description}
-        onShare={share}
-      />
-      <ImageBackground
-        source={require('../../../../assets/images/BGpattern.png')}
-        style={styles.content}>
+    <ImageBackground
+      source={require('../../../../assets/images/BGpattern.png')}
+      style={styles.content}>
+      <ScrollView style={styles.container}>
+        <GradientCover
+          onBack={goBack}
+          coverURL={quiz.cover}
+          title={quiz.name}
+          description={quiz.description}
+          onShare={share}
+        />
         <View style={styles.metaDateCont}>
           <View style={styles.row}>
             <Text style={styles.label}>{I18n.Quiz.noOfQuestions} : </Text>
@@ -99,7 +99,7 @@ export default function QuizIntro(props: MyProps) {
             <MyButton label={I18n.Quiz.start} action={startQuiz} />
           ) : null}
         </View>
-      </ImageBackground>
-    </ScrollView>
+      </ScrollView>
+    </ImageBackground>
   );
 }

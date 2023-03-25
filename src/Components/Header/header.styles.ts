@@ -1,11 +1,12 @@
 import {StyleSheet} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import Constants from '../../Config/Constants';
+import ThemeColors from '../../Models/ThemeColors.model';
 import {getActiveLang} from '../../translate';
 
 const {width, fonts, colors} = Constants;
 
-const makeStyle = (themeColors: any) =>
+const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
     container: {
       width,
@@ -13,7 +14,7 @@ const makeStyle = (themeColors: any) =>
       justifyContent: 'space-between',
       alignItems: 'center',
       backgroundColor: themeColors.primary,
-      paddingVertical: moderateScale(10),
+      paddingVertical: moderateScale(15),
       paddingHorizontal: moderateScale(10),
     },
     icon: {

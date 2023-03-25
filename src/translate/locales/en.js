@@ -8,6 +8,7 @@ export default {
     changeTheme: 'Change Theme',
     contactUs: 'Contact Us',
     editProfile: 'Edit Profile',
+    joinQuiz: 'Join Quiz',
   },
   Global: {
     otherLang: 'العربية',
@@ -153,6 +154,11 @@ export default {
   },
   EditProfile: {
     enterUsername: 'Enter Username',
+  },
+  JoinQuiz: {
+    msg: 'Here you can join any private quiz using the quiz code',
+    enterCode: 'Enter Code',
+    join: 'Join',
   },
   ErrorMessage: {
     defineCorrect: 'Please click on the correct answer',

@@ -5,10 +5,10 @@ import {Provider} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import store from './src/Redux/store';
 import MainStack from './src/Routes/Stacks/Main';
-import {ThemeProvider} from './src/Theme/ThemeProvider';
+import {ThemeProvider, useTheme} from './src/Theme/ThemeProvider';
 import Constants from './src/Config/Constants';
 import {NativeBaseProvider} from 'native-base';
-import Toast, {BaseToast, ErrorToast} from 'react-native-toast-message';
+import Toast from 'react-native-toast-message';
 import NetworkLoggerScreen from './src/Screens/Test/NetworkLogger';
 import {googleConfigure} from './src/Services/social-service';
 import config from './src/Config/config';
@@ -19,6 +19,8 @@ const {fonts} = Constants;
 googleConfigure();
 
 const App = () => {
+  const {colors} = useTheme();
+
   const toastConfing = {
     success: props => (
       <View style={styles.successCont}>
@@ -37,19 +39,19 @@ const App = () => {
   };
   return (
     <Provider store={store}>
-      <StatusBar backgroundColor={Constants.colors.main} />
-      <NavigationContainer
-        ref={(navigatorRef: any) => {
-          NavigationService.setTopLevelNavigator(navigatorRef);
-        }}>
-        <ThemeProvider>
+      <ThemeProvider>
+        <StatusBar backgroundColor={colors.primary} />
+        <NavigationContainer
+          ref={(navigatorRef: any) => {
+            NavigationService.setTopLevelNavigator(navigatorRef);
+          }}>
           <NativeBaseProvider>
             <MainStack />
             <Toast config={toastConfing} />
             {config.enableDebug && <NetworkLoggerScreen />}
           </NativeBaseProvider>
-        </ThemeProvider>
-      </NavigationContainer>
+        </NavigationContainer>
+      </ThemeProvider>
     </Provider>
   );
   // } else {

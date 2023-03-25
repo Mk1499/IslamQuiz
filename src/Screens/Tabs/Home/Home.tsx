@@ -44,7 +44,7 @@ function Home(props: MyProps) {
       bigText: I18n.Home.quiz,
       smallText: I18n.Home.join,
       bgColor: '#47cc49',
-      action: createQuiz,
+      action: joinQuiz,
       id: 'joinQuiz',
     },
     // {
@@ -61,6 +61,10 @@ function Home(props: MyProps) {
 
   function createQuiz() {
     props.navigation.navigate('CreateQuiz');
+  }
+
+  function joinQuiz() {
+    props.navigation.navigate('JoinQuiz');
   }
 
   const gotoCategoryDetails = (category: CategoryType) => {

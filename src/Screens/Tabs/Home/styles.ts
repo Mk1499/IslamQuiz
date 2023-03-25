@@ -1,11 +1,12 @@
 /* eslint-disable prettier/prettier */
 import {Platform, StyleSheet} from 'react-native';
 import Constants from '../../../Config/Constants';
+import ThemeColors from '../../../Models/ThemeColors.model';
 import {getActiveLang} from '../../../translate';
 
 const {colors, width, height, fonts} = Constants;
 
-const makeStyle = (themeColors: any) => {
+const makeStyle = (themeColors: ThemeColors) => {
   return StyleSheet.create({
     container: {
       backgroundColor: themeColors.bg,
@@ -14,7 +15,8 @@ const makeStyle = (themeColors: any) => {
       minHeight: height,
     },
     upperSec: {
-      backgroundColor: colors.bg,
+      // backgroundColor: colors.bg,
+      backgroundColor: themeColors.primary,
       paddingBottom: 0.1 * height,
       paddingHorizontal: 0.05 * width,
       borderBottomLeftRadius: getActiveLang() === 'ar' ? 0.1 * width : 0,

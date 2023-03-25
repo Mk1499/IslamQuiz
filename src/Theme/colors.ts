@@ -8,7 +8,7 @@ export const LightColors = {
 };
 
 export const DartColors = {
-  primary: '#00caf2',
+  primary: '#00C4BC',
   text: '#fff',
   lightText: '#222',
   bg: '#333',
