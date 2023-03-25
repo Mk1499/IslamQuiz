@@ -45,7 +45,7 @@ function Profile(props: MyProps) {
     {
       label: I18n.Profile.contactUs,
       imgIcon: require('../../../../assets/images/icons/contactForm.png'),
-      action: () => navToScreen('EditProfile'),
+      action: () => navToScreen('ContactUs'),
     },
     {
       label: I18n.Profile.logout,

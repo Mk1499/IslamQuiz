@@ -21,30 +21,17 @@ googleConfigure();
 const App = () => {
   const toastConfing = {
     success: props => (
-      <BaseToast
-        {...props}
-        style={{borderLeftColor: 'pink'}}
-        contentContainerStyle={{paddingHorizontal: 15}}
-        text1Style={{
-          fontSize: 15,
-          fontWeight: '400',
-        }}
-      />
+      <View style={styles.successCont}>
+        <Text style={styles.toastText}>{props.text1}</Text>
+      </View>
     ),
     /*
     Overwrite 'error' type,
     by modifying the existing `ErrorToast` component
   */
     error: props => (
-      // <ErrorToast
-      //   {...props}
-      //   style={styles.errorCont}
-      //   text1Style={styles.errorText}
-
-      //   // text1NumberOfLines={2}
-      // />
       <View style={styles.errorCont}>
-        <Text style={styles.errorText}>{props.text1}</Text>
+        <Text style={styles.toastText}>{props.text1}</Text>
       </View>
     ),
   };
@@ -77,11 +64,17 @@ const styles = StyleSheet.create({
     paddingVertical: moderateScale(10),
     borderRadius: 10,
   },
-  errorText: {
+  toastText: {
     fontSize: 15,
     color: '#fff',
     fontFamily: fonts.med,
     textAlign: 'center',
+  },
+  successCont: {
+    backgroundColor: '#5cb85c',
+    width: '70%',
+    paddingVertical: moderateScale(10),
+    borderRadius: 10,
   },
 });
 

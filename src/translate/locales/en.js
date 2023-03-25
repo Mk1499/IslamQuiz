@@ -6,6 +6,7 @@ export default {
     verify: 'Verification',
     changeLang: 'Change Language',
     changeTheme: 'Change Theme',
+    contactUs: 'Contact Us',
   },
   Global: {
     otherLang: 'العربية',
@@ -144,6 +145,11 @@ export default {
     dark: 'Dark',
     light: 'Light',
   },
+  ContactUs: {
+    msg: 'We will be so happy if you share with us your feedback about your experience with the application',
+    send: 'Send',
+    leaveMsg: 'Enter Your Message',
+  },
   ErrorMessage: {
     defineCorrect: 'Please click on the correct answer',
     noUser: 'Wrong email or password',
@@ -157,5 +163,6 @@ export default {
   },
   SuccessMsg: {
     passwordChanged: 'Password Changed Successfully',
+    feedbackSend: 'Your Feedback Sent Successfully',
   },
 };

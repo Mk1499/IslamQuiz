@@ -22,6 +22,7 @@ import ConfirmCode from '../../Screens/Auth/Confirm Code/ConfirmCode';
 import Landing from '../../Screens/Landing/Landing';
 import ChangeLanguage from '../../Screens/ProfileOptions/ChangeLang/ChangeLanguage';
 import ChangeTheme from '../../Screens/ProfileOptions/ChangeTheme/ChangeTheme';
+import ContactUs from '../../Screens/ProfileOptions/Contact Us/ContactUs';
 // import Test from '../../Screens/Test/Text';
 
 const Stack = createStackNavigator();
@@ -209,6 +210,17 @@ const MainStack = () => {
       <Stack.Screen
         name="ChangeTheme"
         component={ChangeTheme}
+        options={{
+          headerShown: false,
+          cardStyle: {
+            backgroundColor: colors.bg,
+            direction: !rtl ? 'ltr' : 'rtl',
+          },
+        }}
+      />
+      <Stack.Screen
+        name="ContactUs"
+        component={ContactUs}
         options={{
           headerShown: false,
           cardStyle: {

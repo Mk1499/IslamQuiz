@@ -6,6 +6,7 @@ export default {
     verify: 'التحقق',
     changeLang: 'تغيير اللغة',
     changeTheme: 'تغيير المظهر',
+    contactUs: 'تواصل معنا',
   },
   Global: {
     otherLang: 'English',
@@ -145,6 +146,11 @@ export default {
     dark: 'مظلم',
     light: 'فاتح',
   },
+  ContactUs: {
+    msg: 'سنكون سعداء للغاية إذا شاركت معنا ملاحظاتك حول تجربتك مع التطبيق',
+    send: 'أرسال',
+    leaveMsg: 'أترك رسالتك',
+  },
   ErrorMessage: {
     defineCorrect: 'الرجاء الضغط على الإجابة الصحيحة',
     noUser: 'بريد إلكتروني أو كلمة مرور خاطئة',
@@ -158,5 +164,6 @@ export default {
   },
   SuccessMsg: {
     passwordChanged: 'تم تغيير كلمة السر بنجاح',
+    feedbackSend: 'تم إرسال ملاحظاتك بنجاح',
   },
 };
