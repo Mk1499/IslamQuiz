@@ -10,7 +10,6 @@ const {fonts} = Constants;
 const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
     container: {
-      backgroundColor: themeColors.bg,
       // backgroundColor: 'red',
       flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
       alignItems: 'center',
@@ -33,7 +32,7 @@ const makeStyle = (themeColors: ThemeColors) =>
     label: {
       color: themeColors.text,
       fontFamily: fonts.med,
-      fontSize: moderateScale(16),
+      fontSize: moderateScale(15),
     },
     arrowCont: {},
     arrow: {

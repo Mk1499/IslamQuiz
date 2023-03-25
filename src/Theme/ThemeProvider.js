@@ -40,11 +40,11 @@ export const ThemeProvider = props => {
   }, [colorScheme]);
 
   const defaultTheme = {
-    // dark: isDark,
-    dark: false,
+    dark: isDark,
+    // dark: false,
     rtl: isRTL,
-    // colors: isDark ? DartColors : LightColors,
-    colors: LightColors,
+    colors: isDark ? DartColors : LightColors,
+    // colors: LightColors,
     setScheme: scheme => {
       setIsDark(scheme === 'dark');
     },

@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import Constants from '../../Config/Constants';
+import ThemeColors from '../../Models/ThemeColors.model';
 
-const {fonts, colors} = Constants;
-const makeStyle = (themeColors: any) =>
+const {fonts} = Constants;
+const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
     img: {
       width: moderateScale(20),
@@ -17,11 +18,10 @@ const makeStyle = (themeColors: any) =>
       overflow: 'hidden',
       paddingVertical: moderateScale(5),
       backgroundColor: themeColors.bg,
-      borderTopLeftRadius: 20,
-      borderTopRightRadius: 20,
-      borderTopColor: colors.bg,
-      borderLeftColor: colors.bg,
-      borderRightColor: colors.bg,
+      // borderTopLeftRadius: 20,
+      // borderTopRightRadius: 20,
+      borderTopWidth: 1,
+      borderColor: themeColors.primary,
     },
   });
 

@@ -4,6 +4,8 @@ export default {
     profile: 'الملف الشخصي',
     setting: 'الاعدادات',
     verify: 'التحقق',
+    changeLang: 'تغيير اللغة',
+    changeTheme: 'تغيير المظهر',
   },
   Global: {
     otherLang: 'English',
@@ -128,6 +130,20 @@ export default {
     noOfSubmissions: 'الاختبارات',
     points: 'النقاط',
     rank: 'الترتيب',
+    editProfile: 'تعديل الملف الشخصي',
+    changeLang: 'تغيير اللغة',
+    changeTheme: 'تغيير المظهر',
+    contactUs: 'تواصل معنا',
+    logout: 'تسجيل خروج',
+  },
+  ChangeLanguage: {
+    ar: 'العربية',
+    en: 'الإنجليزية',
+  },
+
+  ChangeTheme: {
+    dark: 'مظلم',
+    light: 'فاتح',
   },
   ErrorMessage: {
     defineCorrect: 'الرجاء الضغط على الإجابة الصحيحة',

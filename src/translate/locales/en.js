@@ -4,6 +4,8 @@ export default {
     profile: 'Profile',
     setting: 'Setting',
     verify: 'Verification',
+    changeLang: 'Change Language',
+    changeTheme: 'Change Theme',
   },
   Global: {
     otherLang: 'العربية',
@@ -128,6 +130,19 @@ export default {
     noOfSubmissions: 'Submissions',
     points: 'Points',
     rank: 'Rank',
+    editProfile: 'Edit Profile',
+    changeLang: 'Change Language',
+    changeTheme: 'Change Theme',
+    contactUs: 'Contact Us',
+    logout: 'Logout',
+  },
+  ChangeLanguage: {
+    ar: 'Arabic',
+    en: 'English',
+  },
+  ChangeTheme: {
+    dark: 'Dark',
+    light: 'Light',
   },
   ErrorMessage: {
     defineCorrect: 'Please click on the correct answer',

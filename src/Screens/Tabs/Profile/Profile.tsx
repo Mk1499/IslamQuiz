@@ -28,27 +28,27 @@ function Profile(props: MyProps) {
   const {user, navigation} = props;
   const options: ProfileRowOption[] = [
     {
-      label: 'Edit Profile',
+      label: I18n.Profile.editProfile,
       imgIcon: require('../../../../assets/images/icons/edituser.png'),
-      action: navToScreen('EditProfile'),
+      action: () => navToScreen('EditProfile'),
     },
     {
-      label: 'Change Lang',
+      label: I18n.Profile.changeLang,
       imgIcon: require('../../../../assets/images/icons/languages.png'),
-      action: navToScreen('EditProfile'),
+      action: () => navToScreen('ChangeLanguage'),
     },
     {
-      label: 'Change Theme',
+      label: I18n.Profile.changeTheme,
       imgIcon: require('../../../../assets/images/icons/changeTheme.png'),
-      action: navToScreen('EditProfile'),
+      action: () => navToScreen('ChangeTheme'),
     },
     {
-      label: 'Contact Us',
+      label: I18n.Profile.contactUs,
       imgIcon: require('../../../../assets/images/icons/contactForm.png'),
-      action: navToScreen('EditProfile'),
+      action: () => navToScreen('EditProfile'),
     },
     {
-      label: 'Logout',
+      label: I18n.Profile.logout,
       imgIcon: require('../../../../assets/images/icons/logout.png'),
       action: logout,
     },

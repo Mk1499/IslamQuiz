@@ -20,6 +20,8 @@ import OTPVerify from '../../Screens/Auth/OTPVerify/OTPVerify';
 import ResetPassword from '../../Screens/Auth/Reset Password/ResetPassword';
 import ConfirmCode from '../../Screens/Auth/Confirm Code/ConfirmCode';
 import Landing from '../../Screens/Landing/Landing';
+import ChangeLanguage from '../../Screens/ProfileOptions/ChangeLang/ChangeLanguage';
+import ChangeTheme from '../../Screens/ProfileOptions/ChangeTheme/ChangeTheme';
 // import Test from '../../Screens/Test/Text';
 
 const Stack = createStackNavigator();
@@ -182,6 +184,31 @@ const MainStack = () => {
       <Stack.Screen
         name="AddQuestions"
         component={AddQuestions}
+        options={{
+          headerShown: false,
+          cardStyle: {
+            backgroundColor: colors.bg,
+            direction: !rtl ? 'ltr' : 'rtl',
+          },
+        }}
+      />
+
+      {/* Profile Options */}
+
+      <Stack.Screen
+        name="ChangeLanguage"
+        component={ChangeLanguage}
+        options={{
+          headerShown: false,
+          cardStyle: {
+            backgroundColor: colors.bg,
+            direction: !rtl ? 'ltr' : 'rtl',
+          },
+        }}
+      />
+      <Stack.Screen
+        name="ChangeTheme"
+        component={ChangeTheme}
         options={{
           headerShown: false,
           cardStyle: {
