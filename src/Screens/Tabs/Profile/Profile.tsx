@@ -1,5 +1,10 @@
 import React from 'react';
-import {ScrollView, ImageBackground, FlatList} from 'react-native';
+import {
+  ScrollView,
+  ImageBackground,
+  FlatList,
+  RefreshControl,
+} from 'react-native';
 import ProfileCard from '../../../Components/ProfileCard/ProfileCard';
 import TabHeader from '../../../Components/TabHeader/TabHeader';
 import {useTheme} from '../../../Theme/ThemeProvider';
@@ -12,6 +17,7 @@ import StorageKeys from '../../../Config/StorageKeys';
 import {googleLogout} from '../../../Services/social-service';
 import OptionRowItem from '../../../Components/OptionRowItem/OptionRowItem';
 import ProfileRowOption from '../../../Models/ProfileRowOption.model';
+import {syncUserData} from '../../../Redux/Actions/auth.action';
 
 type MyProps = {
   user: User;
@@ -20,6 +26,8 @@ type MyProps = {
     replace: Function;
     navigate: Function;
   };
+  syncUserData: Function;
+  syncingData: Boolean;
 };
 
 function Profile(props: MyProps) {
@@ -65,7 +73,14 @@ function Profile(props: MyProps) {
   }
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      refreshControl={
+        <RefreshControl
+          refreshing={props?.syncingData}
+          onRefresh={() => props.syncUserData(props.user?._id)}
+        />
+      }>
       <ImageBackground
         source={require('../../../../assets/images/BGpattern.png')}
         style={styles.content}>
@@ -90,6 +105,7 @@ function Profile(props: MyProps) {
 
 const mapStateToProps = state => ({
   user: state.auth.userData,
+  syncingData: state.auth.syncingUserData,
 });
 
-export default connect(mapStateToProps, {})(Profile);
+export default connect(mapStateToProps, {syncUserData})(Profile);

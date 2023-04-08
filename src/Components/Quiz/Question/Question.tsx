@@ -11,12 +11,14 @@ type MyProps = {
   question: QuestionType;
   handleNext: Function;
   lastQuestion: boolean;
+  processing: boolean;
 };
 
 export default function Question({
   question,
   handleNext,
   lastQuestion,
+  processing,
 }: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
@@ -61,6 +63,7 @@ export default function Question({
         label={lastQuestion ? I18n.Global.finish : I18n.Global.next}
         action={onNext}
         disabled={!choosedID}
+        processing={processing}
       />
     </View>
   );
