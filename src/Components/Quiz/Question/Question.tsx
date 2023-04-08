@@ -27,14 +27,18 @@ export default function Question({
   }
 
   function onNext() {
-    handleNext();
+    const ansSubmit = {
+      questionID: question._id,
+      answerID: choosedID,
+    };
+    handleNext(ansSubmit);
     setChoosedID(null);
   }
 
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{question.label}</Text>
-      {question.answers.map(item => (
+      {question.answers?.map(item => (
         <TouchableOpacity
           style={
             choosedID === item._id

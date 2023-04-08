@@ -10,7 +10,7 @@ export default function ImageCover({uri, style, children}: MyProps) {
   const [validURI, setvalidURI] = useState(false);
   useEffect(() => {
     fetch(uri).then(res => {
-      console.log('RES : ', res);
+      // console.log('RES : ', res);
       if (res.status === 200) {
         setvalidURI(true);
       }

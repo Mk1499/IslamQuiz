@@ -10,13 +10,13 @@ function setItem(key: string, value: any) {
 }
 
 function getItem(key: string) {
-  return new Promise<void>(async resolve => {
+  return new Promise<string>(async resolve => {
     try {
       const data = await RNKeyStorage.get(key);
       resolve(data);
     } catch (err) {
       console.log('S e : ', err.code);
-      resolve();
+      resolve('');
     }
   });
 }

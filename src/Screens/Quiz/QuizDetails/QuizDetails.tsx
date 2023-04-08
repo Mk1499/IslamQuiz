@@ -16,8 +16,13 @@ import SingleModal from '../../../Components/Modals/SingleModal/SingleModal';
 import MultiModal from '../../../Components/Modals/MultiModal/MultiModal';
 import navService from '../../../Routes/NavigationService';
 import QuizType from '../../../Models/Quiz.model';
-import {get} from '../../../Services/api-service';
+import {get, post} from '../../../Services/api-service';
 import Loading from '../../../Components/Loading/Loading';
+import CountDown from 'react-native-countdown-component';
+import {errorHandler, showError} from '../../../Services/toast-service';
+import moment from 'moment';
+import {connect} from 'react-redux';
+import User from '../../../Models/User.model';
 
 type MyProps = {
   navigation: {
@@ -29,9 +34,10 @@ type MyProps = {
       quiz: QuizType;
     };
   };
+  user: User;
 };
 
-export default function QuizDetails({navigation, route}: MyProps) {
+function QuizDetails({navigation, route, user}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [quiz, setQuiz] = useState<QuizType>(route?.params?.quiz);
@@ -40,22 +46,27 @@ export default function QuizDetails({navigation, route}: MyProps) {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showExitModal, setShowExitModal] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [submittion, setSubmittion] = useState([]);
+  const [points, setPoints] = useState(0);
+  const startTime = moment();
 
   useEffect(() => {
     let quizID = route?.params?.quiz?._id;
-    let url = `/quiz/${quizID}`;
+    let url = `/quiz/questions/${quizID}`;
     get(url)
       .then(({data}) => {
         console.log('Quiz : ', data);
         setQuiz(data);
       })
-      .catch(err => {
-        console.log('Err : ', err);
+      .catch(() => {
+        showError(I18n.ErrorMessage.prevSubmitted);
+        navigation.goBack();
+        // console.log('Err : ', err);
       })
       .finally(() => {
         setLoading(false);
       });
-  }, [route?.params?.quiz?._id]);
+  }, [navigation, route?.params?.quiz?._id]);
 
   useEffect(() => {
     BackHandler.addEventListener('hardwareBackPress', () => {
@@ -67,11 +78,12 @@ export default function QuizDetails({navigation, route}: MyProps) {
     setShowErrModal(true);
   }
 
-  function handleNextClicked() {
+  function handleNextClicked(ansSubmit) {
+    setSubmittion([...submittion, ansSubmit]);
     if (quiz.questions.length - 1 > currentQuestion) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      submit();
+      submit(ansSubmit);
     }
   }
 
@@ -79,9 +91,28 @@ export default function QuizDetails({navigation, route}: MyProps) {
     hideAllModals();
     navigation.goBack();
   }
-  function submit() {
+  function submit(lastAns) {
+    const time = moment().diff(startTime);
+    const body = {
+      userID: user._id,
+      quizID: quiz._id,
+      submit: [...submittion, lastAns],
+      time,
+    };
+    const url = '/submit/add';
+    post(url, body, true)
+      .then(({data}) => {
+        setPoints(data);
+        setShowSuccessModal(true);
+      })
+      .catch(() => {
+        console.log('SE : ', err);
+        errorHandler();
+        navigation.goBack();
+      });
+    console.log('Sub : ', body);
+
     // exit();
-    setShowSuccessModal(true);
   }
 
   function exitPrompt() {
@@ -106,10 +137,22 @@ export default function QuizDetails({navigation, route}: MyProps) {
           <Text style={styles.questionNumber}>
             {I18n.Quiz.question} {currentQuestion + 1}
           </Text>
-          <Timer
+          {/* <Timer
             time={quiz?.duration.value}
             handleFinish={timeOut}
             stop={showSuccessModal}
+          /> */}
+          <CountDown
+            timeToShow={['M', 'S']}
+            digitTxtStyle={styles.digitText}
+            digitStyle={styles.digit}
+            until={quiz?.duration?.value * 60}
+            timeLabels={{
+              m: '',
+              s: '',
+            }}
+            style={styles.timer}
+            onFinish={timeOut}
           />
         </View>
         <ProgressIndicator
@@ -123,7 +166,7 @@ export default function QuizDetails({navigation, route}: MyProps) {
         <View style={styles.lowerCont}>
           <Question
             question={quiz.questions[currentQuestion]}
-            handleNext={handleNextClicked}
+            handleNext={ansSubmit => handleNextClicked(ansSubmit)}
             lastQuestion={currentQuestion === quiz.questions?.length - 1}
           />
           <TouchableOpacity style={styles.exitBtn} onPress={exitPrompt}>
@@ -132,18 +175,18 @@ export default function QuizDetails({navigation, route}: MyProps) {
         </View>
       )}
 
-      <SingleModal
+      {/* <SingleModal
         img="time"
         title={I18n.Modals.timeOut}
         msg={I18n.Modals.quizTimeOut}
         btnText={I18n.Modals.exit}
         visible={showErrModal}
         btnAction={exit}
-      />
+      /> */}
       <SingleModal
         img="happy"
         title={I18n.Modals.successTitle}
-        msg={I18n.Modals.successMsg + quiz?.points + I18n.Modals.points}
+        msg={I18n.Modals.successMsg + points + I18n.Modals.points}
         btnText={I18n.Global.back}
         visible={showSuccessModal}
         btnAction={backToQuizzes}
@@ -161,3 +204,9 @@ export default function QuizDetails({navigation, route}: MyProps) {
     </ScrollView>
   );
 }
+
+const mapStateToProps = state => ({
+  user: state.auth.userData,
+});
+
+export default connect(mapStateToProps, {})(QuizDetails);

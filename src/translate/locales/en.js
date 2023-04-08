@@ -167,6 +167,7 @@ export default {
     twoPassSame: 'Both Passwords must be the same',
     invalidEmail: 'Invalid Email Address',
     wrongCode: 'You Entered a wrong code',
+    prevSubmitted: 'Sorry, you can only attempt this quiz once',
   },
   EmptyMsg: {
     nqQuizzesInCat: 'Sorry there is no quizzes in this category',

@@ -7,4 +7,5 @@ export default interface User {
   role: string;
   rank: Number;
   photo: string;
+  submissions: string;
 }

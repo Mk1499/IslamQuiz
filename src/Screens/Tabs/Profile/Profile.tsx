@@ -75,6 +75,8 @@ function Profile(props: MyProps) {
           points={user?.points}
           email={user?.email}
           photo={user?.photo}
+          rank={user?.rank}
+          submissions={user?.submissions}
         />
         <FlatList
           contentContainerStyle={styles.optionsCont}

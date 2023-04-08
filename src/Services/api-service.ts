@@ -4,7 +4,8 @@ import {getActiveLang} from '../translate';
 import Storage from './storage-service';
 
 // const baseURL = 'https://iquiz-server.onrender.com';
-const baseURL = 'http://192.168.1.2:9000';
+const baseURL = 'http://192.168.1.8:9000';
+// const baseURL = 'https://drab-lime-donkey-wrap.cyclic.app';
 export const get = async (url: string, authReq = true) => {
   let headers;
   if (authReq) {

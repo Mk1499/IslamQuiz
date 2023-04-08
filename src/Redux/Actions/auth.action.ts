@@ -12,3 +12,6 @@ export const setTokenAction = (token: string) => (dispatch: Function) => {
     payload: userData,
   });
 };
+
+// need to sync user data with backend after action like submit quiz happened
+export const syncUserDate = (token: string) => (dispatch: Function) => {};

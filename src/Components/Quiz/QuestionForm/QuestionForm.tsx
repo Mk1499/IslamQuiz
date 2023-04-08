@@ -51,7 +51,7 @@ export default forwardRef(function QuestionForm(
   }));
 
   useEffect(() => {
-    console.log('Props : ', processing);
+    // console.log('Props : ', processing);
   }, [processing]);
 
   function chooseAnswer(ans: AnswerType) {

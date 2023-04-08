@@ -36,7 +36,7 @@ export default function CreateForm({handleNext, processing}: MyProps) {
   useEffect(() => {
     preData()
       .then(({data}) => {
-        console.log('Data : ', data);
+        // console.log('Data : ', data);
         setCategories(data.categories);
         setDurations(data.durations);
       })
@@ -50,7 +50,7 @@ export default function CreateForm({handleNext, processing}: MyProps) {
       label: getActiveLang() === 'en' ? item.enName : item.arName,
       value: item._id,
     }));
-    console.log('op : ', options);
+    // console.log('op : ', options);
     return options;
   }
 

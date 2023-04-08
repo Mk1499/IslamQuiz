@@ -4,4 +4,5 @@ export default {
   appDirection: 'appDirection',
   NoteOpenApp: 'NoteOpenApp',
   userToken: 'UserToken',
+  userTheme: 'UserTheme',
 };
