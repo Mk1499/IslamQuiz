@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
 import Constants from '../../../Config/Constants';
 
 const {height, fonts, colors} = Constants;
@@ -8,12 +9,11 @@ const makeStyle = () =>
   StyleSheet.create({
     container: {
       marginVertical: 0.03 * height,
-      height: 0.08 * height,
+      height: moderateScale(40),
       alignSelf: 'center',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: Constants.colors.bg,
       width: '80%',
       borderRadius: 15,
       shadowColor: '#000',
@@ -23,12 +23,25 @@ const makeStyle = () =>
       },
       shadowOpacity: 0.25,
       shadowRadius: 3.84,
-      elevation: 5,
     },
     label: {
       fontFamily: fonts.bold,
-      fontSize: 20,
+      fontSize: moderateScale(15),
       color: colors.subText,
+    },
+    emptyLabel: {
+      color: Constants.colors.bg,
+      fontFamily: fonts.bold,
+      fontSize: moderateScale(15),
+    },
+    filledCont: {
+      elevation: 5,
+      backgroundColor: Constants.colors.bg,
+    },
+    emptyCont: {
+      backgroundColor: 'transparent',
+      borderColor: Constants.colors.bg,
+      borderWidth: 1,
     },
   });
 

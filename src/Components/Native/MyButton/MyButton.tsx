@@ -10,6 +10,7 @@ type MyProps = {
   processing: Boolean;
   disabled?: Boolean;
   style?: StyleProps;
+  light?: Boolean;
 };
 
 export default function MyButton(props: MyProps) {
@@ -19,6 +20,7 @@ export default function MyButton(props: MyProps) {
     <TouchableOpacity
       style={[
         styles.container,
+        props.light ? styles.emptyCont : styles.filledCont,
         {
           opacity: props.disabled ? 0.5 : 1,
         },
@@ -29,7 +31,9 @@ export default function MyButton(props: MyProps) {
       {props.processing ? (
         <ActivityIndicator color="#fff" size="large" />
       ) : (
-        <Text style={styles.label}>{props.label}</Text>
+        <Text style={props.light ? styles.emptyLabel : styles.label}>
+          {props.label}
+        </Text>
       )}
     </TouchableOpacity>
   );

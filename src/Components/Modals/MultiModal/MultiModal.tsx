@@ -51,6 +51,7 @@ export default function MultiModal(props: MyProps) {
                 label={props?.btn1Text}
                 action={props?.btn1Action}
                 processing={props?.btn1Processing}
+                light={true}
               />
             </View>
             <View style={styles.btnCont}>
