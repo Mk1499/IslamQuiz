@@ -7,6 +7,7 @@ import makeStyle from './CreateFrom.style';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import {showError} from '../../../Services/toast-service';
 import DB from '../../../Config/DB';
+import MyDatePicker from '../../Native/MyDatePicker/MyDatePicker';
 
 type MyProps = {
   handleNext: Function;
@@ -22,6 +23,8 @@ export default function CreateForm({handleNext, processing}: MyProps) {
   const [description, setDescription] = useState('');
   const [questionNum, setQuestionNum] = useState('');
   const [lang, setLang] = useState('ar');
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
 
   const nameRef = useRef();
   const catRef = useRef();
@@ -65,6 +68,8 @@ export default function CreateForm({handleNext, processing}: MyProps) {
         category: categoryID,
         questionNum,
         lang,
+        startDate,
+        endDate,
       });
       resetForm();
     }
@@ -141,6 +146,17 @@ export default function CreateForm({handleNext, processing}: MyProps) {
         onChange={t => setDescription(t)}
         ref={descriptionRef}
       />
+      <MyDatePicker
+        label={I18n.CreateQuiz.startDate}
+        onChange={date => setStartDate(date)}
+      />
+
+      <MyDatePicker
+        label={I18n.CreateQuiz.expireDate}
+        onChange={date => setEndDate(date)}
+        initialDate={startDate}
+      />
+
       <MyButton
         label={I18n.Global.next}
         action={submit}

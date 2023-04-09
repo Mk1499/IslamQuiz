@@ -16,7 +16,7 @@ export const ThemeContext = createContext({
 
 export const ThemeProvider = props => {
   const colorScheme = useColorScheme();
-  const [isDark, setIsDark] = useState(colorScheme === 'dark');
+  const [isDark, setIsDark] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
   const [isRTL, setIsRTL] = useState(I18nManager.isRTL);
 
@@ -35,9 +35,9 @@ export const ThemeProvider = props => {
     checkRTLStatus();
   }, []);
 
-  useEffect(() => {
-    setIsDark(colorScheme === 'dark');
-  }, [colorScheme]);
+  // useEffect(() => {
+  //   setIsDark(colorScheme === 'dark');
+  // }, [colorScheme]);
 
   const defaultTheme = {
     dark: isDark,

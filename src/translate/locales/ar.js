@@ -17,6 +17,7 @@ export default {
     finish: 'انهاء',
     back: 'رجوع',
     cancel: 'الغاء',
+    confirm: 'تأكيد',
   },
   SignIn: {
     ScreenName: 'تسجيل الدخول',
@@ -117,6 +118,9 @@ export default {
     enterQuestion: 'أدخل السؤال',
     addAnswer: 'أضف أجابة',
     lang: 'اللغة',
+    startDate: 'تاريخ البدء',
+    expireDate: 'تاريخ الانتهاء',
+    selectDate: 'أختار التاريخ',
   },
   OTP: {
     pleaseCheck: 'الرجاء إدخال رمز التحقق المرسل إلى بريدك الإلكتروني',

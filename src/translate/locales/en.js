@@ -17,6 +17,7 @@ export default {
     finish: 'Finish',
     back: 'Back',
     cancel: 'Cancel',
+    confirm: 'Confirm',
   },
   SignIn: {
     ScreenName: 'Sign In',
@@ -117,6 +118,9 @@ export default {
     enterQuestion: 'Enter Question',
     addAnswer: 'Add Answer',
     lang: 'Language',
+    startDate: 'Start Date',
+    expireDate: 'Expire Date',
+    selectDate: 'Select Date',
   },
   OTP: {
     pleaseCheck: 'Please enter the verification code sent to your email',
