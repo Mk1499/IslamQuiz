@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native';
 import Constants from '../../../Config/Constants';
+import ThemeColors from '../../../Models/ThemeColors.model';
 
 const {colors, width, fonts, height} = Constants;
 
-const makeStyle = (themeColors: any) =>
+const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
     container: {
       shadowColor: '#000',
@@ -14,7 +15,7 @@ const makeStyle = (themeColors: any) =>
       shadowOpacity: 0.25,
       shadowRadius: 3.84,
       elevation: 5,
-      backgroundColor: '#fff',
+      backgroundColor: themeColors.bg,
       marginHorizontal: 0.07 * width,
       paddingHorizontal: 0.07 * width,
       paddingTop: 0.03 * height,
@@ -35,7 +36,7 @@ const makeStyle = (themeColors: any) =>
       shadowOpacity: 0.25,
       shadowRadius: 3.84,
       elevation: 2,
-      backgroundColor: '#eee',
+      backgroundColor: themeColors.lightText,
       marginVertical: 0.01 * height,
       paddingVertical: 0.02 * height,
       paddingHorizontal: 0.02 * width,

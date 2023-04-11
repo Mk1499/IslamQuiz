@@ -2,10 +2,11 @@ import {StyleSheet} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 
 import Constants from '../../../Config/Constants';
+import ThemeColors from '../../../Models/ThemeColors.model';
 import {getActiveLang} from '../../../translate';
 
 const {fonts, width, height} = Constants;
-const makeStyle = (themeColors: any) =>
+const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
     container: {
       minHeight: height,
@@ -33,6 +34,11 @@ const makeStyle = (themeColors: any) =>
     },
     timer: {
       marginBottom: moderateScale(30),
+    },
+    digitText: {
+      color: themeColors.text,
+      fontFamily: fonts.reg,
+      fontSize: moderateScale(7),
     },
   });
 

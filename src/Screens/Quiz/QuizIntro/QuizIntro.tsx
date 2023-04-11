@@ -63,7 +63,7 @@ export default function QuizIntro(props: MyProps) {
           timeToShow={['D', 'H', 'M', 'S']}
           digitTxtStyle={styles.digitText}
           digitStyle={styles.digit}
-          until={moment().diff(quiz.startDate)}
+          until={-1 * moment().diff(quiz.startDate)}
           timeLabels={{
             m: I18n.Timer.minutes,
             s: I18n.Timer.seconds,
@@ -125,7 +125,7 @@ export default function QuizIntro(props: MyProps) {
             <View style={styles.row}>
               <Text style={styles.label}>{I18n.Quiz.endDate} : </Text>
               <Text style={styles.value}>
-                {moment(quiz.endData).format('Do MMM YYYY - hh:mm a')}
+                {moment(quiz.endDate).format('Do MMM YYYY - hh:mm a')}
               </Text>
             </View>
           ) : null}
