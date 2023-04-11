@@ -77,7 +77,7 @@ export default {
   },
   Quiz: {
     noOfQuestions: 'عدد الأسئلة',
-    noOfSubmissions: 'عدد الطلبات المقدمة',
+    noOfSubmissions: 'عدد الاجابات المقدمة',
     difficulty: 'الصعوبة',
     duration: 'المدة الزمنية',
     startDate: 'تاريخ البدء',
@@ -89,6 +89,7 @@ export default {
     exit: 'خروج',
     question: 'السؤال',
     points: 'النقاط',
+    createdAt: 'تاريخ الانشاء',
     endDate: 'تاريخ الانتهاء',
   },
   Modals: {
@@ -181,5 +182,15 @@ export default {
     passwordChanged: 'تم تغيير كلمة السر بنجاح',
     feedbackSend: 'تم إرسال ملاحظاتك بنجاح',
     profileUpdated: 'تم تعديل بياناتك بنجاح',
+  },
+  Timer: {
+    days: 'ايام',
+    hours: 'ساعات',
+    minutes: 'دقيقة',
+    seconds: 'ثانية',
+  },
+  UpdateApp: {
+    msg: 'تطبيقك قديم وتحتاج إلى تحديث إصدار التطبيق الخاص بك للاستمتاع بأحدث الميزات الرائعة لدينا',
+    update: 'تحديث الان',
   },
 };

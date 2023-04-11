@@ -15,7 +15,7 @@ function getItem(key: string) {
       const data = await RNKeyStorage.get(key);
       resolve(data);
     } catch (err) {
-      console.log('S e : ', err.code);
+      console.log('Storage e : ', err.code);
       resolve('');
     }
   });

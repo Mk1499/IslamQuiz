@@ -86,7 +86,7 @@ function Home(props: MyProps) {
     }
     get(url)
       .then(({data}) => {
-        console.log('Cats : ', data);
+        // console.log('Cats : ', data);
         setCategories(data);
         setLoadingCats(false);
         setrefreshing(false);

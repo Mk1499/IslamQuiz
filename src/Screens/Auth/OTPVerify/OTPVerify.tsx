@@ -47,7 +47,7 @@ export default function OTPVerify(props: MyProps) {
     setLoading(true);
     post(url, body)
       .then(({data}) => {
-        console.log('Data : ', data);
+        // console.log('Data : ', data);
         props.navigation.replace('Tabs');
       })
       .catch(err => {

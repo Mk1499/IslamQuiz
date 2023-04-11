@@ -81,6 +81,7 @@ export default {
     duration: 'Duration',
     startDate: 'Start Date',
     endDate: 'End Date',
+    createdAt: 'Created At',
     minutes: 'Minutes',
     easy: 'Easy',
     medium: 'Medium',
@@ -180,5 +181,15 @@ export default {
     passwordChanged: 'Password Changed Successfully',
     feedbackSend: 'Your Feedback Sent Successfully',
     profileUpdated: 'Profile Update Successfully',
+  },
+  Timer: {
+    days: 'Days',
+    hours: 'Hours',
+    minutes: 'Minutes',
+    seconds: 'Seconds',
+  },
+  UpdateApp: {
+    msg: 'Your app is outdated and you need to update your app version to enjoy with our latest amazing features',
+    update: 'Update Now',
   },
 };

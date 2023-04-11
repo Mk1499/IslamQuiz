@@ -4,18 +4,20 @@ import {getActiveLang} from '../translate';
 import Storage from './storage-service';
 
 // const baseURL = 'https://iquiz-server.onrender.com';
-// const baseURL = 'http://192.168.1.8:9000';
-const baseURL = 'https://drab-lime-donkey-wrap.cyclic.app';
+const baseURL = 'http://192.168.1.7:9000';
+// const baseURL = 'https://drab-lime-donkey-wrap.cyclic.app';
 export const get = async (url: string, authReq = true) => {
   let headers;
   if (authReq) {
     headers = {
       lang: getActiveLang(),
       Authorization: await Storage.getItem(StorageKeys.userToken),
+      'Cache-Control': 'no-cache',
     };
   } else {
     headers = {
       lang: getActiveLang(),
+      'Cache-Control': 'no-cache',
     };
   }
   return axios.get(baseURL + url, {

@@ -101,7 +101,7 @@ def enableSeparateBuildPerCPUArchitecture = false
 /**
  * Run Proguard to shrink the Java bytecode in release builds.
  */
-def enableProguardInReleaseBuilds = true
+def enableProguardInReleaseBuilds = false
 
 /**
  * The preferred build flavor of JavaScriptCore.
@@ -301,7 +301,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation project(path: ":@react-native-firebase_messaging")
-      implementation project(path: ":@react-native-firebase_analytics")
+    implementation project(path: ":@react-native-firebase_analytics")
+    implementation project(path: ":@react-native-firebase_config")
     implementation 'com.google.android.gms:play-services-auth:20.4.1'
 }
 

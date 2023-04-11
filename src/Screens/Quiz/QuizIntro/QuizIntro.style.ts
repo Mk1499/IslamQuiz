@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
 
 import Constants from '../../../Config/Constants';
 import {getActiveLang} from '../../../translate';
@@ -29,6 +30,9 @@ const makeStyle = (themeColors: any) =>
       color: themeColors.text,
       fontFamily: fonts.med,
       fontSize: 15,
+    },
+    timer: {
+      marginBottom: moderateScale(30),
     },
   });
 

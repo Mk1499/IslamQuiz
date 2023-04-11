@@ -16,6 +16,7 @@ export default interface QuizType {
   points: Number;
   duration: DurationType;
   startDate: Date;
-  endData: Date;
+  endDate: Date;
   code: String;
+  createdAt: Date;
 }

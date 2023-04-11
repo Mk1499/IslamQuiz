@@ -149,6 +149,7 @@ export default function CreateForm({handleNext, processing}: MyProps) {
       <MyDatePicker
         label={I18n.CreateQuiz.startDate}
         onChange={date => setStartDate(date)}
+        initialDate={new Date()}
       />
 
       <MyDatePicker

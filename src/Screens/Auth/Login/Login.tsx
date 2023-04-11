@@ -19,6 +19,7 @@ import {emailValidator} from '../../../utils/validator';
 import jwtDecode from 'jwt-decode';
 import User from '../../../Models/User.model';
 import {sendOTP} from '../../../Services/globalAPI-service';
+import config from '../../../Config/config';
 
 type MyProps = {
   navigation: {
@@ -107,8 +108,8 @@ const Login = (props: MyProps) => {
 
   function handleLoginSuccess(token: string) {
     let userData: User = jwtDecode(token);
-    console.log('userData : ', userData);
-    if (userData.verified) {
+    // console.log('userData : ', userData);
+    if (userData.verified || !config.verifyEmail) {
       props.navigation.replace('Tabs');
     } else {
       sendOTP();

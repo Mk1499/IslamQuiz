@@ -13,6 +13,7 @@ import {setTokenAction} from '../../../Redux/Actions/auth.action';
 import {emailValidator} from '../../../utils/validator';
 import Storage from '../../../Services/storage-service';
 import StorageKeys from '../../../Config/StorageKeys';
+import config from '../../../Config/config';
 
 type MyProps = {
   navigation: {
@@ -55,9 +56,13 @@ const Register = (props: MyProps) => {
         .then(({data}) => {
           Storage.setItem(StorageKeys.userToken, data);
           props.setTokenAction(data);
-          props.navigation.navigate('OTP', {
-            email,
-          });
+          if (config.verifyEmail) {
+            props.navigation.navigate('OTP', {
+              email,
+            });
+          } else {
+            props.navigation.replace('Tabs');
+          }
         })
         .catch((err: AxiosError) => {
           const msg = err.response?.data?.message;

@@ -1,5 +1,13 @@
 import React, {useState} from 'react';
-import {ImageBackground, Text, ScrollView, View} from 'react-native';
+import {
+  ImageBackground,
+  Text,
+  ScrollView,
+  View,
+  Image,
+  TouchableOpacity,
+  Linking,
+} from 'react-native';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import makeStyle from './ContactUs.style';
 import I18n from '../../../translate';
@@ -16,9 +24,10 @@ type MyProps = {
     goBack: Function;
   };
   user: User;
+  fireConfig: any;
 };
 
-function ContactUs({navigation, user}: MyProps) {
+function ContactUs({navigation, user, fireConfig}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [comment, setComment] = useState();
@@ -69,6 +78,24 @@ function ContactUs({navigation, user}: MyProps) {
             />
           </View>
         </View>
+        {fireConfig.showSocial !== 'false' && (
+          <View style={styles.socialCont}>
+            <TouchableOpacity
+              onPress={() => Linking.openURL(fireConfig.facebookURL)}>
+              <Image
+                style={styles.socialImg}
+                source={require('../../../../assets/images/icons/facebook.png')}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => Linking.openURL(fireConfig.instagramURL)}>
+              <Image
+                style={styles.socialImg}
+                source={require('../../../../assets/images/icons/instagram.png')}
+              />
+            </TouchableOpacity>
+          </View>
+        )}
       </ImageBackground>
     </ScrollView>
   );
@@ -76,6 +103,7 @@ function ContactUs({navigation, user}: MyProps) {
 
 const mapStateToProps = (state: ReduxState) => ({
   user: state.auth.userData,
+  fireConfig: state.fireConfig,
 });
 
 export default connect(mapStateToProps, {})(ContactUs);

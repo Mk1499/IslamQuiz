@@ -13,6 +13,9 @@ import NetworkLoggerScreen from './src/Screens/Test/NetworkLogger';
 import {googleConfigure} from './src/Services/social-service';
 import config from './src/Config/config';
 import {moderateScale} from 'react-native-size-matters';
+import 'react-native-get-random-values';
+import ForceUpdate from './src/Templates/ForceUpdate';
+import FireConfig from './src/Templates/FireConfig';
 
 const {fonts} = Constants;
 
@@ -41,16 +44,20 @@ const App = () => {
     <Provider store={store}>
       <ThemeProvider>
         <StatusBar backgroundColor={colors.primary} />
-        <NavigationContainer
-          ref={(navigatorRef: any) => {
-            NavigationService.setTopLevelNavigator(navigatorRef);
-          }}>
-          <NativeBaseProvider>
-            <MainStack />
-            <Toast config={toastConfing} />
-            {config.enableDebug && <NetworkLoggerScreen />}
-          </NativeBaseProvider>
-        </NavigationContainer>
+        <FireConfig>
+          <ForceUpdate>
+            <NavigationContainer
+              ref={(navigatorRef: any) => {
+                NavigationService.setTopLevelNavigator(navigatorRef);
+              }}>
+              <NativeBaseProvider>
+                <MainStack />
+                {config.enableDebug && <NetworkLoggerScreen />}
+              </NativeBaseProvider>
+            </NavigationContainer>
+          </ForceUpdate>
+        </FireConfig>
+        <Toast config={toastConfing} />
       </ThemeProvider>
     </Provider>
   );

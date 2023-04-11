@@ -4,8 +4,6 @@ import {errorHandler} from '../../Services/toast-service';
 import {SetUserData, SetUserToken, SyncData} from '../types';
 
 export const setTokenAction = (token: string) => (dispatch: Function) => {
-  console.log(token);
-
   const userData = jwtDecode(token);
   dispatch({
     type: SetUserToken,

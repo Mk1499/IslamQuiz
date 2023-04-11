@@ -44,7 +44,6 @@ function ConfirmCode(props: MyProps) {
     };
     post(url, body, false)
       .then(({data}) => {
-        console.log('Data : ', data);
         props.setTokenAction(data?.token);
         props.navigation.navigate('ResetPassword', {
           token: data?.token,

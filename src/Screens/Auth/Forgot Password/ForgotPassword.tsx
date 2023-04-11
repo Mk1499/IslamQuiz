@@ -33,7 +33,7 @@ const ForgotPassword = (props: MyProps) => {
     setLoading(true);
     post(url, body, false)
       .then(({data}) => {
-        console.log('Data : ', data);
+        // console.log('Data : ', data);
         gotoOTP();
       })
       .catch((err: AxiosError) => {

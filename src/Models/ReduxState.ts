@@ -5,4 +5,11 @@ export default interface ReduxState {
     userToken: string;
     userData: User;
   };
+  fireConfig: {
+    activeBuildNumber: number;
+    playStoreURL: string;
+    facebookURL: string;
+    showSocial: boolean;
+    instagramURL: string;
+  };
 }

@@ -8,6 +8,7 @@ import QuizType from '../../../Models/Quiz.model';
 import moment from 'moment';
 import MyButton from '../../../Components/Native/MyButton/MyButton';
 import Share from 'react-native-share';
+import CountDown from 'react-native-countdown-component';
 
 type MyProps = {
   navigation: {
@@ -49,6 +50,36 @@ export default function QuizIntro(props: MyProps) {
       : quiz?.duration?.arName;
   }
 
+  function checkTakeable() {
+    const endDate: Date = quiz.endDate;
+    const startDate: Date = quiz.startDate;
+    const isFuture = startDate ? moment().diff(startDate) : false;
+    const isExpired = endDate ? moment().diff(endDate) : false;
+    if (!quiz.noOfQuestions) {
+      return false;
+    } else if (isFuture) {
+      return (
+        <CountDown
+          timeToShow={['D', 'H', 'M', 'S']}
+          digitTxtStyle={styles.digitText}
+          digitStyle={styles.digit}
+          until={moment().diff(quiz.startDate)}
+          timeLabels={{
+            m: I18n.Timer.minutes,
+            s: I18n.Timer.seconds,
+            d: I18n.Timer.days,
+            h: I18n.Timer.hours,
+          }}
+          style={styles.timer}
+        />
+      );
+    } else if (isExpired) {
+      return <Text>is Expired</Text>;
+    } else {
+      <MyButton label={I18n.Quiz.start} action={startQuiz} />;
+    }
+  }
+
   return (
     <ImageBackground
       source={require('../../../../assets/images/BGpattern.png')}
@@ -79,12 +110,18 @@ export default function QuizIntro(props: MyProps) {
             <Text style={styles.value}>{quiz.points}</Text>
           </View>
           <View style={styles.row}>
+            <Text style={styles.label}>{I18n.Quiz.createdAt} : </Text>
+            <Text style={styles.value}>
+              {moment(quiz.createdAt).format('Do MMM YYYY - hh:mm a')}
+            </Text>
+          </View>
+          <View style={styles.row}>
             <Text style={styles.label}>{I18n.Quiz.startDate} : </Text>
             <Text style={styles.value}>
               {moment(quiz.startDate).format('Do MMM YYYY - hh:mm a')}
             </Text>
           </View>
-          {quiz.endData ? (
+          {quiz.endDate ? (
             <View style={styles.row}>
               <Text style={styles.label}>{I18n.Quiz.endDate} : </Text>
               <Text style={styles.value}>
@@ -94,11 +131,7 @@ export default function QuizIntro(props: MyProps) {
           ) : null}
         </View>
 
-        <View>
-          {quiz.noOfQuestions ? (
-            <MyButton label={I18n.Quiz.start} action={startQuiz} />
-          ) : null}
-        </View>
+        <View>{checkTakeable()}</View>
       </ScrollView>
     </ImageBackground>
   );

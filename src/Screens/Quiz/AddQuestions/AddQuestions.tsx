@@ -12,7 +12,7 @@ import ProgressIndicator from '../../../Components/Quiz/ProgressIndicator/Progre
 import I18n from '../../../translate';
 import MultiModal from '../../../Components/Modals/MultiModal/MultiModal';
 import QuestionForm from '../../../Components/Quiz/QuestionForm/QuestionForm';
-import {deleteQuiz} from '../../../Services/quiz-service';
+// import {deleteQuiz} from '../../../Services/quiz-service';
 import {post} from '../../../Services/api-service';
 import QuizSuccessModal from '../../../Components/Modals/QuizSuccess/QuizSuccess';
 import NavigationService from '../../../Routes/NavigationService';
@@ -61,7 +61,7 @@ export default function AddQuestions({route}: MyProps) {
   }, []);
 
   function handleNextClicked(data: QuestionSubmit) {
-    console.log('Data : ', data);
+    // console.log('Data : ', data);
     const {answers, label, points, rigthAnswer} = data;
     setAddingQuestion(true);
     const url = '/quiz/addNewQuestion';
@@ -74,8 +74,8 @@ export default function AddQuestions({route}: MyProps) {
     };
     post(url, body)
       .then(() => {
-        console.log('Curent : ', currentQuestion);
-        console.log('no Of Q  : ', noOfQuestions);
+        // console.log('Curent : ', currentQuestion);
+        // console.log('no Of Q  : ', noOfQuestions);
         if (currentQuestion + 1 < noOfQuestions) {
           formRef?.current?.resetForm();
           setCurrentQuestion(currentQuestion + 1);
@@ -93,7 +93,7 @@ export default function AddQuestions({route}: MyProps) {
 
   function exit() {
     hideAllModals();
-    deleteQuiz(quizID);
+    // deleteQuiz(quizID);
     NavigationService.backMultiLevels(2);
   }
 

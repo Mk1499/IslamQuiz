@@ -1,12 +1,12 @@
 // import I18n, {getLanguages} from 'react-native-i18n';
-import en from './locales/en';
-import ar from './locales/ar';
+import en from './locales/en.js';
+import ar from './locales/ar.js';
 import Storage from '../Services/storage-service';
 
 import LocalizedStrings from 'react-native-localization';
 import StorageKeys from '../Config/StorageKeys';
 import * as moment from 'moment';
-// import 'moment/locale/ar';
+import 'moment/locale/ar';
 
 // I18n.fallbacks = true;
 
