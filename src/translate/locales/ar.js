@@ -91,6 +91,7 @@ export default {
     points: 'النقاط',
     createdAt: 'تاريخ الانشاء',
     endDate: 'تاريخ الانتهاء',
+    isExpired: 'انتهت صلاحية الاختبار ولا يمكنك إجراؤه الآن',
   },
   Modals: {
     timeOut: 'انتهي الوقت',

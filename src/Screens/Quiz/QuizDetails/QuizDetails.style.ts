@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native';
 import Constants from '../../../Config/Constants';
+import ThemeColors from '../../../Models/ThemeColors.model';
 import {getActiveLang} from '../../../translate';
 
 const {width, height, fonts, colors} = Constants;
-const makeStyle = (themeColors: any) =>
+const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
     container: {},
     upperCont: {
@@ -28,7 +29,7 @@ const makeStyle = (themeColors: any) =>
     },
     exitBtn: {
       alignSelf: 'center',
-      backgroundColor: '#333',
+      backgroundColor: themeColors.lightText,
       paddingHorizontal: 0.05 * width,
       paddingVertical: 0.01 * height,
       marginTop: 0.03 * height,
@@ -37,7 +38,7 @@ const makeStyle = (themeColors: any) =>
     exitText: {
       fontFamily: fonts.med,
       //   color: themeColors.primary,
-      color: '#fff',
+      color: themeColors.text,
       fontSize: 15,
     },
   });

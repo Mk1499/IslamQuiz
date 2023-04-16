@@ -18,7 +18,7 @@ import {errorHandler, showSuccess} from '../../../Services/toast-service';
 import MyImage from '../../../Components/Native/MyImage/MyImage';
 import {chooseImg} from '../../../Services/file-service';
 import {uploadImage} from '../../../Services/firebase-service';
-import {setTokenAction} from '../../../Redux/Actions/auth.action';
+import {setTokenAction, syncUserData} from '../../../Redux/Actions/auth.action';
 
 type MyProps = {
   navigation: {
@@ -26,10 +26,11 @@ type MyProps = {
   };
   user: User;
   setTokenAction: Function;
+  syncUserData: Function;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-shadow
-function ContactUs({navigation, user, setTokenAction}: MyProps) {
+function ContactUs({navigation, user, setTokenAction, syncUserData}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [photoURL, setPhotoURL] = useState(user.photo);
@@ -43,6 +44,7 @@ function ContactUs({navigation, user, setTokenAction}: MyProps) {
   }
 
   async function submit() {
+    setLoading(true);
     if (photoUpdated) {
       uploadImage(photo)
         .then(imgURL => {
@@ -65,11 +67,11 @@ function ContactUs({navigation, user, setTokenAction}: MyProps) {
       photo: ph,
       name,
     };
-    setLoading(true);
     put(url, body)
       .then(({data}) => {
         setTokenAction(data.token);
         showSuccess(I18n.SuccessMsg.profileUpdated);
+        syncUserData(user._id);
         goBack();
       })
       .catch(err => {
@@ -134,4 +136,6 @@ const mapStateToProps = (state: ReduxState) => ({
   user: state.auth.userData,
 });
 
-export default connect(mapStateToProps, {setTokenAction})(ContactUs);
+export default connect(mapStateToProps, {setTokenAction, syncUserData})(
+  ContactUs,
+);

@@ -12,7 +12,7 @@ export default {
   },
   Global: {
     otherLang: 'العربية',
-    appName: 'Mutanfeson',
+    appName: 'Motanfeson',
     next: 'Next',
     finish: 'Finish',
     back: 'Back',
@@ -90,6 +90,7 @@ export default {
     exit: 'Exit',
     question: 'Question',
     points: 'Points',
+    isExpired: "Quiz is Expired you can't take it now",
   },
   Modals: {
     timeOut: 'Time Out',

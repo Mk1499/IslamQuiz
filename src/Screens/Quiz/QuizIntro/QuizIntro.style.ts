@@ -38,7 +38,21 @@ const makeStyle = (themeColors: ThemeColors) =>
     digitText: {
       color: themeColors.text,
       fontFamily: fonts.reg,
-      fontSize: moderateScale(7),
+      fontSize: moderateScale(10),
+    },
+    labelStyle: {
+      color: themeColors.text,
+      fontFamily: fonts.reg,
+      fontSize: moderateScale(10),
+    },
+    expireMsg: {
+      color: themeColors.primary,
+      fontFamily: fonts.med,
+      fontSize: 15,
+      textAlign: 'center',
+    },
+    actionCont: {
+      marginBottom: moderateScale(15),
     },
   });
 

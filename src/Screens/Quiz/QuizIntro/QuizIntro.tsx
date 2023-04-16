@@ -53,17 +53,19 @@ export default function QuizIntro(props: MyProps) {
   function checkTakeable() {
     const endDate: Date = quiz.endDate;
     const startDate: Date = quiz.startDate;
-    const isFuture = startDate ? moment().diff(startDate) : false;
-    const isExpired = endDate ? moment().diff(endDate) : false;
+    const isFuture = startDate ? moment().diff(startDate, 's') < 0 : false;
+    const isExpired = endDate ? moment().diff(endDate, 's') > 0 : false;
     if (!quiz.noOfQuestions) {
       return false;
     } else if (isFuture) {
+      console.log('Diff : ', moment().diff(quiz.startDate, 's'));
       return (
         <CountDown
           timeToShow={['D', 'H', 'M', 'S']}
           digitTxtStyle={styles.digitText}
           digitStyle={styles.digit}
-          until={-1 * moment().diff(quiz.startDate)}
+          timeLabelStyle={styles.labelStyle}
+          until={-1 * moment().diff(quiz.startDate, 's')}
           timeLabels={{
             m: I18n.Timer.minutes,
             s: I18n.Timer.seconds,
@@ -74,9 +76,9 @@ export default function QuizIntro(props: MyProps) {
         />
       );
     } else if (isExpired) {
-      return <Text>is Expired</Text>;
+      return <Text style={styles.expireMsg}>{I18n.Quiz.isExpired}</Text>;
     } else {
-      <MyButton label={I18n.Quiz.start} action={startQuiz} />;
+      return <MyButton label={I18n.Quiz.start} action={startQuiz} />;
     }
   }
 
@@ -131,7 +133,7 @@ export default function QuizIntro(props: MyProps) {
           ) : null}
         </View>
 
-        <View>{checkTakeable()}</View>
+        <View style={styles.actionCont}>{checkTakeable()}</View>
       </ScrollView>
     </ImageBackground>
   );

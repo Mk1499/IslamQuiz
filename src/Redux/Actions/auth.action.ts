@@ -1,5 +1,7 @@
 import jwtDecode from 'jwt-decode';
+import StorageKeys from '../../Config/StorageKeys';
 import {get} from '../../Services/api-service';
+import StorageService from '../../Services/storage-service';
 import {errorHandler} from '../../Services/toast-service';
 import {SetUserData, SetUserToken, SyncData} from '../types';
 
@@ -25,6 +27,7 @@ export const syncUserData = (id: string) => (dispatch: Function) => {
   get(url, true)
     .then(({data}) => {
       const userData = jwtDecode(data);
+      StorageService.setItem(StorageKeys.userToken, data);
       dispatch({
         type: SetUserToken,
         payload: data,

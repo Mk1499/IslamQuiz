@@ -78,7 +78,7 @@ function ContactUs({navigation, user, fireConfig}: MyProps) {
             />
           </View>
         </View>
-        {fireConfig.showSocial !== 'false' && (
+        {fireConfig.showSocial !== false && (
           <View style={styles.socialCont}>
             <TouchableOpacity
               onPress={() => Linking.openURL(fireConfig.facebookURL)}>
