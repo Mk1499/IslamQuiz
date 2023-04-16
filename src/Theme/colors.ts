@@ -1,5 +1,5 @@
 export const LightColors = {
-  primary: '#00C4BC',
+  primary: '#149fac',
   text: '#333',
   lightText: '#eee',
   bg: '#fff',
@@ -8,7 +8,7 @@ export const LightColors = {
 };
 
 export const DartColors = {
-  primary: '#00C4BC',
+  primary: '#149fac',
   text: '#fff',
   lightText: '#222',
   bg: '#333',
