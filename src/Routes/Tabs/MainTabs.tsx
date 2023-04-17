@@ -1,11 +1,12 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../../Screens/Tabs/Home/Home';
-// import {Icon} from 'native-base';
-// import Ionicons from 'react-native-vector-icons/Ionicons';
+import {Icon} from 'native-base';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import I18n from '../../translate';
 import {useTheme} from '../../Theme/ThemeProvider';
-import {Image, Text} from 'react-native';
+import {Text} from 'react-native';
 import makeStyle from './Tabs.style';
 import Profile from '../../Screens/Tabs/Profile/Profile';
 
@@ -14,24 +15,6 @@ const Tab = createBottomTabNavigator();
 export default function MainTabs() {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
-  function defineIconImg(routeName: string, focused: boolean) {
-    let img;
-    let imgActive;
-    let image;
-    switch (routeName) {
-      case 'Home':
-        img = require('../../../assets/images/icons/Tabs/home.png');
-        imgActive = require('../../../assets/images/icons/Tabs/homeActive.png');
-        image = focused ? imgActive : img;
-        return image;
-
-      case 'Profile':
-        img = require('../../../assets/images/icons/Tabs/profile.png');
-        imgActive = require('../../../assets/images/icons/Tabs/profileActive.png');
-        image = focused ? imgActive : img;
-        return image;
-    }
-  }
 
   function defineTabName(routeName: string) {
     switch (routeName) {
@@ -45,16 +28,6 @@ export default function MainTabs() {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
-        tabBarIcon: ({focused}) => {
-          return (
-            // <Icon name={iconName} as={Ionicons} color={color} size={size}  />
-            <Image
-              source={defineIconImg(route.name, focused)}
-              style={styles.img}
-              resizeMode="contain"
-            />
-          );
-        },
         tabBarLabel: ({focused}) => {
           return (
             <Text
@@ -79,8 +52,15 @@ export default function MainTabs() {
           title: I18n.Screens.home,
           headerTitleStyle: {
             fontFamily: 'Cairo',
-            color: 'red',
           },
+          tabBarIcon: ({focused}) => (
+            <Icon
+              name="home"
+              size="lg"
+              as={AntDesign}
+              color={focused ? colors.primary : colors.text}
+            />
+          ),
         }}
       />
       <Tab.Screen
@@ -88,6 +68,14 @@ export default function MainTabs() {
         component={Profile}
         options={{
           headerShown: false,
+          tabBarIcon: ({focused}) => (
+            <Icon
+              name="profile"
+              size="lg"
+              as={AntDesign}
+              color={focused ? colors.primary : colors.text}
+            />
+          ),
         }}
       />
     </Tab.Navigator>
