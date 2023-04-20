@@ -20,6 +20,7 @@ import jwtDecode from 'jwt-decode';
 import User from '../../../Models/User.model';
 import {sendOTP} from '../../../Services/globalAPI-service';
 import config from '../../../Config/config';
+import {updateUserDevicetoken} from '../../../Services/user-service';
 
 type MyProps = {
   navigation: {
@@ -55,6 +56,7 @@ const Login = (props: MyProps) => {
         .then(({data}) => {
           Storage.setItem(StorageKeys.userToken, data);
           props.setTokenAction(data);
+          updateUserDevicetoken();
           handleLoginSuccess(data);
         })
         .catch((err: AxiosError) => {
@@ -90,6 +92,7 @@ const Login = (props: MyProps) => {
           .then(({data}) => {
             Storage.setItem(StorageKeys.userToken, data);
             props.setTokenAction(data);
+            updateUserDevicetoken();
             props.navigation.replace('Tabs');
           })
           .catch((err: AxiosError) => {

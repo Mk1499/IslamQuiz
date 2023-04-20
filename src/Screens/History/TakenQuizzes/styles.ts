@@ -12,12 +12,12 @@ const makeStyle = (themeColors: ThemeColors) =>
       backgroundColor: themeColors.bg,
     },
     content: {
-      minHeight: 0.6 * height,
+      minHeight: height,
       alignItems: 'center',
       justifyContent: 'center',
     },
     emptyCont: {
-      minHeight: 0.6 * height,
+      minHeight: height,
       justifyContent: 'center',
     },
     emptyMsg: {

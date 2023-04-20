@@ -42,6 +42,14 @@ const makeStyle = (themeColors: ThemeColors) =>
       color: themeColors.text,
       fontSize: 15,
     },
+    btnsCont: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-around',
+      position: 'absolute',
+      bottom: 0,
+      width: '100%',
+    },
   });
 
 export default makeStyle;

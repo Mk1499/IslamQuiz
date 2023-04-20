@@ -48,7 +48,7 @@ const makeStyle = (themeColors: ThemeColors) =>
       color: themeColors.text,
       fontFamily: fonts.med,
     },
-    choosedAnswerCont: {
+    choosedAnswerContRight: {
       shadowColor: '#000',
       shadowOffset: {
         width: 0,
@@ -58,6 +58,22 @@ const makeStyle = (themeColors: ThemeColors) =>
       shadowRadius: 3.84,
       elevation: 2,
       backgroundColor: themeColors.primary,
+      // backgroundColor: '#333',
+      marginVertical: 0.01 * height,
+      paddingVertical: 0.02 * height,
+      paddingHorizontal: 0.02 * width,
+      borderRadius: 10,
+    },
+    choosedAnswerContWrong: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 2,
+      backgroundColor: '#bc3e3e',
       // backgroundColor: '#333',
       marginVertical: 0.01 * height,
       paddingVertical: 0.02 * height,

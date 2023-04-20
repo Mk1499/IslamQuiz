@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {
   View,
   Text,
@@ -14,10 +14,10 @@ import makeStyle from './styles';
 import User from '../../../Models/User.model';
 import {get} from '../../../Services/api-service';
 import {errorHandler} from '../../../Services/toast-service';
-import QuizType from '../../../Models/Quiz.model';
 import I18n from '../../../translate';
 import {useNavigation} from '@react-navigation/native';
 import TakenQuizCard from '../../../Components/TakenQuizCard/TakenQuizCard';
+import Submittion from '../../../Models/Submittion.model';
 
 type MyProps = {
   user: User;
@@ -28,8 +28,17 @@ function TakenQuizzes({user}: MyProps) {
   const styles = makeStyle(colors);
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [quizzes, setQuizzes] = useState<QuizType[]>([]);
-  const {addListener} = useNavigation();
+  const [quizzes, setQuizzes] = useState<Submittion[]>([]);
+  const {addListener, navigate} = useNavigation();
+
+  const gotoQuizAnswers = useCallback(
+    (submittion: Submittion) => {
+      navigate('QuizAnswers', {
+        submit: submittion.submit,
+      });
+    },
+    [navigate],
+  );
 
   useEffect(() => {
     const unSubscribe = addListener('focus', () => {
@@ -84,7 +93,9 @@ function TakenQuizzes({user}: MyProps) {
         ) : (
           <FlatList
             data={quizzes}
-            renderItem={({item}) => <TakenQuizCard item={item} />}
+            renderItem={({item}) => (
+              <TakenQuizCard item={item} action={() => gotoQuizAnswers(item)} />
+            )}
             ListEmptyComponent={renderEmpty}
           />
         )}

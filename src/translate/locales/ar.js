@@ -15,6 +15,7 @@ export default {
     otherLang: 'English',
     appName: 'متنافسون',
     next: 'التالي',
+    prev: 'السابق',
     finish: 'انهاء',
     back: 'رجوع',
     cancel: 'الغاء',

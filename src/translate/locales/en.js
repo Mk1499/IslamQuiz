@@ -14,6 +14,7 @@ export default {
   Global: {
     otherLang: 'العربية',
     appName: 'Motanfeson',
+    prev: 'Prev',
     next: 'Next',
     finish: 'Finish',
     back: 'Back',
