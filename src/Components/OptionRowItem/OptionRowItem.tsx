@@ -1,5 +1,5 @@
 import {Icon} from 'native-base';
-import React from 'react';
+import React, {memo} from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import {useTheme} from '../../Theme/ThemeProvider';
 import makeStyle from './OptionRowItem.style';
@@ -11,7 +11,7 @@ type MyProps = {
   item: ProfileRowOption;
 };
 
-export default function OptionRowItem({item}: MyProps) {
+function OptionRowItem({item}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
 
@@ -37,3 +37,5 @@ export default function OptionRowItem({item}: MyProps) {
     </TouchableOpacity>
   );
 }
+
+export default memo(OptionRowItem);

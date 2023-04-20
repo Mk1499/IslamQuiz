@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, memo} from 'react';
 import {
   View,
   Text,
@@ -168,4 +168,4 @@ const mapStateToProps = state => ({
   userData: state?.auth.userData,
 });
 
-export default connect(mapStateToProps, {})(Home);
+export default connect(mapStateToProps, {})(memo(Home));

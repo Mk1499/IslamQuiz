@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Text, View, ImageBackground} from 'react-native';
 import makeStyle from './styles';
 import {useTheme} from '../../Theme/ThemeProvider';
@@ -84,4 +84,4 @@ const AuthHead = (props: MyProps) => {
   );
 };
 
-export default AuthHead;
+export default memo(AuthHead);

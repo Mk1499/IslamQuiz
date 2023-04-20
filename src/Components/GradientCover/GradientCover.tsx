@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Text} from 'react-native';
 import makeStyle from './style';
 import {useTheme} from '../../Theme/ThemeProvider';
@@ -18,7 +18,7 @@ type MyProps = {
   onShare: Function;
 };
 
-export default function GradientCover({
+function GradientCover({
   title,
   coverURL,
   onBack,
@@ -65,3 +65,5 @@ export default function GradientCover({
     </MyImageBG>
   );
 }
+
+export default memo(GradientCover);

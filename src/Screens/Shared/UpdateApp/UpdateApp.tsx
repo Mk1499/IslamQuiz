@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View, Text, ImageBackground, Image, Linking} from 'react-native';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import makeStyle from './UpdateApp.styles';
@@ -39,4 +39,4 @@ const mapStateToProps = (state: any) => ({
   fireConfig: state.fireConfig,
 });
 
-export default connect(mapStateToProps, {})(UpdateApp);
+export default connect(mapStateToProps, {})(memo(UpdateApp));

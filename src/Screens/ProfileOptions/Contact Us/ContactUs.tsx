@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, memo} from 'react';
 import {
   ImageBackground,
   Text,
@@ -106,4 +106,4 @@ const mapStateToProps = (state: ReduxState) => ({
   fireConfig: state.fireConfig,
 });
 
-export default connect(mapStateToProps, {})(ContactUs);
+export default connect(mapStateToProps, {})(memo(ContactUs));

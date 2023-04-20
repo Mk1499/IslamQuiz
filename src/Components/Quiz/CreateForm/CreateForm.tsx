@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState, useRef, memo} from 'react';
 import {View, Text} from 'react-native';
 import {MyInput, MyDropDown, MyButton, MyTextArea} from '../../Native';
 import I18n, {getActiveLang} from '../../../translate';
@@ -14,7 +14,7 @@ type MyProps = {
   processing: Boolean;
 };
 
-export default function CreateForm({handleNext, processing}: MyProps) {
+function CreateForm({handleNext, processing}: MyProps) {
   const [categories, setCategories] = useState();
   const [durations, setDurations] = useState();
   const [categoryID, setCategoryID] = useState();
@@ -166,3 +166,5 @@ export default function CreateForm({handleNext, processing}: MyProps) {
     </View>
   );
 }
+
+export default memo(CreateForm);

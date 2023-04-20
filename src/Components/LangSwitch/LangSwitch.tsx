@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {useTheme} from '../../Theme/ThemeProvider';
 import {getActiveLang, setActiveLang} from '../../translate';
 import makeStyle from './LangSwitch.style';
 
-export default function LangSwitch() {
+function LangSwitch() {
   const {colors, setRTL, setLangUpdated} = useTheme();
   const styles = makeStyle(colors);
 
@@ -45,3 +45,5 @@ export default function LangSwitch() {
     </TouchableOpacity>
   );
 }
+
+export default memo(LangSwitch);

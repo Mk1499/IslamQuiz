@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 import makeStyle from './styles';
 import {MyImageBG} from '../Native';
@@ -19,7 +19,7 @@ type MyProps = {
   action: Function;
 };
 
-export default function QuizCard({item, action}: MyProps) {
+function QuizCard({item, action}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
 
@@ -40,3 +40,5 @@ export default function QuizCard({item, action}: MyProps) {
     </TouchableOpacity>
   );
 }
+
+export default memo(QuizCard);

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, memo} from 'react';
 import {
   View,
   Text,
@@ -220,4 +220,4 @@ const mapStateToProps = state => ({
   user: state.auth.userData,
 });
 
-export default connect(mapStateToProps, {syncUserData})(QuizDetails);
+export default connect(mapStateToProps, {syncUserData})(memo(QuizDetails));

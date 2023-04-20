@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import {Image} from 'react-native';
 
 type MyProps = {
@@ -7,7 +7,7 @@ type MyProps = {
   isStatic: Boolean;
 };
 
-export default function MyImage({uri, style, children, isStatic}: MyProps) {
+function MyImage({uri, style, children, isStatic}: MyProps) {
   const [validURI, setvalidURI] = useState(false);
   useEffect(() => {
     if (!isStatic) {
@@ -32,3 +32,4 @@ export default function MyImage({uri, style, children, isStatic}: MyProps) {
     </Image>
   );
 }
+export default memo(MyImage);

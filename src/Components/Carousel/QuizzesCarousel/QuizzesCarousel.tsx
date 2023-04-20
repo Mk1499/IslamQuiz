@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import {View} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import {get} from '../../../Services/api-service';
@@ -8,7 +8,7 @@ import QuizCard from '../../QuizCard/QuizCard';
 import {moderateScale} from 'react-native-size-matters';
 
 const {width} = Constants;
-export default function QuizzesCarousel() {
+function QuizzesCarousel() {
   const [quizzes, setQuizzes] = useState([]);
   const {navigate} = useNavigation();
 
@@ -51,3 +51,5 @@ export default function QuizzesCarousel() {
     </View>
   );
 }
+
+export default memo(QuizzesCarousel);

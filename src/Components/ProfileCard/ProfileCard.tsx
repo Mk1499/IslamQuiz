@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View, Text} from 'react-native';
 import {useTheme} from '../../Theme/ThemeProvider';
 import MyImage from '../Native/MyImage/MyImage';
@@ -14,14 +14,7 @@ type MyProps = {
   rank: Number;
 };
 
-export default function ProfileCard({
-  name,
-  photo,
-  submissions,
-  points,
-  rank,
-  email,
-}: MyProps) {
+function ProfileCard({name, photo, submissions, points, rank, email}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
 
@@ -49,3 +42,5 @@ export default function ProfileCard({
     </View>
   );
 }
+
+export default memo(ProfileCard);

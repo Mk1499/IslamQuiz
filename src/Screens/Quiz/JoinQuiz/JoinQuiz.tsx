@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {memo, useState} from 'react';
 import {ImageBackground, ScrollView, View, Text} from 'react-native';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import makeStyle from './JoinQuiz.style';
@@ -83,4 +83,4 @@ const mapStateToProps = (state: ReduxState) => ({
   user: state.auth.userData,
 });
 
-export default connect(mapStateToProps, {setTokenAction})(JoinQuiz);
+export default connect(mapStateToProps, {setTokenAction})(memo(JoinQuiz));

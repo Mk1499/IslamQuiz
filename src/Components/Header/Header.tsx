@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View, Text} from 'react-native';
 import {useTheme} from '../../Theme/ThemeProvider';
 import makeStyle from './header.styles';
@@ -11,7 +11,7 @@ type MyProps = {
   goBack: Function;
 };
 
-export default function Header(props: MyProps) {
+function Header(props: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   return (
@@ -27,3 +27,5 @@ export default function Header(props: MyProps) {
     </View>
   );
 }
+
+export default memo(Header);

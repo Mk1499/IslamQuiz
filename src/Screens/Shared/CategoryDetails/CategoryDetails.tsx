@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import {
   ScrollView,
   ImageBackground,
@@ -30,7 +30,7 @@ type MyProps = {
   };
 };
 
-export default function CategoryDetails(props: MyProps) {
+function CategoryDetails(props: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [quizzes, setQuizzes] = useState([]);
@@ -112,3 +112,5 @@ export default function CategoryDetails(props: MyProps) {
     </ScrollView>
   );
 }
+
+export default memo(CategoryDetails);

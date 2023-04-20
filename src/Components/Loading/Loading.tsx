@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {memo, useEffect, useRef} from 'react';
 import {View, Animated} from 'react-native';
 import {useTheme} from '../../Theme/ThemeProvider';
 import makeStyle from './loading.style';
@@ -7,7 +7,7 @@ type MyProps = {
   isVisible: Boolean;
 };
 
-export default function Loading({isVisible}: MyProps) {
+function Loading({isVisible}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const opacity = useRef(new Animated.Value(1)).current;
@@ -47,3 +47,5 @@ export default function Loading({isVisible}: MyProps) {
     return <></>;
   }
 }
+
+export default memo(Loading);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {ImageBackground, Text, TouchableOpacity} from 'react-native';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import makeStyle from './ChangeTheme.style';
@@ -14,7 +14,7 @@ type MyProps = {
   };
 };
 
-export default function ChangeTheme({navigation}: MyProps) {
+function ChangeTheme({navigation}: MyProps) {
   const {colors, dark, setScheme} = useTheme();
 
   const styles = makeStyle(colors);
@@ -63,3 +63,5 @@ export default function ChangeTheme({navigation}: MyProps) {
     </ImageBackground>
   );
 }
+
+export default memo(ChangeTheme);

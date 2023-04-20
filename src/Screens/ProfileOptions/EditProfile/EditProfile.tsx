@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, memo} from 'react';
 import {
   ImageBackground,
   ScrollView,
@@ -137,5 +137,5 @@ const mapStateToProps = (state: ReduxState) => ({
 });
 
 export default connect(mapStateToProps, {setTokenAction, syncUserData})(
-  ContactUs,
+  memo(ContactUs),
 );

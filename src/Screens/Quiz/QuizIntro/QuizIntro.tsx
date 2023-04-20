@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View, Text, ScrollView, ImageBackground} from 'react-native';
 import makeStyle from './QuizIntro.style';
 import {useTheme} from '../../../Theme/ThemeProvider';
@@ -22,7 +22,7 @@ type MyProps = {
   };
 };
 
-export default function QuizIntro(props: MyProps) {
+function QuizIntro(props: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const {quiz} = props.route.params;
@@ -138,3 +138,5 @@ export default function QuizIntro(props: MyProps) {
     </ImageBackground>
   );
 }
+
+export default memo(QuizIntro);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 import makeStyle from './styles';
 import {Icon} from 'native-base';
@@ -6,7 +6,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import HomeOption from '../../Models/HomeOption.model';
 import {getActiveLang} from '../../translate';
 
-export default function OptionCard(props: {item: HomeOption}) {
+function OptionCard(props: {item: HomeOption}) {
   const styles = makeStyle();
 
   return (
@@ -29,3 +29,5 @@ export default function OptionCard(props: {item: HomeOption}) {
     </TouchableOpacity>
   );
 }
+
+export default memo(OptionCard);

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef, memo} from 'react';
 import {
   View,
   Text,
@@ -36,7 +36,7 @@ type QuestionSubmit = {
   rigthAnswer: String;
 };
 
-export default function AddQuestions({route}: MyProps) {
+function AddQuestions({route}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -156,3 +156,5 @@ export default function AddQuestions({route}: MyProps) {
     </ScrollView>
   );
 }
+
+export default memo(AddQuestions);

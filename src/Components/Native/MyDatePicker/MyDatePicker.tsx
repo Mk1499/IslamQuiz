@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {memo, useState} from 'react';
 import {View, Text} from 'react-native';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import makeStyle from './MyDatePicker.styles';
@@ -14,7 +14,7 @@ type MyProps = {
   label: string;
 };
 
-export default function MyDatePicker({label, initialDate, onChange}: MyProps) {
+function MyDatePicker({label, initialDate, onChange}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [date, setDate] = useState(initialDate || null);
@@ -67,3 +67,5 @@ export default function MyDatePicker({label, initialDate, onChange}: MyProps) {
     </View>
   );
 }
+
+export default memo(MyDatePicker);

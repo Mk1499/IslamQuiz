@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {memo, useState} from 'react';
 import {View, Text, Image, TextInput} from 'react-native';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import makeStyle from './QuizSuccess.styles';
@@ -25,7 +25,7 @@ type MyProps = {
   code: String;
 };
 
-export default function QuizSuccessModal(props: MyProps) {
+function QuizSuccessModal(props: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [copyIcon, setCopyIcon] = useState('copy');
@@ -108,3 +108,5 @@ export default function QuizSuccessModal(props: MyProps) {
     </View>
   );
 }
+
+export default memo(QuizSuccessModal);

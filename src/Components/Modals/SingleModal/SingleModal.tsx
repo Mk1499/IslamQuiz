@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View, Text, Image} from 'react-native';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import makeStyle from './SingleModal.style';
@@ -18,7 +18,7 @@ type MyProps = {
   btnProcessing?: boolean;
 };
 
-export default function SingleModal(props: MyProps) {
+function SingleModal(props: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
 
@@ -56,3 +56,5 @@ export default function SingleModal(props: MyProps) {
     </View>
   );
 }
+
+export default memo(SingleModal);

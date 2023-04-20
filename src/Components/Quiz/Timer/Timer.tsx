@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, memo} from 'react';
 import {View, Text} from 'react-native';
 import makeStyle from './Timer.style';
 import {useTheme} from '../../../Theme/ThemeProvider';
@@ -11,7 +11,7 @@ type MyProps = {
   stop: boolean;
 };
 
-export default function Timer({time, handleFinish, stop}: MyProps) {
+function Timer({time, handleFinish, stop}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [minutes, setMinutes] = useState(time);
@@ -67,3 +67,5 @@ export default function Timer({time, handleFinish, stop}: MyProps) {
     </View>
   );
 }
+
+export default memo(Timer);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View} from 'react-native';
 import makeStyle from './ProgressIndicator.style';
 import {useTheme} from '../../../Theme/ThemeProvider';
@@ -8,10 +8,7 @@ type MyProps = {
   activeIndex: Number;
 };
 
-export default function ProgressIndicator({
-  activeIndex,
-  noOfQuestions,
-}: MyProps) {
+function ProgressIndicator({activeIndex, noOfQuestions}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   return (
@@ -28,3 +25,5 @@ export default function ProgressIndicator({
     </View>
   );
 }
+
+export default memo(ProgressIndicator);

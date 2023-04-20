@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View, Text} from 'react-native';
 import {useTheme} from '../../Theme/ThemeProvider';
 import makeStyle from './EmptyMsg.style';
@@ -7,7 +7,7 @@ type MyProps = {
   msg: String;
 };
 
-export default function EmptyMsg({msg}: MyProps) {
+function EmptyMsg({msg}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
 
@@ -17,3 +17,5 @@ export default function EmptyMsg({msg}: MyProps) {
     </View>
   );
 }
+
+export default memo(EmptyMsg);

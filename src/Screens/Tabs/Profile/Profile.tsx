@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {
   ScrollView,
   ImageBackground,
@@ -108,4 +108,4 @@ const mapStateToProps = state => ({
   syncingData: state.auth.syncingUserData,
 });
 
-export default connect(mapStateToProps, {syncUserData})(Profile);
+export default connect(mapStateToProps, {syncUserData})(memo(Profile));

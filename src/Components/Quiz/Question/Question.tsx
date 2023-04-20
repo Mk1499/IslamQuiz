@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {memo, useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import makeStyle from './Question.style';
 import {useTheme} from '../../../Theme/ThemeProvider';
@@ -14,12 +14,7 @@ type MyProps = {
   processing: boolean;
 };
 
-export default function Question({
-  question,
-  handleNext,
-  lastQuestion,
-  processing,
-}: MyProps) {
+function Question({question, handleNext, lastQuestion, processing}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [choosedID, setChoosedID] = useState(null);
@@ -68,3 +63,5 @@ export default function Question({
     </View>
   );
 }
+
+export default memo(Question);

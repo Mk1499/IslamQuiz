@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import makeStyle from './styles';
 import {getActiveLang} from '../../translate';
@@ -20,7 +20,7 @@ type MyProps = {
   action: Function;
 };
 
-export default function CatCard({item, action}: MyProps) {
+function CatCard({item, action}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const title = getActiveLang() === 'en' ? item.enName : item.arName;
@@ -34,3 +34,5 @@ export default function CatCard({item, action}: MyProps) {
     </TouchableOpacity>
   );
 }
+
+export default memo(CatCard);

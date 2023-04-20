@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import {Image} from 'react-native';
 
 type MyProps = {
@@ -6,7 +6,7 @@ type MyProps = {
   style: any;
 };
 
-export default function ImageCover({uri, style, children}: MyProps) {
+function ImageCover({uri, style, children}: MyProps) {
   const [validURI, setvalidURI] = useState(false);
   useEffect(() => {
     fetch(uri).then(res => {
@@ -28,3 +28,5 @@ export default function ImageCover({uri, style, children}: MyProps) {
     </Image>
   );
 }
+
+export default memo(ImageCover);

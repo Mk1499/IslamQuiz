@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {memo, useState} from 'react';
 import {ScrollView} from 'react-native';
 import GradientCover from '../../../Components/GradientCover/GradientCover';
 import CreateForm from '../../../Components/Quiz/CreateForm/CreateForm';
@@ -11,7 +11,7 @@ type MyProps = {
     navigate: Function;
   };
 };
-export default function CreateQuiz(props: MyProps) {
+function CreateQuiz(props: MyProps) {
   // const {colors} = useTheme();
   // const styles = makeStyle(colors);
   const [creatingQuiz, setCreatingQuiz] = useState(false);
@@ -55,3 +55,4 @@ export default function CreateQuiz(props: MyProps) {
     </ScrollView>
   );
 }
+export default memo(CreateQuiz);

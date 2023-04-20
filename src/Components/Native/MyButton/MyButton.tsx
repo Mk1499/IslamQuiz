@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Text, TouchableOpacity, ActivityIndicator} from 'react-native';
 import {StyleProps} from 'react-native-reanimated';
 import {useTheme} from '../../../Theme/ThemeProvider';
@@ -13,7 +13,7 @@ type MyProps = {
   light?: Boolean;
 };
 
-export default function MyButton(props: MyProps) {
+function MyButton(props: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   return (
@@ -38,3 +38,5 @@ export default function MyButton(props: MyProps) {
     </TouchableOpacity>
   );
 }
+
+export default memo(MyButton);

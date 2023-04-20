@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View, Text, Image} from 'react-native';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import makeStyle from './MultiModal.style';
@@ -21,7 +21,7 @@ type MyProps = {
   visible: boolean;
 };
 
-export default function MultiModal(props: MyProps) {
+function MultiModal(props: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
 
@@ -67,3 +67,5 @@ export default function MultiModal(props: MyProps) {
     </View>
   );
 }
+
+export default memo(MultiModal);
