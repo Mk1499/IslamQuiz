@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {ImageBackground, Text, TouchableOpacity} from 'react-native';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import makeStyle from './ChangeLang.style';
@@ -14,7 +14,7 @@ type MyProps = {
   };
 };
 
-export default function ChangeLanguage({navigation}: MyProps) {
+function ChangeLanguage({navigation}: MyProps) {
   const {colors, setRTL, setLangUpdated} = useTheme();
 
   const styles = makeStyle(colors);
@@ -70,3 +70,5 @@ export default function ChangeLanguage({navigation}: MyProps) {
     </ImageBackground>
   );
 }
+
+export default memo(ChangeLanguage);

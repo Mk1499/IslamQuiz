@@ -9,6 +9,7 @@ export default {
     contactUs: 'تواصل معنا',
     editProfile: 'تعديل الملف الشخصي',
     joinQuiz: 'الانضمام إلى أختبار',
+    history: 'السجل',
   },
   Global: {
     otherLang: 'English',
@@ -178,6 +179,8 @@ export default {
   },
   EmptyMsg: {
     nqQuizzesInCat: 'عذرا ، لا توجد اختبارات في هذه الفئة ',
+    noTakenQuizzes: 'عذرا ولكنك  لم تأخذ أي اختبار حتى الآن',
+    noCreatedQuizzes: 'عذرا ، لكنك لم تنشئ أي اختبار حتى الآن',
   },
   SuccessMsg: {
     passwordChanged: 'تم تغيير كلمة السر بنجاح',
@@ -193,5 +196,9 @@ export default {
   UpdateApp: {
     msg: 'تطبيقك قديم وتحتاج إلى تحديث إصدار التطبيق الخاص بك للاستمتاع بأحدث الميزات الرائعة لدينا',
     update: 'تحديث الان',
+  },
+  History: {
+    taken: 'الاختبارت المسجلة',
+    mine: 'أختباراتي',
   },
 };

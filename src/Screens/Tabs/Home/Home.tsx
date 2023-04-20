@@ -21,6 +21,7 @@ import {get} from '../../../Services/api-service';
 import {RefreshControl} from 'react-native';
 import {connect} from 'react-redux';
 import User from '../../../Models/User.model';
+import QuizzesCarousel from '../../../Components/Carousel/QuizzesCarousel/QuizzesCarousel';
 
 type MyProps = {
   navigation: {
@@ -138,6 +139,10 @@ function Home(props: MyProps) {
             showsHorizontalScrollIndicator={false}
             keyExtractor={item => item.id}
           />
+        </View>
+
+        <View style={styles.section}>
+          <QuizzesCarousel />
         </View>
         <View style={styles.section}>
           <Text style={styles.secTitle}>{I18n.Home.categories}</Text>

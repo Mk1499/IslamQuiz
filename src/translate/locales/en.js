@@ -9,6 +9,7 @@ export default {
     contactUs: 'Contact Us',
     editProfile: 'Edit Profile',
     joinQuiz: 'Join Quiz',
+    history: 'History',
   },
   Global: {
     otherLang: 'العربية',
@@ -177,6 +178,8 @@ export default {
   },
   EmptyMsg: {
     nqQuizzesInCat: 'Sorry there is no quizzes in this category',
+    noTakenQuizzes: "Sorry you didn't take any quiz yet",
+    noCreatedQuizzes: "Sorry you didn't create any quiz yet",
   },
   SuccessMsg: {
     passwordChanged: 'Password Changed Successfully',
@@ -192,5 +195,9 @@ export default {
   UpdateApp: {
     msg: 'Your app is outdated and you need to update your app version to enjoy with our latest amazing features',
     update: 'Update Now',
+  },
+  History: {
+    taken: 'Taken Quizzes',
+    mine: 'My Quizzes',
   },
 };

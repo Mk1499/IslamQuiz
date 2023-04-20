@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, memo} from 'react';
 import {LogBox} from 'react-native';
 import StorageKeys from '../../Config/StorageKeys';
 import {
@@ -51,4 +51,4 @@ function Landing(props: MyProps) {
 
 const mapStateToProps = () => ({});
 
-export default connect(mapStateToProps, {setTokenAction})(Landing);
+export default connect(mapStateToProps, {setTokenAction})(memo(Landing));
