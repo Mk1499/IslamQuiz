@@ -60,17 +60,17 @@ function QuizDetails({navigation, route, user, syncUserData}: MyProps) {
     let url = `/quiz/questions/${quizID}`;
     get(url)
       .then(({data}) => {
+        console.log('MKQ : ', data);
         setQuiz(data);
         setTimerRun(true);
+        setLoading(false);
       })
       .catch(() => {
         showError(I18n.ErrorMessage.prevSubmitted);
         navigation.goBack();
-        // console.log('Err : ', err);
+        console.log('Err : ', err);
       })
-      .finally(() => {
-        setLoading(false);
-      });
+      .finally(() => {});
   }, [navigation, route?.params?.quiz?._id]);
 
   useEffect(() => {
@@ -96,6 +96,7 @@ function QuizDetails({navigation, route, user, syncUserData}: MyProps) {
     hideAllModals();
     navigation.goBack();
   }
+
   function submit(lastAns) {
     const time = moment().diff(startTime);
     const body = {
@@ -175,9 +176,9 @@ function QuizDetails({navigation, route, user, syncUserData}: MyProps) {
       ) : (
         <View style={styles.lowerCont}>
           <Question
-            question={quiz.questions[currentQuestion]}
+            question={quiz?.questions[currentQuestion]}
             handleNext={ansSubmit => handleNextClicked(ansSubmit)}
-            lastQuestion={currentQuestion === quiz.questions?.length - 1}
+            lastQuestion={currentQuestion === quiz?.questions?.length - 1}
             processing={submitting}
           />
           <TouchableOpacity style={styles.exitBtn} onPress={exitPrompt}>

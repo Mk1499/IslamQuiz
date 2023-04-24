@@ -63,6 +63,7 @@
     "react-native-toast-message": "^2.1.6",
     "react-native-ui-lib": "^6.27.3",
     "react-native-vector-icons": "^9.2.0",
+    "react-native-view-shot": "^3.6.0",
     "react-redux": "^8.0.2",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",

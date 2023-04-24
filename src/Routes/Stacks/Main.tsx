@@ -1,9 +1,5 @@
-import React, {
-  // Component ,
-  useEffect,
-} from 'react';
+import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-// import {Linking} from 'react-native';
 import Login from '../../Screens/Auth/Login/Login';
 // import navigation from '../NavigationService';
 import {useTheme} from '../../Theme/ThemeProvider';
@@ -33,7 +29,9 @@ const Stack = createStackNavigator();
 const MainStack = () => {
   const {colors, rtl} = useTheme();
 
-  useEffect(() => {}, []);
+  // useEffect(() => {
+  // }, []);
+
   return (
     <Stack.Navigator initialRouteName="Landing">
       {/* <Stack.Screen
@@ -278,21 +276,21 @@ export default MainStack;
 //     console.log("Login : ", useTheme());
 //   }
 
-//   setupLinking = () => {
-//     Linking.getInitialURL().then(url => {
-//       try {
-//         this.navigateHandler(url);
-//       } catch (err) {
-//         console.error('ERR : ', err);
-//       }
-//     });
-//   };
-
-//   linkingListener = () => {
-//     Linking.addEventListener('url', ({url}) => {
+// setupLinking = () => {
+//   Linking.getInitialURL().then(url => {
+//     try {
 //       this.navigateHandler(url);
-//     });
-//   };
+//     } catch (err) {
+//       console.error('ERR : ', err);
+//     }
+//   });
+// };
+
+// linkingListener = () => {
+//   Linking.addEventListener('url', ({url}) => {
+//     this.navigateHandler(url);
+//   });
+// };
 
 //   navigateHandler = async (url: string) => {
 //     console.log('URL : ', url);

@@ -10,6 +10,7 @@ const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
     container: {
       minHeight: height,
+      backgroundColor: themeColors.bg,
     },
     content: {flex: 1},
     metaDateCont: {
@@ -53,6 +54,11 @@ const makeStyle = (themeColors: ThemeColors) =>
     },
     actionCont: {
       marginBottom: moderateScale(15),
+    },
+    loadingCont: {
+      height: '100%',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
   });
 
