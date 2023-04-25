@@ -28,15 +28,15 @@ function ProfileCard({name, photo, submissions, points, rank, email}: MyProps) {
           <Text style={styles.dataItemText}>
             {I18n.Profile.noOfSubmissions}
           </Text>
-          <Text style={styles.dataItemText}>{submissions || 0}</Text>
+          <Text style={styles.dataItemTextValue}>{submissions || 0}</Text>
         </View>
         <View style={styles.dataItem}>
           <Text style={styles.dataItemText}> {I18n.Profile.points}</Text>
-          <Text style={styles.dataItemText}>{points || 0}</Text>
+          <Text style={styles.dataItemTextValue}>{points || 0}</Text>
         </View>
         <View style={styles.dataItem}>
           <Text style={styles.dataItemText}> {I18n.Profile.rank}</Text>
-          <Text style={styles.dataItemText}>{rank || 0}</Text>
+          <Text style={styles.dataItemTextValue}>{rank || 0}</Text>
         </View>
       </View>
     </View>

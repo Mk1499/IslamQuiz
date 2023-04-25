@@ -10,6 +10,7 @@ export default {
     editProfile: 'Edit Profile',
     joinQuiz: 'Join Quiz',
     history: 'History',
+    leaderboard: 'Leaderboard',
   },
   Global: {
     otherLang: 'العربية',
@@ -200,5 +201,9 @@ export default {
   History: {
     taken: 'Taken Quizzes',
     mine: 'My Quizzes',
+  },
+  Leaderboard: {
+    message: 'Every month, the top three winners earn valuable prizes!',
+    remaingTime: 'The remaining time for the next prize ',
   },
 };

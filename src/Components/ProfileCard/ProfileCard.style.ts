@@ -74,5 +74,11 @@ const makeStyle = (themeColors: ThemeColors) =>
       color: themeColors.text,
       textAlign: 'center',
     },
+    dataItemTextValue: {
+      fontFamily: fonts.bold,
+      fontSize: moderateScale(14),
+      color: themeColors.primary,
+      textAlign: 'center',
+    },
   });
 export default makeStyle;

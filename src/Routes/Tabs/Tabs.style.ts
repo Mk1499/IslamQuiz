@@ -10,14 +10,15 @@ const makeStyle = (themeColors: ThemeColors) =>
       width: moderateScale(20),
     },
     text: {
-      color: themeColors.text,
+      // color: themeColors.text,
+      color: '#fff',
       fontFamily: fonts.med,
       fontSize: moderateScale(10),
     },
     tab: {
       overflow: 'hidden',
       paddingVertical: moderateScale(5),
-      backgroundColor: themeColors.bg,
+      backgroundColor: themeColors.primary,
       // borderTopLeftRadius: 20,
       // borderTopRightRadius: 20,
       borderTopWidth: 1,

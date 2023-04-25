@@ -10,6 +10,7 @@ export default {
     editProfile: 'تعديل الملف الشخصي',
     joinQuiz: 'الانضمام إلى أختبار',
     history: 'السجل',
+    leaderboard: 'لوحة الصدارة',
   },
   Global: {
     otherLang: 'English',
@@ -201,5 +202,9 @@ export default {
   History: {
     taken: 'الاختبارت المسجلة',
     mine: 'أختباراتي',
+  },
+  Leaderboard: {
+    message: 'كل شهر ، يربح الفائزون الثلاثة الأوائل جوائز قيمة!',
+    remaingTime: 'الوقت المتبقي للجائزة التالية',
   },
 };

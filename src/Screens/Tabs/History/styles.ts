@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
-import ThemeColors from '../../Models/ThemeColors.model';
-import Constants from '../../Config/Constants';
+import ThemeColors from '../../../Models/ThemeColors.model';
+import Constants from '../../../Config/Constants';
 
 const {fonts} = Constants;
 

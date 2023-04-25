@@ -1,7 +1,7 @@
 export const LightColors = {
   primary: '#149fac',
   text: '#333',
-  lightText: '#eee',
+  lightText: '#ddd',
   bg: '#fff',
   placeholder: 'grey',
   inputBG: '#fff',

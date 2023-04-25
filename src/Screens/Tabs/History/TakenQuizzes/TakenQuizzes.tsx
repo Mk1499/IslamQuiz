@@ -8,16 +8,16 @@ import {
   FlatList,
 } from 'react-native';
 import {connect} from 'react-redux';
-import Loading from '../../../Components/Loading/Loading';
-import {useTheme} from '../../../Theme/ThemeProvider';
+import Loading from '../../../../Components/Loading/Loading';
+import {useTheme} from '../../../../Theme/ThemeProvider';
 import makeStyle from './styles';
-import User from '../../../Models/User.model';
-import {get} from '../../../Services/api-service';
-import {errorHandler} from '../../../Services/toast-service';
-import I18n from '../../../translate';
+import User from '../../../../Models/User.model';
+import {get} from '../../../../Services/api-service';
+import {errorHandler} from '../../../../Services/toast-service';
+import I18n from '../../../../translate';
 import {useNavigation} from '@react-navigation/native';
-import TakenQuizCard from '../../../Components/TakenQuizCard/TakenQuizCard';
-import Submittion from '../../../Models/Submittion.model';
+import TakenQuizCard from '../../../../Components/TakenQuizCard/TakenQuizCard';
+import Submittion from '../../../../Models/Submittion.model';
 
 type MyProps = {
   user: User;
@@ -86,7 +86,7 @@ function TakenQuizzes({user}: MyProps) {
         />
       }>
       <ImageBackground
-        source={require('../../../../assets/images/BGpattern.png')}
+        source={require('../../../../../assets/images/BGpattern.png')}
         style={styles.content}>
         {loading ? (
           <Loading isVisible={loading} />
