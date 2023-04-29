@@ -95,6 +95,8 @@ export default {
     createdAt: 'تاريخ الانشاء',
     endDate: 'تاريخ الانتهاء',
     isExpired: 'انتهت صلاحية الاختبار ولا يمكنك إجراؤه الآن',
+    info: 'معلومات',
+    rank: 'الترتيب',
   },
   Modals: {
     timeOut: 'انتهي الوقت',
@@ -183,6 +185,7 @@ export default {
     nqQuizzesInCat: 'عذرا ، لا توجد اختبارات في هذه الفئة ',
     noTakenQuizzes: 'عذرا ولكنك  لم تأخذ أي اختبار حتى الآن',
     noCreatedQuizzes: 'عذرا ، لكنك لم تنشئ أي اختبار حتى الآن',
+    noSubmissions: 'لا توجد عمليات اجابات لهذا الاختبار حتى الآن ',
   },
   SuccessMsg: {
     passwordChanged: 'تم تغيير كلمة السر بنجاح',

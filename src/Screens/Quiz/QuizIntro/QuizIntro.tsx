@@ -1,18 +1,19 @@
 import React, {memo, useRef, useEffect, useState} from 'react';
-import {View, Text, ScrollView, ImageBackground} from 'react-native';
+import {View, ScrollView, ImageBackground} from 'react-native';
 import makeStyle from './QuizIntro.style';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import GradientCover from '../../../Components/GradientCover/GradientCover';
-import I18n, {getActiveLang} from '../../../translate';
 import QuizType from '../../../Models/Quiz.model';
-import moment from 'moment';
-import MyButton from '../../../Components/Native/MyButton/MyButton';
 import Share from 'react-native-share';
-import CountDown from 'react-native-countdown-component';
 import ViewShot, {captureRef} from 'react-native-view-shot';
 import Loading from '../../../Components/Loading/Loading';
 import {get} from '../../../Services/api-service';
 import {errorHandler} from '../../../Services/toast-service';
+import QuizMetadata from '../../../Components/Quiz/QuizMetadata/QuizMetadata';
+import {TabView, TabBar, TabBarProps} from 'react-native-tab-view';
+import I18n from '../../../translate';
+import Constants from '../../../Config/Constants';
+import QuizRank from '../../../Components/Quiz/QuizRank/QuizRank';
 
 type MyProps = {
   navigation: {
@@ -33,6 +34,13 @@ function QuizIntro(props: MyProps) {
   const {quiz, id} = props.route.params;
   const [quizData, setQuizData] = useState<QuizType>();
   const [loading, setLoading] = useState<Boolean>(true);
+  const {width, height} = Constants;
+  const [index, setIndex] = React.useState(1);
+
+  const routes = [
+    {key: 'rank', title: I18n.Quiz.rank},
+    {key: 'info', title: I18n.Quiz.info},
+  ];
 
   const ref = useRef();
 
@@ -65,12 +73,6 @@ function QuizIntro(props: MyProps) {
     props.navigation.goBack();
   };
 
-  const startQuiz = () => {
-    props.navigation.navigate('QuizDetails', {
-      quiz: quizData,
-    });
-  };
-
   const share = () => {
     const message = `
     اختبر معلوماتك وتنافس معي عبر تطبيق متنافسون، هل أنت جاهز؟
@@ -92,43 +94,16 @@ function QuizIntro(props: MyProps) {
       });
   };
 
-  function getDuration() {
-    return getActiveLang() === 'en'
-      ? quizData?.duration?.enName
-      : quizData?.duration?.arName;
-  }
-
-  function checkTakeable() {
-    const endDate: Date = quizData.endDate;
-    const startDate: Date = quizData.startDate;
-    const isFuture = startDate ? moment().diff(startDate, 's') < 0 : false;
-    const isExpired = endDate ? moment().diff(endDate, 's') > 0 : false;
-    if (!quizData.noOfQuestions) {
-      return false;
-    } else if (isFuture) {
-      console.log('Diff : ', moment().diff(quizData.startDate, 's'));
-      return (
-        <CountDown
-          timeToShow={['D', 'H', 'M', 'S']}
-          digitTxtStyle={styles.digitText}
-          digitStyle={styles.digit}
-          timeLabelStyle={styles.labelStyle}
-          until={-1 * moment().diff(quizData.startDate, 's')}
-          timeLabels={{
-            m: I18n.Timer.minutes,
-            s: I18n.Timer.seconds,
-            d: I18n.Timer.days,
-            h: I18n.Timer.hours,
-          }}
-          style={styles.timer}
-        />
-      );
-    } else if (isExpired) {
-      return <Text style={styles.expireMsg}>{I18n.Quiz.isExpired}</Text>;
-    } else {
-      return <MyButton label={I18n.Quiz.start} action={startQuiz} />;
+  const renderScene = ({route}) => {
+    switch (route.key) {
+      case 'info':
+        return <QuizMetadata quizData={quizData} />;
+      case 'rank':
+        return <QuizRank quizID={quizData?._id} />;
+      default:
+        return null;
     }
-  }
+  };
 
   return (
     <ImageBackground
@@ -151,46 +126,28 @@ function QuizIntro(props: MyProps) {
               description={quizData.description}
               onShare={share}
             />
-            <View style={styles.metaDateCont}>
-              <View style={styles.row}>
-                <Text style={styles.label}>{I18n.Quiz.noOfQuestions} : </Text>
-                <Text style={styles.value}>{quizData.noOfQuestions}</Text>
-              </View>
-              <View style={styles.row}>
-                <Text style={styles.label}>{I18n.Quiz.noOfSubmissions} : </Text>
-                <Text style={styles.value}>{quizData.submissions}</Text>
-              </View>
-              <View style={styles.row}>
-                <Text style={styles.label}>{I18n.Quiz.duration} : </Text>
-                <Text style={styles.value}>{getDuration()}</Text>
-              </View>
-              <View style={styles.row}>
-                <Text style={styles.label}>{I18n.Quiz.points} : </Text>
-                <Text style={styles.value}>{quizData.points}</Text>
-              </View>
-              <View style={styles.row}>
-                <Text style={styles.label}>{I18n.Quiz.createdAt} : </Text>
-                <Text style={styles.value}>
-                  {moment(quizData.createdAt).format('Do MMM YYYY - hh:mm a')}
-                </Text>
-              </View>
-              <View style={styles.row}>
-                <Text style={styles.label}>{I18n.Quiz.startDate} : </Text>
-                <Text style={styles.value}>
-                  {moment(quizData.startDate).format('Do MMM YYYY - hh:mm a')}
-                </Text>
-              </View>
-              {quizData.endDate ? (
-                <View style={styles.row}>
-                  <Text style={styles.label}>{I18n.Quiz.endDate} : </Text>
-                  <Text style={styles.value}>
-                    {moment(quizData.endDate).format('Do MMM YYYY - hh:mm a')}
-                  </Text>
-                </View>
-              ) : null}
-            </View>
 
-            <View style={styles.actionCont}>{checkTakeable()}</View>
+            {/* <QuizMetadata quizData={quizData} /> */}
+            <View
+              style={{
+                height: 0.6 * height,
+              }}>
+              <TabView
+                navigationState={{index, routes}}
+                renderScene={renderScene}
+                onIndexChange={setIndex}
+                initialLayout={{width: width, height: 2000}}
+                style={styles.content}
+                renderTabBar={(prop: TabBarProps) => (
+                  <TabBar
+                    {...prop}
+                    style={styles.tabBarCont}
+                    labelStyle={styles.tabBarlabel}
+                    indicatorStyle={styles.indecator}
+                  />
+                )}
+              />
+            </View>
           </ScrollView>
         </ViewShot>
       )}

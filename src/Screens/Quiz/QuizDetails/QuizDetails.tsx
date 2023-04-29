@@ -98,7 +98,7 @@ function QuizDetails({navigation, route, user, syncUserData}: MyProps) {
   }
 
   function submit(lastAns) {
-    const time = moment().diff(startTime);
+    const time = moment().diff(startTime, 'milliseconds');
     const body = {
       userID: user._id,
       quizID: quiz._id,

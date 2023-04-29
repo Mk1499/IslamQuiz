@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
 import Constants from '../../../Config/Constants';
 
 const {fonts, width, height} = Constants;
@@ -31,6 +32,7 @@ const makeStyle = (themeColors: any) =>
       alignSelf: 'center',
       height: 0.1 * height,
       resizeMode: 'contain',
+      marginTop: moderateScale(10),
     },
     row: {
       flexDirection: 'row',

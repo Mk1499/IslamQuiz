@@ -33,6 +33,7 @@ const makeStyle = (themeColors: any) =>
       alignSelf: 'center',
       height: 0.1 * height,
       resizeMode: 'contain',
+      marginTop: moderateScale(10),
     },
     row: {
       flexDirection: 'row',

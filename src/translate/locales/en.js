@@ -94,6 +94,8 @@ export default {
     question: 'Question',
     points: 'Points',
     isExpired: "Quiz is Expired you can't take it now",
+    info: 'Info',
+    rank: 'Rank',
   },
   Modals: {
     timeOut: 'Time Out',
@@ -182,6 +184,7 @@ export default {
     nqQuizzesInCat: 'Sorry there is no quizzes in this category',
     noTakenQuizzes: "Sorry you didn't take any quiz yet",
     noCreatedQuizzes: "Sorry you didn't create any quiz yet",
+    noSubmissions: 'No Submits for this quiz till now',
   },
   SuccessMsg: {
     passwordChanged: 'Password Changed Successfully',

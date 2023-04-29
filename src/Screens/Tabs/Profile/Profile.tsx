@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React, {memo, useEffect} from 'react';
 import {
   ScrollView,
   ImageBackground,
@@ -18,6 +18,7 @@ import {googleLogout} from '../../../Services/social-service';
 import OptionRowItem from '../../../Components/OptionRowItem/OptionRowItem';
 import ProfileRowOption from '../../../Models/ProfileRowOption.model';
 import {syncUserData} from '../../../Redux/Actions/auth.action';
+import {useNavigation} from '@react-navigation/native';
 
 type MyProps = {
   user: User;
@@ -34,6 +35,8 @@ function Profile(props: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const {user, navigation} = props;
+  const {addListener} = useNavigation();
+
   const options: ProfileRowOption[] = [
     {
       label: I18n.Profile.editProfile,
@@ -71,6 +74,15 @@ function Profile(props: MyProps) {
     googleLogout();
     navigation.replace('Login');
   }
+
+  useEffect(() => {
+    const unSubscribe = addListener('focus', () => {
+      props.syncUserData(props.user?._id);
+    });
+
+    return unSubscribe;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <ScrollView

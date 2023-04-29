@@ -9,19 +9,20 @@ const {fonts, width, height} = Constants;
 const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
     container: {
-      minHeight: height,
+      //   minHeight: height,
       backgroundColor: themeColors.bg,
+      display: 'flex',
     },
-    // content: {flex: 1},
+    content: {flex: 1},
     metaDateCont: {
       paddingHorizontal: 0.03 * width,
-      paddingVertical: 0.03 * height,
+      paddingTop: 0.03 * height,
     },
     row: {
       flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
       borderColor: '#ddd',
       borderBottomWidth: 1,
-      paddingVertical: 0.02 * height,
+      paddingVertical: moderateScale(7),
     },
     label: {
       color: themeColors.primary,
@@ -59,16 +60,6 @@ const makeStyle = (themeColors: ThemeColors) =>
       height: '100%',
       alignItems: 'center',
       justifyContent: 'center',
-    },
-    tabBarCont: {
-      backgroundColor: themeColors.primary,
-      direction: 'ltr',
-    },
-    tabBarlabel: {
-      fontFamily: fonts.med,
-    },
-    indecator: {
-      backgroundColor: '#fff',
     },
   });
 

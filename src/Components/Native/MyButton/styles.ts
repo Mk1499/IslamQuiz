@@ -2,10 +2,11 @@
 import {StyleSheet} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import Constants from '../../../Config/Constants';
+import ThemeColors from '../../../Models/ThemeColors.model';
 
 const {height, fonts, colors} = Constants;
 
-const makeStyle = () =>
+const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
     container: {
       marginVertical: 0.03 * height,
@@ -30,17 +31,20 @@ const makeStyle = () =>
       color: colors.subText,
     },
     emptyLabel: {
-      color: Constants.colors.bg,
+      // color: Constants.colors.bg,
+      color: themeColors.primary,
       fontFamily: fonts.bold,
       fontSize: moderateScale(15),
     },
     filledCont: {
       elevation: 5,
-      backgroundColor: Constants.colors.bg,
+      // backgroundColor: Constants.colors.bg,
+      backgroundColor: themeColors.primary,
     },
     emptyCont: {
       backgroundColor: 'transparent',
-      borderColor: Constants.colors.bg,
+      // borderColor: Constants.colors.bg,
+      borderColor: themeColors.primary,
       borderWidth: 1,
     },
   });

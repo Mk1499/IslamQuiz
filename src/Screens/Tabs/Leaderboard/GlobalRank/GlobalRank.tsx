@@ -52,7 +52,7 @@ function GlobalRank() {
 
   function getQuizzes(refresh = false) {
     console.log('Called');
-    const url = '/user/listrank';
+    const url = '/user/listranktop';
     setRefreshing(refresh);
     get(url, true)
       .then(({data}) => {
