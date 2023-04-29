@@ -51,12 +51,11 @@ function GlobalRank() {
   }, []);
 
   function getQuizzes(refresh = false) {
-    console.log('Called');
     const url = '/user/listranktop';
     setRefreshing(refresh);
     get(url, true)
       .then(({data}) => {
-        console.log('Rank : ', data);
+        // console.log('Rank : ', data);
         setUsers(data);
       })
       .catch(err => {
@@ -91,9 +90,9 @@ function GlobalRank() {
         source={require('../../../../../assets/images/BGpattern.png')}
         style={styles.content}>
         <View style={styles.msgCont}>
-          <Text style={styles.msg}>{I18n.Leaderboard.message}</Text>
-          <Text style={styles.msg}>{I18n.Leaderboard.remaingTime}</Text>
-          <CountDown
+          <Text style={styles.msg}>{I18n.Leaderboard.wallOfHonor}</Text>
+          {/* <Text style={styles.msg}>{I18n.Leaderboard.remaingTime}</Text> */}
+          {/* <CountDown
             timeToShow={['D', 'H', 'M', 'S']}
             digitTxtStyle={styles.digitText}
             digitStyle={styles.digit}
@@ -109,7 +108,7 @@ function GlobalRank() {
               h: I18n.Timer.hours,
             }}
             style={styles.timer}
-          />
+          /> */}
         </View>
         {loading ? (
           <Loading isVisible={loading} />

@@ -46,7 +46,7 @@ function Landing(props: MyProps) {
   }
 
   const linkingListener = () => {
-    console.log('Setup Deep Linking');
+    // console.log('Setup Deep Linking');
     Linking.addEventListener('url', ({url}) => {
       navigateHandler(url);
     });
@@ -63,15 +63,15 @@ function Landing(props: MyProps) {
   };
 
   const navigateHandler = async (url: string) => {
-    console.log('External URL Landing: ', url);
+    // console.log('External URL Landing: ', url);
     const paramsArr = url.split('/');
-    console.log('Arr : ', paramsArr);
+    // console.log('Arr : ', paramsArr);
     const id = paramsArr.pop();
     const screen = paramsArr.pop();
-    console.log('Screen:', screen, 'id : ', id);
+    // console.log('Screen:', screen, 'id : ', id);
     switch (screen) {
       case 'quiz':
-        console.log('SS');
+        // console.log('SS');
         props.navigation.navigate('QuizIntro', {
           id,
         });

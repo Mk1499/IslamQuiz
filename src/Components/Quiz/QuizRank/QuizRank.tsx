@@ -35,6 +35,7 @@ export default function QuizRank({quizID}: myProps) {
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [quizID]);
 
   function getData(refresh = false) {
@@ -42,7 +43,7 @@ export default function QuizRank({quizID}: myProps) {
     setRefreshing(refresh);
     get(url, true)
       .then(({data}) => {
-        console.log('Data : ', data);
+        // console.log('Data : ', data);
         setUsers(data);
       })
       .catch(() => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View, Text, ScrollView, ImageBackground} from 'react-native';
 import QuizType from '../../../Models/Quiz.model';
 import {useTheme} from '../../../Theme/ThemeProvider';
@@ -8,12 +8,15 @@ import CountDown from 'react-native-countdown-component';
 import {MyButton} from '../../../Components/Native';
 import {useNavigation} from '@react-navigation/core';
 import moment from 'moment';
+import {connect} from 'react-redux';
+import User from '../../../Models/User.model';
 
 type MyProps = {
   quizData: QuizType;
+  user: User;
 };
 
-export default function QuizMetadata({quizData}: MyProps) {
+function QuizMetadata({quizData, user}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const {navigate} = useNavigation();
@@ -35,10 +38,11 @@ export default function QuizMetadata({quizData}: MyProps) {
     const startDate: Date = quizData.startDate;
     const isFuture = startDate ? moment().diff(startDate, 's') < 0 : false;
     const isExpired = endDate ? moment().diff(endDate, 's') > 0 : false;
-    if (!quizData.noOfQuestions) {
+
+    if (!quizData.noOfQuestions || quizData.user === user._id) {
       return false;
     } else if (isFuture) {
-      console.log('Diff : ', moment().diff(quizData.startDate, 's'));
+      // console.log('Diff : ', moment().diff(quizData.startDate, 's'));
       return (
         <CountDown
           timeToShow={['D', 'H', 'M', 'S']}
@@ -111,3 +115,9 @@ export default function QuizMetadata({quizData}: MyProps) {
     </ScrollView>
   );
 }
+
+const mapStateToProps = (state: any) => ({
+  user: state.auth.userData,
+});
+
+export default connect(mapStateToProps, {})(memo(QuizMetadata));

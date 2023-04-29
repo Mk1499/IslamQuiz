@@ -18,7 +18,7 @@ export async function requestUserPermission() {
     messaging()
       .getToken()
       .then((token: string) => {
-        console.log('FBToken : ', token);
+        // console.log('FBToken : ', token);
       })
       .catch(err => {
         console.log('Get Token Err: ', err);

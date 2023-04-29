@@ -63,7 +63,12 @@ function UserRow({user, currentUser}: myProps) {
               </Text>
               {renderPrizeIcon()}
             </View>
-            <Text style={styles.email}>{user.email}</Text>
+            <View style={styles.subDataCont}>
+              <Text style={styles.subTitle}>
+                {I18n.Leaderboard.noOfSubmissions}
+              </Text>
+              <Text style={styles.value}>{user.submissions}</Text>
+            </View>
           </View>
         </View>
       </View>

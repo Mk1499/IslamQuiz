@@ -18,7 +18,8 @@ const makeStyle = (themeColors: ThemeColors) =>
       fontFamily: fonts.med,
     },
     indecator: {
-      backgroundColor: themeColors.text,
+      // backgroundColor: themeColors.text,
+      backgroundColor: '#fff',
     },
   });
 export default makeStyle;

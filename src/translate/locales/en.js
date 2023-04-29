@@ -208,5 +208,8 @@ export default {
   Leaderboard: {
     message: 'Every month, the top three winners earn valuable prizes!',
     remaingTime: 'The remaining time for the next prize ',
+    noOfSubmissions: 'Number of Quizzes',
+    wallOfHonor:
+      'The race to the top is on! Check out our top 10 users on the leaderboard',
   },
 };

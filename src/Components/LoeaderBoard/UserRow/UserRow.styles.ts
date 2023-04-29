@@ -81,5 +81,20 @@ const makeStyle = (themeColors: ThemeColors) =>
       flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
       alignItems: 'center',
     },
+    subDataCont: {
+      flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
+      alignItems: 'center',
+    },
+    subTitle: {
+      fontFamily: fonts.med,
+      color: themeColors.primary,
+      fontSize: moderateScale(10),
+    },
+    value: {
+      fontFamily: fonts.med,
+      color: themeColors.text,
+      fontSize: moderateScale(11),
+      marginHorizontal: moderateScale(5),
+    },
   });
 export default makeStyle;

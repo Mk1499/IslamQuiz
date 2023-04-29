@@ -50,12 +50,11 @@ function TakenQuizzes({user}: MyProps) {
   }, []);
 
   function getQuizzes(refresh = false) {
-    console.log('Called');
     const url = `/submit/list/${user?._id}`;
     setRefreshing(refresh);
     get(url, true)
       .then(({data}) => {
-        console.log('Q : ', data);
+        // console.log('Q : ', data);
         setQuizzes(data);
       })
       .catch(err => {

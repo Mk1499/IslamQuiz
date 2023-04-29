@@ -1,3 +1,4 @@
+import {User} from '@react-native-google-signin/google-signin';
 import DurationType from './Duration.model';
 import QuestionType from './Question.model';
 
@@ -19,4 +20,5 @@ export default interface QuizType {
   endDate: Date;
   code: String;
   createdAt: Date;
+  user: User;
 }

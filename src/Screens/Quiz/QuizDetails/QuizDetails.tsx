@@ -60,7 +60,7 @@ function QuizDetails({navigation, route, user, syncUserData}: MyProps) {
     let url = `/quiz/questions/${quizID}`;
     get(url)
       .then(({data}) => {
-        console.log('MKQ : ', data);
+        // console.log('MKQ : ', data);
         setQuiz(data);
         setTimerRun(true);
         setLoading(false);
