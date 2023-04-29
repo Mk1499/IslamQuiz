@@ -21,6 +21,8 @@ export default {
     back: 'Back',
     cancel: 'Cancel',
     confirm: 'Confirm',
+    share: 'share',
+    points: 'Points',
   },
   SignIn: {
     ScreenName: 'Sign In',

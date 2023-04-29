@@ -11,6 +11,7 @@ type MyProps = {
   disabled?: Boolean;
   style?: StyleProps;
   light?: Boolean;
+  activeOpacity?: Number;
 };
 
 function MyButton(props: MyProps) {
@@ -27,7 +28,8 @@ function MyButton(props: MyProps) {
         props.style,
       ]}
       onPress={() => props.action()}
-      disabled={props.disabled || props.processing}>
+      disabled={props.disabled || props.processing}
+      activeOpacity={props.activeOpacity}>
       {props.processing ? (
         <ActivityIndicator color="#fff" size="large" />
       ) : (

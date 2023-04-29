@@ -21,6 +21,8 @@ export default {
     back: 'رجوع',
     cancel: 'الغاء',
     confirm: 'تأكيد',
+    share: 'مشاركة',
+    points: 'نقاط',
   },
   SignIn: {
     ScreenName: 'تسجيل الدخول',

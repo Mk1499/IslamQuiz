@@ -1,4 +1,4 @@
-import React, {useState, useEffect, memo} from 'react';
+import React, {useState, useEffect, memo, useRef} from 'react';
 import {
   View,
   Text,
@@ -24,6 +24,9 @@ import moment from 'moment';
 import {connect} from 'react-redux';
 import User from '../../../Models/User.model';
 import {syncUserData} from '../../../Redux/Actions/auth.action';
+import QuizPointsModal from '../../../Components/Modals/QuizPoints/QuizPoints';
+import Share from 'react-native-share';
+import ViewShot, {captureRef} from 'react-native-view-shot';
 
 type MyProps = {
   navigation: {
@@ -54,6 +57,7 @@ function QuizDetails({navigation, route, user, syncUserData}: MyProps) {
   const [submitting, setSubmitting] = useState(false);
   const [timerRun, setTimerRun] = useState(false);
   const startTime = moment();
+  const ref = useRef();
 
   useEffect(() => {
     let quizID = route?.params?.quiz?._id;
@@ -140,79 +144,124 @@ function QuizDetails({navigation, route, user, syncUserData}: MyProps) {
     navService.backMultiLevels(2);
   }
 
+  function shareScore() {
+    const message = `
+    اختبر معلوماتك وتنافس معي عبر تطبيق متنافسون، هل أنت جاهز؟
+    https://iquizz.netlify.app/mobile/quiz-${quiz._id}
+    `;
+    captureRef(ref, {
+      format: 'jpg',
+      quality: 0.8,
+    })
+      .then(url => {
+        console.log('UR : ', url);
+        Share.open({
+          message,
+          url,
+        });
+      })
+      .catch(err => {
+        console.log('err : ', err);
+      });
+  }
+
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.upperCont}>
-        <View style={styles.row}>
-          <Text style={styles.questionNumber}>
-            {I18n.Quiz.question} {currentQuestion + 1}
-          </Text>
-          {/* <Timer
+      <ViewShot
+        ref={ref}
+        captureMode="mount"
+        options={{fileName: 'IQuiz-Submit', format: 'jpg', quality: 0.9}}>
+        <View style={styles.upperCont}>
+          <View style={styles.row}>
+            <Text style={styles.questionNumber}>
+              {I18n.Quiz.question} {currentQuestion + 1}
+            </Text>
+            {/* <Timer
             time={quiz?.duration.value}
             handleFinish={timeOut}
             stop={showSuccessModal}
           /> */}
-          <CountDown
-            timeToShow={['M', 'S']}
-            digitTxtStyle={styles.digitText}
-            digitStyle={styles.digit}
-            until={quiz?.duration?.value * 60}
-            timeLabels={{
-              m: '',
-              s: '',
-            }}
-            style={styles.timer}
-            onFinish={timeOut}
-            running={timerRun}
+            <CountDown
+              timeToShow={['M', 'S']}
+              digitTxtStyle={styles.digitText}
+              digitStyle={styles.digit}
+              until={quiz?.duration?.value * 60}
+              timeLabels={{
+                m: '',
+                s: '',
+              }}
+              style={styles.timer}
+              onFinish={timeOut}
+              running={timerRun}
+            />
+          </View>
+          <ProgressIndicator
+            noOfQuestions={quiz.noOfQuestions}
+            activeIndex={currentQuestion}
           />
         </View>
-        <ProgressIndicator
-          noOfQuestions={quiz.noOfQuestions}
-          activeIndex={currentQuestion}
-        />
-      </View>
-      {loading ? (
-        <Loading isVisible={true} />
-      ) : (
-        <View style={styles.lowerCont}>
-          <Question
-            question={quiz?.questions[currentQuestion]}
-            handleNext={ansSubmit => handleNextClicked(ansSubmit)}
-            lastQuestion={currentQuestion === quiz?.questions?.length - 1}
-            processing={submitting}
-          />
-          <TouchableOpacity style={styles.exitBtn} onPress={exitPrompt}>
-            <Text style={styles.exitText}>{I18n.Quiz.exit}</Text>
-          </TouchableOpacity>
-        </View>
-      )}
+        {loading ? (
+          <Loading isVisible={true} />
+        ) : (
+          <View style={styles.lowerCont}>
+            <Question
+              question={quiz?.questions[currentQuestion]}
+              handleNext={ansSubmit => handleNextClicked(ansSubmit)}
+              lastQuestion={currentQuestion === quiz?.questions?.length - 1}
+              processing={submitting}
+            />
+            <View style={styles.btnsCont}>
+              <TouchableOpacity style={styles.exitBtn} onPress={exitPrompt}>
+                <Text style={styles.exitText}>{I18n.Quiz.exit}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                style={styles.shareBtn}
+                onPress={shareScore}>
+                <Text style={styles.shareLabel}>{I18n.Global.share}</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
 
-      <SingleModal
-        img="time"
-        title={I18n.Modals.timeOut}
-        msg={I18n.Modals.quizTimeOut}
-        btnText={I18n.Modals.exit}
-        visible={showErrModal}
-        btnAction={exit}
-      />
-      <SingleModal
+        <SingleModal
+          img="time"
+          title={I18n.Modals.timeOut}
+          msg={I18n.Modals.quizTimeOut}
+          btnText={I18n.Modals.exit}
+          visible={showErrModal}
+          btnAction={exit}
+        />
+        {/* <SingleModal
         img="happy"
         title={I18n.Modals.successTitle}
         msg={I18n.Modals.successMsg + points + I18n.Modals.points}
         btnText={I18n.Global.back}
         visible={showSuccessModal}
         btnAction={backToQuizzes}
-      />
-      <MultiModal
-        img="sad"
-        title={I18n.Modals.exitTitle}
-        msg={I18n.Modals.exitMsg}
-        btn1Text={I18n.Modals.exit}
-        btn1Action={exit}
-        btn2Text={I18n.Modals.continue}
-        btn2Action={() => setShowExitModal(false)}
-        visible={showExitModal}
-      />
+      /> */}
+        <QuizPointsModal
+          img="happy"
+          title={I18n.Modals.successTitle}
+          msg={I18n.Modals.successMsg}
+          btn1Text={I18n.Global.share}
+          btn2Text={I18n.Global.back}
+          btn2Action={backToQuizzes}
+          visible={showSuccessModal}
+          points={points}
+          quizID={quiz._id}
+        />
+        <MultiModal
+          img="sad"
+          title={I18n.Modals.exitTitle}
+          msg={I18n.Modals.exitMsg}
+          btn1Text={I18n.Modals.exit}
+          btn1Action={exit}
+          btn2Text={I18n.Modals.continue}
+          btn2Action={() => setShowExitModal(false)}
+          visible={showExitModal}
+        />
+      </ViewShot>
     </ScrollView>
   );
 }
