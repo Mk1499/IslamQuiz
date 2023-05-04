@@ -14,6 +14,7 @@ import {emailValidator} from '../../../utils/validator';
 import Storage from '../../../Services/storage-service';
 import StorageKeys from '../../../Config/StorageKeys';
 import config from '../../../Config/config';
+import {updateUserDevicetoken} from '../../../Services/user-service';
 
 type MyProps = {
   navigation: {
@@ -55,6 +56,7 @@ const Register = (props: MyProps) => {
       post(url, body, false)
         .then(({data}) => {
           Storage.setItem(StorageKeys.userToken, data);
+          updateUserDevicetoken();
           props.setTokenAction(data);
           if (config.verifyEmail) {
             props.navigation.navigate('OTP', {
