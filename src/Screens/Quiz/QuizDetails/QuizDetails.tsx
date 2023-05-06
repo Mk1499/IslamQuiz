@@ -32,6 +32,7 @@ type MyProps = {
   navigation: {
     navigate: Function;
     goBack: Function;
+    replace: Function;
   };
   route: {
     params: {
@@ -165,6 +166,13 @@ function QuizDetails({navigation, route, user, syncUserData}: MyProps) {
       });
   }
 
+  function gotohistory() {
+    setShowSuccessModal(false);
+    navigation.replace('Tabs', {
+      screen: 'History',
+    });
+  }
+
   return (
     <ScrollView style={styles.container}>
       <ViewShot
@@ -249,7 +257,10 @@ function QuizDetails({navigation, route, user, syncUserData}: MyProps) {
           btn2Action={backToQuizzes}
           visible={showSuccessModal}
           points={points}
+          totalPoints={quiz.points}
           quizID={quiz._id}
+          btn3Text={I18n.Modals.reviewAnswers}
+          btn3Action={gotohistory}
         />
         <MultiModal
           img="sad"

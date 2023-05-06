@@ -23,6 +23,7 @@ export default {
     confirm: 'Confirm',
     share: 'share',
     points: 'Points',
+    from: 'From',
   },
   SignIn: {
     ScreenName: 'Sign In',
@@ -114,6 +115,7 @@ export default {
     cancelCreateMsg: 'if you click on cancel your quiz will be deleted',
     quizCreateSuccess: 'Your Quiz Created Successfully',
     codeCopied: 'Copy Copied Successfully',
+    reviewAnswers: 'Review My Answers',
   },
   CreateQuiz: {
     createNew: 'Create New Quiz',
