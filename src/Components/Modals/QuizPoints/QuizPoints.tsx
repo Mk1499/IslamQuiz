@@ -25,6 +25,9 @@ type MyProps = {
   visible: boolean;
   points: number;
   quizID: string;
+  totalPoints: number;
+  btn3Text: string;
+  btn3Action: Function;
 };
 
 function QuizPoints(props: MyProps) {
@@ -79,7 +82,9 @@ function QuizPoints(props: MyProps) {
             <Text style={styles.title}>{props?.title}</Text>
             <Text style={styles.msg}>{props?.msg}</Text>
             <View style={styles.pointsCont}>
-              <Text style={styles.points}>{props.points}</Text>
+              <Text style={styles.totalPoints}> {props.totalPoints} </Text>
+              <Text style={styles.points}> {I18n.Global.from} </Text>
+              <Text style={styles.points}> {props.points} </Text>
             </View>
             <Text style={styles.pointsLabel}>{I18n.Global.points}</Text>
             <View style={styles.row}>
@@ -90,6 +95,7 @@ function QuizPoints(props: MyProps) {
                   processing={props?.btn1Processing}
                   light={true}
                   activeOpacity={1}
+                  style={styles.btnWide}
                 />
               </View>
               <View style={styles.btnCont}>
@@ -97,8 +103,17 @@ function QuizPoints(props: MyProps) {
                   label={props?.btn2Text}
                   action={props?.btn2Action}
                   processing={props?.btn2Processing}
+                  style={styles.btnWide}
                 />
               </View>
+            </View>
+            <View style={styles.btnContWide}>
+              <MyButton
+                label={props?.btn3Text}
+                action={props?.btn3Action}
+                processing={props?.btn2Processing}
+                style={styles.btnWide}
+              />
             </View>
           </View>
         </ViewShot>

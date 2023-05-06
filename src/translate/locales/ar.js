@@ -23,6 +23,7 @@ export default {
     confirm: 'تأكيد',
     share: 'مشاركة',
     points: 'نقاط',
+    from: 'من',
   },
   SignIn: {
     ScreenName: 'تسجيل الدخول',
@@ -114,6 +115,7 @@ export default {
     cancelCreateMsg: 'إذا نقرت على إلغاء ، فسيتم حذف الاختبار الخاص بك',
     quizCreateSuccess: 'تم إنشاء اختبارك بنجاح',
     codeCopied: 'تم نسخ الكود بنجاح',
+    reviewAnswers: 'مراجعة أجاباتي',
   },
   CreateQuiz: {
     createNew: 'أنشئ أختبار جديد',

@@ -2,6 +2,7 @@ import {StyleSheet} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import Constants from '../../../Config/Constants';
 import ThemeColors from '../../../Models/ThemeColors.model';
+import {getActiveLang} from '../../../translate';
 
 const {fonts, width, height} = Constants;
 
@@ -46,6 +47,13 @@ const makeStyle = (themeColors: ThemeColors) =>
       width: 0.35 * width,
       alignSelf: 'center',
     },
+    btnContWide: {
+      width: 0.7 * width,
+      alignSelf: 'center',
+    },
+    btnWide: {
+      marginTop: 0,
+    },
     pointsCont: {
       alignSelf: 'center',
       borderWidth: 1,
@@ -54,12 +62,20 @@ const makeStyle = (themeColors: ThemeColors) =>
       marginTop: moderateScale(5),
       borderTopRightRadius: moderateScale(10),
       borderBottomLeftRadius: moderateScale(10),
+      flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
+      alignItems: 'center',
     },
     points: {
       fontFamily: fonts.bold,
       fontSize: moderateScale(20),
       color: themeColors.primary,
     },
+    totalPoints: {
+      fontFamily: fonts.bold,
+      fontSize: moderateScale(20),
+      color: themeColors.text,
+    },
+
     pointsLabel: {
       fontFamily: fonts.med,
       fontSize: moderateScale(17),
