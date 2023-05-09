@@ -24,6 +24,7 @@ export default {
     share: 'share',
     points: 'Points',
     from: 'From',
+    send: 'Send',
   },
   SignIn: {
     ScreenName: 'Sign In',
@@ -99,6 +100,7 @@ export default {
     isExpired: "Quiz is Expired you can't take it now",
     info: 'Info',
     rank: 'Rank',
+    reportHead: 'Report a problem in this quiz',
   },
   Modals: {
     timeOut: 'Time Out',

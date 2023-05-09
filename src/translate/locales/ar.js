@@ -24,6 +24,7 @@ export default {
     share: 'مشاركة',
     points: 'نقاط',
     from: 'من',
+    send: 'أرسال',
   },
   SignIn: {
     ScreenName: 'تسجيل الدخول',
@@ -100,6 +101,7 @@ export default {
     isExpired: 'انتهت صلاحية الاختبار ولا يمكنك إجراؤه الآن',
     info: 'معلومات',
     rank: 'الترتيب',
+    reportHead: 'الابلاغ عن مشكلة في هذا الاختبار',
   },
   Modals: {
     timeOut: 'انتهي الوقت',

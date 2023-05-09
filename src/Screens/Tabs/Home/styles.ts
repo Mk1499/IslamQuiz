@@ -91,7 +91,7 @@ const makeStyle = (themeColors: ThemeColors) => {
       paddingHorizontal: 0.05 * width,
     },
     section: {
-      marginVertical: 0.02 * height,
+      // marginVertical: 0.02 * height,
     },
     secTitle: {
       color: themeColors.primary,

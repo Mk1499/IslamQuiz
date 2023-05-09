@@ -19,7 +19,11 @@ import QuizType from '../../../Models/Quiz.model';
 import {get, post} from '../../../Services/api-service';
 import Loading from '../../../Components/Loading/Loading';
 import CountDown from 'react-native-countdown-component';
-import {errorHandler, showError} from '../../../Services/toast-service';
+import {
+  errorHandler,
+  showError,
+  showSuccess,
+} from '../../../Services/toast-service';
 import moment from 'moment';
 import {connect} from 'react-redux';
 import User from '../../../Models/User.model';
@@ -27,6 +31,7 @@ import {syncUserData} from '../../../Redux/Actions/auth.action';
 import QuizPointsModal from '../../../Components/Modals/QuizPoints/QuizPoints';
 import Share from 'react-native-share';
 import ViewShot, {captureRef} from 'react-native-view-shot';
+import QuizReportModal from '../../../Components/Modals/QuizReportModal/QuizReportModal';
 
 type MyProps = {
   navigation: {
@@ -51,12 +56,14 @@ function QuizDetails({navigation, route, user, syncUserData}: MyProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showErrModal, setShowErrModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showReportModal, setShowReportModal] = useState(true);
   const [showExitModal, setShowExitModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const [submittion, setSubmittion] = useState([]);
   const [points, setPoints] = useState(0);
   const [submitting, setSubmitting] = useState(false);
   const [timerRun, setTimerRun] = useState(false);
+  const [addingReport, setAddingReport] = useState(false);
   const startTime = moment();
   const ref = useRef();
 
@@ -138,11 +145,36 @@ function QuizDetails({navigation, route, user, syncUserData}: MyProps) {
     setShowErrModal(false);
     setShowSuccessModal(false);
     setShowExitModal(false);
+    setShowReportModal(false);
   }
 
   function backToQuizzes() {
     hideAllModals();
     navService.backMultiLevels(2);
+  }
+
+  function addReport(report: string) {
+    const url = '/feedback/add';
+    let quizID = route?.params?.quiz?._id;
+    const body = {
+      comment: report,
+      user: user._id,
+      quiz: quizID,
+    };
+    setAddingReport(true);
+
+    post(url, body, true)
+      .then(({data}) => {
+        console.log('Report Data Res : ', data);
+        showSuccess(I18n.SuccessMsg.feedbackSend);
+      })
+      .catch(err => {
+        console.log('Err : ', err);
+      })
+      .finally(() => {
+        setAddingReport(false);
+        hideAllModals();
+      });
   }
 
   function shareScore() {
@@ -271,6 +303,17 @@ function QuizDetails({navigation, route, user, syncUserData}: MyProps) {
           btn2Text={I18n.Modals.continue}
           btn2Action={() => setShowExitModal(false)}
           visible={showExitModal}
+        />
+        <QuizReportModal
+          img="sad"
+          title={I18n.Quiz.reportHead}
+          msg={I18n.Modals.exitMsg}
+          btn1Text={I18n.Global.back}
+          btn1Action={hideAllModals}
+          btn2Text={I18n.Global.send}
+          btn2Action={report => addReport(report)}
+          visible={showReportModal}
+          btn2Processing={addingReport}
         />
       </ViewShot>
     </ScrollView>

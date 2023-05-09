@@ -36,7 +36,7 @@ function QuizzesCarousel() {
         mode="parallax"
         vertical={false}
         width={width}
-        height={moderateScale(180)}
+        height={moderateScale(200)}
         autoPlay={true}
         data={quizzes}
         scrollAnimationDuration={1000}

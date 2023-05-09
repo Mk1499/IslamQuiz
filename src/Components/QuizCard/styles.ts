@@ -22,7 +22,7 @@ const makeStyle = () =>
       borderBottomLeftRadius: 20,
       borderTopRightRadius: 20,
 
-      marginVertical: 10,
+      marginVertical: moderateScale(10),
       overflow: 'hidden',
     },
     cover: {
