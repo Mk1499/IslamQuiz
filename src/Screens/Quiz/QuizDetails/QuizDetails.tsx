@@ -56,7 +56,7 @@ function QuizDetails({navigation, route, user, syncUserData}: MyProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showErrModal, setShowErrModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [showReportModal, setShowReportModal] = useState(true);
+  const [showReportModal, setShowReportModal] = useState(false);
   const [showExitModal, setShowExitModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const [submittion, setSubmittion] = useState([]);
@@ -251,8 +251,17 @@ function QuizDetails({navigation, route, user, syncUserData}: MyProps) {
               processing={submitting}
             />
             <View style={styles.btnsCont}>
-              <TouchableOpacity style={styles.exitBtn} onPress={exitPrompt}>
-                <Text style={styles.exitText}>{I18n.Quiz.exit}</Text>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                style={styles.shareBtn}
+                onPress={exitPrompt}>
+                <Text style={styles.shareLabel}>{I18n.Quiz.exit}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                style={styles.shareBtn}
+                onPress={() => setShowReportModal(true)}>
+                <Text style={styles.shareLabel}>{I18n.Quiz.report}</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 activeOpacity={0.7}

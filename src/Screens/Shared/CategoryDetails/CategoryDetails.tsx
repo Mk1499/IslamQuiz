@@ -6,6 +6,7 @@ import {
   Text,
   FlatList,
   RefreshControl,
+  Switch,
 } from 'react-native';
 import makeStyle from './styles';
 import {useTheme} from '../../../Theme/ThemeProvider';
@@ -36,18 +37,25 @@ function CategoryDetails(props: MyProps) {
   const [quizzes, setQuizzes] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [filtered, setFiltered] = useState(true);
 
   const {category} = props.route.params;
 
   useEffect(() => {
-    getData();
+    getData(false, true, true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function getData(refresh = false) {
-    let url = `/category/quizzes/${category._id}`;
+  function getData(refresh = false, filter = false, reload = false) {
+    let url;
+    if (filter) {
+      url = `/category/quizzes/filtered/${category._id}`;
+    } else {
+      url = `/category/quizzes/${category._id}`;
+    }
     setRefreshing(refresh);
-    get(url)
+    setLoading(reload);
+    get(url, true)
       .then(({data}) => {
         setQuizzes(data);
       })
@@ -70,13 +78,19 @@ function CategoryDetails(props: MyProps) {
     });
   };
 
+  const toggleFilteration = () => {
+    setFiltered(!filtered);
+    getData(false, !filtered, true);
+  };
+
   return (
     <ScrollView
       style={styles.container}
       refreshControl={
         <RefreshControl
           refreshing={refreshing}
-          onRefresh={() => getData(true)}
+          onRefresh={() => getData(true, filtered, false)}
+          colors={[colors.primary]}
         />
       }>
       <GradientCover
@@ -93,19 +107,30 @@ function CategoryDetails(props: MyProps) {
         <Text style={styles.secTitle}>{I18n.Category.quizzes}</Text>
 
         <View style={styles.quizzesCont}>
-          <FlatList
-            data={quizzes}
-            renderItem={({item}) => (
-              <QuizCard
-                item={item}
-                action={() => gotoQuizIntro(item)}
-                key={'quiz-' + item._id}
-              />
-            )}
-            ListEmptyComponent={
-              !loading && <EmptyMsg msg={I18n.EmptyMsg.nqQuizzesInCat} />
-            }
-          />
+          <View style={styles.switchCont}>
+            {/* <Text style={styles.switchLabel}>{I18n.Category.showFiltered}</Text> */}
+            <Switch
+              trackColor={{false: colors.lightText, true: colors.primary}}
+              value={filtered}
+              onChange={toggleFilteration}
+            />
+            <Text style={styles.switchLabel}>{I18n.Category.showFiltered}</Text>
+          </View>
+          {!loading && (
+            <FlatList
+              data={quizzes}
+              renderItem={({item}) => (
+                <QuizCard
+                  item={item}
+                  action={() => gotoQuizIntro(item)}
+                  key={'quiz-' + item._id}
+                />
+              )}
+              ListEmptyComponent={
+                !loading && <EmptyMsg msg={I18n.EmptyMsg.nqQuizzesInCat} />
+              }
+            />
+          )}
           <Loading isVisible={loading} />
         </View>
       </ImageBackground>

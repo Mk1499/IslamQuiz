@@ -81,6 +81,8 @@ export default {
   },
   Category: {
     quizzes: 'الإختبارات',
+    showFiltered: 'أظهار الاختبارات غير المجابة فقط',
+    showAll: 'أظهر الكل',
   },
   Quiz: {
     noOfQuestions: 'عدد الأسئلة',
@@ -102,6 +104,7 @@ export default {
     info: 'معلومات',
     rank: 'الترتيب',
     reportHead: 'الابلاغ عن مشكلة في هذا الاختبار',
+    report: 'ابلاغ عن مشكلة',
   },
   Modals: {
     timeOut: 'انتهي الوقت',

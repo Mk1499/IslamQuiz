@@ -1,9 +1,12 @@
 import {StyleSheet} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
 import Constants from '../../../Config/Constants';
+import ThemeColors from '../../../Models/ThemeColors.model';
+import {getActiveLang} from '../../../translate';
 
 const {width, height, fonts} = Constants;
 
-const makeStyle = (themeColors: any) =>
+const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
     container: {},
     coverBGImg: {
@@ -35,6 +38,18 @@ const makeStyle = (themeColors: any) =>
       marginVertical: 0.02 * height,
       borderTopRightRadius: 20,
       borderBottomLeftRadius: 20,
+    },
+    switchCont: {
+      flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
+      alignItems: 'center',
+      alignSelf: getActiveLang() === 'ar' ? 'flex-end' : 'flex-start',
+      paddingHorizontal: moderateScale(20),
+      marginVertical: moderateScale(5),
+    },
+    switchLabel: {
+      color: themeColors.primary,
+      fontFamily: fonts.med,
+      fontSize: moderateScale(15),
     },
   });
 

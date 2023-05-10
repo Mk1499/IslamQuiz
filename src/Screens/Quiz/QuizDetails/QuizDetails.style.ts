@@ -54,7 +54,7 @@ const makeStyle = (themeColors: ThemeColors) =>
     shareBtn: {
       alignSelf: 'center',
       backgroundColor: themeColors.bg,
-      paddingHorizontal: 0.05 * width,
+      paddingHorizontal: 0.04 * width,
       paddingVertical: 0.01 * height,
       marginTop: 0.03 * height,
       borderRadius: 10,

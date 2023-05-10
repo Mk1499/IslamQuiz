@@ -80,6 +80,8 @@ export default {
   },
   Category: {
     quizzes: 'Quizzes',
+    showFiltered: 'Show Not Answered Only',
+    showAll: 'Show All',
   },
   Quiz: {
     noOfQuestions: 'Number of Questions',
@@ -101,6 +103,7 @@ export default {
     info: 'Info',
     rank: 'Rank',
     reportHead: 'Report a problem in this quiz',
+    report: 'Report Quiz',
   },
   Modals: {
     timeOut: 'Time Out',
