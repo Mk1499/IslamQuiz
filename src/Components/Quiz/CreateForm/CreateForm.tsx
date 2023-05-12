@@ -93,6 +93,8 @@ function CreateForm({handleNext, processing}: MyProps) {
   return (
     <View style={styles.formCont}>
       <Text style={styles.title}>{I18n.CreateQuiz.createNew}</Text>
+      <Text style={styles.note}>{I18n.CreateQuiz.createDesc}</Text>
+
       <View style={styles.line} />
       <MyInput
         placeholder={I18n.CreateQuiz.quizName}

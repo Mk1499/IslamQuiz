@@ -35,14 +35,14 @@ function Home(props: MyProps) {
   const styles = makeStyle(colors);
   const options: HomeOption[] = [
     {
-      bigText: I18n.Home.quiz,
+      bigText: I18n.Home.quiz + ' ' + I18n.Home.private,
       smallText: I18n.Home.create,
       bgColor: '#FF7040',
       action: createQuiz,
       id: 'createQuiz',
     },
     {
-      bigText: I18n.Home.quiz,
+      bigText: I18n.Home.quiz + ' ' + I18n.Home.private,
       smallText: I18n.Home.join,
       bgColor: '#47cc49',
       action: joinQuiz,

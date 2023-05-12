@@ -78,6 +78,7 @@ export default {
     challenge: 'تحدي',
     friend: 'صديق',
     categories: 'الاقسام',
+    private: 'خاص',
   },
   Category: {
     quizzes: 'الإختبارات',
@@ -137,6 +138,7 @@ export default {
     startDate: 'تاريخ البدء',
     expireDate: 'تاريخ الانتهاء',
     selectDate: 'أختار التاريخ',
+    createDesc: 'إنشاء مسابقة خاصة يمكن الوصول إليها من قبل طلابك برمز خاص',
   },
   OTP: {
     pleaseCheck: 'الرجاء إدخال رمز التحقق المرسل إلى بريدك الإلكتروني',

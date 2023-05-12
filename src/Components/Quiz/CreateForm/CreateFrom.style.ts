@@ -1,9 +1,11 @@
 import {StyleSheet} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
 import Constants from '../../../Config/Constants';
+import ThemeColors from '../../../Models/ThemeColors.model';
 
 const {width, height, fonts} = Constants;
 
-const makeStyle = (themeColors: any) =>
+const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
     formCont: {
       shadowColor: '#000',
@@ -30,6 +32,13 @@ const makeStyle = (themeColors: any) =>
       fontFamily: fonts.med,
       textAlign: 'center',
       fontSize: 20,
+      marginVertical: 5,
+    },
+    note: {
+      color: themeColors.primary,
+      fontFamily: fonts.med,
+      textAlign: 'center',
+      fontSize: moderateScale(14),
       marginVertical: 5,
     },
     line: {

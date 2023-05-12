@@ -77,6 +77,7 @@ export default {
     challenge: 'Challenge',
     friend: 'Friend',
     categories: 'Categories',
+    private: 'Private',
   },
   Category: {
     quizzes: 'Quizzes',
@@ -137,6 +138,8 @@ export default {
     startDate: 'Start Date',
     expireDate: 'Expire Date',
     selectDate: 'Select Date',
+    createDesc:
+      'Create a private Quiz could be accessed by your students with a special code',
   },
   OTP: {
     pleaseCheck: 'Please enter the verification code sent to your email',
