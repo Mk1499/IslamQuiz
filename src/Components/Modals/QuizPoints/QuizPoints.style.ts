@@ -62,7 +62,7 @@ const makeStyle = (themeColors: ThemeColors) =>
       marginTop: moderateScale(5),
       borderTopRightRadius: moderateScale(10),
       borderBottomLeftRadius: moderateScale(10),
-      flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
+      flexDirection: getActiveLang() === 'ar' ? 'row' : 'row-reverse',
       alignItems: 'center',
     },
     points: {
