@@ -1,9 +1,10 @@
-import React, {memo, useEffect} from 'react';
+import React, {memo, useCallback, useEffect, useState} from 'react';
 import {
   ScrollView,
   ImageBackground,
-  FlatList,
   RefreshControl,
+  FlatList,
+  View,
 } from 'react-native';
 import ProfileCard from '../../../Components/ProfileCard/ProfileCard';
 import TabHeader from '../../../Components/TabHeader/TabHeader';
@@ -12,13 +13,14 @@ import makeStyle from './Profile.styles';
 import I18n from '../../../translate';
 import {connect} from 'react-redux';
 import User from '../../../Models/User.model';
-import Storage from '../../../Services/storage-service';
-import StorageKeys from '../../../Config/StorageKeys';
-import {googleLogout} from '../../../Services/social-service';
-import OptionRowItem from '../../../Components/OptionRowItem/OptionRowItem';
-import ProfileRowOption from '../../../Models/ProfileRowOption.model';
 import {syncUserData} from '../../../Redux/Actions/auth.action';
 import {useNavigation} from '@react-navigation/native';
+import {MyText} from '../../../Components/Native';
+import {get} from '../../../Services/api-service';
+import Loader from '../../../Components/Loading/Loading';
+
+import TakenQuizCard from '../../../Components/TakenQuizCard/TakenQuizCard';
+import Submittion from '../../../Models/Submittion.model';
 
 type MyProps = {
   user: User;
@@ -34,45 +36,52 @@ type MyProps = {
 function Profile(props: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
-  const {user, navigation} = props;
-  const {addListener} = useNavigation();
+  const {user} = props;
+  const {addListener, navigate} = useNavigation();
+  const [refreshing, setRefreshing] = useState<Boolean>(false);
+  const [loading, setLoading] = useState<Boolean>(true);
+  const [userData, setUserData] = useState<User>(user);
+  const [takenQuizzes, setTakenQuizzes] = useState<Submittion[]>([]);
 
-  const options: ProfileRowOption[] = [
-    {
-      label: I18n.Profile.editProfile,
-      imgIcon: require('../../../../assets/images/icons/edituser.png'),
-      action: () => navToScreen('EditProfile'),
-    },
-    {
-      label: I18n.Profile.changeLang,
-      imgIcon: require('../../../../assets/images/icons/languages.png'),
-      action: () => navToScreen('ChangeLanguage'),
-    },
-    {
-      label: I18n.Profile.changeTheme,
-      imgIcon: require('../../../../assets/images/icons/changeTheme.png'),
-      action: () => navToScreen('ChangeTheme'),
-    },
-    {
-      label: I18n.Profile.contactUs,
-      imgIcon: require('../../../../assets/images/icons/contactForm.png'),
-      action: () => navToScreen('ContactUs'),
-    },
-    {
-      label: I18n.Profile.logout,
-      imgIcon: require('../../../../assets/images/icons/logout.png'),
-      action: logout,
-    },
-  ];
+  useEffect(() => {
+    getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  function navToScreen(screenName: String) {
-    props.navigation.navigate(screenName);
+  function getData(refresh = false) {
+    const id = props.user?._id;
+    const url = `/user/profile/${id}`;
+    setRefreshing(refresh);
+    get(url, true)
+      .then(({data}) => {
+        console.log('DAA : ', data);
+        setUserData(data.userData);
+        setTakenQuizzes(data?.submittedQuizzes);
+      })
+      .finally(() => {
+        setLoading(false);
+        setRefreshing(false);
+      });
   }
 
-  function logout() {
-    Storage.removeItem(StorageKeys.userToken);
-    googleLogout();
-    navigation.replace('Login');
+  // function navToScreen(screenName: String) {
+  //   navigate(screenName);
+  // }
+  const gotoQuizAnswers = useCallback(
+    (submittion: Submittion) => {
+      navigate('QuizAnswers', {
+        submitID: submittion._id,
+      });
+    },
+    [navigate],
+  );
+
+  function renderEmpty() {
+    return (
+      <View style={styles.emptyCont}>
+        <MyText style={styles.emptyMsg}>{I18n.EmptyMsg.noTakenQuizzes}</MyText>
+      </View>
+    );
   }
 
   useEffect(() => {
@@ -89,8 +98,9 @@ function Profile(props: MyProps) {
       style={styles.container}
       refreshControl={
         <RefreshControl
-          refreshing={props?.syncingData}
-          onRefresh={() => props.syncUserData(props.user?._id)}
+          refreshing={refreshing}
+          onRefresh={() => getData(true)}
+          colors={[colors.primary]}
         />
       }>
       <ImageBackground
@@ -98,18 +108,41 @@ function Profile(props: MyProps) {
         style={styles.content}>
         <TabHeader label={I18n.Screens.profile} />
         <ProfileCard
-          name={user?.name}
-          points={user?.points}
-          email={user?.email}
-          photo={user?.photo}
-          rank={user?.rank}
-          submissions={user?.submissions}
+          name={userData?.name}
+          points={userData?.points}
+          email={userData?.email}
+          photo={userData?.photo}
+          rank={userData?.rank}
+          submissions={userData?.submissions}
         />
-        <FlatList
-          contentContainerStyle={styles.optionsCont}
-          data={options}
-          renderItem={({item}) => <OptionRowItem item={item} />}
-        />
+        <View style={styles.dataContent}>
+          <View style={styles.section}>
+            <View style={styles.row}>
+              <MyText style={styles.sectionTitle}>
+                {I18n.Profile.myQuizzes}
+              </MyText>
+              {takenQuizzes.length > 5 ? (
+                <MyText style={styles.more}>{I18n.Global.more}</MyText>
+              ) : null}
+            </View>
+            {loading ? (
+              <Loader isVisible={true} />
+            ) : (
+              <FlatList
+                data={takenQuizzes}
+                renderItem={({item}) => (
+                  <TakenQuizCard
+                    item={item}
+                    action={() => gotoQuizAnswers(item)}
+                  />
+                )}
+                ListEmptyComponent={renderEmpty}
+                horizontal
+                style={styles.list}
+              />
+            )}
+          </View>
+        </View>
       </ImageBackground>
     </ScrollView>
   );

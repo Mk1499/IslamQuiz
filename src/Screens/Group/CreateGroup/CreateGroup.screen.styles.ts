@@ -16,7 +16,22 @@ const makeStyle = (themeColors: ThemeColors) =>
       paddingVertical: moderateScale(20),
       paddingHorizontal: moderateScale(10),
     },
-
+    img: {
+      width: moderateScale(100),
+      height: moderateScale(100),
+      borderRadius: moderateScale(50),
+      borderWidth: moderateScale(10),
+      borderColor: themeColors.lightText,
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5,
+      alignSelf: 'center',
+    },
     btn: {},
     input: {
       marginTop: moderateScale(20),
@@ -26,10 +41,6 @@ const makeStyle = (themeColors: ThemeColors) =>
       fontFamily: fonts.med,
       fontSize: moderateScale(15),
       color: themeColors.text,
-    },
-    img: {
-      alignSelf: 'center',
-      marginTop: moderateScale(40),
     },
   });
 export default makeStyle;

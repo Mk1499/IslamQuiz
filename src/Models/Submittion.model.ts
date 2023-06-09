@@ -3,6 +3,7 @@ import Submit from './Submit.model';
 import User from './User.model';
 
 export default interface Submittion {
+  _id: string;
   quiz: QuizType;
   user: User;
   createdAt: Date;

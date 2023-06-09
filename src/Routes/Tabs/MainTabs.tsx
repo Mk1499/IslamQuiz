@@ -10,10 +10,11 @@ import I18n from '../../translate';
 import {useTheme} from '../../Theme/ThemeProvider';
 import {Text} from 'react-native';
 import makeStyle from './Tabs.style';
-import Profile from '../../Screens/Tabs/Profile/Profile';
+import Settings from '../../Screens/Tabs/Settings/Settings';
 // import TakenQuizzes from '../../Screens/History/TakenQuizzes/TakenQuizzes';
 import {History} from '../../Screens/Tabs/History/History';
 import Leaderboard from '../../Screens/Tabs/Leaderboard/Leaderboard';
+import Profile from '../../Screens/Tabs/Profile/Profile';
 
 const Tab = createBottomTabNavigator();
 
@@ -31,6 +32,8 @@ export default function MainTabs() {
         return I18n.Screens.history;
       case 'Leaderboard':
         return I18n.Screens.leaderboard;
+      case 'Settings':
+        return I18n.Screens.setting;
     }
   }
 
@@ -43,8 +46,8 @@ export default function MainTabs() {
               style={[
                 styles.text,
                 {
-                  // color: focused ? colors.primary : '#333',
-                  color: !focused ? '#333' : '#fff',
+                  color: focused ? colors.primary : colors.text,
+                  // color: !focused ? '#333' : '#fff',
                 },
               ]}>
               {defineTabName(route.name)}
@@ -68,7 +71,7 @@ export default function MainTabs() {
               name="home"
               size="lg"
               as={AntDesign}
-              color={!focused ? '#333' : '#fff'}
+              color={focused ? colors.primary : colors.text}
             />
           ),
         }}
@@ -83,8 +86,24 @@ export default function MainTabs() {
               name="leaderboard"
               size="lg"
               as={MaterialIcons}
-              // color={focused ? colors.primary : '#333'}
-              color={!focused ? '#333' : '#fff'}
+              color={focused ? colors.primary : colors.text}
+              // color={!focused ? '#333' : '#fff'}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({focused}) => (
+            <Icon
+              name="user"
+              size="lg"
+              as={AntDesign}
+              color={focused ? colors.primary : colors.text}
+              // color={!focused ? '#333' : '#fff'}
             />
           ),
         }}
@@ -99,24 +118,24 @@ export default function MainTabs() {
               name="history"
               size="lg"
               as={Octicons}
-              // color={focused ? colors.primary : '#333'}
-              color={!focused ? '#333' : '#fff'}
+              color={focused ? colors.primary : colors.text}
+              // color={!focused ? '#333' : '#fff'}
             />
           ),
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={Profile}
+        name="Settings"
+        component={Settings}
         options={{
           headerShown: false,
           tabBarIcon: ({focused}) => (
             <Icon
-              name="profile"
+              name="setting"
               size="lg"
               as={AntDesign}
-              // color={focused ? colors.primary : '#333'}
-              color={!focused ? '#333' : '#fff'}
+              color={focused ? colors.primary : colors.text}
+              // color={!focused ? '#333' : '#fff'}
             />
           ),
         }}

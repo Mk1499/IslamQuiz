@@ -1,7 +1,7 @@
 import React, {memo, useState} from 'react';
-import {ImageBackground, ScrollView, View, Text, Image} from 'react-native';
+import {ImageBackground, ScrollView, View, Text} from 'react-native';
 import {useTheme} from '../../../Theme/ThemeProvider';
-import makeStyle from './JoinQuiz.style';
+import makeStyle from './CreateGroup.screen.styles';
 import I18n from '../../../translate';
 import Header from '../../../Components/Header/Header';
 import {MyButton, MyInput} from '../../../Components/Native';
@@ -10,7 +10,6 @@ import ReduxState from '../../../Models/ReduxState';
 import User from '../../../Models/User.model';
 import {get} from '../../../Services/api-service';
 import {errorHandler} from '../../../Services/toast-service';
-import {setTokenAction} from '../../../Redux/Actions/auth.action';
 
 type MyProps = {
   navigation: {
@@ -18,10 +17,9 @@ type MyProps = {
     navigate: Function;
   };
   user: User;
-  setTokenAction: Function;
 };
 
-function JoinQuiz({navigation}: MyProps) {
+function CreateGroup({navigation}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [code, setCode] = useState();
@@ -63,10 +61,7 @@ function JoinQuiz({navigation}: MyProps) {
             onChange={setCode}
             style={styles.input}
           />
-          <Image
-            style={styles.img}
-            source={require('../../../../assets/images/joinQuiz.png')}
-          />
+
           <View style={styles.btnCont}>
             <MyButton
               action={submit}
@@ -86,4 +81,4 @@ const mapStateToProps = (state: ReduxState) => ({
   user: state.auth.userData,
 });
 
-export default connect(mapStateToProps, {setTokenAction})(memo(JoinQuiz));
+export default connect(mapStateToProps, {})(memo(CreateGroup));

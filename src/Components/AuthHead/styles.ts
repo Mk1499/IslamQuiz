@@ -1,15 +1,16 @@
 /* eslint-disable prettier/prettier */
 import {Platform, StyleSheet} from 'react-native';
 import Constants from '../../Config/Constants';
+import ThemeColors from '../../Models/ThemeColors.model';
 import {getActiveLang} from '../../translate';
 
 const {colors} = Constants;
 
-const makeStyle = () =>
+const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
     container: {
       paddingTop: Platform.OS === 'ios' ? 0.05 * Constants.height : 0,
-      backgroundColor: Constants.colors.bg,
+      backgroundColor: themeColors.primary,
       width: Constants.width,
       paddingHorizontal: 0.03 * Constants.width,
       paddingBottom: 0.04 * Constants.height,
@@ -21,7 +22,7 @@ const makeStyle = () =>
       flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      // backgroundColor:'red'
+      // backgroundColor: 'red',
     },
     otherLang: {
       fontSize: 18,
@@ -64,7 +65,7 @@ const makeStyle = () =>
     },
     firstExtend: {
       height: 30,
-      backgroundColor: Constants.colors.bg,
+      backgroundColor: themeColors.primary,
       width: '95%',
       alignSelf: 'center',
       borderBottomLeftRadius: 30,
@@ -75,7 +76,7 @@ const makeStyle = () =>
     },
     secExtent: {
       height: 30,
-      backgroundColor: Constants.colors.bg,
+      backgroundColor: themeColors.primary,
       width: '85%',
       alignSelf: 'center',
       borderBottomLeftRadius: 30,

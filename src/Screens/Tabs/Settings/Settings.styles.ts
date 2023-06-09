@@ -4,32 +4,34 @@ import {moderateScale} from 'react-native-size-matters';
 import Constants from '../../../Config/Constants';
 import ThemeColors from '../../../Models/ThemeColors.model';
 
-const {height, fonts} = Constants;
+const {height} = Constants;
 
 const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
     container: {
-      minHeight: height,
       backgroundColor: themeColors.bg,
     },
     content: {
-      paddingVertical: moderateScale(20),
-      paddingHorizontal: moderateScale(10),
+      minHeight: height,
     },
-
-    btn: {},
-    input: {
-      marginTop: moderateScale(20),
-    },
-    msg: {
-      textAlign: 'center',
-      fontFamily: fonts.med,
-      fontSize: moderateScale(15),
-      color: themeColors.text,
-    },
-    img: {
+    optionsCont: {
+      // paddingBottom: moderateScale(20),
+      backgroundColor: themeColors.bg,
       alignSelf: 'center',
-      marginTop: moderateScale(40),
+      borderRadius: 15,
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5,
+      paddingTop: moderateScale(20),
+      width: '90%',
+    },
+    list: {
+      top: -1 * moderateScale(50),
     },
   });
 export default makeStyle;

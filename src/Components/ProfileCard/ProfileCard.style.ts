@@ -10,7 +10,7 @@ const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
     container: {
       backgroundColor: themeColors.bg,
-      top: -1 * moderateScale(50),
+      marginTop: -1 * moderateScale(50),
       alignItems: 'center',
       width: '80%',
       alignSelf: 'center',
@@ -39,6 +39,8 @@ const makeStyle = (themeColors: ThemeColors) =>
       shadowOpacity: 0.25,
       shadowRadius: 3.84,
       elevation: 5,
+      resizeMode: 'contain',
+      backgroundColor: themeColors.bg,
     },
     name: {
       color: themeColors.text,

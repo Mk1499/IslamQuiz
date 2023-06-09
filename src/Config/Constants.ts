@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import {Dimensions} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
 
 export default {
   width: Dimensions.get('window').width,
@@ -9,7 +10,7 @@ export default {
     bg: '#00C4BC',
     // bg:'#ffcf26',
     sky: '#00caf2',
-    main: '#00C4BC',
+    main: '#149fac',
     subText: '#fff',
     darkText: '#1c1d1c',
     white: '#fff',
@@ -20,5 +21,8 @@ export default {
     reg: 'Cairo',
     bold: 'Cairo-Bold',
     med: 'Cairo-SemiBold',
+  },
+  styles: {
+    paddingH: moderateScale(10),
   },
 };

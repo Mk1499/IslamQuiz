@@ -17,8 +17,8 @@ type MyProps = {
 };
 
 const AuthHead = (props: MyProps) => {
-  const {dark, setScheme, setLangUpdated, setRTL} = useTheme();
-  const styles = makeStyle();
+  const {dark, setScheme, setLangUpdated, setRTL, colors} = useTheme();
+  const styles = makeStyle(colors);
   const toggleScheme = () => {
     if (dark) {
       setScheme('light');

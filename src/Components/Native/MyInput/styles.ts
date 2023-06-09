@@ -3,16 +3,17 @@ import {StyleSheet} from 'react-native';
 import Constants from '../../../Config/Constants';
 import {getActiveLang} from '../../../translate';
 import {moderateScale} from 'react-native-size-matters';
+import ThemeColors from '../../../Models/ThemeColors.model';
 
 const {colors, fonts, width, height} = Constants;
 
-const makeStyle = (themeColors: any) =>
+const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
     container: {
       marginVertical: 0.005 * Constants.height,
     },
     label: {
-      color: colors.main,
+      color: themeColors.primary,
       fontFamily: fonts.med,
       fontSize: moderateScale(15),
       marginBottom: 0.008 * height,

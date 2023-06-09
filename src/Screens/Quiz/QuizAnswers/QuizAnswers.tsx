@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {memo, useState, useEffect} from 'react';
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import AnsweredQuestion from '../../../Components/Quiz/AnsweredQuestion/AnsweredQuestion';
@@ -6,6 +7,10 @@ import {useTheme} from '../../../Theme/ThemeProvider';
 import makeStyle from './styles';
 import I18n from '../../../translate';
 import Submit from '../../../Models/Submit.model';
+import {get} from '../../../Services/api-service';
+import {showError} from '../../../Services/toast-service';
+import Loader from '../../../Components/Loading/Loading';
+import {useRoute} from '@react-navigation/native';
 
 type MyProps = {
   navigation: {
@@ -24,12 +29,33 @@ function QuizAnswers(props: MyProps) {
   const styles = makeStyle(colors);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [submits, setSubmits] = useState<Submit[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const {params} = useRoute();
 
   useEffect(() => {
-    const s = props.route.params.submit;
-    console.log('S : ', s);
-    setSubmits(s);
-  }, [props]);
+    // const s = props.route.params.submit;
+    // console.log('S : ', s);
+    // setSubmits(s);
+    getData();
+  }, []);
+
+  function getData() {
+    const submitID = params.submitID;
+    const url = `/submit/${submitID}`;
+    console.log('URL : ', url);
+    get(url, true)
+      .then(({data}) => {
+        console.log('DA : ', data);
+        setSubmits(data.submit);
+      })
+      .catch(err => {
+        console.log('E : ', err);
+        showError('');
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }
 
   function handleNextClicked() {
     if (submits.length - 1 > currentQuestion) {
@@ -60,30 +86,35 @@ function QuizAnswers(props: MyProps) {
           activeIndex={currentQuestion}
         />
       </View>
+      {loading ? (
+        <Loader isVisible={true} />
+      ) : (
+        <View style={styles.lowerCont}>
+          {submits.length ? (
+            <AnsweredQuestion
+              submit={submits[currentQuestion]}
+              // lastQuestion={currentQuestion === submits?.length - 1}
+            />
+          ) : null}
 
-      <View style={styles.lowerCont}>
-        {submits.length ? (
-          <AnsweredQuestion
-            submit={submits[currentQuestion]}
-            // lastQuestion={currentQuestion === submits?.length - 1}
-          />
-        ) : null}
-
-        <View style={styles.btnsCont}>
-          <TouchableOpacity style={styles.exitBtn} onPress={handleNextClicked}>
-            <Text style={styles.exitText}>
-              {currentQuestion < submits?.length - 1
-                ? I18n.Global.next
-                : I18n.Quiz.exit}
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.exitBtn} onPress={handlePrev}>
-            <Text style={styles.exitText}>
-              {currentQuestion > 0 ? I18n.Global.prev : I18n.Quiz.exit}
-            </Text>
-          </TouchableOpacity>
+          <View style={styles.btnsCont}>
+            <TouchableOpacity
+              style={styles.exitBtn}
+              onPress={handleNextClicked}>
+              <Text style={styles.exitText}>
+                {currentQuestion < submits?.length - 1
+                  ? I18n.Global.next
+                  : I18n.Quiz.exit}
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.exitBtn} onPress={handlePrev}>
+              <Text style={styles.exitText}>
+                {currentQuestion > 0 ? I18n.Global.prev : I18n.Quiz.exit}
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      )}
     </ScrollView>
   );
 }

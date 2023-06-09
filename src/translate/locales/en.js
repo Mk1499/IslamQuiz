@@ -25,6 +25,7 @@ export default {
     points: 'Points',
     from: 'From',
     send: 'Send',
+    more: 'more',
   },
   SignIn: {
     ScreenName: 'Sign In',
@@ -161,6 +162,7 @@ export default {
     changeTheme: 'Change Theme',
     contactUs: 'Contact Us',
     logout: 'Logout',
+    myQuizzes: 'My Quizzes',
   },
   ChangeLanguage: {
     ar: 'Arabic',

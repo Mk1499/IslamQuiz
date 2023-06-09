@@ -25,6 +25,7 @@ export default {
     points: 'نقاط',
     from: 'من',
     send: 'أرسال',
+    more: 'المزيد',
   },
   SignIn: {
     ScreenName: 'تسجيل الدخول',
@@ -74,7 +75,7 @@ export default {
     welBack: 'مرحبا بك',
     create: 'أنشئ',
     quiz: 'أختبار',
-    join: 'التحق',
+    join: 'التحق ب',
     challenge: 'تحدي',
     friend: 'صديق',
     categories: 'الاقسام',
@@ -160,6 +161,7 @@ export default {
     changeTheme: 'تغيير المظهر',
     contactUs: 'تواصل معنا',
     logout: 'تسجيل خروج',
+    myQuizzes: 'أختباراتي',
   },
   ChangeLanguage: {
     ar: 'العربية',
@@ -214,8 +216,8 @@ export default {
     update: 'تحديث الان',
   },
   History: {
-    taken: 'الاختبارت المسجلة',
-    mine: 'أختباراتي',
+    taken: 'الاختبارت المجابة',
+    mine: 'قمت بأنشائها',
   },
   Leaderboard: {
     message: 'كل شهر ، يربح الفائزون الثلاثة الأوائل جوائز قيمة!',

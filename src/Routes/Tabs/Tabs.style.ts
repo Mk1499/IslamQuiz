@@ -18,11 +18,11 @@ const makeStyle = (themeColors: ThemeColors) =>
     tab: {
       overflow: 'hidden',
       paddingVertical: moderateScale(5),
-      backgroundColor: themeColors.primary,
+      backgroundColor: themeColors.bg,
       // borderTopLeftRadius: 20,
       // borderTopRightRadius: 20,
       borderTopWidth: 1,
-      borderColor: themeColors.primary,
+      borderTopColor: themeColors.primary,
     },
   });
 
