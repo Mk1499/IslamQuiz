@@ -6,6 +6,7 @@ import MyImage from '../../Native/MyImage/MyImage';
 import makeStyle from './UserRow.styles';
 import {connect} from 'react-redux';
 import I18n from '../../../translate';
+import {useNavigation} from '@react-navigation/native';
 
 type myProps = {
   user: User;
@@ -15,6 +16,8 @@ type myProps = {
 function UserRow({user, currentUser}: myProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
+
+  const {navigate} = useNavigation();
 
   function renderPrizeIcon() {
     switch (user.rank) {
@@ -42,10 +45,16 @@ function UserRow({user, currentUser}: myProps) {
     }
   }
 
+  function showUserProfile() {
+    navigate('UserProfile', {
+      user,
+    });
+  }
+
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => user.action && user.action()}
+      onPress={showUserProfile}
       activeOpacity={1}>
       <View style={styles.iconCont}>
         <Text style={styles.rank}>{user.rank}</Text>

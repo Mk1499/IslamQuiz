@@ -14,7 +14,7 @@ import Settings from '../../Screens/Tabs/Settings/Settings';
 // import TakenQuizzes from '../../Screens/History/TakenQuizzes/TakenQuizzes';
 import {History} from '../../Screens/Tabs/History/History';
 import Leaderboard from '../../Screens/Tabs/Leaderboard/Leaderboard';
-import Profile from '../../Screens/Tabs/Profile/Profile';
+import MyProfile from '../../Screens/Tabs/MyProfile/MyProfile';
 
 const Tab = createBottomTabNavigator();
 
@@ -26,7 +26,7 @@ export default function MainTabs() {
     switch (routeName) {
       case 'Home':
         return I18n.Screens.home;
-      case 'Profile':
+      case 'MyProfile':
         return I18n.Screens.profile;
       case 'History':
         return I18n.Screens.history;
@@ -93,8 +93,8 @@ export default function MainTabs() {
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={Profile}
+        name="MyProfile"
+        component={MyProfile}
         options={{
           headerShown: false,
           tabBarIcon: ({focused}) => (

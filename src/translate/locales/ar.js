@@ -161,7 +161,7 @@ export default {
     changeTheme: 'تغيير المظهر',
     contactUs: 'تواصل معنا',
     logout: 'تسجيل خروج',
-    myQuizzes: 'أختباراتي',
+    myQuizzes: 'الأختبارات المجابة',
   },
   ChangeLanguage: {
     ar: 'العربية',

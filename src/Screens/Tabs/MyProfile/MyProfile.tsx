@@ -9,7 +9,7 @@ import {
 import ProfileCard from '../../../Components/ProfileCard/ProfileCard';
 import TabHeader from '../../../Components/TabHeader/TabHeader';
 import {useTheme} from '../../../Theme/ThemeProvider';
-import makeStyle from './Profile.styles';
+import makeStyle from './MyProfile.styles';
 import I18n from '../../../translate';
 import {connect} from 'react-redux';
 import User from '../../../Models/User.model';
@@ -37,7 +37,7 @@ type MyProps = {
   syncingData: Boolean;
 };
 
-function Profile(props: MyProps) {
+function MyProfile(props: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const {user} = props;
@@ -201,4 +201,4 @@ const mapStateToProps = state => ({
   syncingData: state.auth.syncingUserData,
 });
 
-export default connect(mapStateToProps, {syncUserData})(memo(Profile));
+export default connect(mapStateToProps, {syncUserData})(memo(MyProfile));

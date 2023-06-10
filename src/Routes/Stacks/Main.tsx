@@ -23,6 +23,7 @@ import EditProfile from '../../Screens/ProfileOptions/EditProfile/EditProfile';
 import JoinQuiz from '../../Screens/Quiz/JoinQuiz/JoinQuiz';
 import QuizAnswers from '../../Screens/Quiz/QuizAnswers/QuizAnswers';
 // import Test from '../../Screens/Test/Text';
+import UserProfile from '../../Screens/Shared/UserProfile/UserProfile';
 
 const Stack = createStackNavigator();
 
@@ -233,6 +234,17 @@ const MainStack = () => {
       <Stack.Screen
         name="ContactUs"
         component={ContactUs}
+        options={{
+          headerShown: false,
+          cardStyle: {
+            backgroundColor: colors.bg,
+            direction: !rtl ? 'ltr' : 'rtl',
+          },
+        }}
+      />
+      <Stack.Screen
+        name="UserProfile"
+        component={UserProfile}
         options={{
           headerShown: false,
           cardStyle: {
