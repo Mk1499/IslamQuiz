@@ -178,10 +178,12 @@ function MyProfile(props: MyProps) {
                 <FlatList
                   data={takenQuizzes}
                   renderItem={({item}) => (
-                    <TakenQuizCard
-                      item={item}
-                      action={() => gotoQuizAnswers(item)}
-                    />
+                    <View style={styles.cardCont}>
+                      <TakenQuizCard
+                        item={item}
+                        action={() => gotoQuizAnswers(item)}
+                      />
+                    </View>
                   )}
                   ListEmptyComponent={renderEmpty}
                   horizontal

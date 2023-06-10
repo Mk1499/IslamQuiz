@@ -51,5 +51,8 @@ const makeStyle = (themeColors: ThemeColors) =>
     icon: {
       color: '#fff',
     },
+    cardCont: {
+      marginEnd: moderateScale(5),
+    },
   });
 export default makeStyle;
