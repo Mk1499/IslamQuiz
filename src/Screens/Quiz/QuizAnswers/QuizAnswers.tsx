@@ -33,23 +33,17 @@ function QuizAnswers(props: MyProps) {
   const {params} = useRoute();
 
   useEffect(() => {
-    // const s = props.route.params.submit;
-    // console.log('S : ', s);
-    // setSubmits(s);
     getData();
   }, []);
 
   function getData() {
     const submitID = params.submitID;
     const url = `/submit/${submitID}`;
-    console.log('URL : ', url);
     get(url, true)
       .then(({data}) => {
-        console.log('DA : ', data);
         setSubmits(data.submit);
       })
-      .catch(err => {
-        console.log('E : ', err);
+      .catch(() => {
         showError('');
       })
       .finally(() => {
@@ -76,11 +70,13 @@ function QuizAnswers(props: MyProps) {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.upperCont}>
-        <View style={styles.row}>
-          <Text style={styles.questionNumber}>
-            {I18n.Quiz.question} {currentQuestion + 1}
-          </Text>
-        </View>
+        {!loading && (
+          <View style={styles.row}>
+            <Text style={styles.questionNumber}>
+              {I18n.Quiz.question} {currentQuestion + 1}
+            </Text>
+          </View>
+        )}
         <ProgressIndicator
           noOfQuestions={submits?.length}
           activeIndex={currentQuestion}

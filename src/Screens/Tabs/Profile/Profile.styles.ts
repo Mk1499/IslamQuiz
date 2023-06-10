@@ -14,6 +14,7 @@ const makeStyle = (themeColors: ThemeColors) =>
     },
     content: {
       minHeight: height,
+      backgroundColor: themeColors.bg,
     },
     dataContent: {
       paddingHorizontal: styles.paddingH,
@@ -46,6 +47,9 @@ const makeStyle = (themeColors: ThemeColors) =>
       color: themeColors.text,
       fontFamily: fonts.med,
       fontSize: moderateScale(17),
+    },
+    icon: {
+      color: '#fff',
     },
   });
 export default makeStyle;

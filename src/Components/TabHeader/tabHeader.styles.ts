@@ -15,7 +15,7 @@ const makeStyle = (themeColors: any) =>
       backgroundColor: themeColors.primary,
       paddingTop: moderateScale(20),
       paddingBottom: moderateScale(70),
-      paddingHorizontal: moderateScale(10),
+      paddingHorizontal: moderateScale(15),
     },
     icon: {
       color: colors.white,
@@ -40,6 +40,9 @@ const makeStyle = (themeColors: any) =>
       shadowOpacity: 0.25,
       shadowRadius: 3.84,
       elevation: 15,
+    },
+    iconCont: {
+      minWidth: moderateScale(20),
     },
   });
 
