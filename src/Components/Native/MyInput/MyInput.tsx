@@ -5,20 +5,18 @@ import {
   Text,
   TextInput,
   View,
+  TextInputProps,
 } from 'react-native';
-import {StyleProps} from 'react-native-reanimated';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import makeStyle from './styles';
 import {Icon} from 'native-base';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-type MyProps = {
+type MyProps = TextInputProps & {
   label: String;
-  placeholder: String;
   secured: Boolean;
   onChange: Function;
   keyboardType: KeyboardTypeOptions;
-  style: StyleProps;
   value?: String;
 };
 
@@ -32,8 +30,9 @@ export default forwardRef(function MyInput(props: MyProps, ref) {
       {props?.label && <Text style={styles.label}>{props.label}</Text>}
       <View style={styles.inputCont}>
         <TextInput
+          {...props}
           placeholder={props.placeholder}
-          style={styles.input}
+          style={[styles.input, props.style]}
           secureTextEntry={secured}
           onChangeText={t => props.onChange(t)}
           placeholderTextColor={colors.placeholder}

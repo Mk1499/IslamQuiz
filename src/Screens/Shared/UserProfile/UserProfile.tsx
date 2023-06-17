@@ -119,7 +119,7 @@ function Profile() {
           style={styles.content}>
           <TabHeader
             label={user.name}
-            leftIcon={
+            rightIcon={
               <Icon
                 as={AntDesign}
                 size="xl"
@@ -128,7 +128,7 @@ function Profile() {
                 onPress={goBack}
               />
             }
-            rightIcon={
+            leftIcon={
               <Icon
                 name="sharealt"
                 as={AntDesign}

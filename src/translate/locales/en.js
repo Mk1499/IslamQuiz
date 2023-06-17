@@ -11,6 +11,7 @@ export default {
     joinQuiz: 'Join Quiz',
     history: 'History',
     leaderboard: 'Leaderboard',
+    search: 'Search',
   },
   Global: {
     otherLang: 'العربية',
@@ -106,6 +107,9 @@ export default {
     rank: 'Rank',
     reportHead: 'Report a problem in this quiz',
     report: 'Report Quiz',
+  },
+  Search: {
+    inputPlaceHolder: 'Search for users or quizs or groups',
   },
   Modals: {
     timeOut: 'Time Out',

@@ -11,6 +11,7 @@ export default {
     joinQuiz: 'الانضمام إلى أختبار',
     history: 'السجل',
     leaderboard: 'لوحة الصدارة',
+    search: 'البحث',
   },
   Global: {
     otherLang: 'English',
@@ -107,6 +108,9 @@ export default {
     rank: 'الترتيب',
     reportHead: 'الابلاغ عن مشكلة في هذا الاختبار',
     report: 'ابلاغ عن مشكلة',
+  },
+  Search: {
+    inputPlaceHolder: 'أبحث عن مستخدم او أختبار أو مجموعة',
   },
   Modals: {
     timeOut: 'انتهي الوقت',
