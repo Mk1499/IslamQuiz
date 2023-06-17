@@ -110,6 +110,11 @@ export default {
   },
   Search: {
     inputPlaceHolder: 'Search for users or quizs or groups',
+    welcomeMsg: 'Search for users or quizs or groups',
+    users: 'Users',
+    rank: 'Rank',
+    groups: 'Groups',
+    quizzes: 'Quizzes',
   },
   Modals: {
     timeOut: 'Time Out',

@@ -4,7 +4,7 @@ import ThemeColors from '../../../../Models/ThemeColors.model';
 import Constants from '../../../../Config/Constants';
 import {moderateScale} from 'react-native-size-matters';
 
-const {height, width} = Constants;
+const {height, width, styles, fonts} = Constants;
 
 const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
@@ -21,7 +21,9 @@ const makeStyle = (themeColors: ThemeColors) =>
       // borderBottomRightRadius: moderateScale(70),
       borderBottomLeftRadius: moderateScale(80),
     },
-    resultCont: {},
+    resultCont: {
+      // paddingHorizontal: styles.paddingH,
+    },
     searchCont: {
       flexDirection: 'row',
       alignItems: 'center',
@@ -41,7 +43,27 @@ const makeStyle = (themeColors: ThemeColors) =>
     icon: {
       color: themeColors.primary,
     },
-    section: {},
-    sectionTitle: {},
+    section: {
+      marginVertical: moderateScale(10),
+    },
+    sectionTitle: {
+      marginHorizontal: styles.paddingH,
+      marginBottom: moderateScale(10),
+      fontFamily: fonts.med,
+      fontSize: moderateScale(18),
+    },
+    searchImg: {
+      height: 0.4 * height,
+      resizeMode: 'contain',
+      alignSelf: 'center',
+      marginTop: 0.05 * height,
+    },
+    searchMsg: {
+      marginTop: 0.02 * height,
+      textAlign: 'center',
+      fontSize: moderateScale(18),
+      opacity: 0.5,
+    },
+    list: {},
   });
 export default makeStyle;

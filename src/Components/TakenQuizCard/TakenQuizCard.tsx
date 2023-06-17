@@ -33,7 +33,7 @@ function TakenQuizCard({item, action}: MyProps) {
 
   return (
     <TouchableOpacity style={styles.container} onPress={action}>
-      <MyImageBG style={styles.cover} uri={item.quiz.cover}>
+      <MyImageBG style={styles.cover} uri={item?.quiz?.cover}>
         <LinearGradient
           colors={['transparent', colors?.primary]}
           style={styles.linearGradient}

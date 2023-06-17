@@ -8,7 +8,7 @@ const {width, height, colors, fonts} = Constants;
 const makeStyle = () =>
   StyleSheet.create({
     container: {
-      width: 0.9 * width,
+      width: 0.8 * width,
       backgroundColor: '#fff',
       shadowColor: '#000',
       shadowOffset: {

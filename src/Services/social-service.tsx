@@ -39,7 +39,6 @@ export async function googleLogin() {
     } else {
       GoogleSignin.signIn()
         .then(userData => {
-          console.log('us : ', userData);
           resolve(userData);
         })
         .catch(err => {

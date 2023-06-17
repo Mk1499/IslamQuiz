@@ -55,7 +55,6 @@ function Profile() {
     setRefreshing(refresh);
     get(url, true)
       .then(({data}) => {
-        console.log('DAA : ', data);
         setUserData(data.userData);
         setTakenQuizzes(data?.submittedQuizzes);
       })
@@ -148,14 +147,16 @@ function Profile() {
           />
           <View style={styles.dataContent}>
             <View style={styles.section}>
-              <View style={styles.row}>
-                <MyText style={styles.sectionTitle}>
-                  {I18n.Profile.myQuizzes}
-                </MyText>
-                {takenQuizzes.length > 5 ? (
-                  <MyText style={styles.more}>{I18n.Global.more}</MyText>
-                ) : null}
-              </View>
+              {takenQuizzes.length ? (
+                <View style={styles.row}>
+                  <MyText style={styles.sectionTitle}>
+                    {I18n.Profile.myQuizzes}
+                  </MyText>
+                  {takenQuizzes.length > 5 ? (
+                    <MyText style={styles.more}>{I18n.Global.more}</MyText>
+                  ) : null}
+                </View>
+              ) : null}
               {loading ? (
                 <Loader isVisible={true} />
               ) : (

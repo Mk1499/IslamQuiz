@@ -56,7 +56,6 @@ function QuizPoints(props: MyProps) {
       quality: 0.8,
     })
       .then(url => {
-        console.log('UR : ', url);
         Share.open({
           message,
           url,

@@ -32,7 +32,6 @@ function FireConfig(props: MyProps) {
             configObj[key] = values[key]?._value;
           });
         }
-        console.log('D : ', configObj);
         props.setFireData(configObj);
       })
       .finally(() => {

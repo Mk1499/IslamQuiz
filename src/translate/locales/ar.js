@@ -111,6 +111,11 @@ export default {
   },
   Search: {
     inputPlaceHolder: 'أبحث عن مستخدم او أختبار أو مجموعة',
+    welcomeMsg: 'أبحث عن مستخدم او أختبار أو مجموعة',
+    users: 'المستخدمين',
+    rank: 'الترتيب',
+    groups: 'المجموعات',
+    quizzes: 'الأختبارات',
   },
   Modals: {
     timeOut: 'انتهي الوقت',

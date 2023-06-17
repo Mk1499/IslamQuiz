@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {RefreshControl, View, ScrollView, ImageBackground} from 'react-native';
+import {
+  RefreshControl,
+  View,
+  ScrollView,
+  ImageBackground,
+  Image,
+  FlatList,
+} from 'react-native';
 import {useTheme} from '../../../../Theme/ThemeProvider';
 import makeStyle from './GeneralSearch.screen.styles';
 import {MyText, MyInput} from '../../../../Components/Native';
@@ -12,11 +19,15 @@ import QuizType from '../../../../Models/Quiz.model';
 import Group from '../../../../Models/Group.model';
 import {get} from '../../../../Services/api-service';
 import {errorHandler} from '../../../../Services/toast-service';
+import {SearchImg} from '../../../../../assets/images';
+import UserCard from '../../../../Components/UserCard/UserCard.comp';
+import {useNavigation} from '@react-navigation/native';
 
 export default function GeneralSearch() {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [query, setQuery] = useState<String>();
+  const [searched, setSearched] = useState<Boolean>(false);
   const [refreshing, setRefreshing] = useState<Boolean>(false);
   const [loading, setLoading] = useState<Boolean>(false);
   const [users, setUsers] = useState<User[]>([]);
@@ -26,10 +37,12 @@ export default function GeneralSearch() {
   function getData(refresh = false) {
     const url = `/search/general/${query}`;
     setLoading(true);
+    setSearched(true);
     setRefreshing(refresh);
     get(url, true)
       .then(({data}) => {
-        console.log('Data : ', data);
+        // console.log('Data : ', data.users);
+        setUsers(data.users);
       })
       .catch(() => {
         errorHandler();
@@ -61,7 +74,11 @@ export default function GeneralSearch() {
               style={styles.searchInput}
               onChange={t => setQuery(t)}
               placeholder={I18n.Search.inputPlaceHolder}
-              onSubmitEditing={() => getData()}
+              onSubmitEditing={() => {
+                if (query) {
+                  getData();
+                }
+              }}
             />
             <Icon style={styles.icon} name="search" as={Octicons} size="lg" />
           </View>
@@ -69,9 +86,28 @@ export default function GeneralSearch() {
 
         <View style={styles.resultCont}>
           <Loader isVisible={loading} />
-          {!loading && users.lenght ? (
+
+          {!loading && !searched ? (
+            <>
+              <Image
+                source={SearchImg}
+                resizeMode="contain"
+                style={styles.searchImg}
+              />
+              <MyText style={styles.searchMsg}>{I18n.Search.welcomeMsg}</MyText>
+            </>
+          ) : null}
+
+          {!loading && users.length ? (
             <View style={styles.section}>
-              <MyText style={styles.sectionTitle}>Users</MyText>
+              <MyText style={styles.sectionTitle}>{I18n.Search.users}</MyText>
+              <FlatList
+                data={users}
+                renderItem={({item}) => <UserCard user={item} />}
+                horizontal
+                style={styles.list}
+                inverted
+              />
             </View>
           ) : null}
         </View>

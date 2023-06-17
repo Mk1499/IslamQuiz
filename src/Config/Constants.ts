@@ -23,6 +23,6 @@ export default {
     med: 'Cairo-SemiBold',
   },
   styles: {
-    paddingH: moderateScale(10),
+    paddingH: 0.05 * Dimensions.get('window').width,
   },
 };

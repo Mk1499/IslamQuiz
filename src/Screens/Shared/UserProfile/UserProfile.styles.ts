@@ -5,7 +5,7 @@ import Constants from '../../../Config/Constants';
 import ThemeColors from '../../../Models/ThemeColors.model';
 import {getActiveLang} from '../../../translate';
 
-const {height, styles, fonts} = Constants;
+const {height, styles, fonts, width} = Constants;
 
 const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
