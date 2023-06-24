@@ -22,6 +22,7 @@ import {errorHandler} from '../../../../Services/toast-service';
 import {SearchImg} from '../../../../../assets/images';
 import UserCard from '../../../../Components/UserCard/UserCard.comp';
 import {useNavigation} from '@react-navigation/native';
+import screenNames from '../../../../Routes/Stacks/screenNames';
 
 export default function GeneralSearch() {
   const {colors} = useTheme();
@@ -33,6 +34,7 @@ export default function GeneralSearch() {
   const [users, setUsers] = useState<User[]>([]);
   const [quizzes, setQuizzes] = useState<QuizType[]>([]);
   const [groups, setGroups] = useState<Group[]>([]);
+  const {navigate} = useNavigation();
 
   function getData(refresh = false) {
     const url = `/search/general/${query}`;
@@ -51,6 +53,20 @@ export default function GeneralSearch() {
         setLoading(false);
         setRefreshing(false);
       });
+  }
+
+  function noDataComp() {
+    return (
+      <View style={styles.noDataCont}>
+        <MyText style={styles.noDataMsg}>{I18n.Search.noData}</MyText>
+      </View>
+    );
+  }
+
+  function showMoreUsers() {
+    navigate(screenNames.searchUsers, {
+      query,
+    });
   }
 
   return (
@@ -100,13 +116,19 @@ export default function GeneralSearch() {
 
           {!loading && users.length ? (
             <View style={styles.section}>
-              <MyText style={styles.sectionTitle}>{I18n.Search.users}</MyText>
+              <View style={styles.sectionTitleCont}>
+                <MyText style={styles.sectionTitle}>{I18n.Search.users}</MyText>
+                <MyText style={styles.more} onPress={showMoreUsers}>
+                  {I18n.Global.more}
+                </MyText>
+              </View>
               <FlatList
                 data={users}
                 renderItem={({item}) => <UserCard user={item} />}
                 horizontal
                 style={styles.list}
                 inverted
+                ListEmptyComponent={noDataComp}
               />
             </View>
           ) : null}

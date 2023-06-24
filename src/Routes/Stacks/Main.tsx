@@ -23,7 +23,8 @@ import EditProfile from '../../Screens/ProfileOptions/EditProfile/EditProfile';
 import JoinQuiz from '../../Screens/Quiz/JoinQuiz/JoinQuiz';
 import QuizAnswers from '../../Screens/Quiz/QuizAnswers/QuizAnswers';
 // import Test from '../../Screens/Test/Text';
-import UserProfile from '../../Screens/Shared/UserProfile/UserProfile';
+import UserProfile from '../../Screens/User/UserProfile/UserProfile';
+import stackScreensList from './stackScreensList';
 
 const Stack = createStackNavigator();
 
@@ -275,6 +276,22 @@ const MainStack = () => {
           },
         }}
       />
+
+      {/* Stack Screens */}
+
+      {stackScreensList.map(s => (
+        <Stack.Screen
+          name={s.name}
+          component={s.component}
+          options={{
+            headerShown: false,
+            cardStyle: {
+              backgroundColor: colors.bg,
+              direction: !rtl ? 'ltr' : 'rtl',
+            },
+          }}
+        />
+      ))}
     </Stack.Navigator>
   );
 };

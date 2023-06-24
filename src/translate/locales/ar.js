@@ -116,6 +116,9 @@ export default {
     rank: 'الترتيب',
     groups: 'المجموعات',
     quizzes: 'الأختبارات',
+    noData: 'عفوا لا توجد نتائج لبحثك',
+    userResults: 'قائمة البحث للمستخدمين عن',
+    quizResults: 'قائمة البحث للأختبارات عن',
   },
   Modals: {
     timeOut: 'انتهي الوقت',
@@ -171,6 +174,8 @@ export default {
     contactUs: 'تواصل معنا',
     logout: 'تسجيل خروج',
     myQuizzes: 'الأختبارات المجابة',
+    quizzes: 'أختبارات',
+    competitorFrom: 'متنافس منذ',
   },
   ChangeLanguage: {
     ar: 'العربية',

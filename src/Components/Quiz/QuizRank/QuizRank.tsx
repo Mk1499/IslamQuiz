@@ -5,6 +5,7 @@ import {
   View,
   Text,
   RefreshControl,
+  TouchableOpacity,
 } from 'react-native';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import makeStyle from './QuizRank.styles';
@@ -15,6 +16,7 @@ import {errorHandler} from '../../../Services/toast-service';
 import User from '../../../Models/User.model';
 import MyImage from '../../../Components/Native/MyImage/MyImage';
 import moment from 'moment';
+import {useNavigation} from '@react-navigation/native';
 
 type myProps = {
   quizID: string;
@@ -32,6 +34,7 @@ export default function QuizRank({quizID}: myProps) {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [users, setUsers] = useState([]);
+  const {navigate} = useNavigation();
 
   useEffect(() => {
     getData();
@@ -55,28 +58,38 @@ export default function QuizRank({quizID}: myProps) {
       });
   }
 
+  function gotoProfile(user) {
+    navigate('UserProfile', {
+      user,
+    });
+  }
+
   function renderItem(item: RankItem, index) {
     return (
-      <View style={styles.rankCont}>
-        <View style={styles.dataCont}>
-          <Text style={styles.name}>{index + 1}</Text>
-          <MyImage style={styles.img} uri={item.user.photo} />
-          <View>
-            <Text style={styles.name}>{item.user.name}</Text>
-            <Text style={styles.time}>
-              {moment.duration(item.time).seconds() + ' ' + I18n.Timer.seconds}
-              {' ' +
-                moment.duration(item.time).minutes() +
-                ' ' +
-                I18n.Timer.minutes}
-            </Text>
+      <TouchableOpacity onPress={() => gotoProfile(item.user)}>
+        <View style={styles.rankCont}>
+          <View style={styles.dataCont}>
+            <Text style={styles.name}>{index + 1}</Text>
+            <MyImage style={styles.img} uri={item.user.photo} />
+            <View>
+              <Text style={styles.name}>{item.user.name}</Text>
+              <Text style={styles.time}>
+                {moment.duration(item.time).seconds() +
+                  ' ' +
+                  I18n.Timer.seconds}
+                {' ' +
+                  moment.duration(item.time).minutes() +
+                  ' ' +
+                  I18n.Timer.minutes}
+              </Text>
+            </View>
+          </View>
+          <View style={styles.pointsCont}>
+            <Text style={styles.points}>{item.score}</Text>
+            <Text style={styles.pointsLabel}>{I18n.Quiz.points}</Text>
           </View>
         </View>
-        <View style={styles.pointsCont}>
-          <Text style={styles.points}>{item.score}</Text>
-          <Text style={styles.pointsLabel}>{I18n.Quiz.points}</Text>
-        </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 

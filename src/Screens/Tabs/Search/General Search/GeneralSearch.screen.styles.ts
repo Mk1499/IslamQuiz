@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 import ThemeColors from '../../../../Models/ThemeColors.model';
 import Constants from '../../../../Config/Constants';
 import {moderateScale} from 'react-native-size-matters';
+import {getActiveLang} from '../../../../translate';
 
 const {height, width, styles, fonts} = Constants;
 
@@ -46,8 +47,13 @@ const makeStyle = (themeColors: ThemeColors) =>
     section: {
       marginVertical: moderateScale(10),
     },
-    sectionTitle: {
+    sectionTitleCont: {
+      flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
       marginHorizontal: styles.paddingH,
+    },
+    sectionTitle: {
       marginBottom: moderateScale(10),
       fontFamily: fonts.med,
       fontSize: moderateScale(18),
@@ -64,6 +70,14 @@ const makeStyle = (themeColors: ThemeColors) =>
       fontSize: moderateScale(18),
       opacity: 0.5,
     },
+    more: {
+      color: themeColors.primary,
+      fontFamily: fonts.bold,
+    },
     list: {},
+    noDataCont: {},
+    noDataMsg: {
+      color: 'red',
+    },
   });
 export default makeStyle;

@@ -11,9 +11,10 @@ import {useNavigation} from '@react-navigation/native';
 type myProps = {
   user: User;
   currentUser: User;
+  hideRank: boolean;
 };
 
-function UserRow({user, currentUser}: myProps) {
+function UserRow({user, currentUser, hideRank}: myProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
 
@@ -57,7 +58,7 @@ function UserRow({user, currentUser}: myProps) {
       onPress={showUserProfile}
       activeOpacity={1}>
       <View style={styles.iconCont}>
-        <Text style={styles.rank}>{user.rank}</Text>
+        {!hideRank ? <Text style={styles.rank}>{user.rank}</Text> : null}
         <MyImage uri={user.photo} style={styles.icon} />
         <View style={styles.dataCont}>
           <View>

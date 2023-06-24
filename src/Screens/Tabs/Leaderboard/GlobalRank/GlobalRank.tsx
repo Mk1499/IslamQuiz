@@ -17,8 +17,8 @@ import I18n from '../../../../translate';
 import {useNavigation} from '@react-navigation/native';
 import Submittion from '../../../../Models/Submittion.model';
 import UserRow from '../../../../Components/LoeaderBoard/UserRow/UserRow';
-import CountDown from 'react-native-countdown-component';
-import moment from 'moment';
+// import CountDown from 'react-native-countdown-component';
+// import moment from 'moment';
 
 // type MyProps = {
 //   user: User;

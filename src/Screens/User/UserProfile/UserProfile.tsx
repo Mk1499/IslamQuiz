@@ -25,6 +25,8 @@ import TakenQuizCard from '../../../Components/TakenQuizCard/TakenQuizCard';
 import Submittion from '../../../Models/Submittion.model';
 import Share from 'react-native-share';
 import ViewShot, {captureRef} from 'react-native-view-shot';
+import screenNames from '../../../Routes/Stacks/screenNames';
+import moment from 'moment';
 
 function Profile() {
   const {colors} = useTheme();
@@ -47,21 +49,26 @@ function Profile() {
     return unSubscribe;
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [params]);
 
   function getData(refresh = false) {
     const id = user?._id;
     const url = `/user/profile/${id}`;
     setRefreshing(refresh);
-    get(url, true)
-      .then(({data}) => {
-        setUserData(data.userData);
-        setTakenQuizzes(data?.submittedQuizzes);
-      })
-      .finally(() => {
-        setLoading(false);
-        setRefreshing(false);
-      });
+    if (userData.submissions > 0) {
+      get(url, true)
+        .then(({data}) => {
+          setUserData(data.userData);
+          setTakenQuizzes(data?.submittedQuizzes);
+        })
+        .finally(() => {
+          setLoading(false);
+          setRefreshing(false);
+        });
+    } else {
+      setLoading(false);
+      setRefreshing(false);
+    }
   }
 
   function shareProfile() {
@@ -91,12 +98,19 @@ function Profile() {
     });
   }
 
-  function renderEmpty() {
-    return (
-      <View style={styles.emptyCont}>
-        <MyText style={styles.emptyMsg}>{I18n.EmptyMsg.noTakenQuizzes}</MyText>
-      </View>
-    );
+  // function renderEmpty() {
+  //   return (
+  //     <View style={styles.emptyCont}>
+  //       <MyText style={styles.emptyMsg}>{I18n.EmptyMsg.noTakenQuizzes}</MyText>
+  //     </View>
+  //   );
+  // }
+
+  function showMoreQuizzes() {
+    navigate(screenNames.userQuizzes, {
+      userID: userData._id,
+      userName: userData.name,
+    });
   }
 
   return (
@@ -152,29 +166,40 @@ function Profile() {
                   <MyText style={styles.sectionTitle}>
                     {I18n.Profile.myQuizzes}
                   </MyText>
-                  {takenQuizzes.length > 5 ? (
-                    <MyText style={styles.more}>{I18n.Global.more}</MyText>
+                  {userData?.submissions > 5 ? (
+                    <MyText style={styles.more} onPress={showMoreQuizzes}>
+                      {I18n.Global.more}
+                    </MyText>
                   ) : null}
                 </View>
               ) : null}
               {loading ? (
                 <Loader isVisible={true} />
               ) : (
-                <FlatList
-                  data={takenQuizzes}
-                  renderItem={({item}) => (
-                    <View style={styles.cardCont}>
-                      <TakenQuizCard
-                        item={item}
-                        action={() => gotoQuizIntro(item.quiz)}
-                      />
-                    </View>
-                  )}
-                  ListEmptyComponent={renderEmpty}
-                  horizontal
-                  style={styles.list}
-                />
+                <>
+                  <FlatList
+                    data={takenQuizzes}
+                    renderItem={({item}) => (
+                      <View style={styles.cardCont}>
+                        <TakenQuizCard
+                          item={item}
+                          action={() => gotoQuizIntro(item.quiz)}
+                        />
+                      </View>
+                    )}
+                    // ListEmptyComponent={renderEmpty}
+                    horizontal
+                    style={styles.list}
+                  />
+                </>
               )}
+              <MyText style={styles.competitorFrom}>
+                {I18n.Profile.competitorFrom}
+                <MyText style={styles.date}>
+                  {' '}
+                  {moment(userData.createdAt).format('MMM YYYY')}
+                </MyText>
+              </MyText>
             </View>
           </View>
         </ImageBackground>

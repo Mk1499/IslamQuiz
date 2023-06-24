@@ -115,6 +115,9 @@ export default {
     rank: 'Rank',
     groups: 'Groups',
     quizzes: 'Quizzes',
+    noData: 'Sorry there is no data for yor search',
+    userResults: 'users search list for',
+    quizResults: 'quizzes search list for',
   },
   Modals: {
     timeOut: 'Time Out',
@@ -172,6 +175,8 @@ export default {
     contactUs: 'Contact Us',
     logout: 'Logout',
     myQuizzes: 'My Quizzes',
+    quizzes: 'Quizzes',
+    competitorFrom: 'Competitor From',
   },
   ChangeLanguage: {
     ar: 'Arabic',

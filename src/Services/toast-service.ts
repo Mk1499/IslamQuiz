@@ -19,7 +19,7 @@ export function showSuccess(msg: string) {
   });
 }
 
-export function errorHandler(msg: string) {
+export function errorHandler(msg?: string) {
   switch (msg) {
     case 'NoUser':
       showError(I18n.ErrorMessage.noUser);

@@ -75,10 +75,10 @@ function TakenQuizCard({item, action}: MyProps) {
             </View>
           </View>
           <Text style={styles.desc} numberOfLines={2}>
-            {item.quiz.description}
+            {item.quiz?.description}
           </Text>
           <Text style={styles.name} numberOfLines={1}>
-            {item.quiz.name}
+            {item.quiz?.name}
           </Text>
         </LinearGradient>
       </MyImageBG>
