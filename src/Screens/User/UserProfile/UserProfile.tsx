@@ -32,7 +32,7 @@ function Profile() {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const {params} = useRoute();
-  const {user} = params;
+  const {user, userID} = params;
   const {addListener, navigate, goBack} = useNavigation();
   const [refreshing, setRefreshing] = useState<Boolean>(false);
   const [loading, setLoading] = useState<Boolean>(true);
@@ -52,10 +52,10 @@ function Profile() {
   }, [params]);
 
   function getData(refresh = false) {
-    const id = user?._id;
+    const id = userID || user?._id;
     const url = `/user/profile/${id}`;
     setRefreshing(refresh);
-    if (userData.submissions > 0) {
+    if (userData?.submissions > 0 || userID) {
       get(url, true)
         .then(({data}) => {
           setUserData(data.userData);
@@ -131,7 +131,7 @@ function Profile() {
           source={require('../../../../assets/images/BGpattern.png')}
           style={styles.content}>
           <TabHeader
-            label={user.name}
+            label={userData?.name}
             rightIcon={
               <Icon
                 as={AntDesign}
@@ -197,7 +197,7 @@ function Profile() {
                 {I18n.Profile.competitorFrom}
                 <MyText style={styles.date}>
                   {' '}
-                  {moment(userData.createdAt).format('MMM YYYY')}
+                  {moment(userData?.createdAt).format('MMM YYYY')}
                 </MyText>
               </MyText>
             </View>

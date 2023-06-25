@@ -10,6 +10,7 @@ import {setActiveLang} from '../../translate';
 import SplashScreen from 'react-native-splash-screen';
 import {connect} from 'react-redux';
 import {setTokenAction} from '../../Redux/Actions/auth.action';
+import {useNavigation} from '@react-navigation/native';
 
 type MyProps = {
   navigation: {
@@ -20,6 +21,8 @@ type MyProps = {
 };
 
 function Landing(props: MyProps) {
+  const {navigate} = useNavigation();
+
   useEffect(() => {
     intializeApp();
 
@@ -63,17 +66,18 @@ function Landing(props: MyProps) {
   };
 
   const navigateHandler = async (url: string) => {
-    // console.log('External URL Landing: ', url);
     const paramsArr = url.split('/');
-    // console.log('Arr : ', paramsArr);
     const id = paramsArr.pop();
     const screen = paramsArr.pop();
-    // console.log('Screen:', screen, 'id : ', id);
     switch (screen) {
       case 'quiz':
-        // console.log('SS');
-        props.navigation.navigate('QuizIntro', {
+        navigate('QuizIntro', {
           id,
+        });
+        break;
+      case 'profile':
+        navigate('UserProfile', {
+          userID: id,
         });
         break;
     }
