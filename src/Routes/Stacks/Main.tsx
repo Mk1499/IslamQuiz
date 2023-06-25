@@ -25,6 +25,7 @@ import QuizAnswers from '../../Screens/Quiz/QuizAnswers/QuizAnswers';
 // import Test from '../../Screens/Test/Text';
 import UserProfile from '../../Screens/User/UserProfile/UserProfile';
 import stackScreensList from './stackScreensList';
+import uuid from 'react-native-uuid';
 
 const Stack = createStackNavigator();
 
@@ -48,6 +49,7 @@ const MainStack = () => {
         }}
       /> */}
       <Stack.Screen
+        getId={uuid.v4}
         name="Landing"
         component={Landing}
         options={{
@@ -60,6 +62,7 @@ const MainStack = () => {
       />
 
       <Stack.Screen
+        getId={uuid.v4}
         name="OTP"
         component={OTPVerify}
         options={{
@@ -72,6 +75,7 @@ const MainStack = () => {
       />
 
       <Stack.Screen
+        getId={uuid.v4}
         name="Login"
         component={Login}
         options={{
@@ -83,6 +87,7 @@ const MainStack = () => {
         }}
       />
       <Stack.Screen
+        getId={uuid.v4}
         name="Tabs"
         component={MainTabs}
         options={{
@@ -94,6 +99,7 @@ const MainStack = () => {
         }}
       />
       <Stack.Screen
+        getId={uuid.v4}
         name="CreateQuiz"
         component={CreateQuiz}
         options={{
@@ -105,6 +111,7 @@ const MainStack = () => {
         }}
       />
       <Stack.Screen
+        getId={uuid.v4}
         name="JoinQuiz"
         component={JoinQuiz}
         options={{
@@ -117,6 +124,7 @@ const MainStack = () => {
       />
 
       <Stack.Screen
+        getId={uuid.v4}
         name="CategoryDetails"
         component={CategoryDetails}
         options={{
@@ -128,6 +136,7 @@ const MainStack = () => {
         }}
       />
       <Stack.Screen
+        getId={uuid.v4}
         name="QuizIntro"
         component={QuizIntro}
         options={{
@@ -139,6 +148,7 @@ const MainStack = () => {
         }}
       />
       <Stack.Screen
+        getId={uuid.v4}
         name="QuizDetails"
         component={QuizDetails}
         options={{
@@ -151,6 +161,7 @@ const MainStack = () => {
       />
 
       <Stack.Screen
+        getId={uuid.v4}
         name="Register"
         component={Register}
         options={{
@@ -162,6 +173,7 @@ const MainStack = () => {
         }}
       />
       <Stack.Screen
+        getId={uuid.v4}
         name="ForgotPassword"
         component={ForgotPassword}
         options={{
@@ -173,6 +185,7 @@ const MainStack = () => {
         }}
       />
       <Stack.Screen
+        getId={uuid.v4}
         name="ResetPassword"
         component={ResetPassword}
         options={{
@@ -185,6 +198,7 @@ const MainStack = () => {
       />
 
       <Stack.Screen
+        getId={uuid.v4}
         name="ConfirmCode"
         component={ConfirmCode}
         options={{
@@ -197,6 +211,7 @@ const MainStack = () => {
       />
 
       <Stack.Screen
+        getId={uuid.v4}
         name="AddQuestions"
         component={AddQuestions}
         options={{
@@ -211,6 +226,7 @@ const MainStack = () => {
       {/* Profile Options */}
 
       <Stack.Screen
+        getId={uuid.v4}
         name="ChangeLanguage"
         component={ChangeLanguage}
         options={{
@@ -222,6 +238,7 @@ const MainStack = () => {
         }}
       />
       <Stack.Screen
+        getId={uuid.v4}
         name="ChangeTheme"
         component={ChangeTheme}
         options={{
@@ -233,6 +250,7 @@ const MainStack = () => {
         }}
       />
       <Stack.Screen
+        getId={uuid.v4}
         name="ContactUs"
         component={ContactUs}
         options={{
@@ -244,6 +262,7 @@ const MainStack = () => {
         }}
       />
       <Stack.Screen
+        getId={uuid.v4}
         name="UserProfile"
         component={UserProfile}
         options={{
@@ -255,6 +274,7 @@ const MainStack = () => {
         }}
       />
       <Stack.Screen
+        getId={uuid.v4}
         name="EditProfile"
         component={EditProfile}
         options={{
@@ -266,6 +286,7 @@ const MainStack = () => {
         }}
       />
       <Stack.Screen
+        getId={uuid.v4}
         name="QuizAnswers"
         component={QuizAnswers}
         options={{
@@ -281,6 +302,7 @@ const MainStack = () => {
 
       {stackScreensList.map(s => (
         <Stack.Screen
+          // getId={uuid.v4}
           name={s.name}
           component={s.component}
           options={{

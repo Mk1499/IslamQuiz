@@ -19,10 +19,11 @@ import QuizType from '../../../../Models/Quiz.model';
 import Group from '../../../../Models/Group.model';
 import {get} from '../../../../Services/api-service';
 import {errorHandler} from '../../../../Services/toast-service';
-import {SearchImg} from '../../../../../assets/images';
+import {SearchImg, NoResImg} from '../../../../../assets/images';
 import UserCard from '../../../../Components/UserCard/UserCard.comp';
 import {useNavigation} from '@react-navigation/native';
 import screenNames from '../../../../Routes/Stacks/screenNames';
+import QuizCard from '../../../../Components/QuizCard/QuizCard';
 
 export default function GeneralSearch() {
   const {colors} = useTheme();
@@ -43,8 +44,10 @@ export default function GeneralSearch() {
     setRefreshing(refresh);
     get(url, true)
       .then(({data}) => {
-        // console.log('Data : ', data.users);
-        setUsers(data.users);
+        console.log('Data : ', data.quizzes);
+        setUsers(data.users || []);
+        setQuizzes(data.quizzes || []);
+        setGroups(data.groups || []);
       })
       .catch(() => {
         errorHandler();
@@ -66,6 +69,17 @@ export default function GeneralSearch() {
   function showMoreUsers() {
     navigate(screenNames.searchUsers, {
       query,
+    });
+  }
+  function showMoreQuizzes() {
+    navigate(screenNames.searchQuizzes, {
+      query,
+    });
+  }
+
+  function gotoQuizIntro(quiz) {
+    navigate('QuizIntro', {
+      quiz,
     });
   }
 
@@ -113,7 +127,21 @@ export default function GeneralSearch() {
               <MyText style={styles.searchMsg}>{I18n.Search.welcomeMsg}</MyText>
             </>
           ) : null}
-
+          {!loading &&
+          searched &&
+          !users.length &&
+          !quizzes.length &&
+          !groups.length ? (
+            <>
+              <Image
+                source={NoResImg}
+                resizeMode="contain"
+                style={styles.searchImg}
+              />
+              <MyText style={styles.searchMsg}>{I18n.Search.noData}</MyText>
+            </>
+          ) : null}
+          {/* Users */}
           {!loading && users.length ? (
             <View style={styles.section}>
               <View style={styles.sectionTitleCont}>
@@ -126,7 +154,36 @@ export default function GeneralSearch() {
                 data={users}
                 renderItem={({item}) => <UserCard user={item} />}
                 horizontal
-                style={styles.list}
+                contentContainerStyle={styles.usersList}
+                inverted
+                ListEmptyComponent={noDataComp}
+              />
+            </View>
+          ) : null}
+          {/* Quizzes */}
+          {!loading && quizzes.length ? (
+            <View style={styles.section}>
+              <View style={styles.sectionTitleCont}>
+                <MyText style={styles.sectionTitle}>
+                  {I18n.Search.quizzes}
+                </MyText>
+                <MyText style={styles.more} onPress={showMoreQuizzes}>
+                  {I18n.Global.more}
+                </MyText>
+              </View>
+              <FlatList
+                data={quizzes}
+                renderItem={({item}) => (
+                  <View style={styles.quizCard}>
+                    <QuizCard
+                      action={() => gotoQuizIntro(item)}
+                      key={`quiz-${item._id}`}
+                      item={item}
+                    />
+                  </View>
+                )}
+                horizontal
+                contentContainerStyle={styles.list}
                 inverted
                 ListEmptyComponent={noDataComp}
               />

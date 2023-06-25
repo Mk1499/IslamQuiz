@@ -74,10 +74,16 @@ const makeStyle = (themeColors: ThemeColors) =>
       color: themeColors.primary,
       fontFamily: fonts.bold,
     },
-    list: {},
+    usersList: {
+      maxHeight: 0.2 * height,
+    },
     noDataCont: {},
     noDataMsg: {
       color: 'red',
+    },
+    quizCard: {
+      // width: 0.8 * width,
+      marginHorizontal: moderateScale(2),
     },
   });
 export default makeStyle;

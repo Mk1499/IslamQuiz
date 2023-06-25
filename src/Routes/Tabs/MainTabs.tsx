@@ -127,6 +127,7 @@ export default function MainTabs() {
 
   return (
     <Tab.Navigator
+      backBehavior="history"
       screenOptions={({route}) => ({
         tabBarHideOnKeyboard: true,
         tabBarLabel: ({focused}) => {
