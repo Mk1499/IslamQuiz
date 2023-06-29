@@ -65,5 +65,17 @@ const makeStyle = (themeColors: ThemeColors) =>
       fontFamily: fonts.med,
       color: themeColors.primary,
     },
+    lockedCont: {
+      marginVertical: moderateScale(10),
+      alignItems: 'center',
+    },
+    lockedImg: {
+      resizeMode: 'contain',
+      height: 0.22 * height,
+    },
+    lockedMsg: {
+      marginVertical: moderateScale(10),
+      fontSize: moderateScale(15),
+    },
   });
 export default makeStyle;

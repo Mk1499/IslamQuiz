@@ -176,6 +176,7 @@ export default {
     myQuizzes: 'الأختبارات المجابة',
     quizzes: 'أختبارات',
     competitorFrom: 'متنافس منذ',
+    profileLocked: 'الملف الشخصي مغلق فقط يمكن للأصدقاء رؤية المزيد',
   },
   ChangeLanguage: {
     ar: 'العربية',
@@ -193,6 +194,10 @@ export default {
   },
   EditProfile: {
     enterUsername: 'أدخل أسم المستخدم',
+    enterQuote: 'أدخل عباراتك المفضلة',
+    lockMyProfile: 'أغلاق الملف الشخصي',
+    lockMyProfileDesc:
+      'من خلال قفل ملفك الشخصي يمكن فقط للأصدقاء رؤية الاختبارات التي قمت بالإجابة عليها نقاطك والمجموعات المنضم اليها',
   },
   JoinQuiz: {
     msg: 'هنا يمكنك الانضمام إلى أي اختبار خاص باستخدام رمز الاختبار',

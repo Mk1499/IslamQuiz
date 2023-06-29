@@ -161,6 +161,7 @@ function MyProfile(props: MyProps) {
             photo={userData?.photo}
             rank={userData?.rank}
             submissions={userData?.submissions}
+            quote={userData?.quote}
           />
           <View style={styles.dataContent}>
             <View style={styles.section}>

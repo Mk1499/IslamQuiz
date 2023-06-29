@@ -12,9 +12,20 @@ type MyProps = {
   submissions: Number;
   points: Number;
   rank: Number;
+  quote?: String;
+  isLocked?: Boolean;
 };
 
-function ProfileCard({name, photo, submissions, points, rank, email}: MyProps) {
+function ProfileCard({
+  name,
+  photo,
+  submissions,
+  points,
+  rank,
+  email,
+  quote,
+  isLocked,
+}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
 
@@ -22,7 +33,7 @@ function ProfileCard({name, photo, submissions, points, rank, email}: MyProps) {
     <View style={styles.container}>
       <MyImage style={styles.img} uri={photo} />
       <Text style={styles.name}>{name}</Text>
-      <Text style={styles.email}>{email}</Text>
+      <Text style={styles.email}>{quote || email}</Text>
       <View style={styles.dataCont}>
         <View style={styles.dataItem}>
           <Text style={styles.dataItemText}>
@@ -30,10 +41,12 @@ function ProfileCard({name, photo, submissions, points, rank, email}: MyProps) {
           </Text>
           <Text style={styles.dataItemTextValue}>{submissions || 0}</Text>
         </View>
-        <View style={styles.dataItem}>
-          <Text style={styles.dataItemText}> {I18n.Profile.points}</Text>
-          <Text style={styles.dataItemTextValue}>{points || 0}</Text>
-        </View>
+        {!isLocked ? (
+          <View style={styles.dataItem}>
+            <Text style={styles.dataItemText}> {I18n.Profile.points}</Text>
+            <Text style={styles.dataItemTextValue}>{points || 0}</Text>
+          </View>
+        ) : null}
         <View style={styles.dataItem}>
           <Text style={styles.dataItemText}> {I18n.Profile.rank}</Text>
           <Text style={styles.dataItemTextValue}>{rank || 0}</Text>

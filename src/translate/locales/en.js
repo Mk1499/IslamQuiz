@@ -177,6 +177,7 @@ export default {
     myQuizzes: 'My Quizzes',
     quizzes: 'Quizzes',
     competitorFrom: 'Competitor From',
+    profileLocked: 'Profile is Locked only friends can show more',
   },
   ChangeLanguage: {
     ar: 'Arabic',
@@ -193,6 +194,10 @@ export default {
   },
   EditProfile: {
     enterUsername: 'Enter Username',
+    lockMyProfile: 'Lock My Profile',
+    lockMyProfileDesc:
+      'with locking your profile only friends can see your answered quizzes & points & groups',
+    enterQuote: 'Enter Your favourite quote',
   },
   JoinQuiz: {
     msg: 'Here you can join any private quiz using the quiz code',

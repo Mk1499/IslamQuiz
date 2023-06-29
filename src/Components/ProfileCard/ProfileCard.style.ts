@@ -45,13 +45,13 @@ const makeStyle = (themeColors: ThemeColors) =>
     name: {
       color: themeColors.text,
       fontFamily: fonts.med,
-      fontSize: 20,
+      fontSize: moderateScale(20),
     },
     email: {
       color: themeColors.lightText,
-      fontFamily: fonts.reg,
-      fontSize: 17,
-      marginBottom: moderateScale(3),
+      fontFamily: fonts.med,
+      // fontSize: moderateScale(15),
+      marginBottom: moderateScale(5),
     },
     dataCont: {
       flexDirection: 'row',

@@ -8,4 +8,6 @@ export default interface User {
   rank: Number;
   photo: string;
   submissions: string;
+  quote: string;
+  profileLocked: boolean;
 }

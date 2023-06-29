@@ -4,6 +4,7 @@ import {
   ScrollView,
   View,
   TouchableOpacity,
+  Switch,
 } from 'react-native';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import makeStyle from './EditProfile.style';
@@ -16,6 +17,7 @@ import User from '../../../Models/User.model';
 import {put} from '../../../Services/api-service';
 import {errorHandler, showSuccess} from '../../../Services/toast-service';
 import MyImage from '../../../Components/Native/MyImage/MyImage';
+import {MyText} from '../../../Components/Native';
 import {chooseImg} from '../../../Services/file-service';
 import {uploadImage} from '../../../Services/firebase-service';
 import {setTokenAction, syncUserData} from '../../../Redux/Actions/auth.action';
@@ -35,6 +37,8 @@ function ContactUs({navigation, user, setTokenAction, syncUserData}: MyProps) {
   const styles = makeStyle(colors);
   const [photoURL, setPhotoURL] = useState(user.photo);
   const [name, setName] = useState(user.name);
+  const [quote, setQuote] = useState(user.quote);
+  const [isLocked, setIsLocked] = useState(user.profileLocked);
   const [photo, setPhoto] = useState();
   const [loading, setLoading] = useState(false);
   const [photoUpdated, setPhotoUpdated] = useState(false);
@@ -66,6 +70,8 @@ function ContactUs({navigation, user, setTokenAction, syncUserData}: MyProps) {
     const body = {
       photo: ph,
       name,
+      quote,
+      profileLocked: isLocked,
     };
     put(url, body)
       .then(({data}) => {
@@ -117,6 +123,28 @@ function ContactUs({navigation, user, setTokenAction, syncUserData}: MyProps) {
             onChange={setName}
             style={styles.input}
           />
+          <MyInput
+            placeholder={I18n.EditProfile.enterQuote}
+            value={quote}
+            onChange={setQuote}
+            style={styles.input}
+          />
+          <View style={styles.lock}>
+            <View style={styles.lockCont}>
+              <Switch
+                value={isLocked}
+                onValueChange={val => {
+                  setIsLocked(val);
+                }}
+              />
+              <MyText style={styles.lockText}>
+                {I18n.EditProfile.lockMyProfile}
+              </MyText>
+            </View>
+            <MyText style={styles.lockDesc}>
+              {I18n.EditProfile.lockMyProfileDesc}
+            </MyText>
+          </View>
 
           <View style={styles.btnCont}>
             <MyButton

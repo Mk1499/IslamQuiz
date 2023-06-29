@@ -3,8 +3,9 @@ import {StyleSheet} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import Constants from '../../../Config/Constants';
 import ThemeColors from '../../../Models/ThemeColors.model';
+import {getActiveLang} from '../../../translate';
 
-const {height} = Constants;
+const {height, fonts} = Constants;
 
 const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
@@ -31,10 +32,26 @@ const makeStyle = (themeColors: ThemeColors) =>
       shadowRadius: 3.84,
       elevation: 5,
       alignSelf: 'center',
+      resizeMode: 'contain',
     },
     btn: {},
     input: {
-      marginTop: moderateScale(20),
+      marginTop: moderateScale(10),
+    },
+    lock: {
+      marginTop: moderateScale(10),
+    },
+    lockCont: {
+      flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
+      alignItems: 'center',
+    },
+    lockText: {
+      fontFamily: fonts.med,
+      marginHorizontal: moderateScale(5),
+    },
+    lockDesc: {
+      marginVertical: moderateScale(10),
+      color: 'grey',
     },
   });
 export default makeStyle;

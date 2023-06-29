@@ -5,6 +5,7 @@ import {
   RefreshControl,
   FlatList,
   View,
+  Image,
 } from 'react-native';
 import ProfileCard from '../../../Components/ProfileCard/ProfileCard';
 import TabHeader from '../../../Components/TabHeader/TabHeader';
@@ -27,6 +28,7 @@ import Share from 'react-native-share';
 import ViewShot, {captureRef} from 'react-native-view-shot';
 import screenNames from '../../../Routes/Stacks/screenNames';
 import moment from 'moment';
+import {LockImg} from '../../../../assets/images';
 
 function Profile() {
   const {colors} = useTheme();
@@ -158,50 +160,61 @@ function Profile() {
             photo={userData?.photo}
             rank={userData?.rank}
             submissions={userData?.submissions}
+            quote={userData?.quote}
+            isLocked={userData?.profileLocked}
           />
-          <View style={styles.dataContent}>
-            <View style={styles.section}>
-              {takenQuizzes.length ? (
-                <View style={styles.row}>
-                  <MyText style={styles.sectionTitle}>
-                    {I18n.Profile.myQuizzes}
-                  </MyText>
-                  {userData?.submissions > 5 ? (
-                    <MyText style={styles.more} onPress={showMoreQuizzes}>
-                      {I18n.Global.more}
-                    </MyText>
-                  ) : null}
-                </View>
-              ) : null}
-              {loading ? (
-                <Loader isVisible={true} />
-              ) : (
-                <>
-                  <FlatList
-                    data={takenQuizzes}
-                    renderItem={({item}) => (
-                      <View style={styles.cardCont}>
-                        <TakenQuizCard
-                          item={item}
-                          action={() => gotoQuizIntro(item.quiz)}
-                        />
-                      </View>
-                    )}
-                    // ListEmptyComponent={renderEmpty}
-                    horizontal
-                    style={styles.list}
-                  />
-                </>
-              )}
-              <MyText style={styles.competitorFrom}>
-                {I18n.Profile.competitorFrom}
-                <MyText style={styles.date}>
-                  {' '}
-                  {moment(userData?.createdAt).format('MMM YYYY')}
-                </MyText>
+          {userData.profileLocked ? (
+            <View style={styles.lockedCont}>
+              <Image source={LockImg} style={styles.lockedImg} />
+              <MyText style={styles.lockedMsg}>
+                {I18n.Profile.profileLocked}
               </MyText>
             </View>
-          </View>
+          ) : (
+            <View style={styles.dataContent}>
+              <View style={styles.section}>
+                {takenQuizzes.length ? (
+                  <View style={styles.row}>
+                    <MyText style={styles.sectionTitle}>
+                      {I18n.Profile.myQuizzes}
+                    </MyText>
+                    {userData?.submissions > 5 ? (
+                      <MyText style={styles.more} onPress={showMoreQuizzes}>
+                        {I18n.Global.more}
+                      </MyText>
+                    ) : null}
+                  </View>
+                ) : null}
+                {loading ? (
+                  <Loader isVisible={true} />
+                ) : (
+                  <>
+                    <FlatList
+                      data={takenQuizzes}
+                      renderItem={({item}) => (
+                        <View style={styles.cardCont}>
+                          <TakenQuizCard
+                            item={item}
+                            action={() => gotoQuizIntro(item.quiz)}
+                          />
+                        </View>
+                      )}
+                      // ListEmptyComponent={renderEmpty}
+                      horizontal
+                      style={styles.list}
+                    />
+                  </>
+                )}
+                <MyText style={styles.competitorFrom}>
+                  {I18n.Profile.competitorFrom}
+                  <MyText style={styles.date}>
+                    {' '}
+                    {moment(userData?.createdAt).format('MMM YYYY')}
+                  </MyText>
+                </MyText>
+              </View>
+            </View>
+          )}
         </ImageBackground>
       </ViewShot>
     </ScrollView>
