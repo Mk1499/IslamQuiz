@@ -12,6 +12,7 @@ export default {
     history: 'History',
     leaderboard: 'Leaderboard',
     search: 'Search',
+    friendRequests: 'Friend Requests',
   },
   Global: {
     otherLang: 'العربية',
@@ -27,6 +28,9 @@ export default {
     from: 'From',
     send: 'Send',
     more: 'more',
+    accept: 'accept',
+    cancelled: 'cancelled',
+    refuse: 'refuse',
   },
   SignIn: {
     ScreenName: 'Sign In',
@@ -178,6 +182,12 @@ export default {
     quizzes: 'Quizzes',
     competitorFrom: 'Competitor From',
     profileLocked: 'Profile is Locked only friends can show more',
+    friend: 'Friend',
+    sendFriend: 'Send Friend Request',
+    pendingRequest: 'Pending Request',
+    unfriend: 'Un-Friend',
+    friends: 'Friends',
+    friendRequests: 'Friend Requests',
   },
   ChangeLanguage: {
     ar: 'Arabic',

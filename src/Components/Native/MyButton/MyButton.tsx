@@ -1,17 +1,22 @@
 import React, {memo} from 'react';
-import {Text, TouchableOpacity, ActivityIndicator} from 'react-native';
+import {
+  Text,
+  TouchableOpacity,
+  ActivityIndicator,
+  TouchableOpacityProps,
+} from 'react-native';
 import {StyleProps} from 'react-native-reanimated';
 import {useTheme} from '../../../Theme/ThemeProvider';
 import makeStyle from './styles';
 
-type MyProps = {
+type MyProps = TouchableOpacityProps & {
   label: String;
   action: Function;
   processing: Boolean;
   disabled?: Boolean;
-  style?: StyleProps;
   light?: Boolean;
   activeOpacity?: Number;
+  labelStyle?: StyleProps;
 };
 
 function MyButton(props: MyProps) {
@@ -33,7 +38,11 @@ function MyButton(props: MyProps) {
       {props.processing ? (
         <ActivityIndicator color="#fff" size="large" />
       ) : (
-        <Text style={props.light ? styles.emptyLabel : styles.label}>
+        <Text
+          style={[
+            props.light ? styles.emptyLabel : styles.label,
+            props.labelStyle,
+          ]}>
           {props.label}
         </Text>
       )}

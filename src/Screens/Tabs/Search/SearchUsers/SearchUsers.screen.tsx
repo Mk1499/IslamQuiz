@@ -11,8 +11,13 @@ import UserRow from '../../../../Components/LoeaderBoard/UserRow/UserRow';
 import {get} from '../../../../Services/api-service';
 import Loading from '../../../../Components/Loading/Loading';
 import {errorHandler} from '../../../../Services/toast-service';
+import {connect} from 'react-redux';
 
-export default function SearchUsersScreen() {
+type MyProps = {
+  user: User;
+};
+
+function SearchUsersScreen({user}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const {params} = useRoute();
@@ -30,7 +35,8 @@ export default function SearchUsersScreen() {
     setRefreshing(refresh);
     get(url)
       .then(({data}) => {
-        setUsers(data);
+        const filteredUsers = data.filter(u => u._id !== user._id);
+        setUsers(filteredUsers);
       })
       .catch(() => {
         errorHandler();
@@ -70,3 +76,9 @@ export default function SearchUsersScreen() {
     </ImageBackground>
   );
 }
+
+const mapStateToProps = state => ({
+  user: state.auth.userData,
+});
+
+export default connect(mapStateToProps, {})(SearchUsersScreen);

@@ -77,5 +77,12 @@ const makeStyle = (themeColors: ThemeColors) =>
       marginVertical: moderateScale(10),
       fontSize: moderateScale(15),
     },
+
+    sectionTitleCont: {
+      flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginHorizontal: styles.paddingH,
+    },
   });
 export default makeStyle;

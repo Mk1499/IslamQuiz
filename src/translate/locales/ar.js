@@ -12,6 +12,7 @@ export default {
     history: 'السجل',
     leaderboard: 'لوحة الصدارة',
     search: 'البحث',
+    friendRequests: 'طلبات الصداقة',
   },
   Global: {
     otherLang: 'English',
@@ -27,6 +28,9 @@ export default {
     from: 'من',
     send: 'أرسال',
     more: 'المزيد',
+    accept: 'قبول',
+    refuse: 'رفض',
+    cancelled: 'تم الألغاء',
   },
   SignIn: {
     ScreenName: 'تسجيل الدخول',
@@ -177,6 +181,12 @@ export default {
     quizzes: 'أختبارات',
     competitorFrom: 'متنافس منذ',
     profileLocked: 'الملف الشخصي مغلق فقط يمكن للأصدقاء رؤية المزيد',
+    friend: 'صديق',
+    sendFriend: 'أرسل طلب صداقة',
+    pendingRequest: 'طلب مرسل',
+    unfriend: 'الغاء الصداقة',
+    friends: 'الأصدقاء',
+    friendRequests: 'طلبات الصداقة',
   },
   ChangeLanguage: {
     ar: 'العربية',

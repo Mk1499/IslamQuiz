@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import Constants from '../../Config/Constants';
 import ThemeColors from '../../Models/ThemeColors.model';
+import {getActiveLang} from '../../translate';
 
 const {fonts, colors} = Constants;
 
@@ -51,7 +52,7 @@ const makeStyle = (themeColors: ThemeColors) =>
       color: themeColors.lightText,
       fontFamily: fonts.med,
       // fontSize: moderateScale(15),
-      marginBottom: moderateScale(5),
+      // marginBottom: moderateScale(5),
     },
     dataCont: {
       flexDirection: 'row',
@@ -82,5 +83,14 @@ const makeStyle = (themeColors: ThemeColors) =>
       color: themeColors.primary,
       textAlign: 'center',
     },
+    friendCont: {
+      flexDirection: 'row',
+    },
+    friendBtn: {
+      marginTop: moderateScale(5),
+      paddingHorizontal: moderateScale(5),
+      borderRadius: moderateScale(5),
+    },
+    friendStatus: {},
   });
 export default makeStyle;

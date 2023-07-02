@@ -24,8 +24,13 @@ import UserCard from '../../../../Components/UserCard/UserCard.comp';
 import {useNavigation} from '@react-navigation/native';
 import screenNames from '../../../../Routes/Stacks/screenNames';
 import QuizCard from '../../../../Components/QuizCard/QuizCard';
+import {connect} from 'react-redux';
 
-export default function GeneralSearch() {
+type MyProps = {
+  user: User;
+};
+
+function GeneralSearch({user}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [query, setQuery] = useState<String>();
@@ -44,8 +49,8 @@ export default function GeneralSearch() {
     setRefreshing(refresh);
     get(url, true)
       .then(({data}) => {
-        console.log('Data : ', data.quizzes);
-        setUsers(data.users || []);
+        const filteredUsers = data.users.filter(u => u._id !== user._id);
+        setUsers(filteredUsers || []);
         setQuizzes(data.quizzes || []);
         setGroups(data.groups || []);
       })
@@ -194,3 +199,9 @@ export default function GeneralSearch() {
     </ImageBackground>
   );
 }
+
+const mapStateToProps = state => ({
+  user: state.auth.userData,
+});
+
+export default connect(mapStateToProps, {})(GeneralSearch);

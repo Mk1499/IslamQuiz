@@ -162,6 +162,7 @@ function MyProfile(props: MyProps) {
             rank={userData?.rank}
             submissions={userData?.submissions}
             quote={userData?.quote}
+            isMine
           />
           <View style={styles.dataContent}>
             <View style={styles.section}>

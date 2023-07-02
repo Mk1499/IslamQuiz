@@ -29,6 +29,8 @@ import ViewShot, {captureRef} from 'react-native-view-shot';
 import screenNames from '../../../Routes/Stacks/screenNames';
 import moment from 'moment';
 import {LockImg} from '../../../../assets/images';
+import Friendship from '../../../Models/Friendship.model';
+import UserCard from '../../../Components/UserCard/UserCard.comp';
 
 function Profile() {
   const {colors} = useTheme();
@@ -40,6 +42,9 @@ function Profile() {
   const [loading, setLoading] = useState<Boolean>(true);
   const [userData, setUserData] = useState<User>(user);
   const [takenQuizzes, setTakenQuizzes] = useState<Submittion[]>([]);
+  const [friendship, setFriendship] = useState<Friendship>(undefined);
+  const [friends, setFriends] = useState<User[]>([]);
+
   const ref = useRef();
 
   useEffect(() => {
@@ -62,6 +67,8 @@ function Profile() {
         .then(({data}) => {
           setUserData(data.userData);
           setTakenQuizzes(data?.submittedQuizzes);
+          setFriends(data?.friends);
+          setFriendship(data?.friendship);
         })
         .finally(() => {
           setLoading(false);
@@ -115,6 +122,18 @@ function Profile() {
     });
   }
 
+  function canShow() {
+    let valid = true;
+    if (userData.profileLocked) {
+      if (friendship && friendship.status === 'valid') {
+        valid === true;
+      } else {
+        valid = false;
+      }
+    }
+    return valid;
+  }
+
   return (
     <ScrollView
       style={styles.container}
@@ -161,9 +180,10 @@ function Profile() {
             rank={userData?.rank}
             submissions={userData?.submissions}
             quote={userData?.quote}
-            isLocked={userData?.profileLocked}
+            isLocked={!canShow()}
+            friendship={friendship}
           />
-          {userData.profileLocked ? (
+          {!canShow() ? (
             <View style={styles.lockedCont}>
               <Image source={LockImg} style={styles.lockedImg} />
               <MyText style={styles.lockedMsg}>
@@ -203,6 +223,28 @@ function Profile() {
                       horizontal
                       style={styles.list}
                     />
+
+                    {/* friends */}
+                    {!loading && friends.length ? (
+                      <View style={styles.section}>
+                        <View style={styles.sectionTitleCont}>
+                          <MyText style={styles.sectionTitle}>
+                            {I18n.Profile.friends}
+                          </MyText>
+                          <MyText style={styles.more} onPress={showMoreUsers}>
+                            {I18n.Global.more}
+                          </MyText>
+                        </View>
+                        <FlatList
+                          data={friends}
+                          renderItem={({item}) => <UserCard user={item} />}
+                          horizontal
+                          contentContainerStyle={styles.usersList}
+                          inverted
+                          ListEmptyComponent={noDataComp}
+                        />
+                      </View>
+                    ) : null}
                   </>
                 )}
                 <MyText style={styles.competitorFrom}>

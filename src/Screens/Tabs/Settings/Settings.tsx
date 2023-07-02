@@ -16,6 +16,8 @@ import {googleLogout} from '../../../Services/social-service';
 import OptionRowItem from '../../../Components/OptionRowItem/OptionRowItem';
 import ProfileRowOption from '../../../Models/ProfileRowOption.model';
 import {syncUserData} from '../../../Redux/Actions/auth.action';
+import {friends} from '../../../../assets/images';
+import screenNames from '../../../Routes/Stacks/screenNames';
 
 type MyProps = {
   logoutAction: Function;
@@ -37,6 +39,11 @@ function Settings(props: MyProps) {
       label: I18n.Profile.editProfile,
       imgIcon: require('../../../../assets/images/icons/edituser.png'),
       action: () => navToScreen('EditProfile'),
+    },
+    {
+      label: I18n.Profile.friendRequests,
+      imgIcon: friends,
+      action: () => navToScreen(screenNames.friendRequests),
     },
     {
       label: I18n.Profile.changeLang,
