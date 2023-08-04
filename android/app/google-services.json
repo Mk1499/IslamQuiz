@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "838270858099",
+    "project_id": "mutanafeson",
+    "storage_bucket": "mutanafeson.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838270858099:android:71181728917954c19ecb06",
+        "android_client_info": {
+          "package_name": "com.scorpion.mutanafeson"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "838270858099-bsmrd6qiqphh7fj6581ostopqltf1stm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.scorpion.mutanafeson",
+            "certificate_hash": "9043349f247ffaddcd3a1d9187bc133e66c0f9cb"
+          }
+        },
+        {
+          "client_id": "838270858099-r44mh26sga4j67nqi1b72kmj5aqhtu86.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.scorpion.mutanafeson",
+            "certificate_hash": "95be2916e3a2bc1b9074b527a4eacc708322f88b"
+          }
+        },
+        {
+          "client_id": "838270858099-l6lbg19joo84917vga4ev0q43pqt3jk5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbjBB59oy9OFnQ-EwDUj0M-cD7SuzR188"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "838270858099-1bc4dt7gmh30vkv58oivpm29u6qbeiat.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "838270858099-hnbh5iikqr7an7iqpjco8lc5vqpqfeem.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.scorpion.mutanafeson"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
