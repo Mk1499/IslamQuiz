@@ -1,4 +1,4 @@
-package com.motanafeson.newarchitecture;
+package com.scorpion.mutanafeson.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.motanafeson.BuildConfig;
-import com.motanafeson.newarchitecture.components.MainComponentsRegistry;
-import com.motanafeson.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.scorpion.mutanafeson.BuildConfig;
+import com.scorpion.mutanafeson.newarchitecture.components.MainComponentsRegistry;
+import com.scorpion.mutanafeson.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.motanafeson;
+package com.scorpion.mutanafeson;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
