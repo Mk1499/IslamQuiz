@@ -8,12 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* MotanafesonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MotanafesonTests.m */; };
+		0E913DAE50F34E7DB4A7E3CA /* Grandstander-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 001D5E0337BC4A8291C04AA6 /* Grandstander-ExtraLight.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		21FE34FD61284736AE517C77 /* Cairo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC42BF61EA4240F2B994A708 /* Cairo-Bold.ttf */; };
+		67BDD67BCC8242999669F1F0 /* Ubuntu-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C231A65EA70A4FF9945AC592 /* Ubuntu-Italic.ttf */; };
+		6E4358D8A07F431E870BD49C /* Cairo-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B33D9109FF7A4A35B078FC40 /* Cairo-Black.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		870E84460DFD48479E13B961 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 822331D5452342C298415373 /* Ubuntu-Regular.ttf */; };
+		883E1B20867345BF95513413 /* Cairo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 24FEA7BD8AE74124993A8BE6 /* Cairo.ttf */; };
 		8DE98372F06B98CC2915B65A /* Pods_Motanafeson.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82441D795B0BCE1A175BB65F /* Pods_Motanafeson.framework */; };
+		900B670E2A7DC5A900D1CFAC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 900B670D2A7DC5A900D1CFAC /* GoogleService-Info.plist */; };
 		93972E41804EEF766A73FFD9 /* Pods_Motanafeson_MotanafesonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28789B368F5A21AEB9815AEB /* Pods_Motanafeson_MotanafesonTests.framework */; };
+		93BF32E941AE4A8A8E002800 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C541D99D84748F4B6F961F5 /* Ubuntu-Medium.ttf */; };
+		A59B7DFAC5DD498D9BE82F20 /* Cairo-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 097A1E75EE5D47AE85BE954F /* Cairo-ExtraLight.ttf */; };
+		BB364C10438044F2B0850260 /* Cairo-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01EEB792C420420485108E9E /* Cairo-SemiBold.ttf */; };
+		C4194BBCFCAF4FC89C449650 /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76A5989567D14086B19BC4A7 /* Ubuntu-Light.ttf */; };
+		D72CB25A5CA646B98CD3A0F4 /* Cairo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C3A5E3C56FD4F70AC1F141F /* Cairo-Light.ttf */; };
+		F1BDEA0AD0D44D4DAB30B08D /* Grandstander-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F37649A6D2A4B44B27FC00B /* Grandstander-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,22 +40,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		001D5E0337BC4A8291C04AA6 /* Grandstander-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Grandstander-ExtraLight.ttf"; path = "../assets/fonts/Grandstander-ExtraLight.ttf"; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* MotanafesonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MotanafesonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* MotanafesonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MotanafesonTests.m; sourceTree = "<group>"; };
+		01EEB792C420420485108E9E /* Cairo-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cairo-SemiBold.ttf"; path = "../assets/fonts/Cairo-SemiBold.ttf"; sourceTree = "<group>"; };
+		097A1E75EE5D47AE85BE954F /* Cairo-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cairo-ExtraLight.ttf"; path = "../assets/fonts/Cairo-ExtraLight.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Motanafeson.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Motanafeson.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Motanafeson/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = Motanafeson/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Motanafeson/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Motanafeson/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Motanafeson/main.m; sourceTree = "<group>"; };
+		1C541D99D84748F4B6F961F5 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Medium.ttf"; path = "../assets/fonts/Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
+		24FEA7BD8AE74124993A8BE6 /* Cairo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Cairo.ttf; path = ../assets/fonts/Cairo.ttf; sourceTree = "<group>"; };
 		28789B368F5A21AEB9815AEB /* Pods_Motanafeson_MotanafesonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Motanafeson_MotanafesonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-Motanafeson.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motanafeson.debug.xcconfig"; path = "Target Support Files/Pods-Motanafeson/Pods-Motanafeson.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Motanafeson.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motanafeson.release.xcconfig"; path = "Target Support Files/Pods-Motanafeson/Pods-Motanafeson.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Motanafeson-MotanafesonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motanafeson-MotanafesonTests.debug.xcconfig"; path = "Target Support Files/Pods-Motanafeson-MotanafesonTests/Pods-Motanafeson-MotanafesonTests.debug.xcconfig"; sourceTree = "<group>"; };
+		76A5989567D14086B19BC4A7 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Light.ttf"; path = "../assets/fonts/Ubuntu-Light.ttf"; sourceTree = "<group>"; };
+		7C3A5E3C56FD4F70AC1F141F /* Cairo-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cairo-Light.ttf"; path = "../assets/fonts/Cairo-Light.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Motanafeson/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		822331D5452342C298415373 /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Regular.ttf"; path = "../assets/fonts/Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
 		82441D795B0BCE1A175BB65F /* Pods_Motanafeson.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Motanafeson.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Motanafeson-MotanafesonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motanafeson-MotanafesonTests.release.xcconfig"; path = "Target Support Files/Pods-Motanafeson-MotanafesonTests/Pods-Motanafeson-MotanafesonTests.release.xcconfig"; sourceTree = "<group>"; };
+		8F37649A6D2A4B44B27FC00B /* Grandstander-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Grandstander-Regular.ttf"; path = "../assets/fonts/Grandstander-Regular.ttf"; sourceTree = "<group>"; };
+		900B670D2A7DC5A900D1CFAC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AC42BF61EA4240F2B994A708 /* Cairo-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cairo-Bold.ttf"; path = "../assets/fonts/Cairo-Bold.ttf"; sourceTree = "<group>"; };
+		B33D9109FF7A4A35B078FC40 /* Cairo-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cairo-Black.ttf"; path = "../assets/fonts/Cairo-Black.ttf"; sourceTree = "<group>"; };
+		C231A65EA70A4FF9945AC592 /* Ubuntu-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Italic.ttf"; path = "../assets/fonts/Ubuntu-Italic.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -86,6 +112,7 @@
 		13B07FAE1A68108700A75B9A /* Motanafeson */ = {
 			isa = PBXGroup;
 			children = (
+				900B670D2A7DC5A900D1CFAC /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -122,6 +149,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				B71F69025B614C1481CDE724 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -135,6 +163,25 @@
 				00E356EE1AD99517003FC87E /* MotanafesonTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B71F69025B614C1481CDE724 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B33D9109FF7A4A35B078FC40 /* Cairo-Black.ttf */,
+				AC42BF61EA4240F2B994A708 /* Cairo-Bold.ttf */,
+				097A1E75EE5D47AE85BE954F /* Cairo-ExtraLight.ttf */,
+				7C3A5E3C56FD4F70AC1F141F /* Cairo-Light.ttf */,
+				01EEB792C420420485108E9E /* Cairo-SemiBold.ttf */,
+				24FEA7BD8AE74124993A8BE6 /* Cairo.ttf */,
+				001D5E0337BC4A8291C04AA6 /* Grandstander-ExtraLight.ttf */,
+				8F37649A6D2A4B44B27FC00B /* Grandstander-Regular.ttf */,
+				C231A65EA70A4FF9945AC592 /* Ubuntu-Italic.ttf */,
+				76A5989567D14086B19BC4A7 /* Ubuntu-Light.ttf */,
+				1C541D99D84748F4B6F961F5 /* Ubuntu-Medium.ttf */,
+				822331D5452342C298415373 /* Ubuntu-Regular.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
@@ -246,6 +293,19 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				900B670E2A7DC5A900D1CFAC /* GoogleService-Info.plist in Resources */,
+				6E4358D8A07F431E870BD49C /* Cairo-Black.ttf in Resources */,
+				21FE34FD61284736AE517C77 /* Cairo-Bold.ttf in Resources */,
+				A59B7DFAC5DD498D9BE82F20 /* Cairo-ExtraLight.ttf in Resources */,
+				D72CB25A5CA646B98CD3A0F4 /* Cairo-Light.ttf in Resources */,
+				BB364C10438044F2B0850260 /* Cairo-SemiBold.ttf in Resources */,
+				883E1B20867345BF95513413 /* Cairo.ttf in Resources */,
+				0E913DAE50F34E7DB4A7E3CA /* Grandstander-ExtraLight.ttf in Resources */,
+				F1BDEA0AD0D44D4DAB30B08D /* Grandstander-Regular.ttf in Resources */,
+				67BDD67BCC8242999669F1F0 /* Ubuntu-Italic.ttf in Resources */,
+				C4194BBCFCAF4FC89C449650 /* Ubuntu-Light.ttf in Resources */,
+				93BF32E941AE4A8A8E002800 /* Ubuntu-Medium.ttf in Resources */,
+				870E84460DFD48479E13B961 /* Ubuntu-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +577,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Motanafeson/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "متنافسون";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -527,6 +588,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.scorpion.mutanafeson;
 				PRODUCT_NAME = Motanafeson;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -542,6 +604,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = Motanafeson/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "متنافسون";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -552,6 +615,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.scorpion.mutanafeson;
 				PRODUCT_NAME = Motanafeson;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

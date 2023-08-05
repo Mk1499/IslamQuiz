@@ -1,119 +1,89 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
+import React from 'react';
+import {StatusBar, View, Text, StyleSheet} from 'react-native';
+import NavigationService from './src/Routes/NavigationService';
+import {Provider} from 'react-redux';
+import {NavigationContainer} from '@react-navigation/native';
+import store from './src/Redux/store';
+import MainStack from './src/Routes/Stacks/Main';
+import {ThemeProvider, useTheme} from './src/Theme/ThemeProvider';
+import Constants from './src/Config/Constants';
+import {NativeBaseProvider} from 'native-base';
+import Toast from 'react-native-toast-message';
+import NetworkLoggerScreen from './src/Screens/Test/NetworkLogger';
+import {googleConfigure} from './src/Services/social-service';
+import config from './src/Config/config';
+import {moderateScale} from 'react-native-size-matters';
+import 'react-native-get-random-values';
+import ForceUpdate from './src/Templates/ForceUpdate';
+import FireConfig from './src/Templates/FireConfig';
 
-import React, {type PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+const {fonts} = Constants;
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const Section: React.FC<
-  PropsWithChildren<{
-    title: string;
-  }>
-> = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+googleConfigure();
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const {colors} = useTheme();
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  const toastConfing = {
+    success: props => (
+      <View style={styles.successCont}>
+        <Text style={styles.toastText}>{props.text1}</Text>
+      </View>
+    ),
+    /*
+    Overwrite 'error' type,
+    by modifying the existing `ErrorToast` component
+  */
+    error: props => (
+      <View style={styles.errorCont}>
+        <Text style={styles.toastText}>{props.text1}</Text>
+      </View>
+    ),
   };
-
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <Provider store={store}>
+      <ThemeProvider>
+        <StatusBar backgroundColor={colors.primary} />
+        <FireConfig>
+          <ForceUpdate>
+            <NavigationContainer
+              ref={(navigatorRef: any) => {
+                NavigationService.setTopLevelNavigator(navigatorRef);
+              }}>
+              <NativeBaseProvider>
+                <MainStack />
+                {config.enableDebug && <NetworkLoggerScreen />}
+              </NativeBaseProvider>
+            </NavigationContainer>
+          </ForceUpdate>
+        </FireConfig>
+        <Toast config={toastConfing} />
+      </ThemeProvider>
+    </Provider>
   );
+  // } else {
+  //   return null;
+  // }
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  errorCont: {
+    backgroundColor: '#B00020',
+    width: '70%',
+    paddingVertical: moderateScale(10),
+    borderRadius: 10,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  toastText: {
+    fontSize: 15,
+    color: '#fff',
+    fontFamily: fonts.med,
+    textAlign: 'center',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+  successCont: {
+    backgroundColor: '#5cb85c',
+    width: '70%',
+    paddingVertical: moderateScale(10),
+    borderRadius: 10,
   },
 });
 

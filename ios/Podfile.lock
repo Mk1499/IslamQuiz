@@ -489,6 +489,8 @@ PODS:
     - React-Core
   - RNCClipboard (1.11.2):
     - React-Core
+  - RNCPushNotificationIOS (1.11.0):
+    - React-Core
   - RNFBAnalytics (17.5.0):
     - Firebase/Analytics (= 10.7.0)
     - React-Core
@@ -609,6 +611,7 @@ DEPENDENCIES:
   - ReactNativeUiLib (from `../node_modules/react-native-ui-lib`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
+  - "RNCPushNotificationIOS (from `../node_modules/@react-native-community/push-notification-ios`)"
   - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBCrashlytics (from `../node_modules/@react-native-firebase/crashlytics`)"
@@ -749,6 +752,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNCClipboard:
     :path: "../node_modules/@react-native-clipboard/clipboard"
+  RNCPushNotificationIOS:
+    :path: "../node_modules/@react-native-community/push-notification-ios"
   RNFBAnalytics:
     :path: "../node_modules/@react-native-firebase/analytics"
   RNFBApp:
@@ -854,6 +859,7 @@ SPEC CHECKSUMS:
   ReactNativeUiLib: 8d3804947431a465a69f09c5e785c988314612a9
   RNCAsyncStorage: f47fe18526970a69c34b548883e1aeceb115e3e1
   RNCClipboard: 3f0451a8100393908bea5c5c5b16f96d45f30bfc
+  RNCPushNotificationIOS: 64218f3c776c03d7408284a819b2abfda1834bc8
   RNFBAnalytics: 3444df9286d36b630b5fae9283a5c797b524e437
   RNFBApp: 0d8bf86673bbad0524d1ceac3944d71ccf48a0e4
   RNFBCrashlytics: cd370021582bf4ba67cf0af1aa11955c59d4c6b7
