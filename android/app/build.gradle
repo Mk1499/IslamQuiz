@@ -1,5 +1,9 @@
-apply plugin: "com.android.application"
-apply plugin: 'com.google.gms.google-services'
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+}
+
 
 import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
@@ -139,8 +143,8 @@ android {
         applicationId "com.scorpion.mutanafeson"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 6
+        versionName "1.0.5"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
 
         if (isNewArchitectureEnabled()) {
@@ -214,9 +218,9 @@ android {
     signingConfigs {
         debug {
             storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
+            storePassword '123456'
+            keyAlias 'key0'
+            keyPassword '123456'
         }
     }
     buildTypes {
@@ -278,6 +282,15 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+
+    implementation platform('com.google.firebase:firebase-bom:31.2.3')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation project(path: ":@react-native-firebase_messaging")
+    implementation project(path: ":@react-native-firebase_analytics")
+    implementation project(path: ":@react-native-firebase_config")
+    implementation 'com.google.android.gms:play-services-auth:20.4.1'
 }
 
 if (isNewArchitectureEnabled()) {
@@ -304,6 +317,7 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
 
 def isNewArchitectureEnabled() {
     // To opt-in for the New Architecture, you can either:
