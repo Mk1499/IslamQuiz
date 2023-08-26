@@ -5,6 +5,7 @@ import {
   RefreshControl,
   FlatList,
   View,
+  SafeAreaView,
 } from 'react-native';
 import ProfileCard from '../../../Components/ProfileCard/ProfileCard';
 import TabHeader from '../../../Components/TabHeader/TabHeader';
@@ -117,86 +118,88 @@ function MyProfile(props: MyProps) {
   }
 
   return (
-    <ScrollView
-      style={styles.container}
-      refreshControl={
-        <RefreshControl
-          refreshing={refreshing}
-          onRefresh={() => getData(true)}
-          colors={[colors.primary]}
-        />
-      }>
-      <ViewShot
-        ref={ref}
-        captureMode="mount"
-        options={{fileName: 'IQuiz-Score', format: 'jpg', quality: 0.9}}>
-        <ImageBackground
-          source={require('../../../../assets/images/BGpattern.png')}
-          style={styles.content}>
-          <TabHeader
-            label={I18n.Screens.profile}
-            leftIcon={
-              <Icon
-                name="edit"
-                as={AntDesign}
-                size="xl"
-                style={styles.icon}
-                onPress={() => navToScreen('EditProfile')}
-              />
-            }
-            rightIcon={
-              <Icon
-                name="sharealt"
-                as={AntDesign}
-                size="xl"
-                style={styles.icon}
-                onPress={shareProfile}
-              />
-            }
+    <SafeAreaView style={{backgroundColor: colors.primary}}>
+      <ScrollView
+        style={styles.container}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={() => getData(true)}
+            colors={[colors.primary]}
           />
-          <ProfileCard
-            name={userData?.name}
-            points={userData?.points}
-            email={userData?.email}
-            photo={userData?.photo}
-            rank={userData?.rank}
-            submissions={userData?.submissions}
-            quote={userData?.quote}
-            isMine
-          />
-          <View style={styles.dataContent}>
-            <View style={styles.section}>
-              <View style={styles.row}>
-                <MyText style={styles.sectionTitle}>
-                  {I18n.Profile.myQuizzes}
-                </MyText>
-                {takenQuizzes.length > 5 ? (
-                  <MyText style={styles.more}>{I18n.Global.more}</MyText>
-                ) : null}
-              </View>
-              {loading ? (
-                <Loader isVisible={true} />
-              ) : (
-                <FlatList
-                  data={takenQuizzes}
-                  renderItem={({item}) => (
-                    <View style={styles.cardCont}>
-                      <TakenQuizCard
-                        item={item}
-                        action={() => gotoQuizAnswers(item)}
-                      />
-                    </View>
-                  )}
-                  ListEmptyComponent={renderEmpty}
-                  horizontal
-                  style={styles.list}
+        }>
+        <ViewShot
+          ref={ref}
+          captureMode="mount"
+          options={{fileName: 'IQuiz-Score', format: 'jpg', quality: 0.9}}>
+          <ImageBackground
+            source={require('../../../../assets/images/BGpattern.png')}
+            style={styles.content}>
+            <TabHeader
+              label={I18n.Screens.profile}
+              leftIcon={
+                <Icon
+                  name="edit"
+                  as={AntDesign}
+                  size="xl"
+                  style={styles.icon}
+                  onPress={() => navToScreen('EditProfile')}
                 />
-              )}
+              }
+              rightIcon={
+                <Icon
+                  name="sharealt"
+                  as={AntDesign}
+                  size="xl"
+                  style={styles.icon}
+                  onPress={shareProfile}
+                />
+              }
+            />
+            <ProfileCard
+              name={userData?.name}
+              points={userData?.points}
+              email={userData?.email}
+              photo={userData?.photo}
+              rank={userData?.rank}
+              submissions={userData?.submissions}
+              quote={userData?.quote}
+              isMine
+            />
+            <View style={styles.dataContent}>
+              <View style={styles.section}>
+                <View style={styles.row}>
+                  <MyText style={styles.sectionTitle}>
+                    {I18n.Profile.myQuizzes}
+                  </MyText>
+                  {takenQuizzes.length > 5 ? (
+                    <MyText style={styles.more}>{I18n.Global.more}</MyText>
+                  ) : null}
+                </View>
+                {loading ? (
+                  <Loader isVisible={true} />
+                ) : (
+                  <FlatList
+                    data={takenQuizzes}
+                    renderItem={({item}) => (
+                      <View style={styles.cardCont}>
+                        <TakenQuizCard
+                          item={item}
+                          action={() => gotoQuizAnswers(item)}
+                        />
+                      </View>
+                    )}
+                    ListEmptyComponent={renderEmpty}
+                    horizontal
+                    style={styles.list}
+                  />
+                )}
+              </View>
             </View>
-          </View>
-        </ImageBackground>
-      </ViewShot>
-    </ScrollView>
+          </ImageBackground>
+        </ViewShot>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 

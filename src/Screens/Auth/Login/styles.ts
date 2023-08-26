@@ -7,7 +7,7 @@ const {fonts} = Constants;
 const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
     container: {
-      // backgroundColor:colors.bg,
+      backgroundColor: themeColors.bg,
       minHeight: '100%',
     },
     formCont: {

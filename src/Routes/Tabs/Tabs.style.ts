@@ -21,7 +21,7 @@ const makeStyle = (themeColors: ThemeColors) =>
       backgroundColor: themeColors.bg,
       // borderTopLeftRadius: 20,
       // borderTopRightRadius: 20,
-      borderTopWidth: 1,
+      borderTopWidth: 2,
       borderTopColor: themeColors.primary,
     },
   });

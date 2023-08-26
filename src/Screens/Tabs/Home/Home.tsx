@@ -6,6 +6,7 @@ import {
   ScrollView,
   FlatList,
   Image,
+  SafeAreaView,
 } from 'react-native';
 import makeStyle from './styles';
 
@@ -99,68 +100,73 @@ function Home(props: MyProps) {
   }
 
   return (
-    <ScrollView
-      contentContainerStyle={styles.container}
-      refreshControl={
-        <RefreshControl
-          onRefresh={() => getCategories(true)}
-          refreshing={refreshing}
-        />
-      }>
-      <ImageBackground
-        source={require('../../../../assets/images/BGpattern.png')}
-        style={styles.content}>
+    <SafeAreaView style={{flex: 1, backgroundColor: colors.primary}}>
+      <ScrollView
+        contentContainerStyle={styles.container}
+        refreshControl={
+          <RefreshControl
+            onRefresh={() => getCategories(true)}
+            refreshing={refreshing}
+          />
+        }>
         <ImageBackground
-          style={styles.upperSec}
-          source={require('../../../../assets/images/BGpattern.png')}>
-          <View style={[styles.row, styles.header]}>
-            <LangSwitch />
-            <Image
-              source={require('../../../../assets/images/logoWhite.png')}
-              style={styles.logo}
-              resizeMode="contain"
+          source={require('../../../../assets/images/BGpattern.png')}
+          style={styles.content}>
+          <ImageBackground
+            style={styles.upperSec}
+            source={require('../../../../assets/images/BGpattern.png')}>
+            <View style={[styles.row, styles.header]}>
+              <LangSwitch />
+              <Image
+                source={require('../../../../assets/images/logoWhite.png')}
+                style={styles.logo}
+                resizeMode="contain"
+              />
+            </View>
+            <View style={styles.welcomeCont}>
+              <View style={styles.textCont}>
+                <Text style={styles.welcomeText}>{I18n.Home.welBack}</Text>
+              </View>
+              <View style={styles.textCont}>
+                <Text style={styles.userName}>{props.userData.name}</Text>
+              </View>
+            </View>
+          </ImageBackground>
+          <View style={styles.optionsListCont}>
+            <FlatList
+              contentContainerStyle={styles.optionsList}
+              data={options}
+              horizontal
+              renderItem={({item}) => <OptionCard item={item} />}
+              showsHorizontalScrollIndicator={false}
+              keyExtractor={item => item.id}
             />
           </View>
-          <View style={styles.welcomeCont}>
-            <View style={styles.textCont}>
-              <Text style={styles.welcomeText}>{I18n.Home.welBack}</Text>
+
+          <View style={styles.section}>
+            <QuizzesCarousel />
+          </View>
+          <View style={styles.section}>
+            <Text style={styles.secTitle}>{I18n.Home.categories}</Text>
+            <View>
+              <FlatList
+                contentContainerStyle={styles.catList}
+                data={categories}
+                renderItem={({item}) => (
+                  <CatCard
+                    item={item}
+                    action={() => gotoCategoryDetails(item)}
+                  />
+                )}
+                keyExtractor={item => item._id}
+                numColumns={2}
+              />
             </View>
-            <View style={styles.textCont}>
-              <Text style={styles.userName}>{props.userData.name}</Text>
-            </View>
+            <Loading isVisible={loadingCats} />
           </View>
         </ImageBackground>
-        <View style={styles.optionsListCont}>
-          <FlatList
-            contentContainerStyle={styles.optionsList}
-            data={options}
-            horizontal
-            renderItem={({item}) => <OptionCard item={item} />}
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={item => item.id}
-          />
-        </View>
-
-        <View style={styles.section}>
-          <QuizzesCarousel />
-        </View>
-        <View style={styles.section}>
-          <Text style={styles.secTitle}>{I18n.Home.categories}</Text>
-          <View>
-            <FlatList
-              contentContainerStyle={styles.catList}
-              data={categories}
-              renderItem={({item}) => (
-                <CatCard item={item} action={() => gotoCategoryDetails(item)} />
-              )}
-              keyExtractor={item => item._id}
-              numColumns={2}
-            />
-          </View>
-          <Loading isVisible={loadingCats} />
-        </View>
-      </ImageBackground>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 

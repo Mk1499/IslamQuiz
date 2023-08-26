@@ -17,15 +17,21 @@ type MyProps = {
 };
 
 const AuthHead = (props: MyProps) => {
-  const {dark, setScheme, setLangUpdated, setRTL, colors} = useTheme();
+  const {
+    // dark,
+    //  setScheme,
+    setLangUpdated,
+    setRTL,
+    colors,
+  } = useTheme();
   const styles = makeStyle(colors);
-  const toggleScheme = () => {
-    if (dark) {
-      setScheme('light');
-    } else {
-      setScheme('dark');
-    }
-  };
+  // const toggleScheme = () => {
+  //   if (dark) {
+  //     setScheme('light');
+  //   } else {
+  //     setScheme('dark');
+  //   }
+  // };
 
   const toggleLang = () => {
     const currentLang = getActiveLang();
@@ -61,9 +67,7 @@ const AuthHead = (props: MyProps) => {
           )}
         </View>
         <View style={styles.dataCont}>
-          <Text style={styles.title} onPress={toggleScheme}>
-            {props.screenName}
-          </Text>
+          <Text style={styles.title}>{props.screenName}</Text>
           <View style={styles.row}>
             <Text style={styles.text}>{props.message}</Text>
             <Text style={[styles.text, styles.link]} onPress={props.linkAction}>

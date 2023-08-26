@@ -41,7 +41,7 @@ const makeStyle = (themeColors: ThemeColors) =>
       shadowRadius: 3.84,
       elevation: 5,
       resizeMode: 'contain',
-      backgroundColor: themeColors.bg,
+      backgroundColor: themeColors.lightText,
     },
     name: {
       color: themeColors.text,

@@ -6,6 +6,7 @@ import {
   ImageBackground,
   Image,
   FlatList,
+  SafeAreaView,
 } from 'react-native';
 import {useTheme} from '../../../../Theme/ThemeProvider';
 import makeStyle from './GeneralSearch.screen.styles';
@@ -89,114 +90,120 @@ function GeneralSearch({user}: MyProps) {
   }
 
   return (
-    <ImageBackground
-      source={require('../../../../../assets/images/BGpattern.png')}
-      style={styles.container}>
-      <ScrollView
-        contentContainerStyle={styles.content}
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={() => getData(true)}
-            colors={[colors.primary]}
-          />
-        }>
-        <ImageBackground
-          source={require('../../../../../assets/images/BGpattern.png')}
-          style={styles.upperCont}>
-          <View style={styles.searchCont}>
-            <MyInput
-              style={styles.searchInput}
-              onChange={t => setQuery(t)}
-              placeholder={I18n.Search.inputPlaceHolder}
-              onSubmitEditing={() => {
-                if (query) {
-                  getData();
-                }
-              }}
+    <SafeAreaView style={{backgroundColor: colors.primary, flex: 1}}>
+      <ImageBackground
+        source={require('../../../../../assets/images/BGpattern.png')}
+        style={styles.container}>
+        <ScrollView
+          contentContainerStyle={styles.content}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={() => getData(true)}
+              colors={[colors.primary]}
             />
-            <Icon style={styles.icon} name="search" as={Octicons} size="lg" />
+          }>
+          <ImageBackground
+            source={require('../../../../../assets/images/BGpattern.png')}
+            style={styles.upperCont}>
+            <View style={styles.searchCont}>
+              <MyInput
+                style={styles.searchInput}
+                onChange={t => setQuery(t)}
+                placeholder={I18n.Search.inputPlaceHolder}
+                onSubmitEditing={() => {
+                  if (query) {
+                    getData();
+                  }
+                }}
+              />
+              <Icon style={styles.icon} name="search" as={Octicons} size="lg" />
+            </View>
+          </ImageBackground>
+
+          <View style={styles.resultCont}>
+            <Loader isVisible={loading} />
+
+            {!loading && !searched ? (
+              <>
+                <Image
+                  source={SearchImg}
+                  resizeMode="contain"
+                  style={styles.searchImg}
+                />
+                <MyText style={styles.searchMsg}>
+                  {I18n.Search.welcomeMsg}
+                </MyText>
+              </>
+            ) : null}
+            {!loading &&
+            searched &&
+            !users.length &&
+            !quizzes.length &&
+            !groups.length ? (
+              <>
+                <Image
+                  source={NoResImg}
+                  resizeMode="contain"
+                  style={styles.searchImg}
+                />
+                <MyText style={styles.searchMsg}>{I18n.Search.noData}</MyText>
+              </>
+            ) : null}
+            {/* Users */}
+            {!loading && users.length ? (
+              <View style={styles.section}>
+                <View style={styles.sectionTitleCont}>
+                  <MyText style={styles.sectionTitle}>
+                    {I18n.Search.users}
+                  </MyText>
+                  <MyText style={styles.more} onPress={showMoreUsers}>
+                    {I18n.Global.more}
+                  </MyText>
+                </View>
+                <FlatList
+                  data={users}
+                  renderItem={({item}) => <UserCard user={item} />}
+                  horizontal
+                  contentContainerStyle={styles.usersList}
+                  inverted
+                  ListEmptyComponent={noDataComp}
+                />
+              </View>
+            ) : null}
+            {/* Quizzes */}
+            {!loading && quizzes.length ? (
+              <View style={styles.section}>
+                <View style={styles.sectionTitleCont}>
+                  <MyText style={styles.sectionTitle}>
+                    {I18n.Search.quizzes}
+                  </MyText>
+                  <MyText style={styles.more} onPress={showMoreQuizzes}>
+                    {I18n.Global.more}
+                  </MyText>
+                </View>
+                <FlatList
+                  data={quizzes}
+                  renderItem={({item}) => (
+                    <View style={styles.quizCard}>
+                      <QuizCard
+                        action={() => gotoQuizIntro(item)}
+                        key={`quiz-${item._id}`}
+                        item={item}
+                      />
+                    </View>
+                  )}
+                  horizontal
+                  contentContainerStyle={styles.list}
+                  inverted
+                  ListEmptyComponent={noDataComp}
+                />
+              </View>
+            ) : null}
           </View>
-        </ImageBackground>
-
-        <View style={styles.resultCont}>
-          <Loader isVisible={loading} />
-
-          {!loading && !searched ? (
-            <>
-              <Image
-                source={SearchImg}
-                resizeMode="contain"
-                style={styles.searchImg}
-              />
-              <MyText style={styles.searchMsg}>{I18n.Search.welcomeMsg}</MyText>
-            </>
-          ) : null}
-          {!loading &&
-          searched &&
-          !users.length &&
-          !quizzes.length &&
-          !groups.length ? (
-            <>
-              <Image
-                source={NoResImg}
-                resizeMode="contain"
-                style={styles.searchImg}
-              />
-              <MyText style={styles.searchMsg}>{I18n.Search.noData}</MyText>
-            </>
-          ) : null}
-          {/* Users */}
-          {!loading && users.length ? (
-            <View style={styles.section}>
-              <View style={styles.sectionTitleCont}>
-                <MyText style={styles.sectionTitle}>{I18n.Search.users}</MyText>
-                <MyText style={styles.more} onPress={showMoreUsers}>
-                  {I18n.Global.more}
-                </MyText>
-              </View>
-              <FlatList
-                data={users}
-                renderItem={({item}) => <UserCard user={item} />}
-                horizontal
-                contentContainerStyle={styles.usersList}
-                inverted
-                ListEmptyComponent={noDataComp}
-              />
-            </View>
-          ) : null}
-          {/* Quizzes */}
-          {!loading && quizzes.length ? (
-            <View style={styles.section}>
-              <View style={styles.sectionTitleCont}>
-                <MyText style={styles.sectionTitle}>
-                  {I18n.Search.quizzes}
-                </MyText>
-                <MyText style={styles.more} onPress={showMoreQuizzes}>
-                  {I18n.Global.more}
-                </MyText>
-              </View>
-              <FlatList
-                data={quizzes}
-                renderItem={({item}) => (
-                  <View style={styles.quizCard}>
-                    <QuizCard
-                      action={() => gotoQuizIntro(item)}
-                      key={`quiz-${item._id}`}
-                      item={item}
-                    />
-                  </View>
-                )}
-                horizontal
-                contentContainerStyle={styles.list}
-                inverted
-                ListEmptyComponent={noDataComp}
-              />
-            </View>
-          ) : null}
-        </View>
-      </ScrollView>
-    </ImageBackground>
+        </ScrollView>
+      </ImageBackground>
+    </SafeAreaView>
   );
 }
 

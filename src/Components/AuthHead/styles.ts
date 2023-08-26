@@ -44,7 +44,7 @@ const makeStyle = (themeColors: ThemeColors) =>
       // fontWeight: 'bold',
       marginBottom: 0.01 * Constants.height,
       fontFamily: Constants.fonts.bold,
-      // textAlign: 'left'
+      textAlign: getActiveLang() === 'ar' ? 'right' : 'left',
     },
     row: {
       display: 'flex',

@@ -28,7 +28,7 @@ function MyButton(props: MyProps) {
         styles.container,
         props.light ? styles.emptyCont : styles.filledCont,
         {
-          opacity: props.disabled ? 0.5 : 1,
+          opacity: props.disabled || props.processing ? 0.5 : 1,
         },
         props.style,
       ]}

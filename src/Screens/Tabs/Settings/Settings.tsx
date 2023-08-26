@@ -4,6 +4,7 @@ import {
   ImageBackground,
   FlatList,
   RefreshControl,
+  SafeAreaView,
 } from 'react-native';
 import TabHeader from '../../../Components/TabHeader/TabHeader';
 import {useTheme} from '../../../Theme/ThemeProvider';
@@ -88,27 +89,29 @@ function Settings(props: MyProps) {
   }
 
   return (
-    <ScrollView
-      style={styles.container}
-      refreshControl={
-        <RefreshControl
-          refreshing={props?.syncingData}
-          onRefresh={() => props.syncUserData(props.user?._id)}
-        />
-      }>
-      <ImageBackground
-        source={require('../../../../assets/images/BGpattern.png')}
-        style={styles.content}>
-        <TabHeader label={I18n.Screens.setting} />
+    <SafeAreaView style={{backgroundColor: colors.primary}}>
+      <ScrollView
+        style={styles.container}
+        refreshControl={
+          <RefreshControl
+            refreshing={props?.syncingData}
+            onRefresh={() => props.syncUserData(props.user?._id)}
+          />
+        }>
+        <ImageBackground
+          source={require('../../../../assets/images/BGpattern.png')}
+          style={styles.content}>
+          <TabHeader label={I18n.Screens.setting} />
 
-        <FlatList
-          contentContainerStyle={styles.optionsCont}
-          data={options}
-          renderItem={({item}) => <OptionRowItem item={item} />}
-          style={styles.list}
-        />
-      </ImageBackground>
-    </ScrollView>
+          <FlatList
+            contentContainerStyle={styles.optionsCont}
+            data={options}
+            renderItem={({item}) => <OptionRowItem item={item} />}
+            style={styles.list}
+          />
+        </ImageBackground>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 

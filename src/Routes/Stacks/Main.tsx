@@ -26,12 +26,13 @@ import QuizAnswers from '../../Screens/Quiz/QuizAnswers/QuizAnswers';
 import UserProfile from '../../Screens/User/UserProfile/UserProfile';
 import stackScreensList from './stackScreensList';
 import uuid from 'react-native-uuid';
+import {SafeAreaView, StyleSheet} from 'react-native';
+import {color} from 'native-base/lib/typescript/theme/styled-system';
 
 const Stack = createStackNavigator();
 
 const MainStack = () => {
   const {colors, rtl} = useTheme();
-
   // useEffect(() => {
   // }, []);
 
@@ -50,44 +51,6 @@ const MainStack = () => {
       /> */}
       <Stack.Screen
         getId={uuid.v4}
-        name="Landing"
-        component={Landing}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-
-      <Stack.Screen
-        getId={uuid.v4}
-        name="OTP"
-        component={OTPVerify}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-
-      <Stack.Screen
-        getId={uuid.v4}
-        name="Login"
-        component={Login}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-      <Stack.Screen
-        getId={uuid.v4}
         name="Tabs"
         component={MainTabs}
         options={{
@@ -98,213 +61,20 @@ const MainStack = () => {
           },
         }}
       />
-      <Stack.Screen
-        getId={uuid.v4}
-        name="CreateQuiz"
-        component={CreateQuiz}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-      <Stack.Screen
-        getId={uuid.v4}
-        name="JoinQuiz"
-        component={JoinQuiz}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-
-      <Stack.Screen
-        getId={uuid.v4}
-        name="CategoryDetails"
-        component={CategoryDetails}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-      <Stack.Screen
-        getId={uuid.v4}
-        name="QuizIntro"
-        component={QuizIntro}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-      <Stack.Screen
-        getId={uuid.v4}
-        name="QuizDetails"
-        component={QuizDetails}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-
-      <Stack.Screen
-        getId={uuid.v4}
-        name="Register"
-        component={Register}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-      <Stack.Screen
-        getId={uuid.v4}
-        name="ForgotPassword"
-        component={ForgotPassword}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-      <Stack.Screen
-        getId={uuid.v4}
-        name="ResetPassword"
-        component={ResetPassword}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-
-      <Stack.Screen
-        getId={uuid.v4}
-        name="ConfirmCode"
-        component={ConfirmCode}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-
-      <Stack.Screen
-        getId={uuid.v4}
-        name="AddQuestions"
-        component={AddQuestions}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-
-      {/* Profile Options */}
-
-      <Stack.Screen
-        getId={uuid.v4}
-        name="ChangeLanguage"
-        component={ChangeLanguage}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-      <Stack.Screen
-        getId={uuid.v4}
-        name="ChangeTheme"
-        component={ChangeTheme}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-      <Stack.Screen
-        getId={uuid.v4}
-        name="ContactUs"
-        component={ContactUs}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-      <Stack.Screen
-        getId={uuid.v4}
-        name="UserProfile"
-        component={UserProfile}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-      <Stack.Screen
-        getId={uuid.v4}
-        name="EditProfile"
-        component={EditProfile}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-      <Stack.Screen
-        getId={uuid.v4}
-        name="QuizAnswers"
-        component={QuizAnswers}
-        options={{
-          headerShown: false,
-          cardStyle: {
-            backgroundColor: colors.bg,
-            direction: !rtl ? 'ltr' : 'rtl',
-          },
-        }}
-      />
-
-      {/* Stack Screens */}
 
       {stackScreensList.map(s => (
         <Stack.Screen
-          // getId={uuid.v4}
+          getId={uuid.v4}
           name={s.name}
-          component={s.component}
+          component={props => (
+            <SafeAreaView
+              style={{
+                flex: 1,
+                backgroundColor: s.isPrimaryBG ? colors.primary : colors.bg,
+              }}>
+              <s.component {...props} />
+            </SafeAreaView>
+          )}
           options={{
             headerShown: false,
             cardStyle: {

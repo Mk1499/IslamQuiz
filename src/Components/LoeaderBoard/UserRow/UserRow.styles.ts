@@ -30,7 +30,7 @@ const makeStyle = (themeColors: ThemeColors) =>
       height: moderateScale(34),
       marginHorizontal: moderateScale(5),
       borderRadius: moderateScale(17),
-      resizeMode: 'contain',
+      resizeMode: 'cover',
     },
     label: {
       color: themeColors.text,
