@@ -147,7 +147,9 @@ function Home(props: MyProps) {
             <QuizzesCarousel />
           </View>
           <View style={styles.section}>
-            <Text style={styles.secTitle}>{I18n.Home.categories}</Text>
+            <View style={styles.secTitleCont}>
+              <Text style={styles.secTitle}>{I18n.Home.categories}</Text>
+            </View>
             <View>
               <FlatList
                 contentContainerStyle={styles.catList}

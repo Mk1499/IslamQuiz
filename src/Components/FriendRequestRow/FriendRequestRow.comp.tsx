@@ -12,7 +12,7 @@ type MyProps = {
   action: Function;
 };
 
-function FriendRequestRow({item}: MyProps) {
+function FriendRequestRow({item, action}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [request, setRequest] = useState<FriendRequest>(item);
@@ -20,14 +20,16 @@ function FriendRequestRow({item}: MyProps) {
   function accept() {
     const newReq: FriendRequest = request;
     newReq.status = 'valid';
-    setRequest(newReq);
+    setRequest({...newReq});
+    action('valid');
     // alert(request.status);
   }
 
   function refuse() {
     const newReq: FriendRequest = request;
     newReq.status = 'cancelled';
-    setRequest(newReq);
+    setRequest({...newReq});
+    action('cancelled');
   }
 
   return (

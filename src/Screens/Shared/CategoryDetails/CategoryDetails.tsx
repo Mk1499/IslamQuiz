@@ -104,7 +104,9 @@ function CategoryDetails(props: MyProps) {
         }
       />
       <ImageBackground source={category.cover} style={styles.container}>
-        <Text style={styles.secTitle}>{I18n.Category.quizzes}</Text>
+        <View style={styles.secTitleCont}>
+          <Text style={styles.secTitle}>{I18n.Category.quizzes}</Text>
+        </View>
 
         <View style={styles.quizzesCont}>
           <View style={styles.switchCont}>

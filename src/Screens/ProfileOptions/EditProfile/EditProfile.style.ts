@@ -33,6 +33,7 @@ const makeStyle = (themeColors: ThemeColors) =>
       elevation: 5,
       alignSelf: 'center',
       resizeMode: 'contain',
+      backgroundColor: themeColors.lightText,
     },
     btn: {},
     input: {

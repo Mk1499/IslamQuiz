@@ -26,11 +26,7 @@ const makeStyle = (themeColors: ThemeColors) =>
     quizzesCont: {
       alignItems: 'center',
     },
-    secTitle: {
-      color: themeColors.primary,
-      fontFamily: fonts.bold,
-      fontSize: 24,
-      textAlign: 'center',
+    secTitleCont: {
       borderColor: themeColors.primary,
       borderWidth: 1,
       alignSelf: 'center',
@@ -38,6 +34,12 @@ const makeStyle = (themeColors: ThemeColors) =>
       marginVertical: 0.02 * height,
       borderTopRightRadius: 20,
       borderBottomLeftRadius: 20,
+    },
+    secTitle: {
+      color: themeColors.primary,
+      fontFamily: fonts.bold,
+      fontSize: 24,
+      textAlign: 'center',
     },
     switchCont: {
       flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
@@ -50,6 +52,7 @@ const makeStyle = (themeColors: ThemeColors) =>
       color: themeColors.primary,
       fontFamily: fonts.med,
       fontSize: moderateScale(15),
+      marginHorizontal: moderateScale(10),
     },
   });
 

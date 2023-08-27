@@ -21,7 +21,6 @@ import SearchQuizzesScreen from '../../Screens/Tabs/Search/SearchQuizzes/SearchQ
 import SearchUsersScreen from '../../Screens/Tabs/Search/SearchUsers/SearchUsers.screen';
 import UserProfile from '../../Screens/User/UserProfile/UserProfile';
 import UserQuizzesScreen from '../../Screens/User/UserQuizzes/UserQuizzes.screen';
-import MainTabs from '../Tabs/MainTabs';
 import screenNames from './screenNames';
 
 export default [
@@ -109,7 +108,6 @@ export default [
   {
     name: screenNames.CategoryDetails,
     component: CategoryDetails,
-    isPrimaryBG: true,
   },
   {
     name: screenNames.JoinQuiz,
@@ -119,7 +117,6 @@ export default [
   {
     name: screenNames.CreateQuiz,
     component: CreateQuiz,
-    isPrimaryBG: true,
   },
 
   {

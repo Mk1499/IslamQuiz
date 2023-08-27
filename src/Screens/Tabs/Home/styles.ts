@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import {Platform, StyleSheet} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
 import Constants from '../../../Config/Constants';
 import ThemeColors from '../../../Models/ThemeColors.model';
 import {getActiveLang} from '../../../translate';
@@ -93,18 +94,21 @@ const makeStyle = (themeColors: ThemeColors) => {
     section: {
       // marginVertical: 0.02 * height,
     },
-    secTitle: {
-      color: themeColors.primary,
-      fontFamily: fonts.bold,
-      fontSize: 24,
-      textAlign: 'center',
+    secTitleCont: {
       borderColor: themeColors.primary,
       borderWidth: 1,
       alignSelf: 'center',
       paddingHorizontal: 0.1 * width,
       marginVertical: 0.02 * height,
-      borderTopRightRadius: 20,
-      borderBottomLeftRadius: 20,
+      borderTopRightRadius: moderateScale(20),
+      borderBottomLeftRadius: moderateScale(20),
+      overflow: 'hidden',
+    },
+    secTitle: {
+      color: themeColors.primary,
+      fontFamily: fonts.bold,
+      fontSize: 24,
+      textAlign: 'center',
     },
     listCont: {},
     list: {},

@@ -255,4 +255,7 @@ export default {
     wallOfHonor:
       'The race to the top is on! Check out our top 10 users on the leaderboard',
   },
+  FriendShip: {
+    noFriend: 'No Friend Requests',
+  },
 };
