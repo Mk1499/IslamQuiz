@@ -6,6 +6,7 @@ import {MyImage, MyText, MyButton} from '../Native';
 import makeStyle from './FriendRequestRow.comp.styles';
 import moment from 'moment';
 import I18n from '../../translate';
+import {post} from '../../Services/api-service';
 
 type MyProps = {
   item: FriendRequest;
@@ -17,19 +18,29 @@ function FriendRequestRow({item, action}: MyProps) {
   const styles = makeStyle(colors);
   const [request, setRequest] = useState<FriendRequest>(item);
 
-  function accept() {
+  async function accept() {
     const newReq: FriendRequest = request;
+    const url = '/friend/accept';
+    const body = {
+      friendshipID: request._id,
+    };
     newReq.status = 'valid';
     setRequest({...newReq});
     action('valid');
+    await post(url, body, true);
     // alert(request.status);
   }
 
-  function refuse() {
+  async function refuse() {
     const newReq: FriendRequest = request;
+    const url = '/friend/remove';
+    const body = {
+      friendshipID: request._id,
+    };
     newReq.status = 'cancelled';
     setRequest({...newReq});
     action('cancelled');
+    await post(url, body, true);
   }
 
   return (

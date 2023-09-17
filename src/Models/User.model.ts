@@ -10,4 +10,5 @@ export default interface User {
   submissions: string;
   quote: string;
   profileLocked: boolean;
+  deviceToken: string;
 }

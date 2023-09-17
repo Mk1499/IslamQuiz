@@ -134,6 +134,14 @@ function Profile() {
     return valid;
   }
 
+  function noDataComp() {
+    return (
+      <View style={styles.noDataCont}>
+        <MyText style={styles.noDataMsg}>{I18n.Search.noData}</MyText>
+      </View>
+    );
+  }
+
   return (
     <ScrollView
       style={styles.container}
@@ -172,89 +180,101 @@ function Profile() {
               />
             }
           />
-          <ProfileCard
-            name={userData?.name}
-            points={userData?.points}
-            email={userData?.email}
-            photo={userData?.photo}
-            rank={userData?.rank}
-            submissions={userData?.submissions}
-            quote={userData?.quote}
-            isLocked={!canShow()}
-            friendship={friendship}
-          />
-          {!canShow() ? (
-            <View style={styles.lockedCont}>
-              <Image source={LockImg} style={styles.lockedImg} />
-              <MyText style={styles.lockedMsg}>
-                {I18n.Profile.profileLocked}
-              </MyText>
+          {loading ? (
+            <View style={styles.loaderCont}>
+              <Loader isVisible />
             </View>
           ) : (
-            <View style={styles.dataContent}>
-              <View style={styles.section}>
-                {takenQuizzes.length ? (
-                  <View style={styles.row}>
-                    <MyText style={styles.sectionTitle}>
-                      {I18n.Profile.myQuizzes}
-                    </MyText>
-                    {userData?.submissions > 5 ? (
-                      <MyText style={styles.more} onPress={showMoreQuizzes}>
-                        {I18n.Global.more}
-                      </MyText>
-                    ) : null}
-                  </View>
-                ) : null}
-                {loading ? (
-                  <Loader isVisible={true} />
-                ) : (
-                  <>
-                    <FlatList
-                      data={takenQuizzes}
-                      renderItem={({item}) => (
-                        <View style={styles.cardCont}>
-                          <TakenQuizCard
-                            item={item}
-                            action={() => gotoQuizIntro(item.quiz)}
-                          />
-                        </View>
-                      )}
-                      // ListEmptyComponent={renderEmpty}
-                      horizontal
-                      style={styles.list}
-                    />
-
-                    {/* friends */}
-                    {!loading && friends.length ? (
-                      <View style={styles.section}>
-                        <View style={styles.sectionTitleCont}>
-                          <MyText style={styles.sectionTitle}>
-                            {I18n.Profile.friends}
-                          </MyText>
-                          <MyText style={styles.more} onPress={showMoreUsers}>
+            <View>
+              <ProfileCard
+                name={userData?.name}
+                points={userData?.points}
+                email={userData?.email}
+                photo={userData?.photo}
+                rank={userData?.rank}
+                submissions={userData?.submissions}
+                quote={userData?.quote}
+                isLocked={!canShow()}
+                friendship={friendship}
+                userData={userData}
+              />
+              {!canShow() ? (
+                <View style={styles.lockedCont}>
+                  <Image source={LockImg} style={styles.lockedImg} />
+                  <MyText style={styles.lockedMsg}>
+                    {I18n.Profile.profileLocked}
+                  </MyText>
+                </View>
+              ) : (
+                <View style={styles.dataContent}>
+                  <View style={styles.section}>
+                    {takenQuizzes.length ? (
+                      <View style={styles.row}>
+                        <MyText style={styles.sectionTitle}>
+                          {I18n.Profile.myQuizzes}
+                        </MyText>
+                        {userData?.submissions > 5 ? (
+                          <MyText style={styles.more} onPress={showMoreQuizzes}>
                             {I18n.Global.more}
                           </MyText>
-                        </View>
-                        <FlatList
-                          data={friends}
-                          renderItem={({item}) => <UserCard user={item} />}
-                          horizontal
-                          contentContainerStyle={styles.usersList}
-                          inverted
-                          ListEmptyComponent={noDataComp}
-                        />
+                        ) : null}
                       </View>
                     ) : null}
-                  </>
-                )}
-                <MyText style={styles.competitorFrom}>
-                  {I18n.Profile.competitorFrom}
-                  <MyText style={styles.date}>
-                    {' '}
-                    {moment(userData?.createdAt).format('MMM YYYY')}
-                  </MyText>
-                </MyText>
-              </View>
+                    {loading ? (
+                      <Loader isVisible={true} />
+                    ) : (
+                      <>
+                        <FlatList
+                          data={takenQuizzes}
+                          renderItem={({item}) => (
+                            <View style={styles.cardCont}>
+                              <TakenQuizCard
+                                item={item}
+                                action={() => gotoQuizIntro(item.quiz)}
+                              />
+                            </View>
+                          )}
+                          // ListEmptyComponent={renderEmpty}
+                          horizontal
+                          style={styles.list}
+                        />
+
+                        {/* friends */}
+                        {!loading && friends.length ? (
+                          <View style={styles.section}>
+                            <View style={styles.sectionTitleCont}>
+                              <MyText style={styles.sectionTitle}>
+                                {I18n.Profile.friends}
+                              </MyText>
+                              <MyText
+                                style={styles.more}
+                                // onPress={showMoreUsers}
+                              >
+                                {I18n.Global.more}
+                              </MyText>
+                            </View>
+                            <FlatList
+                              data={friends}
+                              renderItem={({item}) => <UserCard user={item} />}
+                              horizontal
+                              contentContainerStyle={styles.usersList}
+                              inverted
+                              ListEmptyComponent={noDataComp}
+                            />
+                          </View>
+                        ) : null}
+                      </>
+                    )}
+                    <MyText style={styles.competitorFrom}>
+                      {I18n.Profile.competitorFrom}
+                      <MyText style={styles.date}>
+                        {' '}
+                        {moment(userData?.createdAt).format('MMM YYYY')}
+                      </MyText>
+                    </MyText>
+                  </View>
+                </View>
+              )}
             </View>
           )}
         </ImageBackground>

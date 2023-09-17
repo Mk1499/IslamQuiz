@@ -78,11 +78,22 @@ const makeStyle = (themeColors: ThemeColors) =>
       fontSize: moderateScale(15),
     },
 
+    noDataCont: {},
+    noDataMsg: {
+      color: 'red',
+    },
+
     sectionTitleCont: {
       flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
       marginHorizontal: styles.paddingH,
+    },
+    loaderCont: {
+      backgroundColor: themeColors.bg,
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
     },
   });
 export default makeStyle;
