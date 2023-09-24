@@ -32,7 +32,11 @@ import {LockImg} from '../../../../assets/images';
 import Friendship from '../../../Models/Friendship.model';
 import UserCard from '../../../Components/UserCard/UserCard.comp';
 
-function Profile() {
+type MyProps = {
+  activeUser: User;
+};
+
+function Profile({activeUser}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const {params} = useRoute();
@@ -65,9 +69,12 @@ function Profile() {
     if (userData?.submissions > 0 || userID) {
       get(url, true)
         .then(({data}) => {
+          const fArr = data?.friends?.length
+            ? data.friends.filter(i => i._id !== activeUser._id)
+            : [];
           setUserData(data.userData);
           setTakenQuizzes(data?.submittedQuizzes);
-          setFriends(data?.friends);
+          setFriends(fArr);
           setFriendship(data?.friendship);
         })
         .finally(() => {
@@ -140,6 +147,13 @@ function Profile() {
         <MyText style={styles.noDataMsg}>{I18n.Search.noData}</MyText>
       </View>
     );
+  }
+
+  function showMoreUsers() {
+    navigate(screenNames.UserFriends, {
+      userID: userData._id,
+      userName: userData.name,
+    });
   }
 
   return (
@@ -246,19 +260,24 @@ function Profile() {
                               <MyText style={styles.sectionTitle}>
                                 {I18n.Profile.friends}
                               </MyText>
-                              <MyText
-                                style={styles.more}
-                                // onPress={showMoreUsers}
-                              >
-                                {I18n.Global.more}
-                              </MyText>
+                              {friends.length < 5 ? (
+                                <MyText
+                                  style={styles.more}
+                                  onPress={showMoreUsers}>
+                                  {I18n.Global.more}
+                                </MyText>
+                              ) : null}
                             </View>
                             <FlatList
                               data={friends}
-                              renderItem={({item}) => <UserCard user={item} />}
+                              renderItem={({item}) => (
+                                <UserCard
+                                  user={item}
+                                  isMine={activeUser._id === item._id}
+                                />
+                              )}
                               horizontal
-                              contentContainerStyle={styles.usersList}
-                              inverted
+                              style={styles.usersList}
                               ListEmptyComponent={noDataComp}
                             />
                           </View>
@@ -284,7 +303,7 @@ function Profile() {
 }
 
 const mapStateToProps = state => ({
-  user: state.auth.userData,
+  activeUser: state.auth.userData,
   syncingData: state.auth.syncingUserData,
 });
 

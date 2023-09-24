@@ -28,9 +28,15 @@ export async function requestUserPermission() {
 }
 
 export const noteClickedHandler = (data: any) => {
+  // alert(JSON.stringify(data));
   return new Promise(resolve => {
     if (data.navigation) {
-      NavigationService.navigate(data.screenName, JSON.parse(data.params));
+      setTimeout(() => {
+        NavigationService.navigate(
+          data.screenName,
+          data.params ? JSON.parse(data.params) : {},
+        );
+      }, 100);
     }
     resolve(true);
   });
@@ -45,11 +51,10 @@ export const configureAndroidPushNote = () => {
 
     // (required) Called when a remote is received or opened, or local notification is opened
     onNotification: async function (notification) {
-      console.log('NOTIFICATION:', notification);
       if (notification.userInteraction) {
         AsyncStorage.setItem(
           StorageKeys.NoteOpenApp,
-          JSON.stringify(notification),
+          JSON.stringify(notification.data),
         );
         // notification.finish(noteClickedHandler(notification.data));
         await noteClickedHandler(notification.data);

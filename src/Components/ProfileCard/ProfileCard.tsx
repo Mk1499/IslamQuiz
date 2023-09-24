@@ -54,12 +54,9 @@ function ProfileCard({
     };
     setProcessing(true);
     post(url, body, true)
-      .then(() => {
+      .then(({data}) => {
         showSuccess('تم ارسال طلب الصداقة');
-        setFriendData({
-          ...friendData,
-          status: 'pending',
-        });
+        setFriendData(data.data);
       })
       .catch(err => {
         console.log('friend Req Err : ', err);

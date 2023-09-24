@@ -26,6 +26,8 @@ import TakenQuizCard from '../../../Components/TakenQuizCard/TakenQuizCard';
 import Submittion from '../../../Models/Submittion.model';
 import Share from 'react-native-share';
 import ViewShot, {captureRef} from 'react-native-view-shot';
+import UserCard from '../../../Components/UserCard/UserCard.comp';
+import screenNames from '../../../Routes/Stacks/screenNames';
 
 type MyProps = {
   user: User;
@@ -47,6 +49,7 @@ function MyProfile(props: MyProps) {
   const [loading, setLoading] = useState<Boolean>(true);
   const [userData, setUserData] = useState<User>(user);
   const [takenQuizzes, setTakenQuizzes] = useState<Submittion[]>([]);
+  const [friends, setFriends] = useState<User[]>([]);
   const ref = useRef();
 
   useEffect(() => {
@@ -61,14 +64,14 @@ function MyProfile(props: MyProps) {
   }, []);
 
   function getData(refresh = false) {
-    const id = props.user?._id;
-    const url = `/user/profile/${id}`;
+    const url = '/user/myprofile';
     setRefreshing(refresh);
     get(url, true)
       .then(({data}) => {
         console.log('DAA : ', data);
         setUserData(data.userData);
         setTakenQuizzes(data?.submittedQuizzes);
+        setFriends(data?.friends);
       })
       .finally(() => {
         setLoading(false);
@@ -109,10 +112,26 @@ function MyProfile(props: MyProps) {
     [navigate],
   );
 
-  function renderEmpty() {
+  function showMoreUsers() {
+    navigate(screenNames.UserFriends, {
+      userID: userData._id,
+      userName: userData.name,
+    });
+  }
+
+  function showMoreQuizzes() {
+    navigate(screenNames.userQuizzes, {
+      userID: userData._id,
+      userName: userData.name,
+    });
+  }
+
+  function renderEmpty(msg: string) {
     return (
       <View style={styles.emptyCont}>
-        <MyText style={styles.emptyMsg}>{I18n.EmptyMsg.noTakenQuizzes}</MyText>
+        <MyText style={styles.emptyMsg}>
+          {msg || I18n.EmptyMsg.noTakenQuizzes}
+        </MyText>
       </View>
     );
   }
@@ -166,21 +185,25 @@ function MyProfile(props: MyProps) {
               quote={userData?.quote}
               isMine
             />
-            <View style={styles.dataContent}>
-              <View style={styles.section}>
-                <View style={styles.row}>
-                  <MyText style={styles.sectionTitle}>
-                    {I18n.Profile.myQuizzes}
-                  </MyText>
-                  {takenQuizzes.length > 5 ? (
-                    <MyText style={styles.more}>{I18n.Global.more}</MyText>
-                  ) : null}
-                </View>
-                {loading ? (
-                  <Loader isVisible={true} />
-                ) : (
+            {loading ? (
+              <View style={styles.loaderCont}>
+                <Loader isVisible />
+              </View>
+            ) : (
+              <View style={styles.dataContent}>
+                <View style={styles.section}>
+                  <View style={styles.row}>
+                    <MyText style={styles.sectionTitle}>
+                      {I18n.Profile.myQuizzes}
+                    </MyText>
+                    {userData?.submissions > 5 ? (
+                      <MyText style={styles.more} onPress={showMoreQuizzes}>
+                        {I18n.Global.more}
+                      </MyText>
+                    ) : null}
+                  </View>
                   <FlatList
-                    data={takenQuizzes}
+                    data={takenQuizzes || []}
                     renderItem={({item}) => (
                       <View style={styles.cardCont}>
                         <TakenQuizCard
@@ -189,13 +212,39 @@ function MyProfile(props: MyProps) {
                         />
                       </View>
                     )}
-                    ListEmptyComponent={renderEmpty}
+                    ListEmptyComponent={() => renderEmpty()}
                     horizontal
                     style={styles.list}
                   />
-                )}
+                </View>
+                <View style={styles.section}>
+                  <View style={styles.row}>
+                    <MyText style={styles.sectionTitle}>
+                      {I18n.Profile.friends}
+                    </MyText>
+                    {friends.length > 5 ? (
+                      <MyText style={styles.more} onPress={showMoreUsers}>
+                        {I18n.Global.more}
+                      </MyText>
+                    ) : null}
+                  </View>
+
+                  <FlatList
+                    data={friends}
+                    renderItem={({item}) => (
+                      <View style={styles.cardCont}>
+                        <UserCard user={item} />
+                      </View>
+                    )}
+                    horizontal
+                    style={styles.friendsList}
+                    ListEmptyComponent={() =>
+                      renderEmpty(I18n.Profile.noFriends)
+                    }
+                  />
+                </View>
               </View>
-            </View>
+            )}
           </ImageBackground>
         </ViewShot>
       </ScrollView>

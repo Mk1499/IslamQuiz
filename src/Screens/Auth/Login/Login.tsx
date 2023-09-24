@@ -90,6 +90,7 @@ const Login = (props: MyProps) => {
         setLoading(true);
         post(url, body)
           .then(({data}) => {
+            console.log('MK14Toke ', data);
             Storage.setItem(StorageKeys.userToken, data);
             props.setTokenAction(data);
             updateUserDevicetoken();

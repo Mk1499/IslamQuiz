@@ -19,6 +19,7 @@ import QuizIntro from '../../Screens/Quiz/QuizIntro/QuizIntro';
 import CategoryDetails from '../../Screens/Shared/CategoryDetails/CategoryDetails';
 import SearchQuizzesScreen from '../../Screens/Tabs/Search/SearchQuizzes/SearchQuizzes.screen';
 import SearchUsersScreen from '../../Screens/Tabs/Search/SearchUsers/SearchUsers.screen';
+import UserFriendsScreen from '../../Screens/User/UserFriends/UserFriends.screen';
 import UserProfile from '../../Screens/User/UserProfile/UserProfile';
 import UserQuizzesScreen from '../../Screens/User/UserQuizzes/UserQuizzes.screen';
 import screenNames from './screenNames';
@@ -27,6 +28,7 @@ export default [
   {
     name: screenNames.userQuizzes,
     component: UserQuizzesScreen,
+    isPrimaryBG: true,
   },
   {
     name: screenNames.searchUsers,
@@ -132,6 +134,11 @@ export default [
   {
     name: screenNames.Landing,
     component: Landing,
+    // isPrimaryBG: true,
+  },
+  {
+    name: screenNames.UserFriends,
+    component: UserFriendsScreen,
     isPrimaryBG: true,
   },
 ];

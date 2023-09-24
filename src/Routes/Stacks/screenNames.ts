@@ -23,4 +23,5 @@ export default {
   Login: 'Login',
   OTP: 'OTP',
   Landing: 'Landing',
+  UserFriends: 'UserFriends',
 };

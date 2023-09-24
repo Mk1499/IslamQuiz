@@ -95,5 +95,8 @@ const makeStyle = (themeColors: ThemeColors) =>
       alignItems: 'center',
       justifyContent: 'center',
     },
+    usersList: {
+      alignSelf: 'center',
+    },
   });
 export default makeStyle;

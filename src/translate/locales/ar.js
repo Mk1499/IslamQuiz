@@ -31,6 +31,7 @@ export default {
     accept: 'قبول',
     refuse: 'رفض',
     cancelled: 'تم الألغاء',
+    you: 'انت',
   },
   SignIn: {
     ScreenName: 'تسجيل الدخول',
@@ -187,6 +188,7 @@ export default {
     unfriend: 'الغاء الصداقة',
     friends: 'الأصدقاء',
     friendRequests: 'طلبات الصداقة',
+    noFriends: 'لا يوجد اصدقاء',
   },
   ChangeLanguage: {
     ar: 'العربية',

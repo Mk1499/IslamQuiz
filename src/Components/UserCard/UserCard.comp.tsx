@@ -9,17 +9,20 @@ import {useNavigation} from '@react-navigation/native';
 
 type MyProps = {
   user: User;
+  isMine: Boolean;
 };
 
-export default function UserCard({user}: MyProps) {
+export default function UserCard({user, isMine}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const {navigate} = useNavigation();
 
   function gotoProfile() {
-    navigate('UserProfile', {
-      user,
-    });
+    if (!isMine) {
+      navigate('UserProfile', {
+        user,
+      });
+    }
   }
 
   return (
@@ -31,7 +34,12 @@ export default function UserCard({user}: MyProps) {
         <MyImage style={styles.img} uri={user.photo} />
       </View>
       <View style={styles.dataCont}>
-        <MyText style={styles.name}>{user.name}</MyText>
+        {isMine ? (
+          <MyText
+            style={styles.name}>{`${user.name} (${I18n.Global.you})`}</MyText>
+        ) : (
+          <MyText style={styles.name}>{`${user.name}`}</MyText>
+        )}
         <View style={styles.row}>
           <MyText style={styles.rankLabel}>
             {' '}

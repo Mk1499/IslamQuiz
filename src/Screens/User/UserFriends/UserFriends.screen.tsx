@@ -1,23 +1,29 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, memo} from 'react';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {View, FlatList} from 'react-native';
 import {useTheme} from '../../../Theme/ThemeProvider';
-import makeStyle from './UserQuizzes.screen.styles';
+import makeStyle from './UserFreiends.screen.styles';
 import QuizType from '../../../Models/Quiz.model';
 import I18n from '../../../translate';
 import Header from '../../../Components/Header/Header';
 import {get} from '../../../Services/api-service';
 import {errorHandler} from '../../../Services/toast-service';
-import TakenQuizCard from '../../../Components/TakenQuizCard/TakenQuizCard';
 import Loading from '../../../Components/Loading/Loading';
+import UserRow from '../../../Components/LoeaderBoard/UserRow/UserRow';
+import {connect} from 'react-redux';
+import User from '../../../Models/User.model';
 
-export default function UserQuizzesScreen() {
+type MyProps = {
+  activeUser: User;
+};
+
+function UserFriendsScreen({activeUser}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const {params} = useRoute();
-  const [quizzes, setQuizzes] = useState<QuizType[]>([]);
+  const [friends, setFriends] = useState<QuizType[]>([]);
   const [loading, setLoading] = useState<Boolean>(true);
-  const {goBack, navigate} = useNavigation();
+  const {goBack} = useNavigation();
 
   useEffect(() => {
     getData();
@@ -25,10 +31,11 @@ export default function UserQuizzesScreen() {
   }, [params]);
 
   function getData() {
-    let url = `/submit/list/${params.userID}`;
-    get(url, true)
+    let url = `/friend/list/${params.userID}`;
+    get(url)
       .then(({data}) => {
-        setQuizzes(data);
+        const fArr = data?.filter(i => i._id !== activeUser._id);
+        setFriends(fArr);
       })
       .catch(() => {
         errorHandler();
@@ -39,15 +46,9 @@ export default function UserQuizzesScreen() {
       });
   }
 
-  function gotoQuizIntro(quiz) {
-    navigate('QuizIntro', {
-      quiz,
-    });
-  }
-
   return (
     <View style={styles.container}>
-      <Header label={`${I18n.Profile.quizzes}  ${params.userName}`} />
+      <Header label={`${I18n.Profile.friends}  ${params.userName}`} />
       {loading ? (
         <View style={styles.loaderCont}>
           <Loading isVisible={loading} />
@@ -55,15 +56,16 @@ export default function UserQuizzesScreen() {
       ) : (
         <FlatList
           contentContainerStyle={styles.listCont}
-          data={quizzes}
-          renderItem={({item}) => (
-            <TakenQuizCard
-              item={item}
-              action={() => gotoQuizIntro(item.quiz)}
-            />
-          )}
+          data={friends}
+          renderItem={({item}) => <UserRow user={item} hideRank />}
         />
       )}
     </View>
   );
 }
+
+const mapStateToProps = state => ({
+  activeUser: state.auth.userData,
+});
+
+export default connect(mapStateToProps, {})(memo(UserFriendsScreen));

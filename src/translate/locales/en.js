@@ -31,6 +31,7 @@ export default {
     accept: 'accept',
     cancelled: 'cancelled',
     refuse: 'refuse',
+    you: 'You',
   },
   SignIn: {
     ScreenName: 'Sign In',
@@ -188,6 +189,7 @@ export default {
     unfriend: 'Un-Friend',
     friends: 'Friends',
     friendRequests: 'Friend Requests',
+    noFriends: 'No Friends',
   },
   ChangeLanguage: {
     ar: 'Arabic',

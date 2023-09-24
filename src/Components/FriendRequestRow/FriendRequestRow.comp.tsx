@@ -1,4 +1,4 @@
-import React, {memo, useState} from 'react';
+import React, {memo, useState, useEffect} from 'react';
 import {View} from 'react-native';
 import FriendRequest from '../../Models/FriendRequest.model';
 import {useTheme} from '../../Theme/ThemeProvider';
@@ -17,6 +17,10 @@ function FriendRequestRow({item, action}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [request, setRequest] = useState<FriendRequest>(item);
+
+  useEffect(() => {
+    setRequest(item);
+  }, [item]);
 
   async function accept() {
     const newReq: FriendRequest = request;

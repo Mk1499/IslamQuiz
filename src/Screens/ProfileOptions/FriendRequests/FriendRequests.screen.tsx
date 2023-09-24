@@ -84,7 +84,7 @@ function FriendRequests() {
     const body = {
       friendshipID,
     };
-    await del(url, body, true);
+    await post(url, body, true);
   }
 
   return (
