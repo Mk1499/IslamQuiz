@@ -25,9 +25,11 @@ const makeStyle = (themeColors: ThemeColors) =>
     },
     label: {
       color: themeColors.text,
-      fontFamily: fonts.bold,
+      // fontFamily: fonts.bold,
       textAlign: 'center',
       marginBottom: 0.05 * height,
+      fontWeight: 'bold',
+      fontSize: moderateScale(17),
     },
     answerCont: {
       shadowColor: '#000',
@@ -47,6 +49,7 @@ const makeStyle = (themeColors: ThemeColors) =>
     answerLabel: {
       color: themeColors.text,
       fontFamily: fonts.med,
+      textAlign: 'right',
     },
     choosedAnswerCont: {
       shadowColor: '#000',
@@ -67,6 +70,7 @@ const makeStyle = (themeColors: ThemeColors) =>
     choosedAnswerLabel: {
       color: colors.white,
       fontFamily: fonts.med,
+      textAlign: 'right',
     },
   });
 

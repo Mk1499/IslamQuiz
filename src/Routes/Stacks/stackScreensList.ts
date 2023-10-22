@@ -46,6 +46,7 @@ export default [
   {
     name: screenNames.QuizAnswers,
     component: QuizAnswers,
+    isPrimaryBG: true,
   },
   {
     name: screenNames.EditProfile,

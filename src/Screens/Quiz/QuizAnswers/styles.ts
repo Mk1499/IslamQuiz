@@ -6,16 +6,25 @@ import {getActiveLang} from '../../../translate';
 const {width, height, fonts, colors} = Constants;
 const makeStyle = (themeColors: ThemeColors) =>
   StyleSheet.create({
-    container: {},
+    container: {
+      flex: 1,
+      backgroundColor: themeColors.bg,
+    },
     upperCont: {
-      height: 0.3 * height,
+      // height: 0.3 * height,
+      flex: 0.2,
       backgroundColor: themeColors.primary,
       paddingHorizontal: 0.03 * width,
       paddingVertical: 0.02 * height,
     },
     lowerCont: {
-      marginTop: -0.15 * height,
-      minHeight: 0.7 * height,
+      // marginTop: -0.15 * height,
+      flex: 0.7,
+      // minHeight: 0.7 * height,
+      backgroundColor: themeColors.bg,
+    },
+    questionCont: {
+      marginTop: -0.05 * height,
     },
     icon: {},
     row: {

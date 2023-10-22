@@ -19,7 +19,8 @@ type MyProps = {
   };
   route: {
     params: {
-      submit: Submit;
+      submitID: Submit;
+      backToHome?: Boolean;
     };
   };
 };
@@ -62,13 +63,15 @@ function QuizAnswers(props: MyProps) {
   function handlePrev() {
     if (currentQuestion >= 1) {
       setCurrentQuestion(currentQuestion - 1);
+    } else if (params?.backToHome) {
+      props.navigation.replace('Tabs');
     } else {
       props.navigation.goBack();
     }
   }
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.upperCont}>
         {!loading && (
           <View style={styles.row}>
@@ -87,10 +90,12 @@ function QuizAnswers(props: MyProps) {
       ) : (
         <View style={styles.lowerCont}>
           {submits.length ? (
-            <AnsweredQuestion
-              submit={submits[currentQuestion]}
-              // lastQuestion={currentQuestion === submits?.length - 1}
-            />
+            <View style={styles.questionCont}>
+              <AnsweredQuestion
+                submit={submits[currentQuestion]}
+                // lastQuestion={currentQuestion === submits?.length - 1}
+              />
+            </View>
           ) : null}
 
           <View style={styles.btnsCont}>

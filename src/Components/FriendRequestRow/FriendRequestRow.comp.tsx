@@ -1,5 +1,5 @@
 import React, {memo, useState, useEffect} from 'react';
-import {View} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import FriendRequest from '../../Models/FriendRequest.model';
 import {useTheme} from '../../Theme/ThemeProvider';
 import {MyImage, MyText, MyButton} from '../Native';
@@ -7,6 +7,7 @@ import makeStyle from './FriendRequestRow.comp.styles';
 import moment from 'moment';
 import I18n from '../../translate';
 import {post} from '../../Services/api-service';
+import {useNavigation} from '@react-navigation/native';
 
 type MyProps = {
   item: FriendRequest;
@@ -17,6 +18,7 @@ function FriendRequestRow({item, action}: MyProps) {
   const {colors} = useTheme();
   const styles = makeStyle(colors);
   const [request, setRequest] = useState<FriendRequest>(item);
+  const {navigate} = useNavigation();
 
   useEffect(() => {
     setRequest(item);
@@ -47,9 +49,15 @@ function FriendRequestRow({item, action}: MyProps) {
     await post(url, body, true);
   }
 
+  function gotoProfile() {
+    navigate('UserProfile', {
+      user: request.from,
+    });
+  }
+
   return (
     <View style={styles.cardCont}>
-      <View style={styles.dataCont}>
+      <TouchableOpacity style={styles.dataCont} onPress={gotoProfile}>
         <MyImage style={styles.img} uri={request.from.photo} />
         <View style={styles.textCont}>
           <MyText style={styles.label}>{request.from.name}</MyText>
@@ -57,7 +65,7 @@ function FriendRequestRow({item, action}: MyProps) {
             {moment(request.createdAt).fromNow()}
           </MyText>
         </View>
-      </View>
+      </TouchableOpacity>
       {request.status === 'valid' ? (
         <MyText style={styles.labelMsg}>{I18n.Profile.friend}</MyText>
       ) : request.status === 'cancelled' ? (

@@ -21,7 +21,7 @@ const makeStyle = (themeColors: ThemeColors) =>
     },
     icon: {},
     row: {
-      flexDirection: getActiveLang() === 'ar' ? 'row' : 'row-reverse',
+      flexDirection: getActiveLang() !== 'ar' ? 'row' : 'row-reverse',
       alignItems: 'center',
       justifyContent: 'space-between',
     },

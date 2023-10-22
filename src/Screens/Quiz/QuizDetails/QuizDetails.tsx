@@ -32,6 +32,7 @@ import QuizPointsModal from '../../../Components/Modals/QuizPoints/QuizPoints';
 import Share from 'react-native-share';
 import ViewShot, {captureRef} from 'react-native-view-shot';
 import QuizReportModal from '../../../Components/Modals/QuizReportModal/QuizReportModal';
+import screenNames from '../../../Routes/Stacks/screenNames';
 
 type MyProps = {
   navigation: {
@@ -61,6 +62,7 @@ function QuizDetails({navigation, route, user, syncUserData}: MyProps) {
   const [loading, setLoading] = useState(true);
   const [submittion, setSubmittion] = useState([]);
   const [points, setPoints] = useState(0);
+  const [submittionID, setSubmittionID] = useState();
   const [submitting, setSubmitting] = useState(false);
   const [timerRun, setTimerRun] = useState(false);
   const [addingReport, setAddingReport] = useState(false);
@@ -122,7 +124,10 @@ function QuizDetails({navigation, route, user, syncUserData}: MyProps) {
     setTimerRun(false);
     post(url, body, true)
       .then(({data}) => {
-        setPoints(data);
+        // console.log('Sub Data : ', data);
+        const {score, _id} = data;
+        setPoints(score);
+        setSubmittionID(_id);
         setShowSuccessModal(true);
         syncUserData(user._id);
       })
@@ -200,8 +205,15 @@ function QuizDetails({navigation, route, user, syncUserData}: MyProps) {
 
   function gotohistory() {
     setShowSuccessModal(false);
-    navigation.replace('Tabs', {
-      screen: 'History',
+    // navigation.replace('Tabs', {
+    //   screen: screenNames.QuizAnswers,
+    //   params: {
+    //     submitID: submittionID,
+    //   },
+    // });
+    navigation.navigate(screenNames.QuizAnswers, {
+      submitID: submittionID,
+      backToHome: true,
     });
   }
 
@@ -221,19 +233,21 @@ function QuizDetails({navigation, route, user, syncUserData}: MyProps) {
             handleFinish={timeOut}
             stop={showSuccessModal}
           /> */}
-            <CountDown
-              timeToShow={['M', 'S']}
-              digitTxtStyle={styles.digitText}
-              digitStyle={styles.digit}
-              until={quiz?.duration?.value * 60}
-              timeLabels={{
-                m: '',
-                s: '',
-              }}
-              style={styles.timer}
-              onFinish={timeOut}
-              running={timerRun}
-            />
+            {quiz?.duration?.value && !loading ? (
+              <CountDown
+                timeToShow={['M', 'S']}
+                digitTxtStyle={styles.digitText}
+                digitStyle={styles.digit}
+                until={quiz?.duration?.value * 60}
+                timeLabels={{
+                  m: '',
+                  s: '',
+                }}
+                style={styles.timer}
+                onFinish={timeOut}
+                running={timerRun}
+              />
+            ) : null}
           </View>
           <ProgressIndicator
             noOfQuestions={quiz.noOfQuestions}

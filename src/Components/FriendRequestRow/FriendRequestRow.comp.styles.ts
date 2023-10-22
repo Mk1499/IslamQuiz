@@ -19,10 +19,12 @@ const makeStyle = (themeColors: ThemeColors) =>
       alignItems: 'center',
       justifyContent: 'space-between',
       marginBottom: moderateScale(10),
+      flex: 1,
     },
     dataCont: {
       flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
       alignItems: 'center',
+      flex: 0.5,
     },
     label: {
       color: themeColors.text,
@@ -48,7 +50,7 @@ const makeStyle = (themeColors: ThemeColors) =>
     btnsCont: {
       flexDirection: getActiveLang() === 'ar' ? 'row-reverse' : 'row',
       alignItems: 'center',
-      flex: 0.75,
+      flex: 0.5,
       // backgroundColor: 'red',
     },
     btn: {
