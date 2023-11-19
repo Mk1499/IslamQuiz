@@ -4,6 +4,7 @@ import Login from '../../Screens/Auth/Login/Login';
 import OTPVerify from '../../Screens/Auth/OTPVerify/OTPVerify';
 import Register from '../../Screens/Auth/Register/Register';
 import ResetPassword from '../../Screens/Auth/Reset Password/ResetPassword';
+import ChallengeLanding from '../../Screens/Challenge/Landing/ChallengeLanding.screen';
 import Landing from '../../Screens/Landing/Landing';
 import ChangeLanguage from '../../Screens/ProfileOptions/ChangeLang/ChangeLanguage';
 import ChangeTheme from '../../Screens/ProfileOptions/ChangeTheme/ChangeTheme';
@@ -140,6 +141,11 @@ export default [
   {
     name: screenNames.UserFriends,
     component: UserFriendsScreen,
+    isPrimaryBG: true,
+  },
+  {
+    name: screenNames.ChallengeLanding,
+    component: ChallengeLanding,
     isPrimaryBG: true,
   },
 ];

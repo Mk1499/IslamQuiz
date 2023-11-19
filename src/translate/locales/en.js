@@ -13,6 +13,7 @@ export default {
     leaderboard: 'Leaderboard',
     search: 'Search',
     friendRequests: 'Friend Requests',
+    enterChallenge: 'Enter Challenge',
   },
   Global: {
     otherLang: 'العربية',
@@ -260,5 +261,15 @@ export default {
   },
   FriendShip: {
     noFriend: 'No Friend Requests',
+  },
+  ChallengeLanding: {
+    welcome: 'Welcome in Motanafeson Challenge',
+    note: 'Here are some tips before starting the challenge',
+    tip1: 'Ensure that each challenge comprises a minimum of 10 questions.',
+    tip2: 'Answer each question within a 15-second time frame.',
+    tip3: 'If a tie occurs after 10 questions, additional questions will be added one by one until a winner is determined',
+    tip4: 'Participating in each challenge requires 10 points, and you will earn 20 points upon winning.',
+    tip5: 'Boost your point balance by answering free quizzes available on the home screen.',
+    start: 'Start',
   },
 };

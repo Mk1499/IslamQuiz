@@ -24,4 +24,5 @@ export default {
   OTP: 'OTP',
   Landing: 'Landing',
   UserFriends: 'UserFriends',
+  ChallengeLanding: 'ChallengeLanding',
 };

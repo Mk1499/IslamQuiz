@@ -23,6 +23,7 @@ import {RefreshControl} from 'react-native';
 import {connect} from 'react-redux';
 import User from '../../../Models/User.model';
 import QuizzesCarousel from '../../../Components/Carousel/QuizzesCarousel/QuizzesCarousel';
+import screenNames from '../../../Routes/Stacks/screenNames';
 
 type MyProps = {
   navigation: {
@@ -39,8 +40,8 @@ function Home(props: MyProps) {
       smallText: I18n.Home.enter,
       bigText: I18n.Home.challenge,
       bgColor: '#FF7040',
-      action: createQuiz,
-      id: 'createQuiz',
+      action: startChallenge,
+      id: 'startChallenge',
     },
     {
       smallText: I18n.Home.challenge,
@@ -53,7 +54,7 @@ function Home(props: MyProps) {
     //   bigText: I18n.Home.friend,
     //   smallText: I18n.Home.challenge,
     //   bgColor: '#3248da',
-    //   action: createQuiz,
+    //   action: startChallenge,
     // },
   ];
 
@@ -61,8 +62,8 @@ function Home(props: MyProps) {
   const [loadingCats, setLoadingCats] = useState(true);
   const [refreshing, setrefreshing] = useState(false);
 
-  function createQuiz() {
-    props.navigation.navigate('CreateQuiz');
+  function startChallenge() {
+    props.navigation.navigate(screenNames.ChallengeLanding);
   }
 
   function joinQuiz() {
