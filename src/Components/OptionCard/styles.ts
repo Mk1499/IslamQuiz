@@ -29,12 +29,14 @@ const makeStyle = () =>
     smallText: {
       fontFamily: fonts.med,
       color: '#fff',
+      textAlign: getActiveLang() === 'ar' ? 'right' : 'left',
     },
     bigText: {
       fontFamily: fonts.bold,
       color: '#fff',
       fontSize: moderateScale(16),
       marginBottom: moderateScale(5),
+      textAlign: getActiveLang() === 'ar' ? 'right' : 'left',
     },
     icon: {
       backgroundColor: 'rgba(255,255,255,0.7)',

@@ -86,6 +86,7 @@ export default {
     friend: 'صديق',
     categories: 'الاقسام',
     private: 'خاص',
+    enter: 'أدخل',
   },
   Category: {
     quizzes: 'الإختبارات',

@@ -85,6 +85,7 @@ export default {
     friend: 'Friend',
     categories: 'Categories',
     private: 'Private',
+    enter: 'Enter',
   },
   Category: {
     quizzes: 'Quizzes',

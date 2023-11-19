@@ -55,6 +55,8 @@ function QuizAnswers(props: MyProps) {
   function handleNextClicked() {
     if (submits.length - 1 > currentQuestion) {
       setCurrentQuestion(currentQuestion + 1);
+    } else if (params?.backToHome) {
+      props.navigation.replace('Tabs');
     } else {
       props.navigation.goBack();
     }
