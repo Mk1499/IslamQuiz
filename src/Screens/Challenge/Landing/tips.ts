@@ -1,6 +1,6 @@
 import I18n from '../../../translate';
 
-export default [
+export default () => [
   {
     id: 1,
     value: I18n.ChallengeLanding.tip1,

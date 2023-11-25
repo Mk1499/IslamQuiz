@@ -40,5 +40,8 @@ const makeStyle = (themeColors: ThemeColors) =>
     },
     tipItem: {},
     startBtn: {},
+    loadingCont: {
+      alignItems: 'center',
+    },
   });
 export default makeStyle;
