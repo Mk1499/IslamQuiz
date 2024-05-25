@@ -31,14 +31,15 @@ const makeStyle = (themeColors: ThemeColors) =>
       justifyContent: 'center',
       backgroundColor: themeColors.bg,
       paddingHorizontal: 0.02 * width,
-      borderRadius: moderateScale(10),
+      borderRadius: moderateScale(15),
     },
     searchInput: {
-      fontSize: 0.025 * height,
+      fontSize: moderateScale(16),
       height: 'auto',
       color: themeColors.primary,
       flex: 1,
       borderWidth: 0,
+      paddingVertical: moderateScale(3),
       // width: '100%',
     },
     icon: {
@@ -59,10 +60,10 @@ const makeStyle = (themeColors: ThemeColors) =>
       fontSize: moderateScale(18),
     },
     searchImg: {
-      height: 0.4 * height,
+      height: 0.3 * height,
       resizeMode: 'contain',
       alignSelf: 'center',
-      marginTop: 0.05 * height,
+      marginTop: 0.1 * height,
     },
     searchMsg: {
       marginTop: 0.02 * height,

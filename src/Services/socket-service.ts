@@ -1,5 +1,4 @@
 import {io} from 'socket.io-client';
+import config from '../Config/config';
 
-const url = 'http://192.168.1.8:4040';
-
-export const socket = io(url);
+export const socket = io(config.socketURL);

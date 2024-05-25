@@ -16,6 +16,8 @@ import {moderateScale} from 'react-native-size-matters';
 import 'react-native-get-random-values';
 import ForceUpdate from './src/Templates/ForceUpdate';
 import FireConfig from './src/Templates/FireConfig';
+import * as Ably from 'ably';
+import {AblyProvider, useChannel, useConnectionStateListener} from 'ably/react';
 
 const {fonts} = Constants;
 
@@ -23,6 +25,9 @@ googleConfigure();
 
 const App = () => {
   const {colors} = useTheme();
+  const client = new Ably.Realtime.Promise({
+    key: 'xrmlEA.hyaPLg:s9d4k6F6d_tha9cp4zTffCS8etO4Jll8ss5L6c7U-Ks',
+  });
 
   const toastConfing = {
     success: props => (
@@ -46,15 +51,17 @@ const App = () => {
         <StatusBar backgroundColor={colors.primary} />
         <FireConfig>
           <ForceUpdate>
-            <NavigationContainer
-              ref={(navigatorRef: any) => {
-                NavigationService.setTopLevelNavigator(navigatorRef);
-              }}>
-              <NativeBaseProvider>
-                <MainStack />
-                {config.enableDebug && <NetworkLoggerScreen />}
-              </NativeBaseProvider>
-            </NavigationContainer>
+            <AblyProvider client={client}>
+              <NavigationContainer
+                ref={(navigatorRef: any) => {
+                  NavigationService.setTopLevelNavigator(navigatorRef);
+                }}>
+                <NativeBaseProvider>
+                  <MainStack />
+                  {config.enableDebug && <NetworkLoggerScreen />}
+                </NativeBaseProvider>
+              </NavigationContainer>
+            </AblyProvider>
           </ForceUpdate>
         </FireConfig>
         <Toast config={toastConfing} />

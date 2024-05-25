@@ -518,7 +518,7 @@ PODS:
     - RNFBApp
   - RNFS (2.20.0):
     - React-Core
-  - RNGestureHandler (2.12.0):
+  - RNGestureHandler (2.9.0):
     - React-Core
   - RNGoogleSignin (9.1.0):
     - GoogleSignIn (~> 6.2)
@@ -867,7 +867,7 @@ SPEC CHECKSUMS:
   RNFBRemoteConfig: 3d309cbc1f89b25fb3c57ebd3daa909162749cc3
   RNFBStorage: 7f918c7377c4f780820cee398769c0119587849a
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
-  RNGestureHandler: dec4645026e7401a0899f2846d864403478ff6a5
+  RNGestureHandler: 071d7a9ad81e8b83fe7663b303d132406a7d8f39
   RNGoogleSignin: c15bdaa7e8a9e190b6169d9c96a4e8380a740f22
   RNReanimated: bec7736122a268883bdede07f1bf9cf4b40158db
   RNScreens: 6a8a3c6b808aa48dca1780df7b73ea524f602c63

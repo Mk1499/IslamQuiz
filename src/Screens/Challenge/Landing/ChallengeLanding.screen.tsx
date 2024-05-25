@@ -10,6 +10,10 @@ import {socket} from '../../../Services/socket-service';
 import socketEvents from '../../../utils/socketEvents';
 import {connect} from 'react-redux';
 import User from '../../../Models/User.model';
+import * as Ably from 'ably';
+import {AblyProvider, useChannel, useConnectionStateListener} from 'ably/react';
+import channels from '../../../utils/channels';
+import {post} from '../../../Services/api-service';
 
 type MyProps = {
   currentUser: User;
@@ -20,16 +24,45 @@ function ChallengeLanding({currentUser}: MyProps) {
   const styles = makeStyle(colors);
   const [searching, setSearching] = useState(false);
   const [challenge, setChallenge] = useState();
+  let channel: ChannelResult;
+  // Create a channel called 'get-started' and subscribe to all messages with the name 'first' using the useChannel hook
+  // const {channel} = useChannel('get-started', currentUser._id, message => {
+  //   console.log('msg : ', message.data);
+  // });
 
   useEffect(() => {
     console.log('ID : ', socket.id);
-    challengeListener();
+
+    // challengeListener();
+    // testAbly();
+    return () => {};
   }, []);
 
+  useConnectionStateListener('connected', () => {
+    console.log('Connected to Ably!');
+  });
+
   function start() {
-    socket.emit(socketEvents.startChallange, currentUser._id);
+    // socket.emit(socketEvents.startChallange, currentUser._id);
     setSearching(true);
+    post('/challenge/request', {
+      userID: currentUser._id,
+    })
+      .then(({data}) => {
+        // channel = useChannel(data._id, currentUser._id);
+        console.log('RES : ', data);
+      })
+      .catch(err => {
+        console.log('ERR : ', err);
+      });
+    // channel.publish(channels.challengeRequest, {
+    //   user: currentUser._id,
+    // });
   }
+
+  // function testAbly() {
+  //   channel.publish('test', 'Hello from app');
+  // }
 
   function challengeListener() {
     socket.removeAllListeners();

@@ -51,8 +51,8 @@ const makeStyle = (themeColors: ThemeColors) =>
     email: {
       color: themeColors.lightText,
       fontFamily: fonts.med,
-      // fontSize: moderateScale(15),
-      // marginBottom: moderateScale(5),
+      fontSize: moderateScale(13),
+      marginBottom: moderateScale(5),
     },
     dataCont: {
       flexDirection: 'row',
